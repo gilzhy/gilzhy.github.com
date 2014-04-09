@@ -8,7 +8,7 @@
   <meta name="og:type" content="blog">
 <meta name="og:title" content="机器学习算法中为什么要增加一维x0=1">
 <meta name="og:url" content="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/">
-<meta name="og:image">
+<meta name="og:image" content="http://latex.codecogs.com/gif.latex?J(&space;\theta&space;)=-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}y^{(i)}\log&space;h_{&space;\theta&space;}(x^{(i)})&plus;(1&space;-&space;y^{(i)})&space;\log&space;(1-h_{&space;\theta&space;}(x^{(i)}))]&plus;\frac&space;{\lambda}{2m}\sum\limits_{j=1}^{n}&space;\theta_{j}^{2}">
 <meta name="og:site_name" content="Jay Young's Blog">
 <meta name="og:description" content="机器学习算法中为什么要增加一维x0=1">
 <meta name="twitter:card" content="summary">
@@ -116,13 +116,13 @@
 <h3 id="为什么正则化时_$\theta_0$_不用正则?">为什么正则化时 $\theta_0$ 不用正则?</h3>
 <p>关于这点Andrew Ng也没有解释, 只是在Video和Programming Exercises中反复提醒 $\theta_0$ 不用正则. 因为不知道为什么几次$\theta_0$ 不用正则, 我几次写Programming Exercises时都忽略了这点, 提交错误后检查了才发现. <strong>所以这也是为什么会有这篇博文啦</strong> .</p>
 <p>Logistic regression的损失函数( $\theta_0$ 没有正则):</p>
-<p>$J( \theta )=- \frac {1}{m} [\sum\limits<em>{i=1}^{m}y^{(i)}\log h</em>{ \theta }(x^{(i)})+(1 - y^{(i)}) \log (1-h<em>{ \theta }(x^{(i)}))]+\frac  {\lambda}{2m}\sum\limits</em>{j=1}^{n} \theta_{j}^{2}$</p>
+<p><a href="http://www.codecogs.com/eqnedit.php?latex=J(&space;\theta&space;)=-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}y^{(i)}\log&space;h_{&space;\theta&space;}(x^{(i)})&plus;(1&space;-&space;y^{(i)})&space;\log&space;(1-h_{&space;\theta&space;}(x^{(i)}))]&plus;\frac&space;{\lambda}{2m}\sum\limits_{j=1}^{n}&space;\theta_{j}^{2}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?J(&space;\theta&space;)=-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}y^{(i)}\log&space;h_{&space;\theta&space;}(x^{(i)})&plus;(1&space;-&space;y^{(i)})&space;\log&space;(1-h_{&space;\theta&space;}(x^{(i)}))]&plus;\frac&space;{\lambda}{2m}\sum\limits_{j=1}^{n}&space;\theta_{j}^{2}" title="J( \theta )=- \frac {1}{m} [\sum\limits_{i=1}^{m}y^{(i)}\log h_{ \theta }(x^{(i)})+(1 - y^{(i)}) \log (1-h_{ \theta }(x^{(i)}))]+\frac {\lambda}{2m}\sum\limits_{j=1}^{n} \theta_{j}^{2}" /></a></p>
 <p>对参数 $\theta_i$ 加正则是为了减弱 $\mathbf{x}_i$ 的效果, 而 $\theta_0$ 对应的是上文提到的threshold. 上文也说了, 银行要做的是学习到申请表中每一项的权重, 以此得到每一项的加权和, 拿来和 threshold比较看是否审核通过. threshold只是为了方便被视为 $- \mathbf{w}_0$ , 但它并真的不是权重.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="2jb14o1105c9wi6w" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="xs78tx50hsxqwuui" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DM/">DM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
