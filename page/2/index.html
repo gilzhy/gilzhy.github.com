@@ -65,6 +65,267 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-android学习笔记-broadcast" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/25/android学习笔记-broadcast/" class="article-date">
+  <time datetime="2013-07-25T09:50:43.000Z" itemprop="datePublished">7月 25 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/07/25/android学习笔记-broadcast/">Android学习笔记-Broadcast</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>说明</strong>: 内容取自中山大学软件学院刘宁老师的SE-806课程的课件</p>
+<p>之前说过Intent是一个对动作和行为的抽象描述,负责组件之间与程序之间进行消息传递</p>
+<p>而Broadcast Receiver组件把Intent作为一个消息广播出去,由所有对其感兴趣的程序对其作出反应.</p>
+<h4 id="Android广播机制包含三个基本要素:">Android广播机制包含三个基本要素:</h4>
+<ul>
+<li>Broadcast广播 —发送广播,广泛运用在应用程序之间传输信息</li>
+<li>BroadcastReceiver广播接收器 —接受广播,对发送出来的Broadcast进行过滤接受并响应</li>
+<li>Intent意图 —保存广播相关信息</li>
+</ul>
+<h4 id="广播过程描述">广播过程描述</h4>
+<ol>
+<li>首先在需要发送信息的地方,把要发送的信息和用于过滤的信息(如Action、Category)装入一个Intent对象,然后通过调用<code>Context.sendBroadcast()</code> 方法,把Intent对象以广播方式发送出去。</li>
+<li>当Intent发送以后,所有已经注册的BroadcastReceiver会检查注册时的IntentFilter是<br>否与发送的Intent相匹配,若匹配则就会调用BroadcastReceiver的<code>void onReceive(ContextcurContext, Intent broadcastMsg)</code>方法。</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="code"><pre><span class="comment">// AndroidManifest.xml 用&lt;receiver&gt;标签注册一个BroadcastReceiver,还需要有一个字符串作为过滤filter,用过filter选择接受广播的类</span>
+&lt;receiver android:name=<span class="string">".MyBroadCast1"</span>&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=<span class="string">"The string used as filter"</span>&gt;&lt;/action&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+
+<span class="comment">// testactivity.java 将filter字符串放入intent中,再通过广播发出去,等待系统接收</span>
+mBtnTest = (Button)findViewById(R.id.btnTest);
+mBtnTest.setOnClickListener(<span class="keyword">new</span> OnClickListener() {
+    @Override
+    <span class="keyword">public</span> <span class="keyword">void</span> onClick(View v) {
+        Intent intent = <span class="keyword">new</span> Intent(<span class="string">"The string used as filter"</span>);
+        sendBroadcast(intent); <span class="comment">// ----------&gt; 发送</span>
+    }
+});
+
+<span class="comment">// mybroadcast1.java 系统通过xml文件查找到对应的filter,映射到对应的BroadcastReceiver类</span>
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyBroadCast1</span> <span class="inheritance"><span class="keyword">extends</span></span> <span class="title">BroadcastReceiver</span> {</span> <span class="comment">// ----------&gt; reveiver</span>
+    @Override
+    <span class="keyword">public</span> <span class="keyword">void</span> onReceiver(Context context, Intent intent) { <span class="comment">// ----------&gt; on receiver</span>
+        Log.v(<span class="string">"BroadCast1"</span>, <span class="string">"Receiver"</span>);
+    }
+}
+</pre></td></tr></table></figure>
+
+<p><img src="/img/android-broadcast.jpg" alt="android-broadcast"></p>
+<h4 id="Broadcast机制">Broadcast机制</h4>
+<p>之前说过通过intent实现Activity间跳转的两个机制:</p>
+<ul>
+<li>显示Intent,构造Intent对象时就指定接收者</li>
+<li>隐式Intent,发送者构造Intent对象时并不知道也不关心接收者是谁,只通过filter来选择接收者(有利于降低发送者和接收者之间的耦合)</li>
+</ul>
+<p>Broadcast的实现机制与隐式Intent类似</p>
+<h4 id="Broadcast生命周期">Broadcast生命周期</h4>
+<ul>
+<li>当系统通过filter字符串找到匹配的Receiver, onReceive方法就会被执行。但是onReceive方法必须在<strong>5秒</strong>内执行完毕退出,否则会导致FC(Force Close强制关闭)</li>
+<li>通常来说,BroadcastReceiver用来更新content、启动service、更新UI或者通过notification manager在状态栏中提示。5秒的限制保证了主要处理任务不会、也不应该在BroadcastReceiver中完成。</li>
+<li>如果需要执行大量任务,可以在BroadcastReceiver中启用Service。</li>
+</ul>
+<h4 id="Broadcast手机自动服务">Broadcast手机自动服务</h4>
+<p>前面我们介绍了如何实现一个自定义的Broadcast,但是Broadcast的应用绝对不仅这些。<br>在Android操作系统中,有许多与手机相关的事件会对系统发送广播信息。当系统发出广播后,就会搜索是否注册了负责处理该广播的BroadcastReceiver。<br>因此,只要我们了解系统的广播类型,我们就可以实现很多手机自动服务功能,例如,收到新短信进行提示、手机来电时自动拒接等等。</p>
+<h5 id="Android中Broadcast的Intent">Android中Broadcast的Intent</h5>
+<h6 id="Api_Level_3:(SDK_1-5)">Api Level 3:(SDK 1.5)</h6>
+<ul>
+<li>android.bluetooth.a2dp.intent.action.SINK_STATE_CHANGED  </li>
+<li>android.bluetooth.intent.action.BLUETOOTH_STATE_CHANGED  </li>
+<li>android.bluetooth.intent.action.BOND_STATE_CHANGED_ACTION  </li>
+<li>android.bluetooth.intent.action.DISCOVERY_COMPLETED  </li>
+<li>android.bluetooth.intent.action.DISCOVERY_STARTED  </li>
+<li>android.bluetooth.intent.action.HEADSET_ADUIO_STATE_CHANGED  </li>
+<li>android.bluetooth.intent.action.HEADSET_STATE_CHANGED  </li>
+<li>android.bluetooth.intent.action.NAME_CHANGED  </li>
+<li>android.bluetooth.intent.action.PAIRING_CANCEL  </li>
+<li>android.bluetooth.intent.action.PAIRING_REQUEST  </li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_CONNECTED  </li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISAPPEARED  </li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISAPPEARED  </li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISCONNECTED  </li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISCONNECT_REQUESTED  </li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_FOUND  </li>
+<li>android.bluetooth.intent.action.REMOTE_NAME_FAILED  </li>
+<li>android.bluetooth.intent.action.REMOTE_NAME_UPDATED  </li>
+<li>android.bluetooth.intent.action.SCAN_MODE_CHANGED  </li>
+<li>android.intent.action.AIRPLANE_MODE  </li>
+<li>android.intent.action.BATTERY_CHANGED  </li>
+<li>android.intent.action.BATTERY_LOW  </li>
+<li>android.intent.action.BOOT_COMPLETED  </li>
+<li>android.intent.action.CAMERA_BUTTON  </li>
+<li>android.intent.action.CONFIGURATION_CHANGED  </li>
+<li>android.intent.action.DATA_SMS_RECEIVED  </li>
+<li>android.intent.action.DATE_CHANGED  </li>
+<li>android.intent.action.DEVICE_STORAGE_LOW  </li>
+<li>android.intent.action.DEVICE_STORAGE_OK  </li>
+<li>android.intent.action.GTALK_CONNECTED  </li>
+<li>android.intent.action.GTALK_DISCONNECTED  </li>
+<li>android.intent.action.HEADSET_PLUG  </li>
+<li>android.intent.action.INPUT_METHOD_CHANGED  </li>
+<li>android.intent.action.MANAGE_PACKAGE_STORAGE  </li>
+<li>android.intent.action.MEDIA_BAD_REMOVAL  </li>
+<li>android.intent.action.MEDIA_BUTTON  </li>
+<li>android.intent.action.MEDIA_CHECKING  </li>
+<li>android.intent.action.MEDIA_EJECT  </li>
+<li>android.intent.action.MEDIA_MOUNTED  </li>
+<li>android.intent.action.MEDIA_NOFS  </li>
+<li>android.intent.action.MEDIA_REMOVED  </li>
+<li>android.intent.action.MEDIA_SCANNER_FINISHED  </li>
+<li>android.intent.action.MEDIA_SCANNER_SCAN_FILE  </li>
+<li>android.intent.action.MEDIA_SCANNER_STARTED  </li>
+<li>android.intent.action.MEDIA_SHARED  </li>
+<li>android.intent.action.MEDIA_UNMOUNTABLE  </li>
+<li>android.intent.action.MEDIA_UNMOUNTED  </li>
+<li>android.intent.action.NEW_OUTGOING_CALL  </li>
+<li>android.intent.action.PACKAGE_ADDED  </li>
+<li>android.intent.action.PACKAGE_CHANGED  </li>
+<li>android.intent.action.PACKAGE_DATA_CLEARED  </li>
+<li>android.intent.action.PACKAGE_INSTALL  </li>
+<li>android.intent.action.PACKAGE_REMOVED  </li>
+<li>android.intent.action.PACKAGE_REPLACED  </li>
+<li>android.intent.action.PACKAGE_RESTARTED  </li>
+<li>android.intent.action.PHONE_STATE  </li>
+<li>android.intent.action.PROVIDER_CHANGED  </li>
+<li>android.intent.action.REBOOT  </li>
+<li>android.intent.action.SCREEN_OFF  </li>
+<li>android.intent.action.SCREEN_ON  </li>
+<li>android.intent.action.TIMEZONE_CHANGED  </li>
+<li>android.intent.action.TIME_SET  </li>
+<li>android.intent.action.TIME_TICK  </li>
+<li>android.intent.action.UID_REMOVED  </li>
+<li>android.intent.action.UMS_CONNECTED  </li>
+<li>android.intent.action.UMS_DISCONNECTED  </li>
+<li>android.intent.action.USER_PRESENT  </li>
+<li>android.intent.action.WALLPAPER_CHANGED  </li>
+<li>android.media.AUDIO_BECOMING_NOISY  </li>
+<li>android.media.RINGER_MODE_CHANGED  </li>
+<li>android.media.VIBRATE_SETTING_CHANGED  </li>
+<li>android.net.conn.BACKGROUND_DATA_SETTING_CHANGED  </li>
+<li>android.net.wifi.NETWORK_IDS_CHANGED  </li>
+<li>android.net.wifi.RSSI_CHANGED  </li>
+<li>android.net.wifi.SCAN_RESULTS  </li>
+<li>android.net.wifi.STATE_CHANGE  </li>
+<li>android.net.wifi.WIFI_STATE_CHANGED  </li>
+<li>android.net.wifi.supplicant.CONNECTION_CHANGE  </li>
+<li>android.net.wifi.supplicant.STATE_CHANGE  </li>
+<li>android.provider.Telephony.SIM_FULL  </li>
+<li>android.provider.Telephony.SMS_RECEIVED  </li>
+<li>android.provider.Telephony.WAP_PUSH_RECEIVED  </li>
+<li>com.google.gservices.intent.action.GSERVICES_CHANGED  </li>
+</ul>
+<h6 id="Api_Level_4增加的:(SDK_1-6)">Api Level 4增加的:(SDK 1.6)</h6>
+<ul>
+<li>android.intent.action.ACTION_POWER_CONNECTED  </li>
+<li>android.intent.action.ACTION_POWER_DISCONNECTED  </li>
+<li>android.intent.action.ACTION_SHUTDOWN  </li>
+<li>android.intent.action.BATTERY_OKAY  </li>
+<li>android.speech.tts.TTS_QUEUE_PROCESSING_COMPLETED  </li>
+<li>android.speech.tts.engine.TTS_DATA_INSTALLED  </li>
+<li>com.google.gservices.intent.action.GSERVICES_OVERRIDE  </li>
+</ul>
+<h6 id="Api_Level_5(SDK_2-0)蓝牙部分全部修改，修改后的">Api Level 5(SDK 2.0)蓝牙部分全部修改，修改后的</h6>
+<ul>
+<li>android.bluetooth.a2dp.action.SINK_STATE_CHANGED  </li>
+<li>android.bluetooth.adapter.action.DISCOVERY_FINISHED  </li>
+<li>android.bluetooth.adapter.action.DISCOVERY_STARTED  </li>
+<li>android.bluetooth.adapter.action.LOCAL_NAME_CHANGED  </li>
+<li>android.bluetooth.adapter.action.SCAN_MODE_CHANGED  </li>
+<li>android.bluetooth.adapter.action.STATE_CHANGED  </li>
+<li>android.bluetooth.device.action.ACL_CONNECTED  </li>
+<li>android.bluetooth.device.action.ACL_DISCONNECTED  </li>
+<li>android.bluetooth.device.action.ACL_DISCONNECT_REQUESTED  </li>
+<li>android.bluetooth.device.action.BOND_STATE_CHANGED  </li>
+<li>android.bluetooth.device.action.CLASS_CHANGED  </li>
+<li>android.bluetooth.device.action.FOUND  </li>
+<li>android.bluetooth.device.action.NAME_CHANGED  </li>
+<li>android.bluetooth.devicepicker.action.DEVICE_SELECTED  </li>
+<li>android.bluetooth.devicepicker.action.LAUNCH  </li>
+<li>android.bluetooth.headset.action.AUDIO_STATE_CHANGED  </li>
+<li>android.bluetooth.headset.action.STATE_CHANGED  </li>
+<li>android.intent.action.DOCK_EVENT  </li>
+<li>android.provider.Telephony.SMS_REJECTED  </li>
+</ul>
+<h6 id="Api_Level_6(SDK_2-0-1)没有改变。">Api Level 6(SDK 2.0.1)没有改变。</h6>
+<h6 id="Api_Level_7(SDK_2-1)增加的：">Api Level 7(SDK 2.1)增加的：</h6>
+<ul>
+<li>android.intent.action.LOCALE_CHANGED  </li>
+</ul>
+<h6 id="Api_Level_8(SDK_2-2)增加的：">Api Level 8(SDK 2.2)增加的：</h6>
+<ul>
+<li>android.app.action.ACTION_PASSWORD_CHANGED  </li>
+<li>android.app.action.ACTION_PASSWORD_FAILED  </li>
+<li>android.app.action.ACTION_PASSWORD_SUCCEEDED  </li>
+<li>android.app.action.DEVICE_ADMIN_DISABLED  </li>
+<li>android.app.action.DEVICE_ADMIN_DISABLE_REQUESTED  </li>
+<li>android.app.action.DEVICE_ADMIN_ENABLED  </li>
+<li>android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE  </li>
+<li>android.intent.action.EXTERNAL_APPLICATIONS_UNAVAILABLE  </li>
+<li>android.media.SCO_AUDIO_STATE_CHANGED </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhyin5.com/2013/07/25/android学习笔记-broadcast/" data-id="ojf21u9s8vsl9jur" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+  
     <article id="post-linux下android真机调试" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2013/07/24/linux下android真机调试/" class="article-date">
@@ -106,7 +367,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/24/linux下android真机调试/" data-id="q5583curtg3b15ae" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/24/linux下android真机调试/" data-id="md2pdw9kjaz525me" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
@@ -726,167 +987,7 @@ startActivity(intent);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-事件处理/" data-id="f9a6di6f1c4m29c4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-  
-    <article id="post-android学习笔记-布局属性" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2013/07/24/android学习笔记-布局属性/" class="article-date">
-  <time datetime="2013-07-24T09:43:00.000Z" itemprop="datePublished">7月 24 2013</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/07/24/android学习笔记-布局属性/">Android学习笔记-布局属性</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>说明</strong>: 转自<a href="http://panshengneng.iteye.com/blog/1187928" target="_blank">A_Big_Monkey-android布局属性大全</a></p>
-<h4 id="Layout">Layout</h4>
-<ul>
-<li><code>FrameLayout</code> 里面只可以有一个控件，并且不能设计这个控件的位置，控件会放到左上角  </li>
-<li><code>LinearLayout</code> 里面可以放多个控件，但是一行只能放一个控件  </li>
-<li><code>TableLayout</code> 这个要和TableRow配合使用，很像html里面的table  </li>
-<li><code>AbsoluteLayout</code> 里面可以放多个控件，并且可以自己定义控件的x,y的位置  </li>
-<li><code>RelativeLayout</code> 里面可以放多个控件，不过控件的位置都是相对位置  </li>
-<li>(界面的布局好像还可以直接引用一些view，如ScrollView等)</li>
-</ul>
-<hr>
-<h4 id="布局相关">布局相关</h4>
-<ul>
-<li><code>android:orientation</code> 它确定了LinearLayout的方向，值为:<ul>
-<li><strong>vertical</strong>(垂直布局)</li>
-<li><strong>horizontal</strong>(水平布局)</li>
-</ul>
-</li>
-<li><code>android:layout_width</code> 在父控件中当前控件的宽，值为:<ul>
-<li><strong>确定的值</strong></li>
-<li><strong>fill_parent</strong>(填满父控件的空白)</li>
-<li><strong>wrap_content</strong>(大小刚好足够显示当前控件里的内容)</li>
-</ul>
-</li>
-<li><code>android:layout_height</code> 在父控件中当前控件的高，值为:<ul>
-<li><strong>确定的值</strong></li>
-<li><strong>fill_parent</strong></li>
-<li><strong>wrap_content</strong></li>
-</ul>
-</li>
-<li><code>android:width</code> 控件宽度</li>
-<li><code>android:height</code> 控件高度</li>
-</ul>
-<hr>
-<ul>
-<li><code>android:padding</code> 控件内边距,同css</li>
-<li><code>android:layout_marginRight</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
-<li><code>android:layout_marginLeft</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
-<li><code>android:layout_marginTop</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
-<li><code>android:layout_marginBottom</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
-</ul>
-<hr>
-<ul>
-<li><code>android:sigleLine</code> 如果设置为真的话，则将控件的内容在同一行当中进行显示</li>
-</ul>
-<hr>
-<ul>
-<li><code>android:grivity</code> 控件的基本位置，比如说居中，居右等位置。其值需要多个时用’|’分开<ul>
-<li>如果是没有子控件的view设置此属性，表示内容的对齐方式</li>
-<li>如果是有子控件的view设置此属性，则表示子控件的对齐方式（重力倾向），</li>
-</ul>
-</li>
-<li><code>android:layout_gravity</code> 设置该控件位于父控件的位置。如:<code>android:layout_gravity=&quot;center_vertical&quot;</code></li>
-</ul>
-<hr>
-<h4 id="内容相关">内容相关</h4>
-<ul>
-<li><code>android:id</code> 控件的ID</li>
-<li><code>android:text</code> 控件中显示的文字，需要注意的是，这里尽量使用strings.xml文件当中的字符串</li>
-<li><code>android:textSize</code> 控件中字体的大小</li>
-<li><code>android:background</code> 控件使用的背景色,RGB命名法<ul>
-<li>如果设置一个透明的背景图片按钮<code>android:background=&quot;@android:color/transparent&quot;</code></li>
-</ul>
-</li>
-<li><code>android:src</code> 引用资源，如：应用另一个XML，<code>android:src=&quot;@drawable/imageselector&quot;</code></li>
-</ul>
-<hr>
-<h4 id="属性值为true或false">属性值为true或false</h4>
-<ul>
-<li><code>android:layout_centerHorizontal</code> 如果值为真，该控件将被至于水平方向的中央(水平居中)</li>
-<li><code>android:layout_centerVertical</code> 如果值为真，该控件将被至于垂直方向的中央(垂直居中)</li>
-<li><code>android:layout_centerInParent</code> 如果值为真，该控件将被至于父控件水平方向和垂直方向的中央(相对于父元素完全居中 )</li>
-</ul>
-<hr>
-<ul>
-<li><code>android:layout_alignParentBottom</code> 如果该值为true，则将该控件的底部和父控件的底部对齐(贴紧父元素的下边缘)</li>
-<li><code>android:layout_alignParentLeft</code> 如果该值为true，则将该控件的左边与父控件的左边对齐(贴紧父元素的左边缘)</li>
-<li><code>android:layout_alignParentRight</code> 如果该值为true，则将该控件的右边与父控件的右边对齐(贴紧父元素的右边缘)</li>
-<li><code>android:layout_alignParentTop</code> 如果该值为true，则将空间的顶部与父控件的顶部对齐(贴紧父元素的上边缘)</li>
-<li><code>android:layout_alignWithParentIfMissing</code> 如果对应的兄弟元素找不到的话就以父元素做参照物</li>
-</ul>
-<h4 id="属性值必须为id的引用名“@id/id-name”">属性值必须为id的引用名“@id/id-name”</h4>
-<ul>
-<li><code>android:layout_above</code> 将该控件的底部至于给定ID的控件之上(在某元素的的上方)</li>
-<li><code>android:layout_below</code> 将该控件的顶部至于给定ID的控件之下(在某元素的下方 )</li>
-<li><code>android:layout_toLeftOf</code> 将该控件的右边缘和给定ID的控件的左边缘对齐(在某元素的左边 )</li>
-<li><code>android:layout_toRightOf</code> 将该控件的左边缘和给定ID的控件的右边缘对齐(在某元素的左边 )</li>
-</ul>
-<hr>
-<ul>
-<li><code>android:layout_alignTop</code> 将给定控件的顶部边缘与给定ID控件的顶部对齐(本元素的上边缘和某元素的的上边缘对齐)</li>
-<li><code>android:layout_alignBottom</code> 将该控件的底部边缘与给定ID控件的底部边缘(本元素的下边缘和某元素的的下边缘对齐 )<code>android:layout_alignBottom=&quot;@id/TVfilepath&quot;</code></li>
-<li><code>android:layout_alignLeft</code> 将该控件的左边缘与给定ID控件的左边缘对齐(本元素的左边缘和某元素的的左边缘对齐)</li>
-<li><code>android:layout_alignRight</code> 将该控件的右边缘与给定ID控件的右边缘对齐(本元素的右边缘和某元素的的右边缘对齐)</li>
-<li><code>android:layout_alignBaseline</code> 该控件的baseline和给定ID的控件的baseline对齐</li>
-</ul>
-<hr>
-<ul>
-<li>EditText的<code>android:hint</code> 设置EditText为空时输入框内的提示信息。 </li>
-</ul>
-<hr>
-<ul>
-<li><code>android:scaleType</code> 控制图片如何匹对ImageView的size,<code>ImageView.ScaleType</code> / <code>android:scaleType</code>值： <ul>
-<li><code>CENTER</code> / <code>center</code> 按图片的原来size居中显示，当图片长/宽超过View的长/宽，则截取图片的居中部分显示 </li>
-<li><code>CENTER_CROP</code> / <code>centerCrop</code> 按比例扩大图片的size居中显示，使得图片长(宽)等于或大于View的长(宽) </li>
-<li><code>CENTER_INSIDE</code> / <code>centerInside</code> 将图片的内容完整居中显示，通过按比例缩小或原来的size使得图片长/宽等于或小于View的长/宽 </li>
-<li><code>FIT_CENTER</code> / <code>fitCenter</code> 把图片按比例扩大/缩小到View的宽度，居中显示 </li>
-<li><code>FIT_END</code> / <code>fitEnd</code> 把图片按比例扩大/缩小到View的宽度，显示在View的下部分位置 </li>
-<li><code>FIT_START</code> / <code>fitStart</code> 把图片按比例扩大/缩小到View的宽度，显示在View的上部分位置 </li>
-<li><code>FIT_XY</code> / <code>fitXY</code> 把图不按比例扩大/缩小到View的大小显示 </li>
-<li><code>MATRIX</code> / <code>matrix</code> 用矩阵来绘制，动态缩小放大图片来显示。 </li>
-</ul>
-</li>
-</ul>
-<p>要注意一点，<strong>Drawable文件夹里面的图片命名是不能大写的</strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-布局属性/" data-id="dmdgvi99yulbgio5" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-事件处理/" data-id="dbcidw0na0j1vyfa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -914,7 +1015,7 @@ startActivity(intent);
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔试/面试/">笔试/面试</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ML/DM/">ML/DM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔试/面试/">笔试/面试</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -923,7 +1024,7 @@ startActivity(intent);
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/">awesome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dnsmasq/">dnsmasq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostapd/">hostapd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi/">wifi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本控制/">版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/窗口管理/">窗口管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔试/">笔试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络访问/">网络访问</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络通信/">网络通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解压/压缩/">解压/压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软AP/">软AP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DM/">DM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/">ML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/">awesome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dnsmasq/">dnsmasq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostapd/">hostapd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi/">wifi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本控制/">版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/窗口管理/">窗口管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔试/">笔试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络访问/">网络访问</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络通信/">网络通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解压/压缩/">解压/压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软AP/">软AP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -932,7 +1033,7 @@ startActivity(intent);
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.00px;">Android</a><a href="/tags/MVC/" style="font-size: 10.00px;">MVC</a><a href="/tags/Sublime/" style="font-size: 12.00px;">Sublime</a><a href="/tags/awesome/" style="font-size: 12.00px;">awesome</a><a href="/tags/cookie/" style="font-size: 10.00px;">cookie</a><a href="/tags/django/" style="font-size: 14.00px;">django</a><a href="/tags/dnsmasq/" style="font-size: 10.00px;">dnsmasq</a><a href="/tags/hostapd/" style="font-size: 10.00px;">hostapd</a><a href="/tags/linux/" style="font-size: 20.00px;">linux</a><a href="/tags/mysql/" style="font-size: 12.00px;">mysql</a><a href="/tags/mysqldump/" style="font-size: 10.00px;">mysqldump</a><a href="/tags/numpy/" style="font-size: 10.00px;">numpy</a><a href="/tags/python/" style="font-size: 16.00px;">python</a><a href="/tags/session/" style="font-size: 10.00px;">session</a><a href="/tags/svn/" style="font-size: 10.00px;">svn</a><a href="/tags/vim/" style="font-size: 12.00px;">vim</a><a href="/tags/wifi/" style="font-size: 10.00px;">wifi</a><a href="/tags/快捷键/" style="font-size: 10.00px;">快捷键</a><a href="/tags/排序/" style="font-size: 10.00px;">排序</a><a href="/tags/数据结构/" style="font-size: 10.00px;">数据结构</a><a href="/tags/查找/" style="font-size: 10.00px;">查找</a><a href="/tags/爬虫/" style="font-size: 10.00px;">爬虫</a><a href="/tags/版本控制/" style="font-size: 10.00px;">版本控制</a><a href="/tags/窗口管理/" style="font-size: 10.00px;">窗口管理</a><a href="/tags/笔试/" style="font-size: 12.00px;">笔试</a><a href="/tags/网络访问/" style="font-size: 10.00px;">网络访问</a><a href="/tags/网络通信/" style="font-size: 10.00px;">网络通信</a><a href="/tags/解压/压缩/" style="font-size: 10.00px;">解压/压缩</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软AP/" style="font-size: 10.00px;">软AP</a><a href="/tags/面向对象/" style="font-size: 10.00px;">面向对象</a>
+      <a href="/tags/Android/" style="font-size: 18.00px;">Android</a><a href="/tags/DM/" style="font-size: 10.00px;">DM</a><a href="/tags/ML/" style="font-size: 10.00px;">ML</a><a href="/tags/MVC/" style="font-size: 10.00px;">MVC</a><a href="/tags/Sublime/" style="font-size: 12.00px;">Sublime</a><a href="/tags/awesome/" style="font-size: 12.00px;">awesome</a><a href="/tags/cookie/" style="font-size: 10.00px;">cookie</a><a href="/tags/django/" style="font-size: 14.00px;">django</a><a href="/tags/dnsmasq/" style="font-size: 10.00px;">dnsmasq</a><a href="/tags/hostapd/" style="font-size: 10.00px;">hostapd</a><a href="/tags/linux/" style="font-size: 20.00px;">linux</a><a href="/tags/mysql/" style="font-size: 12.00px;">mysql</a><a href="/tags/mysqldump/" style="font-size: 10.00px;">mysqldump</a><a href="/tags/numpy/" style="font-size: 10.00px;">numpy</a><a href="/tags/python/" style="font-size: 16.00px;">python</a><a href="/tags/session/" style="font-size: 10.00px;">session</a><a href="/tags/svn/" style="font-size: 10.00px;">svn</a><a href="/tags/vim/" style="font-size: 12.00px;">vim</a><a href="/tags/wifi/" style="font-size: 10.00px;">wifi</a><a href="/tags/快捷键/" style="font-size: 10.00px;">快捷键</a><a href="/tags/排序/" style="font-size: 10.00px;">排序</a><a href="/tags/数据结构/" style="font-size: 10.00px;">数据结构</a><a href="/tags/查找/" style="font-size: 10.00px;">查找</a><a href="/tags/爬虫/" style="font-size: 10.00px;">爬虫</a><a href="/tags/版本控制/" style="font-size: 10.00px;">版本控制</a><a href="/tags/窗口管理/" style="font-size: 10.00px;">窗口管理</a><a href="/tags/笔试/" style="font-size: 12.00px;">笔试</a><a href="/tags/网络访问/" style="font-size: 10.00px;">网络访问</a><a href="/tags/网络通信/" style="font-size: 10.00px;">网络通信</a><a href="/tags/解压/压缩/" style="font-size: 10.00px;">解压/压缩</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软AP/" style="font-size: 10.00px;">软AP</a><a href="/tags/面向对象/" style="font-size: 10.00px;">面向对象</a>
     </div>
   </div>
 
@@ -941,7 +1042,7 @@ startActivity(intent);
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">七月 2013</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06">六月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04">四月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">三月 2013</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">二月 2013</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">七月 2013</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06">六月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04">四月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">三月 2013</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">二月 2013</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -951,6 +1052,10 @@ startActivity(intent);
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/04/09/机器学习算法中为什么要增加一维x0=1/">机器学习算法中为什么要增加一维x0=1</a>
+          </li>
         
           <li>
             <a href="/2014/04/06/python-sympy/">python-sympy</a>
@@ -966,10 +1071,6 @@ startActivity(intent);
         
           <li>
             <a href="/2013/07/24/linux下android真机调试/">Linux下Android真机调试</a>
-          </li>
-        
-          <li>
-            <a href="/2013/07/24/android学习笔记-事件处理/">Android学习笔记-事件处理</a>
           </li>
         
       </ul>
