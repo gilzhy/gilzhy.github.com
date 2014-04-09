@@ -100,7 +100,10 @@
 <p>即有一个样本其特征为:</p>
 <p>$$\mathbf{x}=[23, m, 100000, 3, 200000]$$</p>
 <p>银行要做的应该是为申请表中的每一项数据做一个 <strong>加权和</strong> 来得到这个用户的分数, 如果这个用户得到的分数符合银行发布信用卡的标准, 那么就审核通过, 否则审核不通过:</p>
-<p>$\sum\limits<em>{i=1}^dw_ix_i &gt; threshold$ 则 y = 1<br>$\sum\limits</em>{i=1}^dw_ix_i &lt; threshold$ 则 y = 0</p>
+<ul>
+<li>$\sum\limits_{i=1}^dw_ix_i &gt; threshold$  则 y = 1</li>
+<li>$\sum\limits_{i=1}^dw_ix_i &lt; threshold$  则 y = 0</li>
+</ul>
 <p>算法训练得到申请表中每一项的权重, 预测函数为:</p>
 <p>$$h(\mathbf{x})=sign(\sum\limits_{i=1}^dw_ix_i - threshold)$$</p>
 <p>为了让预测函数形式上更好看, 计算上更方便快捷, 所以才为每一个样本的特征增加一维x0=1:</p>
@@ -114,7 +117,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="g4tlmaf60mpvmbxp" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="c8pympycb95gpj62" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DM/">DM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
