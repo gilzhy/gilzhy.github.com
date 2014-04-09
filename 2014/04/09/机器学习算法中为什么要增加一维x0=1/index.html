@@ -106,13 +106,15 @@
 <p>为了让预测函数形式上更好看, 计算上更方便快捷, 所以才为每一个样本的特征增加一维x0=1:</p>
 <p>$$h(\mathbf{x})=sign(\sum\limits_{i=1}^dw_ix_i + (-threshold)\times (+1))$$</p>
 <p>因为threshold和权重w中的每一维一样, 都也是未知的, 需要算法来学习的, 所以可以将 -threshold 视为w0. 相应的就给x增加一维, 就把1视为x0:</p>
-<p>$$h(\mathbf{x})=sign(\sum\limits<em>{i=1}^dw_ix_i + w_0x_0)=sign(\sum\limits</em>{i=0}^dw_ix_i)=sign(\mathbf{w}^T\mathbf{x})$$</p>
+<p>$$h(\mathbf{x})=sign(\sum\limits_{i=1}^dw_ix_i + w_0x_0)$$</p>
+<p>$$h(\mathbf{x})=sign(\sum\limits_{i=0}^dw_ix_i)$$</p>
+<p>$$h(\mathbf{x})=sign(\mathbf{w}^T\mathbf{x})$$</p>
 <p>除了形式上更加好看外, 还可以用向量计算代替逐个元素循环.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="xk2u6qaqjfm1m3vm" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="g4tlmaf60mpvmbxp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DM/">DM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
