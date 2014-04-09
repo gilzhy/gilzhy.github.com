@@ -99,118 +99,16 @@
 <li><code>TableLayout</code> 这个要和TableRow配合使用，很像html里面的table  </li>
 <li><code>AbsoluteLayout</code> 里面可以放多个控件，并且可以自己定义控件的x,y的位置  </li>
 <li><code>RelativeLayout</code> 里面可以放多个控件，不过控件的位置都是相对位置  </li>
-<li>(界面的布局好像还可以直接引用一些view，如ScrollView等)</li>
-</ul>
-<hr>
-<h4 id="布局相关">布局相关</h4>
-<ul>
-<li><code>android:orientation</code> 它确定了LinearLayout的方向，值为:<ul>
-<li><strong>vertical</strong>(垂直布局)</li>
-<li><strong>horizontal</strong>(水平布局)</li>
-</ul>
-</li>
-<li><code>android:layout_width</code> 在父控件中当前控件的宽，值为:<ul>
-<li><strong>确定的值</strong></li>
-<li><strong>fill_parent</strong>(填满父控件的空白)</li>
-<li><strong>wrap_content</strong>(大小刚好足够显示当前控件里的内容)</li>
-</ul>
-</li>
-<li><code>android:layout_height</code> 在父控件中当前控件的高，值为:<ul>
-<li><strong>确定的值</strong></li>
-<li><strong>fill_parent</strong></li>
-<li><strong>wrap_content</strong></li>
-</ul>
-</li>
-<li><code>android:width</code> 控件宽度</li>
-<li><code>android:height</code> 控件高度</li>
-</ul>
-<hr>
-<ul>
-<li><code>android:padding</code> 控件内边距,同css</li>
-<li><code>android:layout_marginRight</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
-<li><code>android:layout_marginLeft</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
-<li><code>android:layout_marginTop</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
-<li><code>android:layout_marginBottom</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
-</ul>
-<hr>
-<ul>
-<li><code>android:sigleLine</code> 如果设置为真的话，则将控件的内容在同一行当中进行显示</li>
-</ul>
-<hr>
-<ul>
-<li><code>android:grivity</code> 控件的基本位置，比如说居中，居右等位置。其值需要多个时用’|’分开<ul>
-<li>如果是没有子控件的view设置此属性，表示内容的对齐方式</li>
-<li>如果是有子控件的view设置此属性，则表示子控件的对齐方式（重力倾向），</li>
-</ul>
-</li>
-<li><code>android:layout_gravity</code> 设置该控件位于父控件的位置。如:<code>android:layout_gravity=&quot;center_vertical&quot;</code></li>
-</ul>
-<hr>
-<h4 id="内容相关">内容相关</h4>
-<ul>
-<li><code>android:id</code> 控件的ID</li>
-<li><code>android:text</code> 控件中显示的文字，需要注意的是，这里尽量使用strings.xml文件当中的字符串</li>
-<li><code>android:textSize</code> 控件中字体的大小</li>
-<li><code>android:background</code> 控件使用的背景色,RGB命名法<ul>
-<li>如果设置一个透明的背景图片按钮<code>android:background=&quot;@android:color/transparent&quot;</code></li>
-</ul>
-</li>
-<li><code>android:src</code> 引用资源，如：应用另一个XML，<code>android:src=&quot;@drawable/imageselector&quot;</code></li>
-</ul>
-<hr>
-<h4 id="属性值为true或false">属性值为true或false</h4>
-<ul>
-<li><code>android:layout_centerHorizontal</code> 如果值为真，该控件将被至于水平方向的中央(水平居中)</li>
-<li><code>android:layout_centerVertical</code> 如果值为真，该控件将被至于垂直方向的中央(垂直居中)</li>
-<li><code>android:layout_centerInParent</code> 如果值为真，该控件将被至于父控件水平方向和垂直方向的中央(相对于父元素完全居中 )</li>
-</ul>
-<hr>
-<ul>
-<li><code>android:layout_alignParentBottom</code> 如果该值为true，则将该控件的底部和父控件的底部对齐(贴紧父元素的下边缘)</li>
-<li><code>android:layout_alignParentLeft</code> 如果该值为true，则将该控件的左边与父控件的左边对齐(贴紧父元素的左边缘)</li>
-<li><code>android:layout_alignParentRight</code> 如果该值为true，则将该控件的右边与父控件的右边对齐(贴紧父元素的右边缘)</li>
-<li><code>android:layout_alignParentTop</code> 如果该值为true，则将空间的顶部与父控件的顶部对齐(贴紧父元素的上边缘)</li>
-<li><code>android:layout_alignWithParentIfMissing</code> 如果对应的兄弟元素找不到的话就以父元素做参照物</li>
-</ul>
-<h4 id="属性值必须为id的引用名“@id/id-name”">属性值必须为id的引用名“@id/id-name”</h4>
-<ul>
-<li><code>android:layout_above</code> 将该控件的底部至于给定ID的控件之上(在某元素的的上方)</li>
-<li><code>android:layout_below</code> 将该控件的顶部至于给定ID的控件之下(在某元素的下方 )</li>
-<li><code>android:layout_toLeftOf</code> 将该控件的右边缘和给定ID的控件的左边缘对齐(在某元素的左边 )</li>
-<li><code>android:layout_toRightOf</code> 将该控件的左边缘和给定ID的控件的右边缘对齐(在某元素的左边 )</li>
-</ul>
-<hr>
-<ul>
-<li><code>android:layout_alignTop</code> 将给定控件的顶部边缘与给定ID控件的顶部对齐(本元素的上边缘和某元素的的上边缘对齐)</li>
-<li><code>android:layout_alignBottom</code> 将该控件的底部边缘与给定ID控件的底部边缘(本元素的下边缘和某元素的的下边缘对齐 )<code>android:layout_alignBottom=&quot;@id/TVfilepath&quot;</code></li>
-<li><code>android:layout_alignLeft</code> 将该控件的左边缘与给定ID控件的左边缘对齐(本元素的左边缘和某元素的的左边缘对齐)</li>
-<li><code>android:layout_alignRight</code> 将该控件的右边缘与给定ID控件的右边缘对齐(本元素的右边缘和某元素的的右边缘对齐)</li>
-<li><code>android:layout_alignBaseline</code> 该控件的baseline和给定ID的控件的baseline对齐</li>
-</ul>
-<hr>
-<ul>
-<li>EditText的<code>android:hint</code> 设置EditText为空时输入框内的提示信息。 </li>
-</ul>
-<hr>
-<ul>
-<li><code>android:scaleType</code> 控制图片如何匹对ImageView的size,<code>ImageView.ScaleType</code> / <code>android:scaleType</code>值： <ul>
-<li><code>CENTER</code> / <code>center</code> 按图片的原来size居中显示，当图片长/宽超过View的长/宽，则截取图片的居中部分显示 </li>
-<li><code>CENTER_CROP</code> / <code>centerCrop</code> 按比例扩大图片的size居中显示，使得图片长(宽)等于或大于View的长(宽) </li>
-<li><code>CENTER_INSIDE</code> / <code>centerInside</code> 将图片的内容完整居中显示，通过按比例缩小或原来的size使得图片长/宽等于或小于View的长/宽 </li>
-<li><code>FIT_CENTER</code> / <code>fitCenter</code> 把图片按比例扩大/缩小到View的宽度，居中显示 </li>
-<li><code>FIT_END</code> / <code>fitEnd</code> 把图片按比例扩大/缩小到View的宽度，显示在View的下部分位置 </li>
-<li><code>FIT_START</code> / <code>fitStart</code> 把图片按比例扩大/缩小到View的宽度，显示在View的上部分位置 </li>
-<li><code>FIT_XY</code> / <code>fitXY</code> 把图不按比例扩大/缩小到View的大小显示 </li>
-<li><code>MATRIX</code> / <code>matrix</code> 用矩阵来绘制，动态缩小放大图片来显示。 </li>
-</ul>
-</li>
-</ul>
-<p>要注意一点，<strong>Drawable文件夹里面的图片命名是不能大写的</strong></p>
-
+<li>(界面的布局好像还可以直接引用一些view，如ScrollView等)
+        
+          <p class="article-more-link">
+            <a href="/2013/07/24/android学习笔记-布局属性/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-布局属性/" data-id="w1lswvmba9hiosrz" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-布局属性/" data-id="dk901hkwgovu2shn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -264,251 +162,16 @@
 <li>定制组件</li>
 <li>数据与界面绑定</li>
 </ul>
-<p><img src="/img/android-view.jpg" alt="android-view"></p>
-<p>View类是<strong>最基本的</strong>一个UI类,基本上所有的高级UI组件都是继承于View类而实现</p>
-<p>一个视图在屏幕占据一块矩形区域,负责渲染这块矩形区域,也可以处理此区域发生的事件,设置是否可见,是否可以获取焦点。<br>类型:  </p>
-<ul>
-<li>TextView,文本框</li>
-<li>Button, 按钮</li>
-<li>List, 列表</li>
-<li>EditText, 编辑框</li>
-<li>RadioButton, 单选框</li>
-<li>CheckBox, 检查框</li>
-</ul>
-<h4 id="UI布局">UI布局</h4>
-<p>ViewGroup通过各种<strong>Layout</strong>控制所属的view的显示位置</p>
-<p><img src="/img/android-ui.jpg" alt="android-ui"></p>
-<p>Layout(布局组件)类型:</p>
-<ul>
-<li>LinearLayout 线性布局<ul>
-<li>垂直: android:orientation=”vertical”</li>
-<li>水平: android:orientation=”horizontal”</li>
-</ul>
-</li>
-<li>FrameLayout<ul>
-<li>屏幕上故意保留的空白空间</li>
-<li>所有子元素都钉到屏幕的左上角,不能为子元素指定位置</li>
-</ul>
-</li>
-<li>TableLayout<ul>
-<li>子元素放到行与列中</li>
-<li>不显示边界线</li>
-<li>单元格不能跨行</li>
-</ul>
-</li>
-<li>AbsoluteLayout 决定定位<ul>
-<li>指明子元素确切的屏幕坐标(x,y), (0,0)代表左上</li>
-<li>允许元素重叠,但不推荐</li>
-<li>一般不使用Absolute,除非必要,因为它相当严格且不同设备兼容不好</li>
-</ul>
-</li>
-<li>RelativeLayout 相对定位<ul>
-<li>子元素相对其他元素(通过ID指定)或相对父元素的位置</li>
-<li>有丰富的排列属性<ul>
-<li>Layout above</li>
-<li>Layout below</li>
-<li>Layout to left of</li>
-<li>…</li>
-</ul>
-</li>
-<li>尽量少用,排列属性间容易冲突</li>
-</ul>
-</li>
-<li>GridView</li>
-<li>ListLayout</li>
-<li>RadioGroup</li>
-<li>…</li>
-</ul>
-<h4 id="Color">Color</h4>
-<p>android.graphics.Color 包含颜色值:</p>
-<ul>
-<li>Color.BLACK</li>
-<li>Color.BLUE</li>
-<li>Color.CYAN</li>
-<li>Color.DKGRAY</li>
-<li>Color.GRAY</li>
-<li>Color.GREEN</li>
-<li>Color.LTGRAY</li>
-<li>Color.MAGENTA</li>
-<li>Color.RED</li>
-<li>Color.TRANSPARENT</li>
-<li>Color.WHITE</li>
-<li>Color.YELLOW</li>
-</ul>
-<h4 id="font">font</h4>
-<ul>
-<li>android.graphics.Typeface:<ul>
-<li>Typeface.create(Typeface family, int style)<ul>
-<li>创建一个混合型新的字体:有20种搭配(4种字体5种风格)</li>
-</ul>
-</li>
-<li>Typeface.setTypeface (Typeface tf, int style)<ul>
-<li>设置一个混合型字体:有20种搭配(4种字体5种风格)</li>
-</ul>
-</li>
-<li>Typeface.setTypeface(Typeface tf)<ul>
-<li>设置一个只有Typeface 风格的字体:有五种形式</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>字体<ul>
-<li>BOLD、BOLD_ITALIC、ITALIC、NORMAL</li>
-</ul>
-</li>
-<li>风格<ul>
-<li>DEFAULT、DEFAULT_BOLD、MONOSPACE(单间隔字体)、SANS_SERIF(无衬线字体)、SERIF(衬线字体)</li>
-</ul>
-</li>
-</ul>
-<h4 id="Menu_菜单">Menu 菜单</h4>
-<ul>
-<li><strong>Options Menu</strong> 主菜单: 通过按下home键来显示,包含两组菜单项:  <ul>
-<li><strong>Icon Menu</strong> 图标菜单<br>用户按下菜单键时最初出现在屏幕下方的item集合,支持<strong>最多6个</strong>item</li>
-<li><strong>Expanded Menu</strong> 扩展菜单<br>多于6个的item通过’更多’菜单显示,由6个以及其他选项菜单组成</li>
-<li>实现<ul>
-<li>options menu通过activity的<code>onCreateOptionsMenu</code>来生成</li>
-<li><code>onCreateOptionsMenu</code>只会在menu第一次生成时调用,任何想改变options menu的想法只能在<code>onPrepareOptionsMenu</code>来实现,这个函数会在menu显示前调用</li>
-<li><code>onOptionsItemSelected</code>用来处理选中的菜单项</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Context Menu</strong> 上下文菜单(右键菜单): 浮动菜单列表,通常<strong>长时间</strong>按在一个视图上时出现</p>
-<ul>
-<li>实现<ul>
-<li>context menu是跟某个具体的view绑定在一起,在activity中用<code>registerForContextMenu</code>来为某个view注册context menu。context menu在显示前都会调用<code>onCreateContextMenu</code>来生成menu。<code>onContextItemSelected</code>用来处理选中的菜单项</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Sub Menu</strong> 子菜单: 浮动菜单列表,通过在Options Menu | Context Menu选择菜单项显露出来,不支持嵌套子菜单.</p>
-</li>
-</ul>
-<p>android还提供了对菜单项进行分组的功能,可以把相似功能的菜单项分成同一个组,这样可以通过调用setGroupCheckable,setGroupEnabled,setGroupVisible来设置菜单属性,而无须单独设置。</p>
-<h4 id="Button_事件响应">Button 事件响应</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-</pre></td><td class="code"><pre>&lt;Button android:<span class="property">id</span>=<span class="string">"@+id/Button01"</span>
-    android:layout_width=<span class="string">"wrap_content"</span>
-    android:layout_height=<span class="string">"wrap_content"</span>
-    android:<span class="type">text</span>=<span class="string">"@string/btn_name"</span>
-&gt;
-</pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-</pre></td><td class="code"><pre>show=(TextView)findViewById(R<span class="preprocessor">.id</span><span class="preprocessor">.TextView</span>01)<span class="comment">;</span>
-press=(Button)findViewById(R<span class="preprocessor">.id</span><span class="preprocessor">.Button</span>01)<span class="comment">;</span>
-press<span class="preprocessor">.setOnClickListener</span>(new OnClickListener(){
-   public void onClick(View v)  {
-        show<span class="preprocessor">.setText</span>(<span class="string">"Hi, Google Android"</span>)<span class="comment">;</span>
-   }
-})<span class="comment">;</span>
-</pre></td></tr></table></figure>
-
-<h4 id="进程优先级顺序">进程优先级顺序</h4>
-<ul>
-<li>前台进程(Active Process):<ul>
-<li>前台Activity、包含正在运行的广播接收器、正在运行的服务</li>
-</ul>
-</li>
-<li>可视进程(Visible Process):<ul>
-<li>包含一个可视化的Activity</li>
-</ul>
-</li>
-<li>服务进程(Started Service Process):<ul>
-<li>包含一个被开启的服务(处理服务,不是直接可视,例如媒体播放器,网络上传、下载)</li>
-</ul>
-</li>
-<li>后台进程(Background Process)<ul>
-<li>包含一个不可视的Activity(可以在任意时刻杀死该进程来回收内存)</li>
-</ul>
-</li>
-<li>空进程(Empty Process):<ul>
-<li>没有持有任何应用程序组件</li>
-</ul>
-</li>
-</ul>
-<p><img src="/img/android-priority.jpg" alt="android-priority"></p>
-<h4 id="DroidDraw">DroidDraw</h4>
-<p>下载:<a href="https://code.google.com/p/droiddraw/downloads/list" target="_blank">DroidDraw</a></p>
-<h4 id="UI详细响应">UI详细响应</h4>
-<ul>
-<li>定义事件监听器<ul>
-<li>View.OnClickListener</li>
-<li>View.OnTouchListener</li>
-<li>View.OnKeyListener</li>
-</ul>
-</li>
-<li>在框架中注册事件监听器</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityButton</span> <span class="keyword">extends</span> <span class="title">Activity</span> {</span>
-    OnClickListener listener1 = <span class="keyword">null</span>;  ----------&gt; 监听
-    Button button1;
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {
-        <span class="keyword">super</span>.onCreate(savedInstanceState);
-        listener1 = <span class="keyword">new</span> OnClickListener() {  ----------&gt; 响应
-            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span>(View v) {
-                setTitle(<span class="string">"Hello Android"</span>);
-            }
-        };
-        setContentView(R.layout.main);
-        button1 = (Button)
-        findViewById(R.id.button1);
-        button1.setOnClickListener(listener1);  ----------&gt; 监听
-    }
-}
-</pre></td></tr></table></figure>
-
-<h4 id="Activity">Activity</h4>
-<h5 id="主要特征">主要特征</h5>
-<ul>
-<li>包括UI,以及与user的互动</li>
-<li>可以放button、list、picture、text等组件</li>
-<li>UI可动态调整 (增加、减少、换位置)</li>
-<li>利用intent跳转到其他activity</li>
-<li>超过5秒,会出现ANR (Android is Not Responding)</li>
-<li>Activity是Android程序与用户交互的窗口,可以看成网站的页面。</li>
-</ul>
-<h5 id="生命周期">生命周期</h5>
-<ul>
-<li><strong>Active</strong>: 当一个Activity在屏幕的最上层时(堆栈的最顶端),它就是属于active或者running的状态</li>
-<li><strong>Paused</strong>: 若Activity 失去焦点(focus)但还看得到它的画面(比如:一个新的Activity 画面并不是全屏幕或者它是一个半透明情况),那失去焦点的Activity 处在paused 状态。这个失去焦点的Activity还是完全活着,并没有消失。(活着的意思是指,Activity 自己本身所有的状态及数据都还是存在的,也跟窗口管理程序window manager 保持联系),像这种paused 的Activity,会在一种情况下消失,那就是当系统的内存不够用之时,系统会自动判断,将不重要的Activity 移除。</li>
-<li><strong>Stop</strong>: 若一个Activity 被其它的Activity 完全的遮盖住时,它仍然保有全部的状态及数据,但因为它已不再被使用者看见,所以它的画面是被隐藏起来的(画面不需要更新),当系统内存不足时,这种stop状态的Activity 时最先被系统考虑拿下来释放内存的。</li>
-<li><strong>Finish</strong>: 当一个Activity 处于pause 或stop 的状态时,系统可以要求Activity 结束(finish)或直接移除(kill)它。当它需要再度呈现在使用者面前时,它必须要能完整的重新启动及回复先前的状态。</li>
-</ul>
-
+<p><img src="/img/android-view.jpg" alt="android-view"><br>
+        
+          <p class="article-more-link">
+            <a href="/2013/07/22/android学习笔记-界面编程/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-界面编程/" data-id="w6wjqnc8nh1p2r65" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-界面编程/" data-id="9foebtleg3gb0zab" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -570,49 +233,16 @@ press<span class="preprocessor">.setOnClickListener</span>(new OnClickListener()
 <li><strong>Application Name</strong>: 显示在模拟器上的应用的名字</li>
 <li><strong>Package Name</strong>: 包名,同java</li>
 <li><strong>Activity Name</strong>: UI界面窗口的名字</li>
-<li><strong>Min SDK Version</strong>: 最低api说明</li>
-</ul>
-</li>
-</ul>
-<h4 id="文件类型转换过程">文件类型转换过程</h4>
-<p><strong>.java</strong> —编译—&gt; <strong>.class</strong> —dx工具—&gt; <strong>.dex</strong> —aapk工具—&gt; <strong>.apk</strong></p>
-<p><img src="/img/android-flow.jpg" alt="Android运行流程"></p>
-<h4 id="应用的文件组成">应用的文件组成</h4>
-<ul>
-<li><strong>R.java</strong>: 建立项目时自动生成,<strong>只读模式</strong>, 对将要用到的资源进行全局索引,Res文件夹中发生任何变化, R.java都会重新编译</li>
-<li><strong>Android Library</strong>: Android库</li>
-<li><strong>asserts目录</strong>: 多媒体等文件</li>
-<li><strong>res目录</strong>: 应用用到的资源文件<ul>
-<li><strong>drawable目录</strong>: 图片资源</li>
-<li><strong>layout目录</strong>: 布局文件</li>
-<li><strong>values目录</strong>: string.xml, color.xml, array.xml</li>
-</ul>
-</li>
-<li><strong>AndroidManifest.xml</strong>: 相当于应用的配置文件,声明应用名称,程序入口点, Acticity, Service 和receiver等</li>
-</ul>
-<h4 id="不用eclipse命令行操作">不用eclipse命令行操作</h4>
-<p>进入sdk的tools目录</p>
-<ul>
-<li><code>android</code>: 启动Android SDK and AVD manager</li>
-<li><code>emulator -avd XXX</code>: 启动模拟器</li>
-<li><code>android list targets</code>: 列出所有的SDK可用版本</li>
-<li><code>adb install XXX.apk</code>: 安装apk文件,如果有多个设备,而想安装到一个特定的模拟器,则输入:<code>adb install -s emulator-5554 /home/zhyin/xxx.apk</code></li>
-</ul>
-<h4 id="模拟器屏幕">模拟器屏幕</h4>
-<ul>
-<li>HVGA-L:480x320横屏</li>
-<li>HVGA-P:320x480竖屏(默认)</li>
-<li>QVGA-L:320x240横屏</li>
-<li>QVGA-P:240x320竖屏</li>
-<li>WVGA-L:800x480横屏</li>
-</ul>
-<h4 id="系统架构">系统架构</h4>
-<p><img src="/img/android-system-architecture.jpg" alt="android-system-architecture"></p>
-
+<li><strong>Min SDK Version</strong>: 最低api说明
+        
+          <p class="article-more-link">
+            <a href="/2013/07/22/android学习笔记-基础知识/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-基础知识/" data-id="37wu121cu9dh2ccl" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-基础知识/" data-id="c7a4t5c0cfa5dwb6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>

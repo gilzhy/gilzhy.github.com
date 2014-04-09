@@ -102,7 +102,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="bpio4kjihc4zpjth" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="xk2u6qaqjfm1m3vm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DM/">DM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
@@ -152,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/06/python-sympy/" data-id="gke5ngq7l5aqnw5o" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/06/python-sympy/" data-id="lzxgy0p87jif32m9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -208,73 +208,16 @@
 }
 </pre></td></tr></table></figure>
 
-<h4 id="第二种方法：使用Thread、Runnable、Handler_(推荐使用)">第二种方法：使用Thread、Runnable、Handler (推荐使用)</h4>
-<p>在Runnable中做HTTP请求，不用阻塞UI线程～</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {
-    <span class="keyword">super</span>.onCreate(savedInstanceState);
-    <span class="keyword">this</span>.setContentView(R.layout.share_mblog_view);
-    <span class="keyword">new</span> Thread(runnable).start();
-}
 
-Handler handler = <span class="keyword">new</span> Handler(){
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span>(Message msg) {
-        <span class="keyword">super</span>.handleMessage(msg);
-        Bundle data = msg.getData();
-        String val = data.getString(<span class="string">"value"</span>);
-        Log.i(<span class="string">"mylog"</span>,<span class="string">"请求结果--&gt;"</span> + val);
-    }
-}
-
-Runnable runnable = <span class="keyword">new</span> Runnable(){
-    <span class="annotation">@Override</span>
-    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span>() {
-        <span class="comment">//</span>
-        <span class="comment">// TODO: http request.</span>
-        <span class="comment">//</span>
-        Message msg = <span class="keyword">new</span> Message();
-        Bundle data = <span class="keyword">new</span> Bundle();
-        data.putString(<span class="string">"value"</span>,<span class="string">"请求结果"</span>);
-        msg.setData(data);
-        handler.sendMessage(msg);
-    }
-}
-</pre></td></tr></table></figure>
-
-
+        
+          <p class="article-more-link">
+            <a href="/2013/08/02/androidosnetworkonmainthreadexception/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/08/02/androidosnetworkonmainthreadexception/" data-id="wkcclgqsyblb551x" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/08/02/androidosnetworkonmainthreadexception/" data-id="9mtp9k6gmafcd7i4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络访问/">网络访问</a></li></ul>
