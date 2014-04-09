@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android学习笔记-布局属性 | Jay Young&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="Android学习笔记-布局属性">
+<meta name="og:url" content="http://www.zhyin5.com/2013/07/24/android学习笔记-布局属性/">
+<meta name="og:image">
+<meta name="og:site_name" content="Jay Young's Blog">
+<meta name="og:description" content="说明: 转自A_Big_Monkey-android布局属性大全
+Layout
+
+FrameLayout 里面只可以有一个控件，并且不能设计这个控件的位置，控件会放到左上角  
+LinearLayout 里面可以放多个控件，但是一行只能放一个控件  
+TableLayout 这个要和TableRow配合使用，很像html里面的table  
+AbsoluteLayout 里面可以放多个控件，并且可">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jay Young&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">啦啦啦</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://www.zhyin5.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-android学习笔记-布局属性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/24/android学习笔记-布局属性/" class="article-date">
+  <time datetime="2013-07-24T09:43:00.000Z" itemprop="datePublished">7月 24 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android学习笔记-布局属性
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>说明</strong>: 转自<a href="http://panshengneng.iteye.com/blog/1187928" target="_blank">A_Big_Monkey-android布局属性大全</a></p>
+<h4 id="Layout">Layout</h4>
+<ul>
+<li><code>FrameLayout</code> 里面只可以有一个控件，并且不能设计这个控件的位置，控件会放到左上角  </li>
+<li><code>LinearLayout</code> 里面可以放多个控件，但是一行只能放一个控件  </li>
+<li><code>TableLayout</code> 这个要和TableRow配合使用，很像html里面的table  </li>
+<li><code>AbsoluteLayout</code> 里面可以放多个控件，并且可以自己定义控件的x,y的位置  </li>
+<li><code>RelativeLayout</code> 里面可以放多个控件，不过控件的位置都是相对位置  </li>
+<li>(界面的布局好像还可以直接引用一些view，如ScrollView等)</li>
+</ul>
+<hr>
+<h4 id="布局相关">布局相关</h4>
+<ul>
+<li><code>android:orientation</code> 它确定了LinearLayout的方向，值为:<ul>
+<li><strong>vertical</strong>(垂直布局)</li>
+<li><strong>horizontal</strong>(水平布局)</li>
+</ul>
+</li>
+<li><code>android:layout_width</code> 在父控件中当前控件的宽，值为:<ul>
+<li><strong>确定的值</strong></li>
+<li><strong>fill_parent</strong>(填满父控件的空白)</li>
+<li><strong>wrap_content</strong>(大小刚好足够显示当前控件里的内容)</li>
+</ul>
+</li>
+<li><code>android:layout_height</code> 在父控件中当前控件的高，值为:<ul>
+<li><strong>确定的值</strong></li>
+<li><strong>fill_parent</strong></li>
+<li><strong>wrap_content</strong></li>
+</ul>
+</li>
+<li><code>android:width</code> 控件宽度</li>
+<li><code>android:height</code> 控件高度</li>
+</ul>
+<hr>
+<ul>
+<li><code>android:padding</code> 控件内边距,同css</li>
+<li><code>android:layout_marginRight</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
+<li><code>android:layout_marginLeft</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
+<li><code>android:layout_marginTop</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
+<li><code>android:layout_marginBottom</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
+</ul>
+<hr>
+<ul>
+<li><code>android:sigleLine</code> 如果设置为真的话，则将控件的内容在同一行当中进行显示</li>
+</ul>
+<hr>
+<ul>
+<li><code>android:grivity</code> 控件的基本位置，比如说居中，居右等位置。其值需要多个时用’|’分开<ul>
+<li>如果是没有子控件的view设置此属性，表示内容的对齐方式</li>
+<li>如果是有子控件的view设置此属性，则表示子控件的对齐方式（重力倾向），</li>
+</ul>
+</li>
+<li><code>android:layout_gravity</code> 设置该控件位于父控件的位置。如:<code>android:layout_gravity=&quot;center_vertical&quot;</code></li>
+</ul>
+<hr>
+<h4 id="内容相关">内容相关</h4>
+<ul>
+<li><code>android:id</code> 控件的ID</li>
+<li><code>android:text</code> 控件中显示的文字，需要注意的是，这里尽量使用strings.xml文件当中的字符串</li>
+<li><code>android:textSize</code> 控件中字体的大小</li>
+<li><code>android:background</code> 控件使用的背景色,RGB命名法<ul>
+<li>如果设置一个透明的背景图片按钮<code>android:background=&quot;@android:color/transparent&quot;</code></li>
+</ul>
+</li>
+<li><code>android:src</code> 引用资源，如：应用另一个XML，<code>android:src=&quot;@drawable/imageselector&quot;</code></li>
+</ul>
+<hr>
+<h4 id="属性值为true或false">属性值为true或false</h4>
+<ul>
+<li><code>android:layout_centerHorizontal</code> 如果值为真，该控件将被至于水平方向的中央(水平居中)</li>
+<li><code>android:layout_centerVertical</code> 如果值为真，该控件将被至于垂直方向的中央(垂直居中)</li>
+<li><code>android:layout_centerInParent</code> 如果值为真，该控件将被至于父控件水平方向和垂直方向的中央(相对于父元素完全居中 )</li>
+</ul>
+<hr>
+<ul>
+<li><code>android:layout_alignParentBottom</code> 如果该值为true，则将该控件的底部和父控件的底部对齐(贴紧父元素的下边缘)</li>
+<li><code>android:layout_alignParentLeft</code> 如果该值为true，则将该控件的左边与父控件的左边对齐(贴紧父元素的左边缘)</li>
+<li><code>android:layout_alignParentRight</code> 如果该值为true，则将该控件的右边与父控件的右边对齐(贴紧父元素的右边缘)</li>
+<li><code>android:layout_alignParentTop</code> 如果该值为true，则将空间的顶部与父控件的顶部对齐(贴紧父元素的上边缘)</li>
+<li><code>android:layout_alignWithParentIfMissing</code> 如果对应的兄弟元素找不到的话就以父元素做参照物</li>
+</ul>
+<h4 id="属性值必须为id的引用名“@id/id-name”">属性值必须为id的引用名“@id/id-name”</h4>
+<ul>
+<li><code>android:layout_above</code> 将该控件的底部至于给定ID的控件之上(在某元素的的上方)</li>
+<li><code>android:layout_below</code> 将该控件的顶部至于给定ID的控件之下(在某元素的下方 )</li>
+<li><code>android:layout_toLeftOf</code> 将该控件的右边缘和给定ID的控件的左边缘对齐(在某元素的左边 )</li>
+<li><code>android:layout_toRightOf</code> 将该控件的左边缘和给定ID的控件的右边缘对齐(在某元素的左边 )</li>
+</ul>
+<hr>
+<ul>
+<li><code>android:layout_alignTop</code> 将给定控件的顶部边缘与给定ID控件的顶部对齐(本元素的上边缘和某元素的的上边缘对齐)</li>
+<li><code>android:layout_alignBottom</code> 将该控件的底部边缘与给定ID控件的底部边缘(本元素的下边缘和某元素的的下边缘对齐 )<code>android:layout_alignBottom=&quot;@id/TVfilepath&quot;</code></li>
+<li><code>android:layout_alignLeft</code> 将该控件的左边缘与给定ID控件的左边缘对齐(本元素的左边缘和某元素的的左边缘对齐)</li>
+<li><code>android:layout_alignRight</code> 将该控件的右边缘与给定ID控件的右边缘对齐(本元素的右边缘和某元素的的右边缘对齐)</li>
+<li><code>android:layout_alignBaseline</code> 该控件的baseline和给定ID的控件的baseline对齐</li>
+</ul>
+<hr>
+<ul>
+<li>EditText的<code>android:hint</code> 设置EditText为空时输入框内的提示信息。 </li>
+</ul>
+<hr>
+<ul>
+<li><code>android:scaleType</code> 控制图片如何匹对ImageView的size,<code>ImageView.ScaleType</code> / <code>android:scaleType</code>值： <ul>
+<li><code>CENTER</code> / <code>center</code> 按图片的原来size居中显示，当图片长/宽超过View的长/宽，则截取图片的居中部分显示 </li>
+<li><code>CENTER_CROP</code> / <code>centerCrop</code> 按比例扩大图片的size居中显示，使得图片长(宽)等于或大于View的长(宽) </li>
+<li><code>CENTER_INSIDE</code> / <code>centerInside</code> 将图片的内容完整居中显示，通过按比例缩小或原来的size使得图片长/宽等于或小于View的长/宽 </li>
+<li><code>FIT_CENTER</code> / <code>fitCenter</code> 把图片按比例扩大/缩小到View的宽度，居中显示 </li>
+<li><code>FIT_END</code> / <code>fitEnd</code> 把图片按比例扩大/缩小到View的宽度，显示在View的下部分位置 </li>
+<li><code>FIT_START</code> / <code>fitStart</code> 把图片按比例扩大/缩小到View的宽度，显示在View的上部分位置 </li>
+<li><code>FIT_XY</code> / <code>fitXY</code> 把图不按比例扩大/缩小到View的大小显示 </li>
+<li><code>MATRIX</code> / <code>matrix</code> 用矩阵来绘制，动态缩小放大图片来显示。 </li>
+</ul>
+</li>
+</ul>
+<p>要注意一点，<strong>Drawable文件夹里面的图片命名是不能大写的</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-布局属性/" data-id="qtbnu0yor108dwy0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/07/24/android学习笔记-事件处理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android学习笔记-事件处理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/07/22/android学习笔记-界面编程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android学习笔记-界面编程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zhyin5"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔试/面试/">笔试/面试</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/">awesome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dnsmasq/">dnsmasq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostapd/">hostapd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi/">wifi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本控制/">版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/窗口管理/">窗口管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔试/">笔试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络访问/">网络访问</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络通信/">网络通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解压/压缩/">解压/压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软AP/">软AP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 18.00px;">Android</a><a href="/tags/MVC/" style="font-size: 10.00px;">MVC</a><a href="/tags/Sublime/" style="font-size: 12.00px;">Sublime</a><a href="/tags/awesome/" style="font-size: 12.00px;">awesome</a><a href="/tags/cookie/" style="font-size: 10.00px;">cookie</a><a href="/tags/django/" style="font-size: 14.00px;">django</a><a href="/tags/dnsmasq/" style="font-size: 10.00px;">dnsmasq</a><a href="/tags/hostapd/" style="font-size: 10.00px;">hostapd</a><a href="/tags/linux/" style="font-size: 20.00px;">linux</a><a href="/tags/mysql/" style="font-size: 12.00px;">mysql</a><a href="/tags/mysqldump/" style="font-size: 10.00px;">mysqldump</a><a href="/tags/numpy/" style="font-size: 10.00px;">numpy</a><a href="/tags/python/" style="font-size: 16.00px;">python</a><a href="/tags/session/" style="font-size: 10.00px;">session</a><a href="/tags/svn/" style="font-size: 10.00px;">svn</a><a href="/tags/vim/" style="font-size: 12.00px;">vim</a><a href="/tags/wifi/" style="font-size: 10.00px;">wifi</a><a href="/tags/快捷键/" style="font-size: 10.00px;">快捷键</a><a href="/tags/排序/" style="font-size: 10.00px;">排序</a><a href="/tags/数据结构/" style="font-size: 10.00px;">数据结构</a><a href="/tags/查找/" style="font-size: 10.00px;">查找</a><a href="/tags/爬虫/" style="font-size: 10.00px;">爬虫</a><a href="/tags/版本控制/" style="font-size: 10.00px;">版本控制</a><a href="/tags/窗口管理/" style="font-size: 10.00px;">窗口管理</a><a href="/tags/笔试/" style="font-size: 12.00px;">笔试</a><a href="/tags/网络访问/" style="font-size: 10.00px;">网络访问</a><a href="/tags/网络通信/" style="font-size: 10.00px;">网络通信</a><a href="/tags/解压/压缩/" style="font-size: 10.00px;">解压/压缩</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软AP/" style="font-size: 10.00px;">软AP</a><a href="/tags/面向对象/" style="font-size: 10.00px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">七月 2013</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06">六月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04">四月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">三月 2013</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">二月 2013</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/04/06/python-sympy/">python-sympy</a>
+          </li>
+        
+          <li>
+            <a href="/2013/08/02/androidosnetworkonmainthreadexception/">android.os.NetworkOnMainThreadException</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/25/android学习笔记-broadcast/">Android学习笔记-Broadcast</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/24/linux下android真机调试/">Linux下Android真机调试</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/24/android学习笔记-事件处理/">Android学习笔记-事件处理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=1840199725&verifier=c3e417d3&dpc=1"></iframe>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="elapseClock"></div>
+  </div>
+</footer>
+
+<style>
+    #elapseClock { text-align:center; font-size:18px; margin-top:10px; margin-bottom:10px }
+    #elapseClock .digit{ font-family:"digit"; font-size:36px }
+</style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+<script>
+function timeElapse(date){
+	var current = Date();
+	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+	var days = Math.floor(seconds / (3600 * 24));
+	seconds = seconds % (3600 * 24);
+	var hours = Math.floor(seconds / 3600);
+	if (hours < 10) {
+		hours = "0" + hours;
+	}
+	seconds = seconds % 3600;
+	var minutes = Math.floor(seconds / 60);
+	if (minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	seconds = seconds % 60;
+	if (seconds < 10) {
+		seconds = "0" + seconds;
+	}
+	var result = "From 2010.12.04 10:30 to Now: <span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	$("#elapseClock").html(result);
+}
+
+var together = new Date();
+together.setFullYear(2010, 11, 04);
+together.setHours(10);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+timeElapse(together);
+setInterval(function () {
+    timeElapse(together);
+}, 500);
+
+</script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

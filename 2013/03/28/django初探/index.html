@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>django初探 | Jay Young&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="django初探">
+<meta name="og:url" content="http://www.zhyin5.com/2013/03/28/django初探/">
+<meta name="og:image">
+<meta name="og:site_name" content="Jay Young's Blog">
+<meta name="og:description" content="照着django book一步一步实践学习django,经历的一些错误以及解决方法
+1. 创建项目
+`django-admin.py startproject mysite`
+2. 运行本地服务器
+1
+2
+3
+python manage.py runserver
+python manage.py runserver 8080
+python manage.py runserver 0.0.0.0:8">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jay Young&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">啦啦啦</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://www.zhyin5.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-django初探" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/03/28/django初探/" class="article-date">
+  <time datetime="2013-03-28T08:46:08.000Z" itemprop="datePublished">3月 28 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      django初探
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>照着django book一步一步实践学习django,经历的一些错误以及解决方法<br><a id="more"></a></p>
+<h4 id="1-_创建项目">1. 创建项目</h4>
+<pre><code><span class="code">`django-admin.py startproject mysite`</span>
+</code></pre><h4 id="2-_运行本地服务器">2. 运行本地服务器</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>python manage<span class="preprocessor">.py</span> runserver
+python manage<span class="preprocessor">.py</span> runserver <span class="number">8080</span>
+python manage<span class="preprocessor">.py</span> runserver <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8000</span>
+</pre></td></tr></table></figure>
+
+<h4 id="3-_修改settings-py">3. 修改settings.py</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>DATABASES = {
+    <span class="string">'default'</span>: {
+        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,
+        <span class="array"># </span><span class="string">'NAME'</span>: os.path.join(BASE_DIR, <span class="string">'/var/lib/mysql/lalala/db.opt'</span>),
+        <span class="string">'NAME'</span>: <span class="string">'mysql'</span>,
+        <span class="string">'USER'</span>: <span class="string">'username'</span>,
+        <span class="string">'PASSWORD'</span>: <span class="string">'password'</span>,
+        <span class="string">'HOST'</span>: <span class="string">''</span>,
+    }
+}
+</pre></td></tr></table></figure>
+
+
+<p>‘NAME’一定要填数据库的名字，填注释掉的那行的时候出错：<strong>OperationalError: (1049, “Unknown database ‘/var/lib/mysql/lalala/db.opt’”)</strong></p>
+<h4 id="4-">4.</h4>
+<p><code>python manage.py syncdb</code></p>
+<p><strong>出错 Error loading MySQLdb module: No module named MySQLdb</strong></p>
+<p><strong>解决：</strong>需要安装mysql-python，下载地址：<a href="http://sourceforge.net/projects/mysql-python/?source=dlp" target="_blank">http://sourceforge.net/projects/mysql-python/?source=dlp</a></p>
+<p>下载完，压缩，然后进入文件夹</p>
+<p><code>python setup.py build</code></p>
+<p><strong>出错:</strong> mysql_config not found</p>
+<p><strong>原因:</strong> 没有mysql_config这个文件，apt-get安装的MySQL是没有mysql_config这个文件的</p>
+<p>解决：</p>
+<ol>
+<li>ubuntu下<br> 执行<code>sudo apt-get install libmysqld-dev</code></li>
+<li>fedora下<br> 执行 sudo yum install python-devel<br> 若出现：my_config.h:没有那个文件或目录，就执行：sudo yum install mysql-devel<br> 注意：yum也是python写的，默认是调用/usr/bin/python的，这是系统本身自带的python，自己安装的一般在/usr/local/bin/python，所以最好别把系统自带的python给卸载掉了，自己下载的python没有yum模块。<br> 此时执行  find / -name mysql_config 或whereis mysql_config发现系统中<strong>有了mysql_config这个文件</strong><br> 更改site.cfg中的设置，将mysql_config指向正确路径</li>
+</ol>
+<p>再次<code>python setup.py build</code></p>
+<p><strong>出错</strong>: Python.h：没有那个文件或目录</p>
+<p><strong>解决</strong>: 安装python-dev，这是Python的头文件和静态库包：<code>sudo apt-get install python-dev</code></p>
+<p>再次<code>python setup.py build</code><br>然后<code>python setup.py install</code></p>
+<p><strong>mysqldb的问题得以解决，证明：import MySQLdb无报错</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>python manage.py syncdb成功
+Creating <span class="built_in">table</span> django_admin_log
+Creating <span class="built_in">table</span> auth_permission
+Creating <span class="built_in">table</span> auth_group_permissions
+Creating <span class="built_in">table</span> auth_group
+Creating <span class="built_in">table</span> auth_user_groups
+Creating <span class="built_in">table</span> auth_user_user_permissions
+Creating <span class="built_in">table</span> auth_user
+Creating <span class="built_in">table</span> django_content_type
+Creating <span class="built_in">table</span> django_session
+</pre></td></tr></table></figure>
+
+<h4 id="5-<code>python_manage-py_startapp_polls</code>_开始应用">5.<code>python manage.py startapp polls</code> 开始应用</h4>
+<h4 id="6-_修改settings-py:">6. 修改settings.py:</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>INSTALLED_APPS = (
+    <span class="string">'django.contrib.admin'</span>,
+    <span class="string">'django.contrib.auth'</span>,
+    <span class="string">'django.contrib.contenttypes'</span>,
+    <span class="string">'django.contrib.sessions'</span>,
+    <span class="string">'django.contrib.messages'</span>,
+    <span class="string">'django.contrib.staticfiles'</span>,
+    <span class="string">'polls'</span>,
+)
+TIME_ZONE = <span class="string">'Asia/Shanghai'</span>
+</pre></td></tr></table></figure>
+
+<h4 id="7-_<code>python_manage-py_sql_polls</code>">7. <code>python manage.py sql polls</code></h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre><span class="operator"><span class="keyword">BEGIN</span>;</span>
+<span class="operator"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`polls_poll`</span> (
+    <span class="string">`id`</span> <span class="keyword">integer</span> AUTO_INCREMENT <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span>,
+    <span class="string">`question`</span> <span class="keyword">varchar</span>(<span class="number">200</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,
+    <span class="string">`pub_date`</span> datetime <span class="keyword">NOT</span> <span class="keyword">NULL</span>
+)
+;</span>
+<span class="operator"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`polls_choice`</span> (
+    <span class="string">`id`</span> <span class="keyword">integer</span> AUTO_INCREMENT <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">PRIMARY</span> <span class="keyword">KEY</span>,
+    <span class="string">`poll_id`</span> <span class="keyword">integer</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>,
+    <span class="string">`choice_text`</span> <span class="keyword">varchar</span>(<span class="number">200</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,
+    <span class="string">`votes`</span> <span class="keyword">integer</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>
+)
+;</span>
+<span class="operator"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`polls_choice`</span> <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> <span class="string">`poll_id_refs_id_3aa09835`</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (<span class="string">`poll_id`</span>) <span class="keyword">REFERENCES</span> <span class="string">`polls_poll`</span> (<span class="string">`id`</span>);</span>
+<span class="operator"><span class="keyword">COMMIT</span>;</span>
+</pre></td></tr></table></figure>
+
+<p>注：这些SQL命令并没有真的在Mysql中执行，只是打印出来告诉你Django需要些什么。可以拷贝这些命令到Mysql自己执行，当然Django提供了更好的方式。</p>
+<p>一些命令：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>python manage.py validate – Checks <span class="keyword">for</span> <span class="keyword">any</span> errors <span class="operator">in</span> <span class="operator">the</span> construction <span class="operator">of</span> your models
+python manage.py sqlcustom polls – Outputs <span class="keyword">any</span> custom SQL statements (such <span class="keyword">as</span> table modifications <span class="operator">or</span> constraints) that are defined <span class="keyword">for</span> <span class="operator">the</span> application.
+python manage.py sqlclear polls – Outputs <span class="operator">the</span> necessaryDROP TABLE statements <span class="keyword">for</span> this app, according <span class="built_in">to</span> which tables already exist <span class="operator">in</span> your database (<span class="keyword">if</span> <span class="keyword">any</span>).
+python manage.py sqlindexes polls – Outputs theCREATE INDEX statements <span class="keyword">for</span> this app.
+python manage.py sqlall polls – A combination <span class="operator">of</span> all <span class="operator">the</span> SQL <span class="built_in">from</span> <span class="operator">the</span> sql, sqlcustom, <span class="operator">and</span> sqlindexes commands.
+</pre></td></tr></table></figure>
+
+<h4 id="8-<code>python_manage-py_syncdb</code>_再次。<strong>执行上面列出的那些SQL命令</strong>">8.<code>python manage.py syncdb</code> 再次。<strong>执行上面列出的那些SQL命令</strong></h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>Creating tables <span class="keyword">...</span>
+Creating table polls_poll
+Creating table polls_choice
+Installing custom SQL <span class="keyword">...</span>
+Installing indexes <span class="keyword">...</span>
+Installed <span class="number">0</span> object(s) from <span class="number">0</span> fixture(s)
+</pre></td></tr></table></figure>
+
+<h4 id="9-<strong>探索API</strong>">9.<strong>探索API</strong></h4>
+<p><code>python manage.py shell</code></p>
+<p>注：We’re using this instead of simply typing “python”, because manage.py sets the DJANGO_SETTINGS_MODULE environment variable, which gives Django the Python import path to your settings.py file.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="keyword">from</span> polls.models import Poll, Choice
+<span class="keyword">from</span> django.utils import timezone
+p = Poll(question=<span class="string">"What's new?"</span>, pub_date=timezone.now())
+p.save()
+Poll.objects.all()
+Django models deal <span class="keyword">with</span> <span class="keyword">Unicode</span> <span class="keyword">by</span> <span class="keyword">default</span>.All data stored <span class="keyword">in</span> your database <span class="keyword">is</span> converted <span class="keyword">to</span> <span class="keyword">Unicode</span> <span class="keyword">when</span> it’s returned.
+</pre></td></tr></table></figure>
+
+<h4 id="10-_<strong>编写views-py,修改urls-py</strong>">10. <strong>编写views.py,修改urls.py</strong></h4>
+<ol>
+<li>修改settings.py，增加：</li>
+</ol>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre>TEMPLATE_DIRS <span class="subst">=</span> (
+    <span class="string">'/home/zhyin/workspace/mysite/mysite/templates/'</span>,
+)<span class="subst">&lt;</span>/code<span class="subst">&gt;&lt;</span>/pre<span class="subst">&gt;</span>
+    或
+    <span class="subst">&lt;</span>pre<span class="subst">&gt;&lt;</span>code<span class="subst">&gt;</span><span class="keyword">import</span> os<span class="built_in">.</span>path
+TEMPLATE_DIRS <span class="subst">=</span> (
+    os<span class="built_in">.</span>path<span class="built_in">.</span><span class="keyword">join</span>(os<span class="built_in">.</span>path<span class="built_in">.</span>dirname(__file__), <span class="string">'templates'</span>)<span class="built_in">.</span>replace(<span class="string">'\\'</span>,<span class="string">'/'</span>),
+)<span class="subst">&lt;</span>/code<span class="subst">&gt;&lt;</span>/pre<span class="subst">&gt;</span>
+    <span class="subst">&lt;</span>pre<span class="subst">&gt;&lt;</span>code<span class="subst">&gt;</span>from django<span class="built_in">.</span>template<span class="built_in">.</span>loader <span class="keyword">import</span> get_templatefrom django<span class="built_in">.</span>template <span class="keyword">import</span> Contextt <span class="subst">=</span> get_template(<span class="string">'current_datetime.html'</span>)
+html <span class="subst">=</span> t<span class="built_in">.</span>render(Context(<span class="built_in">data</span>))
+<span class="keyword">return</span> HttpResponse(html)或from django<span class="built_in">.</span>shortcuts <span class="keyword">import</span> render_to_responsereturn render_to_response(<span class="string">'current_datetime.html'</span>, <span class="built_in">data</span>)
+python manage<span class="built_in">.</span>py createsuperuser创建另外的admin帐号
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhyin5.com/2013/03/28/django初探/" data-id="ug8q2cw89una1kq5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/03/29/djangoadmin录入中文错误解决办法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DjangoAdmin录入中文错误解决办法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/03/27/vim代码折叠/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vim代码折叠</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zhyin5"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔试/面试/">笔试/面试</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/">awesome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dnsmasq/">dnsmasq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostapd/">hostapd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi/">wifi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本控制/">版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/窗口管理/">窗口管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔试/">笔试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络访问/">网络访问</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络通信/">网络通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解压/压缩/">解压/压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软AP/">软AP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 18.00px;">Android</a><a href="/tags/MVC/" style="font-size: 10.00px;">MVC</a><a href="/tags/Sublime/" style="font-size: 12.00px;">Sublime</a><a href="/tags/awesome/" style="font-size: 12.00px;">awesome</a><a href="/tags/cookie/" style="font-size: 10.00px;">cookie</a><a href="/tags/django/" style="font-size: 14.00px;">django</a><a href="/tags/dnsmasq/" style="font-size: 10.00px;">dnsmasq</a><a href="/tags/hostapd/" style="font-size: 10.00px;">hostapd</a><a href="/tags/linux/" style="font-size: 20.00px;">linux</a><a href="/tags/mysql/" style="font-size: 12.00px;">mysql</a><a href="/tags/mysqldump/" style="font-size: 10.00px;">mysqldump</a><a href="/tags/numpy/" style="font-size: 10.00px;">numpy</a><a href="/tags/python/" style="font-size: 16.00px;">python</a><a href="/tags/session/" style="font-size: 10.00px;">session</a><a href="/tags/svn/" style="font-size: 10.00px;">svn</a><a href="/tags/vim/" style="font-size: 12.00px;">vim</a><a href="/tags/wifi/" style="font-size: 10.00px;">wifi</a><a href="/tags/快捷键/" style="font-size: 10.00px;">快捷键</a><a href="/tags/排序/" style="font-size: 10.00px;">排序</a><a href="/tags/数据结构/" style="font-size: 10.00px;">数据结构</a><a href="/tags/查找/" style="font-size: 10.00px;">查找</a><a href="/tags/爬虫/" style="font-size: 10.00px;">爬虫</a><a href="/tags/版本控制/" style="font-size: 10.00px;">版本控制</a><a href="/tags/窗口管理/" style="font-size: 10.00px;">窗口管理</a><a href="/tags/笔试/" style="font-size: 12.00px;">笔试</a><a href="/tags/网络访问/" style="font-size: 10.00px;">网络访问</a><a href="/tags/网络通信/" style="font-size: 10.00px;">网络通信</a><a href="/tags/解压/压缩/" style="font-size: 10.00px;">解压/压缩</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软AP/" style="font-size: 10.00px;">软AP</a><a href="/tags/面向对象/" style="font-size: 10.00px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">七月 2013</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06">六月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04">四月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">三月 2013</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">二月 2013</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/04/06/python-sympy/">python-sympy</a>
+          </li>
+        
+          <li>
+            <a href="/2013/08/02/androidosnetworkonmainthreadexception/">android.os.NetworkOnMainThreadException</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/25/android学习笔记-broadcast/">Android学习笔记-Broadcast</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/24/linux下android真机调试/">Linux下Android真机调试</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/24/android学习笔记-事件处理/">Android学习笔记-事件处理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=1840199725&verifier=c3e417d3&dpc=1"></iframe>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="elapseClock"></div>
+  </div>
+</footer>
+
+<style>
+    #elapseClock { text-align:center; font-size:18px; margin-top:10px; margin-bottom:10px }
+    #elapseClock .digit{ font-family:"digit"; font-size:36px }
+</style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+<script>
+function timeElapse(date){
+	var current = Date();
+	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+	var days = Math.floor(seconds / (3600 * 24));
+	seconds = seconds % (3600 * 24);
+	var hours = Math.floor(seconds / 3600);
+	if (hours < 10) {
+		hours = "0" + hours;
+	}
+	seconds = seconds % 3600;
+	var minutes = Math.floor(seconds / 60);
+	if (minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	seconds = seconds % 60;
+	if (seconds < 10) {
+		seconds = "0" + seconds;
+	}
+	var result = "From 2010.12.04 10:30 to Now: <span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	$("#elapseClock").html(result);
+}
+
+var together = new Date();
+together.setFullYear(2010, 11, 04);
+together.setHours(10);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+timeElapse(together);
+setInterval(function () {
+    timeElapse(together);
+}, 500);
+
+</script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

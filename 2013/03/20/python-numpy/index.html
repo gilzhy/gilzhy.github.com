@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>python-numpy | Jay Young&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="python-numpy">
+<meta name="og:url" content="http://www.zhyin5.com/2013/03/20/python-numpy/">
+<meta name="og:image">
+<meta name="og:site_name" content="Jay Young's Blog">
+<meta name="og:description" content="Python-numpy vs Matlab">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jay Young&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">啦啦啦</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://www.zhyin5.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python-numpy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/03/20/python-numpy/" class="article-date">
+  <time datetime="2013-03-20T07:43:46.000Z" itemprop="datePublished">3月 20 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python-numpy
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Python-numpy vs Matlab<br><a id="more"></a><br>转自:<a href="http://blog.sina.com.cn/s/blog_5f234d4701012p64.html" target="_blank">科学计算：Python VS. MATLAB(3)——线性代数基础</a></p>
+<p>安装：<code>sudo apt-get install python-numpy</code><br>使用：<code>import numpy as np</code></p>
+<h4 id="1-_建立矩阵">1. 建立矩阵</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>a1=np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],dtype=int)  #建立一个一维数组，数据类型是int。也可以不指定数据类型，使用默认。几乎所有的数组建立函数都可以指定数据类型，即dtype的取值
+
+a2=np.array(<span class="string">[[1,2,3],[2,3,4]]</span>)  #建立一个二维数组。此处和MATLAB的二维数组（矩阵）的建立有很大差别
+</pre></td></tr></table></figure>
+
+
+<p>同样，numpy中也有很多<strong>内置的特殊矩阵</strong>：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>b1=np.zeros((<span class="number">2</span>,<span class="number">3</span>)) <span class="comment">#生成一个2行3列的全0矩阵。注意，参数是一个tuple：(2,3)，所以有两个括号。完整的形式为：zeros(shape,dtype=)。相同的结构，有ones()建立全1矩阵。empty()建立一个空矩阵，使用内存中的随机值来填充这个矩阵</span>
+
+b2=identity(n)  <span class="comment">#建立n*n的单位阵，这只能是一个方阵。</span>
+
+b3=eye(N,M=<span class="keyword">None</span>,k=<span class="number">0</span>) <span class="comment">#建立一个对角线是1其余值为0的矩阵，用k指定对角线的位置。M默认None。</span>
+</pre></td></tr></table></figure>
+
+
+<p>此外，numpy中还提供了几个like函数，即按照某一个已知的数组的规模（几行几列）建立同样规模的特殊数组。这样的函数有zeros_like()、empty_like()、ones_like()，它们的参数均为如此形式：zeros_like(a,dtype=)，其中，a是一个已知的数组。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre>c1=np<span class="preprocessor">.arange</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">0.1</span>) <span class="preprocessor">#起点，终点，步长值。含起点值，不含终点值</span>
+
+c2=np<span class="preprocessor">.linspace</span>(<span class="number">1</span>,<span class="number">4</span>,<span class="number">10</span>) <span class="preprocessor">#起点，终点，区间内点数。起点终点均包括在内。同理，有logspace()函数</span>
+
+d1=np<span class="preprocessor">.linalg</span><span class="preprocessor">.companion</span>(a) <span class="preprocessor">#伴随矩阵</span>
+
+d2=np<span class="preprocessor">.linalg</span><span class="preprocessor">.triu</span>()/tril() <span class="preprocessor">#作用同MATLAB中的同名函数</span>
+
+e1=np<span class="preprocessor">.random</span><span class="preprocessor">.rand</span>(<span class="number">3</span>,<span class="number">2</span>) <span class="preprocessor">#产生一个3行2列的随机数组。同一空间下，有randn()/randint()等多个随机函数</span>
+
+fliplr()/flipud()/rot90() <span class="preprocessor">#功能类似MATLAB同名函数。</span>
+
+xx=np<span class="preprocessor">.roll</span>(<span class="built_in">x</span>,<span class="number">2</span>) <span class="preprocessor">#roll()是循环移位函数。此调用表示向右循环移动2位。</span>
+</pre></td></tr></table></figure>
+
+
+<h4 id="2-_数组的特征信息">2. 数组的特征信息</h4>
+<p>先假设已经存在一个N维数组X了，那么可以得到X的一些属性，这些属性可以在输入X和一个.之后，按tab键查看提示。这里明显看到了Python面向对象的特征。 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="built_in">X</span><span class="preprocessor">.flags</span>                     <span class="preprocessor">#数组的存储情况信息。  </span>
+<span class="built_in">X</span><span class="preprocessor">.shape</span>                     <span class="preprocessor">#结果是一个tuple，返回本数组的行数、列数  </span>
+<span class="built_in">X</span><span class="preprocessor">.ndim</span>                      <span class="preprocessor">#数组的维数，结果是一个数  </span>
+<span class="built_in">X</span><span class="preprocessor">.size</span>                      <span class="preprocessor">#数组中元素的数量  </span>
+<span class="built_in">X</span><span class="preprocessor">.itemsize</span>                  <span class="preprocessor">#数组中的数据项的所占内存空间大小  </span>
+<span class="built_in">X</span><span class="preprocessor">.dtype</span>                     <span class="preprocessor">#数据类型  </span>
+<span class="built_in">X</span><span class="preprocessor">.T</span>                         <span class="preprocessor">#如果X是矩阵，发挥的是X的转置矩阵  </span>
+<span class="built_in">X</span><span class="preprocessor">.trace</span>()                   <span class="preprocessor">#计算X的迹  </span>
+np<span class="preprocessor">.linalg</span><span class="preprocessor">.det</span>(a)            <span class="preprocessor">#返回的是矩阵a的行列式  </span>
+np<span class="preprocessor">.linalg</span><span class="preprocessor">.norm</span>(a,ord=None)  <span class="preprocessor">#计算矩阵a的范数  </span>
+np<span class="preprocessor">.linalg</span><span class="preprocessor">.eig</span>(a)            <span class="preprocessor">#矩阵a的特征值和特征向量  </span>
+np<span class="preprocessor">.linalg</span><span class="preprocessor">.cond</span>(a,p=None)    <span class="preprocessor">#矩阵a的条件数  </span>
+np<span class="preprocessor">.linalg</span><span class="preprocessor">.inv</span>(a)            <span class="preprocessor">#矩阵a的逆矩阵  </span>
+np<span class="preprocessor">.linalg</span><span class="preprocessor">.pinv</span>(a)           <span class="preprocessor">#矩阵a的伪逆矩阵</span>
+</pre></td></tr></table></figure>
+
+<h4 id="3-_矩阵分解">3. 矩阵分解</h4>
+<p>常见的矩阵分解函数，numpy.linalg均已经提供。比如 <code>cholesky()/qr()/svd()/lu()/schur()</code> 等。某些算法为了方便计算或者针对不同的特殊情况，还给出了多种调用形式，以便得到最佳结果。</p>
+<h4 id="4-_矩阵运算">4. 矩阵运算</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>np.dot(<span class="operator">a</span>,b)  <span class="comment"># 用来计算数组的点积  </span>
+vdot(<span class="operator">a</span>,b)  <span class="comment"># 专门计算矢量的点积，和dot()区别在于对complex数据类型的处理不一样  </span>
+innner(<span class="operator">a</span>,b)  <span class="comment"># 用来计算内积  </span>
+outer(<span class="operator">a</span>,b)  <span class="comment"># 计算外积</span>
+</pre></td></tr></table></figure>
+
+
+<p>专门处理矩阵的数学函数在numpy的子包linalg中定义。比如<code>np.linalg.logm(A)</code>计算矩阵A的对数。可见，这个处理和MATLAB是类似的，使用一个m后缀表示是矩阵的运算。在这个空间内可以使用的有 <code>cosm()/sinm()/signm()/sqrtm()</code> 等。其中常规exp()对应有三种矩阵形式：expm()使用Pade近似算法、expm2()使用特征值分析算法、expm3()使用泰勒级数算法。在numpy中，也有一个计算矩阵的函数：<code>funm(A,func)</code></p>
+<h4 id="5-_索引">5. 索引</h4>
+<p>numpy中的数组索引形式和Python是一致的。如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre>x=np.arange(<span class="number">10</span>)
+<span class="keyword">print</span> x[<span class="number">2</span>]      <span class="comment"># 单个元素，从前往后正向索引。注意下标是从0开始的。  </span>
+<span class="keyword">print</span> x[-<span class="number">2</span>]     <span class="comment"># 从后往前索引。最后一个元素的下标是-1  </span>
+<span class="keyword">print</span> x[<span class="number">2</span>:<span class="number">5</span>]    <span class="comment"># 多个元素，左闭右开，默认步长值是1  </span>
+<span class="keyword">print</span> x[:-<span class="number">7</span>]    <span class="comment"># 多个元素，从后向前，制定了结束的位置，使用默认步长值  </span>
+<span class="keyword">print</span> x[<span class="number">1</span>:<span class="number">7</span>:<span class="number">2</span>]  <span class="comment"># 指定步长值  </span>
+x.shape=(<span class="number">2</span>,<span class="number">5</span>)   <span class="comment"># x的shape属性被重新赋值，要求就是元素个数不变。2*5=10  </span>
+<span class="keyword">print</span> x[<span class="number">1</span>,<span class="number">3</span>]    <span class="comment"># 二维数组索引单个元素，第2行第4列的那个元素  </span>
+<span class="keyword">print</span> x[<span class="number">0</span>]      <span class="comment"># 第一行所有的元素  </span>
+y=np.arange(<span class="number">35</span>).reshape(<span class="number">5</span>,<span class="number">7</span>)  <span class="comment"># reshape()函数用于改变数组的维度  </span>
+<span class="keyword">print</span> y[<span class="number">1</span>:<span class="number">5</span>:<span class="number">2</span>,::<span class="number">2</span>]            <span class="comment"># 选择二维数组中的某些符合条件的元素</span>
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhyin5.com/2013/03/20/python-numpy/" data-id="npcpfcg8w6x41lqn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/numpy/">numpy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/03/27/vim的高亮颜色/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vim的高亮颜色
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/03/15/linux-mysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux-mysql</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zhyin5"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔试/面试/">笔试/面试</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/">awesome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dnsmasq/">dnsmasq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostapd/">hostapd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi/">wifi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本控制/">版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/窗口管理/">窗口管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔试/">笔试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络访问/">网络访问</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络通信/">网络通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解压/压缩/">解压/压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软AP/">软AP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 18.00px;">Android</a><a href="/tags/MVC/" style="font-size: 10.00px;">MVC</a><a href="/tags/Sublime/" style="font-size: 12.00px;">Sublime</a><a href="/tags/awesome/" style="font-size: 12.00px;">awesome</a><a href="/tags/cookie/" style="font-size: 10.00px;">cookie</a><a href="/tags/django/" style="font-size: 14.00px;">django</a><a href="/tags/dnsmasq/" style="font-size: 10.00px;">dnsmasq</a><a href="/tags/hostapd/" style="font-size: 10.00px;">hostapd</a><a href="/tags/linux/" style="font-size: 20.00px;">linux</a><a href="/tags/mysql/" style="font-size: 12.00px;">mysql</a><a href="/tags/mysqldump/" style="font-size: 10.00px;">mysqldump</a><a href="/tags/numpy/" style="font-size: 10.00px;">numpy</a><a href="/tags/python/" style="font-size: 16.00px;">python</a><a href="/tags/session/" style="font-size: 10.00px;">session</a><a href="/tags/svn/" style="font-size: 10.00px;">svn</a><a href="/tags/vim/" style="font-size: 12.00px;">vim</a><a href="/tags/wifi/" style="font-size: 10.00px;">wifi</a><a href="/tags/快捷键/" style="font-size: 10.00px;">快捷键</a><a href="/tags/排序/" style="font-size: 10.00px;">排序</a><a href="/tags/数据结构/" style="font-size: 10.00px;">数据结构</a><a href="/tags/查找/" style="font-size: 10.00px;">查找</a><a href="/tags/爬虫/" style="font-size: 10.00px;">爬虫</a><a href="/tags/版本控制/" style="font-size: 10.00px;">版本控制</a><a href="/tags/窗口管理/" style="font-size: 10.00px;">窗口管理</a><a href="/tags/笔试/" style="font-size: 12.00px;">笔试</a><a href="/tags/网络访问/" style="font-size: 10.00px;">网络访问</a><a href="/tags/网络通信/" style="font-size: 10.00px;">网络通信</a><a href="/tags/解压/压缩/" style="font-size: 10.00px;">解压/压缩</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软AP/" style="font-size: 10.00px;">软AP</a><a href="/tags/面向对象/" style="font-size: 10.00px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">七月 2013</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06">六月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04">四月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">三月 2013</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">二月 2013</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/04/06/python-sympy/">python-sympy</a>
+          </li>
+        
+          <li>
+            <a href="/2013/08/02/androidosnetworkonmainthreadexception/">android.os.NetworkOnMainThreadException</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/25/android学习笔记-broadcast/">Android学习笔记-Broadcast</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/24/linux下android真机调试/">Linux下Android真机调试</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/24/android学习笔记-事件处理/">Android学习笔记-事件处理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=1840199725&verifier=c3e417d3&dpc=1"></iframe>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="elapseClock"></div>
+  </div>
+</footer>
+
+<style>
+    #elapseClock { text-align:center; font-size:18px; margin-top:10px; margin-bottom:10px }
+    #elapseClock .digit{ font-family:"digit"; font-size:36px }
+</style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+<script>
+function timeElapse(date){
+	var current = Date();
+	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+	var days = Math.floor(seconds / (3600 * 24));
+	seconds = seconds % (3600 * 24);
+	var hours = Math.floor(seconds / 3600);
+	if (hours < 10) {
+		hours = "0" + hours;
+	}
+	seconds = seconds % 3600;
+	var minutes = Math.floor(seconds / 60);
+	if (minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	seconds = seconds % 60;
+	if (seconds < 10) {
+		seconds = "0" + seconds;
+	}
+	var result = "From 2010.12.04 10:30 to Now: <span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	$("#elapseClock").html(result);
+}
+
+var together = new Date();
+together.setFullYear(2010, 11, 04);
+together.setHours(10);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+timeElapse(together);
+setInterval(function () {
+    timeElapse(together);
+}, 500);
+
+</script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

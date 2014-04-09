@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android学习笔记-界面编程 | Jay Young&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="Android学习笔记-界面编程">
+<meta name="og:url" content="http://www.zhyin5.com/2013/07/22/android学习笔记-界面编程/">
+<meta name="og:image" content="/img/android-view.jpg">
+<meta name="og:site_name" content="Jay Young's Blog">
+<meta name="og:description" content="说明: 内容取自中山大学软件学院刘宁老师的SE-806课程的课件
+view,视图组件
+view负责:
+
+说明布局Layout
+创建菜单Menus
+创建对话Dialogs
+处理用户UI事件
+用户提示
+确定风格
+定制组件
+数据与界面绑定
+
+
+View类是最基本的一个UI类,基本上所有的高级UI组件都是继承于View类而实现
+一个视图在屏幕占据一块矩形区域,负责渲染这块矩形区域,也可以处理此区域发生的事">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jay Young&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">啦啦啦</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://www.zhyin5.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-android学习笔记-界面编程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/07/22/android学习笔记-界面编程/" class="article-date">
+  <time datetime="2013-07-22T09:41:14.000Z" itemprop="datePublished">7月 22 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android学习笔记-界面编程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>说明</strong>: 内容取自中山大学软件学院刘宁老师的SE-806课程的课件</p>
+<h4 id="view,视图组件">view,视图组件</h4>
+<p>view负责:</p>
+<ul>
+<li>说明布局Layout</li>
+<li>创建菜单Menus</li>
+<li>创建对话Dialogs</li>
+<li>处理用户UI事件</li>
+<li>用户提示</li>
+<li>确定风格</li>
+<li>定制组件</li>
+<li>数据与界面绑定</li>
+</ul>
+<p><img src="/img/android-view.jpg" alt="android-view"></p>
+<p>View类是<strong>最基本的</strong>一个UI类,基本上所有的高级UI组件都是继承于View类而实现</p>
+<p>一个视图在屏幕占据一块矩形区域,负责渲染这块矩形区域,也可以处理此区域发生的事件,设置是否可见,是否可以获取焦点。<br>类型:  </p>
+<ul>
+<li>TextView,文本框</li>
+<li>Button, 按钮</li>
+<li>List, 列表</li>
+<li>EditText, 编辑框</li>
+<li>RadioButton, 单选框</li>
+<li>CheckBox, 检查框</li>
+</ul>
+<h4 id="UI布局">UI布局</h4>
+<p>ViewGroup通过各种<strong>Layout</strong>控制所属的view的显示位置</p>
+<p><img src="/img/android-ui.jpg" alt="android-ui"></p>
+<p>Layout(布局组件)类型:</p>
+<ul>
+<li>LinearLayout 线性布局<ul>
+<li>垂直: android:orientation=”vertical”</li>
+<li>水平: android:orientation=”horizontal”</li>
+</ul>
+</li>
+<li>FrameLayout<ul>
+<li>屏幕上故意保留的空白空间</li>
+<li>所有子元素都钉到屏幕的左上角,不能为子元素指定位置</li>
+</ul>
+</li>
+<li>TableLayout<ul>
+<li>子元素放到行与列中</li>
+<li>不显示边界线</li>
+<li>单元格不能跨行</li>
+</ul>
+</li>
+<li>AbsoluteLayout 决定定位<ul>
+<li>指明子元素确切的屏幕坐标(x,y), (0,0)代表左上</li>
+<li>允许元素重叠,但不推荐</li>
+<li>一般不使用Absolute,除非必要,因为它相当严格且不同设备兼容不好</li>
+</ul>
+</li>
+<li>RelativeLayout 相对定位<ul>
+<li>子元素相对其他元素(通过ID指定)或相对父元素的位置</li>
+<li>有丰富的排列属性<ul>
+<li>Layout above</li>
+<li>Layout below</li>
+<li>Layout to left of</li>
+<li>…</li>
+</ul>
+</li>
+<li>尽量少用,排列属性间容易冲突</li>
+</ul>
+</li>
+<li>GridView</li>
+<li>ListLayout</li>
+<li>RadioGroup</li>
+<li>…</li>
+</ul>
+<h4 id="Color">Color</h4>
+<p>android.graphics.Color 包含颜色值:</p>
+<ul>
+<li>Color.BLACK</li>
+<li>Color.BLUE</li>
+<li>Color.CYAN</li>
+<li>Color.DKGRAY</li>
+<li>Color.GRAY</li>
+<li>Color.GREEN</li>
+<li>Color.LTGRAY</li>
+<li>Color.MAGENTA</li>
+<li>Color.RED</li>
+<li>Color.TRANSPARENT</li>
+<li>Color.WHITE</li>
+<li>Color.YELLOW</li>
+</ul>
+<h4 id="font">font</h4>
+<ul>
+<li>android.graphics.Typeface:<ul>
+<li>Typeface.create(Typeface family, int style)<ul>
+<li>创建一个混合型新的字体:有20种搭配(4种字体5种风格)</li>
+</ul>
+</li>
+<li>Typeface.setTypeface (Typeface tf, int style)<ul>
+<li>设置一个混合型字体:有20种搭配(4种字体5种风格)</li>
+</ul>
+</li>
+<li>Typeface.setTypeface(Typeface tf)<ul>
+<li>设置一个只有Typeface 风格的字体:有五种形式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>字体<ul>
+<li>BOLD、BOLD_ITALIC、ITALIC、NORMAL</li>
+</ul>
+</li>
+<li>风格<ul>
+<li>DEFAULT、DEFAULT_BOLD、MONOSPACE(单间隔字体)、SANS_SERIF(无衬线字体)、SERIF(衬线字体)</li>
+</ul>
+</li>
+</ul>
+<h4 id="Menu_菜单">Menu 菜单</h4>
+<ul>
+<li><strong>Options Menu</strong> 主菜单: 通过按下home键来显示,包含两组菜单项:  <ul>
+<li><strong>Icon Menu</strong> 图标菜单<br>用户按下菜单键时最初出现在屏幕下方的item集合,支持<strong>最多6个</strong>item</li>
+<li><strong>Expanded Menu</strong> 扩展菜单<br>多于6个的item通过’更多’菜单显示,由6个以及其他选项菜单组成</li>
+<li>实现<ul>
+<li>options menu通过activity的<code>onCreateOptionsMenu</code>来生成</li>
+<li><code>onCreateOptionsMenu</code>只会在menu第一次生成时调用,任何想改变options menu的想法只能在<code>onPrepareOptionsMenu</code>来实现,这个函数会在menu显示前调用</li>
+<li><code>onOptionsItemSelected</code>用来处理选中的菜单项</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Context Menu</strong> 上下文菜单(右键菜单): 浮动菜单列表,通常<strong>长时间</strong>按在一个视图上时出现</p>
+<ul>
+<li>实现<ul>
+<li>context menu是跟某个具体的view绑定在一起,在activity中用<code>registerForContextMenu</code>来为某个view注册context menu。context menu在显示前都会调用<code>onCreateContextMenu</code>来生成menu。<code>onContextItemSelected</code>用来处理选中的菜单项</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Sub Menu</strong> 子菜单: 浮动菜单列表,通过在Options Menu | Context Menu选择菜单项显露出来,不支持嵌套子菜单.</p>
+</li>
+</ul>
+<p>android还提供了对菜单项进行分组的功能,可以把相似功能的菜单项分成同一个组,这样可以通过调用setGroupCheckable,setGroupEnabled,setGroupVisible来设置菜单属性,而无须单独设置。</p>
+<h4 id="Button_事件响应">Button 事件响应</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>&lt;Button android:<span class="property">id</span>=<span class="string">"@+id/Button01"</span>
+    android:layout_width=<span class="string">"wrap_content"</span>
+    android:layout_height=<span class="string">"wrap_content"</span>
+    android:<span class="type">text</span>=<span class="string">"@string/btn_name"</span>
+&gt;
+</pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre>show=(TextView)findViewById(R<span class="preprocessor">.id</span><span class="preprocessor">.TextView</span>01)<span class="comment">;</span>
+press=(Button)findViewById(R<span class="preprocessor">.id</span><span class="preprocessor">.Button</span>01)<span class="comment">;</span>
+press<span class="preprocessor">.setOnClickListener</span>(new OnClickListener(){
+   public void onClick(View v)  {
+        show<span class="preprocessor">.setText</span>(<span class="string">"Hi, Google Android"</span>)<span class="comment">;</span>
+   }
+})<span class="comment">;</span>
+</pre></td></tr></table></figure>
+
+<h4 id="进程优先级顺序">进程优先级顺序</h4>
+<ul>
+<li>前台进程(Active Process):<ul>
+<li>前台Activity、包含正在运行的广播接收器、正在运行的服务</li>
+</ul>
+</li>
+<li>可视进程(Visible Process):<ul>
+<li>包含一个可视化的Activity</li>
+</ul>
+</li>
+<li>服务进程(Started Service Process):<ul>
+<li>包含一个被开启的服务(处理服务,不是直接可视,例如媒体播放器,网络上传、下载)</li>
+</ul>
+</li>
+<li>后台进程(Background Process)<ul>
+<li>包含一个不可视的Activity(可以在任意时刻杀死该进程来回收内存)</li>
+</ul>
+</li>
+<li>空进程(Empty Process):<ul>
+<li>没有持有任何应用程序组件</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/android-priority.jpg" alt="android-priority"></p>
+<h4 id="DroidDraw">DroidDraw</h4>
+<p>下载:<a href="https://code.google.com/p/droiddraw/downloads/list" target="_blank">DroidDraw</a></p>
+<h4 id="UI详细响应">UI详细响应</h4>
+<ul>
+<li>定义事件监听器<ul>
+<li>View.OnClickListener</li>
+<li>View.OnTouchListener</li>
+<li>View.OnKeyListener</li>
+</ul>
+</li>
+<li>在框架中注册事件监听器</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActivityButton</span> <span class="keyword">extends</span> <span class="title">Activity</span> {</span>
+    OnClickListener listener1 = <span class="keyword">null</span>;  ----------&gt; 监听
+    Button button1;
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span>(Bundle savedInstanceState) {
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+        listener1 = <span class="keyword">new</span> OnClickListener() {  ----------&gt; 响应
+            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span>(View v) {
+                setTitle(<span class="string">"Hello Android"</span>);
+            }
+        };
+        setContentView(R.layout.main);
+        button1 = (Button)
+        findViewById(R.id.button1);
+        button1.setOnClickListener(listener1);  ----------&gt; 监听
+    }
+}
+</pre></td></tr></table></figure>
+
+<h4 id="Activity">Activity</h4>
+<h5 id="主要特征">主要特征</h5>
+<ul>
+<li>包括UI,以及与user的互动</li>
+<li>可以放button、list、picture、text等组件</li>
+<li>UI可动态调整 (增加、减少、换位置)</li>
+<li>利用intent跳转到其他activity</li>
+<li>超过5秒,会出现ANR (Android is Not Responding)</li>
+<li>Activity是Android程序与用户交互的窗口,可以看成网站的页面。</li>
+</ul>
+<h5 id="生命周期">生命周期</h5>
+<ul>
+<li><strong>Active</strong>: 当一个Activity在屏幕的最上层时(堆栈的最顶端),它就是属于active或者running的状态</li>
+<li><strong>Paused</strong>: 若Activity 失去焦点(focus)但还看得到它的画面(比如:一个新的Activity 画面并不是全屏幕或者它是一个半透明情况),那失去焦点的Activity 处在paused 状态。这个失去焦点的Activity还是完全活着,并没有消失。(活着的意思是指,Activity 自己本身所有的状态及数据都还是存在的,也跟窗口管理程序window manager 保持联系),像这种paused 的Activity,会在一种情况下消失,那就是当系统的内存不够用之时,系统会自动判断,将不重要的Activity 移除。</li>
+<li><strong>Stop</strong>: 若一个Activity 被其它的Activity 完全的遮盖住时,它仍然保有全部的状态及数据,但因为它已不再被使用者看见,所以它的画面是被隐藏起来的(画面不需要更新),当系统内存不足时,这种stop状态的Activity 时最先被系统考虑拿下来释放内存的。</li>
+<li><strong>Finish</strong>: 当一个Activity 处于pause 或stop 的状态时,系统可以要求Activity 结束(finish)或直接移除(kill)它。当它需要再度呈现在使用者面前时,它必须要能完整的重新启动及回复先前的状态。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-界面编程/" data-id="89le7h7tz9sjk8ka" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/07/24/android学习笔记-布局属性/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android学习笔记-布局属性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/07/22/android学习笔记-基础知识/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android学习笔记-基础知识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zhyin5"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔试/面试/">笔试/面试</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/">awesome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dnsmasq/">dnsmasq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostapd/">hostapd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi/">wifi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本控制/">版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/窗口管理/">窗口管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔试/">笔试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络访问/">网络访问</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络通信/">网络通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解压/压缩/">解压/压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软AP/">软AP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 18.00px;">Android</a><a href="/tags/MVC/" style="font-size: 10.00px;">MVC</a><a href="/tags/Sublime/" style="font-size: 12.00px;">Sublime</a><a href="/tags/awesome/" style="font-size: 12.00px;">awesome</a><a href="/tags/cookie/" style="font-size: 10.00px;">cookie</a><a href="/tags/django/" style="font-size: 14.00px;">django</a><a href="/tags/dnsmasq/" style="font-size: 10.00px;">dnsmasq</a><a href="/tags/hostapd/" style="font-size: 10.00px;">hostapd</a><a href="/tags/linux/" style="font-size: 20.00px;">linux</a><a href="/tags/mysql/" style="font-size: 12.00px;">mysql</a><a href="/tags/mysqldump/" style="font-size: 10.00px;">mysqldump</a><a href="/tags/numpy/" style="font-size: 10.00px;">numpy</a><a href="/tags/python/" style="font-size: 16.00px;">python</a><a href="/tags/session/" style="font-size: 10.00px;">session</a><a href="/tags/svn/" style="font-size: 10.00px;">svn</a><a href="/tags/vim/" style="font-size: 12.00px;">vim</a><a href="/tags/wifi/" style="font-size: 10.00px;">wifi</a><a href="/tags/快捷键/" style="font-size: 10.00px;">快捷键</a><a href="/tags/排序/" style="font-size: 10.00px;">排序</a><a href="/tags/数据结构/" style="font-size: 10.00px;">数据结构</a><a href="/tags/查找/" style="font-size: 10.00px;">查找</a><a href="/tags/爬虫/" style="font-size: 10.00px;">爬虫</a><a href="/tags/版本控制/" style="font-size: 10.00px;">版本控制</a><a href="/tags/窗口管理/" style="font-size: 10.00px;">窗口管理</a><a href="/tags/笔试/" style="font-size: 12.00px;">笔试</a><a href="/tags/网络访问/" style="font-size: 10.00px;">网络访问</a><a href="/tags/网络通信/" style="font-size: 10.00px;">网络通信</a><a href="/tags/解压/压缩/" style="font-size: 10.00px;">解压/压缩</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软AP/" style="font-size: 10.00px;">软AP</a><a href="/tags/面向对象/" style="font-size: 10.00px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">七月 2013</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06">六月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04">四月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">三月 2013</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">二月 2013</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/04/06/python-sympy/">python-sympy</a>
+          </li>
+        
+          <li>
+            <a href="/2013/08/02/androidosnetworkonmainthreadexception/">android.os.NetworkOnMainThreadException</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/25/android学习笔记-broadcast/">Android学习笔记-Broadcast</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/24/linux下android真机调试/">Linux下Android真机调试</a>
+          </li>
+        
+          <li>
+            <a href="/2013/07/24/android学习笔记-事件处理/">Android学习笔记-事件处理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=1840199725&verifier=c3e417d3&dpc=1"></iframe>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="elapseClock"></div>
+  </div>
+</footer>
+
+<style>
+    #elapseClock { text-align:center; font-size:18px; margin-top:10px; margin-bottom:10px }
+    #elapseClock .digit{ font-family:"digit"; font-size:36px }
+</style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+<script>
+function timeElapse(date){
+	var current = Date();
+	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+	var days = Math.floor(seconds / (3600 * 24));
+	seconds = seconds % (3600 * 24);
+	var hours = Math.floor(seconds / 3600);
+	if (hours < 10) {
+		hours = "0" + hours;
+	}
+	seconds = seconds % 3600;
+	var minutes = Math.floor(seconds / 60);
+	if (minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	seconds = seconds % 60;
+	if (seconds < 10) {
+		seconds = "0" + seconds;
+	}
+	var result = "From 2010.12.04 10:30 to Now: <span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	$("#elapseClock").html(result);
+}
+
+var together = new Date();
+together.setFullYear(2010, 11, 04);
+together.setHours(10);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+timeElapse(together);
+setInterval(function () {
+    timeElapse(together);
+}, 500);
+
+</script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
