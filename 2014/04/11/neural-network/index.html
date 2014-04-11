@@ -12,10 +12,9 @@
 <meta name="og:site_name" content="Jay Young's Blog">
 <meta name="og:description" content="多分类输出
 以四分类为例:
-$$\begin{bmatrix}1\0\0\0\end{bmatrix},\begin{bmatrix}0\1\0\0\end{bmatrix},\begin{bmatrix}0\0\1\0\end{bmatrix},\begin{bmatrix}0\0\0\1\end{bmatrix}$$
+$$\begin{bmatrix}1\\0\\0\\0\end{bmatrix},\begin{bmatrix}0\\1\\0\\0\end{bmatrix},\begin{bmatrix}0\\0\\1\\0\end{bmatrix},\begin{bmatrix}0\\0\\0\\1\end{bmatrix}$$
 分别表示样本预测结果为第1,2,3,4种分类
-损失函数
-Logistic">
+损失">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -97,27 +96,27 @@ Logistic">
         <p><img src="/img/Neural-Network.png" alt="Neural Network"></p>
 <h3 id="多分类输出">多分类输出</h3>
 <p>以四分类为例:</p>
-<p>$$\begin{bmatrix}1\0\0\0\end{bmatrix},\begin{bmatrix}0\1\0\0\end{bmatrix},\begin{bmatrix}0\0\1\0\end{bmatrix},\begin{bmatrix}0\0\0\1\end{bmatrix}$$</p>
+<p>$$\begin{bmatrix}1\\0\\0\\0\end{bmatrix},\begin{bmatrix}0\\1\\0\\0\end{bmatrix},\begin{bmatrix}0\\0\\1\\0\end{bmatrix},\begin{bmatrix}0\\0\\0\\1\end{bmatrix}$$</p>
 <p>分别表示样本预测结果为第1,2,3,4种分类</p>
 <h3 id="损失函数">损失函数</h3>
 <h4 id="Logistic_regression的损失函数:">Logistic regression的损失函数:</h4>
-<p>$$J(\theta) = - \frac {1}{m} [\sum\limits\<em>{i=1}^{m}y^{(i)}\log h\</em>{\theta}(x^{(i)})+(1-y^{(i)})\log (1-h\<em>{\theta}(x^{(i)}))] + \frac {\lambda}{2m} \sum\limits\</em>{j=1}^{n}\theta\_{j}^{2}$$</p>
+<p>$$J(\theta) = - \frac {1}{m} [\sum\limits_{i=1}^{m}y^{(i)}\log h_{\theta}(x^{(i)})+(1-y^{(i)})\log (1-h_{\theta}(x^{(i)}))] + \frac {\lambda}{2m} \sum\limits_{j=1}^{n}\theta_{j}^{2}$$</p>
 <h4 id="Neural_Network的损失函数:">Neural Network的损失函数:</h4>
-<p>$$J(\theta) = - \frac {1}{m} [\sum\limits\<em>{i=1}^{m}\sum\limits\</em>{k=1}^{K}y\<em>k^{(i)}\log (h\</em>{\theta}(x^{(i)})\<em>k)+(1-y\_k^{(i)})\log (1-h\</em>{\theta}(x^{(i)})\<em>k)] + \frac {\lambda}{2m} \sum\limits\</em>{l=1}^{L-1}\sum\limits\<em>{i=1}^{s\_l}\sum\limits\</em>{j=1}^{s\<em>{l+1}}(\theta\</em>{ji}^{(l)})^2$$</p>
+<p>$$J(\theta) = - \frac {1}{m} [\sum\limits_{i=1}^{m}\sum\limits_{k=1}^{K}y_k^{(i)}\log (h_{\theta}(x^{(i)})_k)+(1-y_k^{(i)})\log (1-h_{\theta}(x^{(i)})_k)] + \frac {\lambda}{2m} \sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l+1}}(\theta_{ji}^{(l)})^2$$</p>
 <p>Neural Network的损失函数与Logistic regression的只基本一直, 只因为Neural Network的输出是一个K维向量(K为分类的类别数), 所以要把K维的每一维都计算一遍.<br><a id="more"></a></p>
 <h3 id="数据">数据</h3>
 <p>m个样本, 每个样本n维</p>
 <h4 id="1-_关于_$\mathbf{z},_\mathbf{a}$">1. 关于 $\mathbf{z}, \mathbf{a}$</h4>
-<p>L层神经网络(Layer <strong>1</strong>, Layer 2, …, Layer L), 每层有 $s\_l$ 维(不包括增加的1)</p>
+<p>L层神经网络(Layer <strong>1</strong>, Layer 2, …, Layer L), 每层有 $s_l$ 维(不包括增加的1)</p>
 <ul>
 <li>第一层为输入层 $\mathbf{a}^{(1)}=\mathbf{x}$ , x为其中一个样本(列向量)</li>
-<li>最后一层为输出层, 若分类问题一共有K中分类,则最后一层有K维, $s\_L=K$</li>
+<li>最后一层为输出层, 若分类问题一共有K中分类,则最后一层有K维, $s_L=K$</li>
 </ul>
 <p>对于第i层:</p>
 <ul>
 <li>$\mathbf{z}^{(i)}=\mathbf{\theta}^{(i-1)}\mathbf{a}^{(i-1)}$</li>
 <li>$\mathbf{a}^{(i)}=g(\mathbf{z}^{(i)})$, $g(\mathbf{z})=\frac {1}{1+e^{-\mathbf{z}}}$</li>
-<li>第i层共有 $s\<em>i$ 个值, 其中第j个值为:  $\mathbf{z}^{(i)}\_j=\mathbf{\theta}^{(i-1)}\</em>{j}\mathbf{a}^{(i-1)}$</li>
+<li>第i层共有 $s_i$ 个值, 其中第j个值为:  $\mathbf{z}^{(i)}_j=\mathbf{\theta}^{(i-1)}_{j}\mathbf{a}^{(i-1)}$</li>
 </ul>
 <p>$\mathbf{z}$ 和 $\mathbf{a}$ 的值通过<strong>正向传播</strong>得到.</p>
 <h4 id="2-_关于$\theta$">2. 关于$\theta$</h4>
@@ -221,7 +220,7 @@ Logistic">
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/11/neural-network/" data-id="9hgr5ps5oxg7x0q6" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/11/neural-network/" data-id="2q1xtdpyzdm6e4mf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
