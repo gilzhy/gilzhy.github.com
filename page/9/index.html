@@ -35,7 +35,7 @@
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">啦啦啦</a>
+          <a href="/" id="subtitle">博学,审问,慎思,明辨,笃行</a>
         </h2>
       
     </div>
@@ -64,6 +64,100 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-django数据库模型的字段类型总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/03/29/django数据库模型的字段类型总结/" class="article-date">
+  <time datetime="2013-03-29T08:12:38.000Z" itemprop="datePublished">3月 29 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/03/29/django数据库模型的字段类型总结/">Django数据库模型的字段类型总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转自<a href="http://www.zijin5.com/2011/03/django%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93/" target="_blank">Django数据库模型的字段类型总结</a></p>
+<ol>
+<li><p>字符</p>
+<ul>
+<li><code>V=models.CharField(max_length=None[, **options]</code>) #varchar</li>
+<li><code>V=models.EmailField([max_length=75, **options])</code> #varchar</li>
+<li><code>V=models.URLField([verify_exists=True, max_length=200, **options])</code> #varchar</li>
+<li><code>V=models.FileField(upload_to=None[, max_length=100, **options])</code> #varchar<br>  (upload_to指定保存目录可带格式)</li>
+<li><code>V=models.ImageField(upload_to=None[, height_field=None, width_field=None, max_length=100, **options])</code></li>
+<li><code>V=models.IPAddressField([**options])</code> #varchar</li>
+<li><code>V=models.FilePathField(path=None[, match=None, recursive=False, max_length=100, **options])</code> #varchar</li>
+<li><code>V=models.SlugField([max_length=50, **options])</code> #varchar，标签，内含索引</li>
+<li><code>V=models.CommaSeparatedIntegerField(max_length=None[, **options])</code> #varchar</li>
+</ul>
+</li>
+<li><p>数字</p>
+<ul>
+<li><code>V=models.IntegerField([**options])</code> #int</li>
+<li><code>V=models.PositiveIntegerField([**options])</code> #int 正整数</li>
+<li><code>V=models.SmallIntegerField([**options])</code> #smallint</li>
+<li><code>V=models.PositiveSmallIntegerField([**options])</code> #smallint 正整数</li>
+<li><code>V=models.AutoField(**options)</code> #int；在Django代码内是自增</li>
+<li><code>V=models.DecimalField(max_digits=None, decimal_places=None[, **options])</code> #decimal</li>
+<li><code>V=models.FloatField([**options])</code> #real</li>
+<li><code>V=models.BooleanField(**options)</code> #boolean或bit</li>
+<li><code>V=models.NullBooleanField([**options])</code> #bit字段上可以设置上null值</li>
+</ul>
+</li>
+<li><p>时间</p>
+<ul>
+<li><code>V=models.DateField([auto_now=False, auto_now_add=False, **options])</code> #date<br>  (auto_now最后修改记录的日期；auto_now_add添加记录的日期)</li>
+<li><code>V=models.DateTimeField([auto_now=False, auto_now_add=False, **options])</code> #datetime</li>
+<li><code>V=models.TimeField([auto_now=False, auto_now_add=False, **options])</code> #time</li>
+</ul>
+</li>
+<li><p>文章</p>
+<ul>
+<li><code>V=models.TextField([**options])</code> #text</li>
+<li><code>V=models.XMLField(schema_path=None[, **options])</code> #text</li>
+</ul>
+</li>
+<li><p>数据库对应</p>
+<ul>
+<li><code>V=models.ForeignKey(othermodel[, **options])</code> #外键，关联其它模型，创建关联索引</li>
+<li><code>V=models.ManyToManyField(othermodel[, **options])</code> #多对多，关联其它模型，创建关联表</li>
+<li><code>V=models.OneToOneField(othermodel[, parent_link=False, **options])</code> #一对一，字段关联表属性</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhyin5.com/2013/03/29/django数据库模型的字段类型总结/" data-id="6z0daerc0v26y5kk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
   
     <article id="post-djangoadmin录入中文错误解决办法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -104,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/29/djangoadmin录入中文错误解决办法/" data-id="jjvogewipn6e0ohu" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/29/djangoadmin录入中文错误解决办法/" data-id="e7mw2ju6za836nss" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -154,142 +248,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/28/django初探/" data-id="zktvp91tsaor9n6j" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/28/django初探/" data-id="zr65xmkw2xd5nb53" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-  
-    <article id="post-vim代码折叠" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2013/03/27/vim代码折叠/" class="article-date">
-  <time datetime="2013-03-27T08:07:23.000Z" itemprop="datePublished">3月 27 2013</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/tech/">tech</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/03/27/vim代码折叠/">vim代码折叠</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>转自：<a href="http://www.cnblogs.com/abeen/archive/2010/08/06/1794197.html" target="_blank">[Linux] VIM 代码折叠</a></p>
-<p>VIM代码折叠方式可以用”foldmethod”选项来设置，如: set foldmethod=indent<br>有6种方式来折叠代码</p>
-<ol>
-<li>manual //手工定义折叠</li>
-<li>indent //用缩进表示折叠</li>
-<li>expr　 //用表达式来定义折叠</li>
-<li>syntax //用语法高亮来定义折叠</li>
-<li>diff   //对没有更改的文本进行折叠</li>
-<li>marker //用标志折叠</li>
-</ol>
-<p>vim 配置文件分为<strong>全局配置文件</strong>和<strong>用户配置文件</strong></p>
-<ol>
-<li>全局配置文件查找，在.vim 中输入 <code>:echo $VIM</code> ,一般为： <code>/usr/share/vim/vimrc</code> </li>
-<li>用户配置文件在用户主目录下，如：/home/abeen/.vimrc</li>
-</ol>
-<p>在vimrc文件中设置折叠方式：如set foldmethod=indent</p>
-<p>选定折叠方式后，就可以使用折叠命令进行折叠操作了．常用的折叠方式为indent和marker</p>
-<h4 id="1-_indent折叠命令">1. indent折叠命令</h4>
-<p>indent方式，vim会自动利用缩进进行折叠，我们可以使用现成的折叠成果．  </p>
-<p>我们可以在折叠处输入以下命令：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-</pre></td><td class="code"><pre>zc 折叠
-
-zC 对所在范围内所有嵌套的折叠点进行折叠
-
-zo 展开折叠
-
-zO 对所在范围内所有嵌套的折叠点展开
-
-[z 到当前打开的折叠的开始处。
-
-]z 到当前打开的折叠的末尾处。
-
-zj 向下移动。到达下一个折叠的开始处。关闭的折叠也被计入。
-
-zk 向上移动到前一折叠的结束处。关闭的折叠也被计入。
-</pre></td></tr></table></figure>
-
-<h4 id="2-_marker折叠命令">2. marker折叠命令</h4>
-<p>marker折叠方式时，我们需要用标计来标识代码的折叠</p>
-<p>折叠命令</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-</pre></td><td class="code"><pre>zf　创建折叠，比如在marker方式下：
-
-zf56G，创建从当前行起到<span class="number">56</span>行的代码折叠；
-
-<span class="number">10</span>zf或<span class="number">10</span>zf+或zf10↓，创建从当前行起到后<span class="number">10</span>行的代码折叠。
-
-<span class="number">10</span>zf-或zf10↑，创建从当前行起到之前<span class="number">10</span>行的代码折叠。
-
-在括号处zf%，创建从当前行起到对应的匹配的括号上去（（），<span class="list">{}</span>，[]，&lt;&gt;等）。
-
-zd  删除 (delete) 在光标下的折叠。仅当 <span class="string">'foldmethod'</span> 设为 <span class="string">"manual"</span> 或 <span class="string">"marker"</span> 时有效。
-
-zD  循环删除 (<span class="keyword">Delete</span>) 光标下的折叠，即嵌套删除折叠。仅当 <span class="string">'foldmethod'</span> 设为 <span class="string">"manual"</span> 或 <span class="string">"marker"</span> 时有效。
-
-zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折叠。仅当 <span class="string">'foldmethod'</span> 设为 <span class="string">"manual"</span> 或 <span class="string">"marker"</span> 时有效。
-</pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/27/vim代码折叠/" data-id="1mnioabun1rlqfdt" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
 
     </footer>
   </div>
@@ -314,7 +276,7 @@ zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折�
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ML/DM/">ML/DM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔试/面试/">笔试/面试</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ML/DM/">ML/DM</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔试/面试/">笔试/面试</a><span class="category-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -323,7 +285,7 @@ zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折�
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DM/">DM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/">ML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/">awesome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dnsmasq/">dnsmasq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostapd/">hostapd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi/">wifi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本控制/">版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/窗口管理/">窗口管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔试/">笔试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络访问/">网络访问</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络通信/">网络通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解压/压缩/">解压/压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软AP/">软AP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DM/">DM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/">ML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/">awesome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dnsmasq/">dnsmasq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostapd/">hostapd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi/">wifi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本控制/">版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/窗口管理/">窗口管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔试/">笔试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络访问/">网络访问</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络通信/">网络通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解压/压缩/">解压/压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软AP/">软AP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -332,7 +294,7 @@ zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折�
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 18.00px;">Android</a><a href="/tags/DM/" style="font-size: 10.00px;">DM</a><a href="/tags/ML/" style="font-size: 10.00px;">ML</a><a href="/tags/MVC/" style="font-size: 10.00px;">MVC</a><a href="/tags/Sublime/" style="font-size: 12.00px;">Sublime</a><a href="/tags/awesome/" style="font-size: 12.00px;">awesome</a><a href="/tags/cookie/" style="font-size: 10.00px;">cookie</a><a href="/tags/django/" style="font-size: 14.00px;">django</a><a href="/tags/dnsmasq/" style="font-size: 10.00px;">dnsmasq</a><a href="/tags/hostapd/" style="font-size: 10.00px;">hostapd</a><a href="/tags/linux/" style="font-size: 20.00px;">linux</a><a href="/tags/mysql/" style="font-size: 12.00px;">mysql</a><a href="/tags/mysqldump/" style="font-size: 10.00px;">mysqldump</a><a href="/tags/numpy/" style="font-size: 10.00px;">numpy</a><a href="/tags/python/" style="font-size: 16.00px;">python</a><a href="/tags/session/" style="font-size: 10.00px;">session</a><a href="/tags/svn/" style="font-size: 10.00px;">svn</a><a href="/tags/vim/" style="font-size: 12.00px;">vim</a><a href="/tags/wifi/" style="font-size: 10.00px;">wifi</a><a href="/tags/快捷键/" style="font-size: 10.00px;">快捷键</a><a href="/tags/排序/" style="font-size: 10.00px;">排序</a><a href="/tags/数据结构/" style="font-size: 10.00px;">数据结构</a><a href="/tags/查找/" style="font-size: 10.00px;">查找</a><a href="/tags/爬虫/" style="font-size: 10.00px;">爬虫</a><a href="/tags/版本控制/" style="font-size: 10.00px;">版本控制</a><a href="/tags/窗口管理/" style="font-size: 10.00px;">窗口管理</a><a href="/tags/笔试/" style="font-size: 12.00px;">笔试</a><a href="/tags/网络访问/" style="font-size: 10.00px;">网络访问</a><a href="/tags/网络通信/" style="font-size: 10.00px;">网络通信</a><a href="/tags/解压/压缩/" style="font-size: 10.00px;">解压/压缩</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软AP/" style="font-size: 10.00px;">软AP</a><a href="/tags/面向对象/" style="font-size: 10.00px;">面向对象</a>
+      <a href="/tags/Android/" style="font-size: 18.00px;">Android</a><a href="/tags/DM/" style="font-size: 10.00px;">DM</a><a href="/tags/ML/" style="font-size: 10.00px;">ML</a><a href="/tags/MVC/" style="font-size: 10.00px;">MVC</a><a href="/tags/Sublime/" style="font-size: 12.00px;">Sublime</a><a href="/tags/awesome/" style="font-size: 12.00px;">awesome</a><a href="/tags/cookie/" style="font-size: 10.00px;">cookie</a><a href="/tags/django/" style="font-size: 14.00px;">django</a><a href="/tags/dnsmasq/" style="font-size: 10.00px;">dnsmasq</a><a href="/tags/hostapd/" style="font-size: 10.00px;">hostapd</a><a href="/tags/linux/" style="font-size: 20.00px;">linux</a><a href="/tags/mysql/" style="font-size: 12.00px;">mysql</a><a href="/tags/mysqldump/" style="font-size: 10.00px;">mysqldump</a><a href="/tags/numpy/" style="font-size: 10.00px;">numpy</a><a href="/tags/python/" style="font-size: 16.00px;">python</a><a href="/tags/session/" style="font-size: 10.00px;">session</a><a href="/tags/svn/" style="font-size: 10.00px;">svn</a><a href="/tags/vim/" style="font-size: 12.00px;">vim</a><a href="/tags/wifi/" style="font-size: 10.00px;">wifi</a><a href="/tags/快捷键/" style="font-size: 10.00px;">快捷键</a><a href="/tags/排序/" style="font-size: 10.00px;">排序</a><a href="/tags/数据结构/" style="font-size: 10.00px;">数据结构</a><a href="/tags/查找/" style="font-size: 10.00px;">查找</a><a href="/tags/爬虫/" style="font-size: 10.00px;">爬虫</a><a href="/tags/版本控制/" style="font-size: 10.00px;">版本控制</a><a href="/tags/神经网络/" style="font-size: 10.00px;">神经网络</a><a href="/tags/窗口管理/" style="font-size: 10.00px;">窗口管理</a><a href="/tags/笔试/" style="font-size: 12.00px;">笔试</a><a href="/tags/网络访问/" style="font-size: 10.00px;">网络访问</a><a href="/tags/网络通信/" style="font-size: 10.00px;">网络通信</a><a href="/tags/解压/压缩/" style="font-size: 10.00px;">解压/压缩</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软AP/" style="font-size: 10.00px;">软AP</a><a href="/tags/面向对象/" style="font-size: 10.00px;">面向对象</a>
     </div>
   </div>
 
@@ -341,7 +303,7 @@ zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折�
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">七月 2013</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06">六月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04">四月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">三月 2013</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">二月 2013</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">七月 2013</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06">六月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04">四月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">三月 2013</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">二月 2013</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -351,6 +313,10 @@ zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折�
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2014/04/11/neural-network/">Neural Network</a>
+          </li>
         
           <li>
             <a href="/2014/04/09/机器学习算法中为什么要增加一维x0=1/">机器学习算法中为什么要增加一维x0=1</a>
@@ -366,10 +332,6 @@ zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折�
         
           <li>
             <a href="/2013/07/25/android学习笔记-broadcast/">Android学习笔记-Broadcast</a>
-          </li>
-        
-          <li>
-            <a href="/2013/07/24/linux下android真机调试/">Linux下Android真机调试</a>
           </li>
         
       </ul>
