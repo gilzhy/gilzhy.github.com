@@ -89,40 +89,77 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前台大林軒田老师在coursera上的<a href="https://www.coursera.org/course/ntumlone" target="_blank">機器學習基石 (Machine Learning Foundations)</a>开课时我曾经上过第一周的课, 后来因为其他课程没有继续跟下去, 现在想来十分后悔惭愧. 但是仅仅只看了第一周的课程影片就学到一个很有用的知识点: 为什么机器学习算法中总为特征向量x增加一维x0=1呢? 而这个问题Andrew Ng并没有解释,而是直接说要这么做. 学校里的专必课潘老师也没有将清楚. </p>
-<p>之前上Andrew Ng的课时都只是看Video, 没有写Quizzes和Programming Exercises. 前几周看到Andrew Ng的<a href="https://class.coursera.org/ml-005" target="_blank">Machine Learning</a>又开课了, 准备这次要认真的把每一周的Quizzes和Programming Exercises完成. 因为有以前的基础, 不用看Video就可以直接写, 到现在为止都还坚持的很好, 也深深的感受到Quizzes和Programming Exercises带来的收获, 深深忏悔… </p>
-<p>这几天经常想到上面提到的这个问题, 所以决定写这篇博文记录下来以免忘记.<br><a id="more"></a></p>
-<hr>
-<h3 id="为什么要增加一维x0_=_1">为什么要增加一维x0 = 1</h3>
+        <p>之前台大林軒田老师在coursera上的<a href="https://www.coursera.org/course/ntumlone" target="_blank">機器學習基石 (Machine Learning Foundations)</a>开课时我曾经上过第一周的课, 后来因为其他课程没有继续跟下去, 现在想来十分后悔惭愧. 但是仅仅只看了第一周的课程影片就学到一个很有用的知识点: 为什么机器学习算法中总为特征向量x增加一维x0=1呢? 而这个问题Andrew Ng并没有解释,而是直接说要这么做. 学校里的专必课潘老师也没有将清楚.</p>
+<p>之前上Andrew Ng的课时都只是看Video, 没有写Quizzes和Programming Exercises. 前几周看到Andrew Ng的<a href="https://class.coursera.org/ml-005" target="_blank">Machine Learning</a>又开课了, 准备这次要认真的把每一周的Quizzes和Programming Exercises完成. 因为有以前的基础, 不用看Video就可以直接写, 到现在为止都还坚持的很好, 也深深的感受到Quizzes和Programming Exercises带来的收获, 深深忏悔…</p>
+<p>这几天经常想到上面提到的这个问题, 所以决定写这篇博文记录下来以免忘记. <a id="more"></a></p>
+<hr />
+<h3 id="为什么要增加一维x0-1">为什么要增加一维x0 = 1</h3>
 <p>以银行审核信用卡申请为例, 有大量的用户向银行申请信用卡, 每个用户会有一张申请表, 上面记录着用户信息, 银行需要更具用户信息给出一个审核结果.</p>
 <p>假设现在有一个的申请表为:</p>
-<table><br><thead><br><tr><br>  <th>年龄</th><br>  <th>性别</th><br>  <th>年收入</th><br>  <th>工龄</th><br>  <th>现有债务</th><br></tr><br></thead><br><tbody><tr><br>  <td>23岁</td><br>  <td>男</td><br>  <td>100,000元</td><br>  <td>3年</td><br>  <td>200,000</td><br></tr><br></tbody></table>
+<table>
+<thead>
+<tr>
+  <th>
+年龄
+</th>
+  <th>
+性别
+</th>
+  <th>
+年收入
+</th>
+  <th>
+工龄
+</th>
+  <th>
+现有债务
+</th>
+</tr>
+</thead>
+<tbody><tr>
+  <td>
+23岁
+</td>
+  <td>
+男
+</td>
+  <td>
+100,000元
+</td>
+  <td>
+3年
+</td>
+  <td>
+200,000
+</td>
+</tr>
+</tbody></table>
 
-<p>即有一个样本其特征为: $\mathbf{x}=[23, m, 100000, 3, 200000]$</p>
+<p>即有一个样本其特征为: \(\mathbf{x}=[23, m, 100000, 3, 200000]\)</p>
 <p>银行要做的应该是为申请表中的每一项数据做一个 <strong>加权和</strong> 来得到这个用户的分数, 如果这个用户得到的分数符合银行发布信用卡的标准, 那么就审核通过, 否则审核不通过:</p>
 <ul>
-<li>$\sum\limits_{i=1}^dw_ix_i &gt; threshold$  则 y = 1</li>
-<li>$\sum\limits_{i=1}^dw_ix_i &lt; threshold$  则 y = 0</li>
+<li>\(\sum\limits_{i=1}^dw_ix_i &gt; threshold\) 则 y = 1</li>
+<li>\(\sum\limits_{i=1}^dw_ix_i &lt; threshold\) 则 y = 0</li>
 </ul>
 <p>算法训练得到申请表中每一项的权重, 预测函数为:</p>
-<p>$h(\mathbf{x})=sign(\sum\limits_{i=1}^dw_ix_i - threshold)$</p>
+<p>\(h(\mathbf{x})=sign(\sum\limits_{i=1}^dw_ix_i - threshold)\)</p>
 <p>为了让预测函数形式上更好看, 计算上更方便快捷, 所以才为每一个样本的特征增加一维x0=1:</p>
-<p>$h(\mathbf{x})=sign(\sum\limits_{i=1}^dw_ix_i + (-threshold)\times (+1))$</p>
+<p>\(h(\mathbf{x})=sign(\sum\limits_{i=1}^dw_ix_i + (-threshold)\times (+1))\)</p>
 <p>因为threshold和权重w中的每一维一样, 都也是未知的, 需要算法来学习的, 所以可以将 -threshold 视为w0. 相应的就给x增加一维, 就把1视为x0:</p>
-<p>$h(\mathbf{x})=sign(\sum\limits_{i=1}^dw_ix_i + w_0x_0)$</p>
-<p>$h(\mathbf{x})=sign(\sum\limits_{i=0}^dw_ix_i)$</p>
-<p>$h(\mathbf{x})=sign(\mathbf{w}^T\mathbf{x})$</p>
+<p>\(h(\mathbf{x})=sign(\sum\limits_{i=1}^dw_ix_i + w_0x_0)\)</p>
+<p>\(h(\mathbf{x})=sign(\sum\limits_{i=0}^dw_ix_i)\)</p>
+<p>\(h(\mathbf{x})=sign(\mathbf{w}^T\mathbf{x})\)</p>
 <p>除了形式上更加好看外, 还可以用向量计算代替逐个元素循环.</p>
-<h3 id="为什么正则化时_$\theta_0$_不用正则?">为什么正则化时 $\theta_0$ 不用正则?</h3>
-<p>关于这点Andrew Ng也没有解释, 只是在Video和Programming Exercises中反复提醒 $\theta_0$ 不用正则. 因为不知道为什么几次$\theta_0$ 不用正则, 我几次写Programming Exercises时都忽略了这点, 提交错误后检查了才发现. <strong>所以这也是为什么会有这篇博文啦</strong> .</p>
-<p>Logistic regression的损失函数( $\theta_0$ 没有正则):</p>
-<p><a href="http://www.codecogs.com/eqnedit.php?latex=J(&space;\theta&space;)=-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}y^{(i)}\log&space;h_{&space;\theta&space;}(x^{(i)})&plus;(1&space;-&space;y^{(i)})&space;\log&space;(1-h_{&space;\theta&space;}(x^{(i)}))]&plus;\frac&space;{\lambda}{2m}\sum\limits_{j=1}^{n}&space;\theta_{j}^{2}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?J(&space;\theta&space;)=-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}y^{(i)}\log&space;h_{&space;\theta&space;}(x^{(i)})&plus;(1&space;-&space;y^{(i)})&space;\log&space;(1-h_{&space;\theta&space;}(x^{(i)}))]&plus;\frac&space;{\lambda}{2m}\sum\limits_{j=1}^{n}&space;\theta_{j}^{2}" title="J( \theta )=- \frac {1}{m} [\sum\limits_{i=1}^{m}y^{(i)}\log h_{ \theta }(x^{(i)})+(1 - y^{(i)}) \log (1-h_{ \theta }(x^{(i)}))]+\frac {\lambda}{2m}\sum\limits_{j=1}^{n} \theta_{j}^{2}" /></a></p>
-<p>对参数 $\theta_i$ 加正则是为了减弱 $\mathbf{x}_i$ 的效果, 而 $\theta_0$ 对应的是上文提到的threshold. 上文也说了, 银行要做的是学习到申请表中每一项的权重, 以此得到每一项的加权和, 拿来和 threshold比较看是否审核通过. threshold只是为了方便被视为 $- \mathbf{w}_0$ , 但它并真的不是权重.</p>
+<h3 id="为什么正则化时-theta_0-不用正则">为什么正则化时 \(\theta_0\) 不用正则?</h3>
+<p>关于这点Andrew Ng也没有解释, 只是在Video和Programming Exercises中反复提醒 \(\theta_0\) 不用正则. 因为不知道为什么几次\(\theta_0\) 不用正则, 我几次写Programming Exercises时都忽略了这点, 提交错误后检查了才发现. <strong>所以这也是为什么会有这篇博文啦</strong> .</p>
+<p>Logistic regression的损失函数( \(\theta_0\) 没有正则):</p>
+<a href="http://www.codecogs.com/eqnedit.php?latex=J(&space;\theta&space;)=-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}y^{(i)}\log&space;h_{&space;\theta&space;}(x^{(i)})&plus;(1&space;-&space;y^{(i)})&space;\log&space;(1-h_{&space;\theta&space;}(x^{(i)}))]&plus;\frac&space;{\lambda}{2m}\sum\limits_{j=1}^{n}&space;\theta_{j}^{2}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?J(&space;\theta&space;)=-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}y^{(i)}\log&space;h_{&space;\theta&space;}(x^{(i)})&plus;(1&space;-&space;y^{(i)})&space;\log&space;(1-h_{&space;\theta&space;}(x^{(i)}))]&plus;\frac&space;{\lambda}{2m}\sum\limits_{j=1}^{n}&space;\theta_{j}^{2}" title="J( \theta )=- \frac {1}{m} [\sum\limits_{i=1}^{m}y^{(i)}\log h_{ \theta }(x^{(i)})+(1 - y^{(i)}) \log (1-h_{ \theta }(x^{(i)}))]+\frac {\lambda}{2m}\sum\limits_{j=1}^{n} \theta_{j}^{2}" /></a>
+<p>对参数 \(\theta_i\) 加正则是为了减弱 \(\mathbf{x}_i\) 的效果, 而 \(\theta_0\) 对应的是上文提到的threshold. 上文也说了, 银行要做的是学习到申请表中每一项的权重, 以此得到每一项的加权和, 拿来和 threshold比较看是否审核通过. threshold只是为了方便被视为 \(- \mathbf{w}_0\) , 但它并真的不是权重.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="9lex87i5b6wqk6sb" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="20nv65yb9ij5e0lc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DM/">DM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>

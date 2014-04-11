@@ -96,21 +96,20 @@ V=models.URLField([verify_exists=True, max_length=200, **op">
     <div class="article-entry" itemprop="articleBody">
       
         <p>转自<a href="http://www.zijin5.com/2011/03/django%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93/" target="_blank">Django数据库模型的字段类型总结</a></p>
-<ol>
-<li><p>字符</p>
+<ol style="list-style-type: decimal">
+<li>字符
 <ul>
 <li><code>V=models.CharField(max_length=None[, **options]</code>) #varchar</li>
 <li><code>V=models.EmailField([max_length=75, **options])</code> #varchar</li>
 <li><code>V=models.URLField([verify_exists=True, max_length=200, **options])</code> #varchar</li>
-<li><code>V=models.FileField(upload_to=None[, max_length=100, **options])</code> #varchar<br>  (upload_to指定保存目录可带格式)</li>
+<li><code>V=models.FileField(upload_to=None[, max_length=100, **options])</code> #varchar<br /> (upload_to指定保存目录可带格式)</li>
 <li><code>V=models.ImageField(upload_to=None[, height_field=None, width_field=None, max_length=100, **options])</code></li>
 <li><code>V=models.IPAddressField([**options])</code> #varchar</li>
 <li><code>V=models.FilePathField(path=None[, match=None, recursive=False, max_length=100, **options])</code> #varchar</li>
 <li><code>V=models.SlugField([max_length=50, **options])</code> #varchar，标签，内含索引</li>
 <li><code>V=models.CommaSeparatedIntegerField(max_length=None[, **options])</code> #varchar</li>
-</ul>
-</li>
-<li><p>数字</p>
+</ul></li>
+<li>数字
 <ul>
 <li><code>V=models.IntegerField([**options])</code> #int</li>
 <li><code>V=models.PositiveIntegerField([**options])</code> #int 正整数</li>
@@ -121,34 +120,30 @@ V=models.URLField([verify_exists=True, max_length=200, **op">
 <li><code>V=models.FloatField([**options])</code> #real</li>
 <li><code>V=models.BooleanField(**options)</code> #boolean或bit</li>
 <li><code>V=models.NullBooleanField([**options])</code> #bit字段上可以设置上null值</li>
-</ul>
-</li>
-<li><p>时间</p>
+</ul></li>
+<li>时间
 <ul>
-<li><code>V=models.DateField([auto_now=False, auto_now_add=False, **options])</code> #date<br>  (auto_now最后修改记录的日期；auto_now_add添加记录的日期)</li>
+<li><code>V=models.DateField([auto_now=False, auto_now_add=False, **options])</code> #date<br /> (auto_now最后修改记录的日期；auto_now_add添加记录的日期)</li>
 <li><code>V=models.DateTimeField([auto_now=False, auto_now_add=False, **options])</code> #datetime</li>
 <li><code>V=models.TimeField([auto_now=False, auto_now_add=False, **options])</code> #time</li>
-</ul>
-</li>
-<li><p>文章</p>
+</ul></li>
+<li>文章
 <ul>
 <li><code>V=models.TextField([**options])</code> #text</li>
 <li><code>V=models.XMLField(schema_path=None[, **options])</code> #text</li>
-</ul>
-</li>
-<li><p>数据库对应</p>
+</ul></li>
+<li>数据库对应
 <ul>
 <li><code>V=models.ForeignKey(othermodel[, **options])</code> #外键，关联其它模型，创建关联索引</li>
 <li><code>V=models.ManyToManyField(othermodel[, **options])</code> #多对多，关联其它模型，创建关联表</li>
 <li><code>V=models.OneToOneField(othermodel[, parent_link=False, **options])</code> #一对一，字段关联表属性</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/29/django数据库模型的字段类型总结/" data-id="yqf7n4fu6wso2ffv" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/29/django数据库模型的字段类型总结/" data-id="s921xaf9uq7audff" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>

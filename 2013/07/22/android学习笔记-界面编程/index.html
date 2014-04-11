@@ -23,9 +23,9 @@ view负责:
 定制组件
 数据与界面绑定
 
-
+ 
 View类是最基本的一个UI类,基本上所有的高级UI组件都是继承于View类而实现
-一个视图在屏幕占据一块矩形区域,负责渲染这块矩形区域,也可以处理此区域发生的事">
+一个视图在屏幕占据一块矩形区域,负责渲染这块矩形区域,也可以处理此区域发生的">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -105,7 +105,7 @@ View类是最基本的一个UI类,基本上所有的高级UI组件都是继承�
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>说明</strong>: 内容取自中山大学软件学院刘宁老师的SE-806课程的课件</p>
-<h4 id="view,视图组件">view,视图组件</h4>
+<h4 id="view视图组件">view,视图组件</h4>
 <p>view负责:</p>
 <ul>
 <li>说明布局Layout</li>
@@ -117,9 +117,9 @@ View类是最基本的一个UI类,基本上所有的高级UI组件都是继承�
 <li>定制组件</li>
 <li>数据与界面绑定</li>
 </ul>
-<p><img src="/img/android-view.jpg" alt="android-view"><br><a id="more"></a></p>
+<p><img src="/img/android-view.jpg" alt="android-view" /> <a id="more"></a></p>
 <p>View类是<strong>最基本的</strong>一个UI类,基本上所有的高级UI组件都是继承于View类而实现</p>
-<p>一个视图在屏幕占据一块矩形区域,负责渲染这块矩形区域,也可以处理此区域发生的事件,设置是否可见,是否可以获取焦点。<br>类型:  </p>
+<p>一个视图在屏幕占据一块矩形区域,负责渲染这块矩形区域,也可以处理此区域发生的事件,设置是否可见,是否可以获取焦点。 类型:</p>
 <ul>
 <li>TextView,文本框</li>
 <li>Button, 按钮</li>
@@ -128,51 +128,43 @@ View类是最基本的一个UI类,基本上所有的高级UI组件都是继承�
 <li>RadioButton, 单选框</li>
 <li>CheckBox, 检查框</li>
 </ul>
-<h4 id="UI布局">UI布局</h4>
+<h4 id="ui布局">UI布局</h4>
 <p>ViewGroup通过各种<strong>Layout</strong>控制所属的view的显示位置</p>
-<p><img src="/img/android-ui.jpg" alt="android-ui"></p>
+<div class="figure">
+<img src="/img/android-ui.jpg" alt="android-ui" /><p class="caption">android-ui</p>
+</div>
 <p>Layout(布局组件)类型:</p>
 <ul>
-<li>LinearLayout 线性布局<ul>
-<li>垂直: android:orientation=”vertical”</li>
-<li>水平: android:orientation=”horizontal”</li>
-</ul>
-</li>
-<li>FrameLayout<ul>
+<li>LinearLayout 线性布局</li>
+<li>垂直: android:orientation=“vertical”</li>
+<li>水平: android:orientation=“horizontal”</li>
+<li>FrameLayout</li>
 <li>屏幕上故意保留的空白空间</li>
 <li>所有子元素都钉到屏幕的左上角,不能为子元素指定位置</li>
-</ul>
-</li>
-<li>TableLayout<ul>
+<li>TableLayout</li>
 <li>子元素放到行与列中</li>
 <li>不显示边界线</li>
 <li>单元格不能跨行</li>
-</ul>
-</li>
-<li>AbsoluteLayout 决定定位<ul>
+<li>AbsoluteLayout 决定定位</li>
 <li>指明子元素确切的屏幕坐标(x,y), (0,0)代表左上</li>
 <li>允许元素重叠,但不推荐</li>
 <li>一般不使用Absolute,除非必要,因为它相当严格且不同设备兼容不好</li>
-</ul>
-</li>
-<li>RelativeLayout 相对定位<ul>
+<li>RelativeLayout 相对定位</li>
 <li>子元素相对其他元素(通过ID指定)或相对父元素的位置</li>
-<li>有丰富的排列属性<ul>
+<li>有丰富的排列属性
+<ul>
 <li>Layout above</li>
 <li>Layout below</li>
 <li>Layout to left of</li>
 <li>…</li>
-</ul>
-</li>
+</ul></li>
 <li>尽量少用,排列属性间容易冲突</li>
-</ul>
-</li>
 <li>GridView</li>
 <li>ListLayout</li>
 <li>RadioGroup</li>
 <li>…</li>
 </ul>
-<h4 id="Color">Color</h4>
+<h4 id="color">Color</h4>
 <p>android.graphics.Color 包含颜色值:</p>
 <ul>
 <li>Color.BLACK</li>
@@ -190,57 +182,45 @@ View类是最基本的一个UI类,基本上所有的高级UI组件都是继承�
 </ul>
 <h4 id="font">font</h4>
 <ul>
-<li>android.graphics.Typeface:<ul>
-<li>Typeface.create(Typeface family, int style)<ul>
+<li>android.graphics.Typeface:</li>
+<li>Typeface.create(Typeface family, int style)
+<ul>
 <li>创建一个混合型新的字体:有20种搭配(4种字体5种风格)</li>
-</ul>
-</li>
-<li>Typeface.setTypeface (Typeface tf, int style)<ul>
+</ul></li>
+<li>Typeface.setTypeface (Typeface tf, int style)
+<ul>
 <li>设置一个混合型字体:有20种搭配(4种字体5种风格)</li>
-</ul>
-</li>
-<li>Typeface.setTypeface(Typeface tf)<ul>
+</ul></li>
+<li>Typeface.setTypeface(Typeface tf)
+<ul>
 <li>设置一个只有Typeface 风格的字体:有五种形式</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>字体<ul>
+</ul></li>
+<li>字体</li>
 <li>BOLD、BOLD_ITALIC、ITALIC、NORMAL</li>
-</ul>
-</li>
-<li>风格<ul>
+<li>风格</li>
 <li>DEFAULT、DEFAULT_BOLD、MONOSPACE(单间隔字体)、SANS_SERIF(无衬线字体)、SERIF(衬线字体)</li>
 </ul>
-</li>
-</ul>
-<h4 id="Menu_菜单">Menu 菜单</h4>
+<h4 id="menu-菜单">Menu 菜单</h4>
 <ul>
-<li><strong>Options Menu</strong> 主菜单: 通过按下home键来显示,包含两组菜单项:  <ul>
-<li><strong>Icon Menu</strong> 图标菜单<br>用户按下菜单键时最初出现在屏幕下方的item集合,支持<strong>最多6个</strong>item</li>
-<li><strong>Expanded Menu</strong> 扩展菜单<br>多于6个的item通过’更多’菜单显示,由6个以及其他选项菜单组成</li>
-<li>实现<ul>
+<li><strong>Options Menu</strong> 主菜单: 通过按下home键来显示,包含两组菜单项:<br /></li>
+<li><strong>Icon Menu</strong> 图标菜单<br /> 用户按下菜单键时最初出现在屏幕下方的item集合,支持<strong>最多6个</strong>item</li>
+<li><strong>Expanded Menu</strong> 扩展菜单 多于6个的item通过’更多’菜单显示,由6个以及其他选项菜单组成</li>
+<li>实现
+<ul>
 <li>options menu通过activity的<code>onCreateOptionsMenu</code>来生成</li>
 <li><code>onCreateOptionsMenu</code>只会在menu第一次生成时调用,任何想改变options menu的想法只能在<code>onPrepareOptionsMenu</code>来实现,这个函数会在menu显示前调用</li>
 <li><code>onOptionsItemSelected</code>用来处理选中的菜单项</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Context Menu</strong> 上下文菜单(右键菜单): 浮动菜单列表,通常<strong>长时间</strong>按在一个视图上时出现</p>
+</ul></li>
+<li><strong>Context Menu</strong> 上下文菜单(右键菜单): 浮动菜单列表,通常<strong>长时间</strong>按在一个视图上时出现</li>
+<li>实现
 <ul>
-<li>实现<ul>
 <li>context menu是跟某个具体的view绑定在一起,在activity中用<code>registerForContextMenu</code>来为某个view注册context menu。context menu在显示前都会调用<code>onCreateContextMenu</code>来生成menu。<code>onContextItemSelected</code>用来处理选中的菜单项</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>Sub Menu</strong> 子菜单: 浮动菜单列表,通过在Options Menu | Context Menu选择菜单项显露出来,不支持嵌套子菜单.</p>
-</li>
+</ul></li>
+<li><strong>Sub Menu</strong> 子菜单: 浮动菜单列表,通过在Options Menu | Context Menu选择菜单项显露出来,不支持嵌套子菜单.</li>
 </ul>
 <p>android还提供了对菜单项进行分组的功能,可以把相似功能的菜单项分成同一个组,这样可以通过调用setGroupCheckable,setGroupEnabled,setGroupVisible来设置菜单属性,而无须单独设置。</p>
-<h4 id="Button_事件响应">Button 事件响应</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<h4 id="button-事件响应">Button 事件响应</h4>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -250,9 +230,8 @@ View类是最基本的一个UI类,基本上所有的高级UI组件都是继承�
     android:layout_height=<span class="string">"wrap_content"</span>
     android:<span class="type">text</span>=<span class="string">"@string/btn_name"</span>
 &gt;
-</pre></td></tr></table></figure>
-
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -266,45 +245,34 @@ press<span class="preprocessor">.setOnClickListener</span>(new OnClickListener()
         show<span class="preprocessor">.setText</span>(<span class="string">"Hi, Google Android"</span>)<span class="comment">;</span>
    }
 })<span class="comment">;</span>
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <h4 id="进程优先级顺序">进程优先级顺序</h4>
 <ul>
-<li>前台进程(Active Process):<ul>
+<li>前台进程(Active Process):</li>
 <li>前台Activity、包含正在运行的广播接收器、正在运行的服务</li>
-</ul>
-</li>
-<li>可视进程(Visible Process):<ul>
+<li>可视进程(Visible Process):</li>
 <li>包含一个可视化的Activity</li>
-</ul>
-</li>
-<li>服务进程(Started Service Process):<ul>
+<li>服务进程(Started Service Process):</li>
 <li>包含一个被开启的服务(处理服务,不是直接可视,例如媒体播放器,网络上传、下载)</li>
-</ul>
-</li>
-<li>后台进程(Background Process)<ul>
+<li>后台进程(Background Process)</li>
 <li>包含一个不可视的Activity(可以在任意时刻杀死该进程来回收内存)</li>
-</ul>
-</li>
-<li>空进程(Empty Process):<ul>
+<li>空进程(Empty Process):</li>
 <li>没有持有任何应用程序组件</li>
 </ul>
-</li>
-</ul>
-<p><img src="/img/android-priority.jpg" alt="android-priority"></p>
-<h4 id="DroidDraw">DroidDraw</h4>
+<div class="figure">
+<img src="/img/android-priority.jpg" alt="android-priority" /><p class="caption">android-priority</p>
+</div>
+<h4 id="droiddraw">DroidDraw</h4>
 <p>下载:<a href="https://code.google.com/p/droiddraw/downloads/list" target="_blank">DroidDraw</a></p>
-<h4 id="UI详细响应">UI详细响应</h4>
+<h4 id="ui详细响应">UI详细响应</h4>
 <ul>
-<li>定义事件监听器<ul>
+<li>定义事件监听器</li>
 <li>View.OnClickListener</li>
 <li>View.OnTouchListener</li>
 <li>View.OnKeyListener</li>
-</ul>
-</li>
 <li>在框架中注册事件监听器</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -338,9 +306,8 @@ press<span class="preprocessor">.setOnClickListener</span>(new OnClickListener()
         button1.setOnClickListener(listener1);  ----------&gt; 监听
     }
 }
-</pre></td></tr></table></figure>
-
-<h4 id="Activity">Activity</h4>
+</pre></td></tr></table></figure></p>
+<h4 id="activity">Activity</h4>
 <h5 id="主要特征">主要特征</h5>
 <ul>
 <li>包括UI,以及与user的互动</li>
@@ -361,7 +328,7 @@ press<span class="preprocessor">.setOnClickListener</span>(new OnClickListener()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-界面编程/" data-id="y1pvy93p5teievno" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-界面编程/" data-id="s934tyasdilbuadc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>

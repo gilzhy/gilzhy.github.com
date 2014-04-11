@@ -13,10 +13,10 @@
 <meta name="og:description" content="说明: 转自A_Big_Monkey-android布局属性大全
 Layout
 
-FrameLayout 里面只可以有一个控件，并且不能设计这个控件的位置，控件会放到左上角  
-LinearLayout 里面可以放多个控件，但是一行只能放一个控件  
-TableLayout 这个要和TableRow配合使用，很像html里面的table  
-AbsoluteLayout 里面可以放多个控件，并且可">
+FrameLayout 里面只可以有一个控件，并且不能设计这个控件的位置，控件会放到左上角
+LinearLayout 里面可以放多个控件，但是一行只能放一个控件
+TableLayout 这个要和TableRow配合使用，很像html里面的table
+AbsoluteLayout 里面可以放多个控件，并且可以自己定义控">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -96,41 +96,33 @@ AbsoluteLayout 里面可以放多个控件，并且可">
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>说明</strong>: 转自<a href="http://panshengneng.iteye.com/blog/1187928" target="_blank">A_Big_Monkey-android布局属性大全</a></p>
-<h4 id="Layout">Layout</h4>
+<h4 id="layout">Layout</h4>
 <ul>
-<li><code>FrameLayout</code> 里面只可以有一个控件，并且不能设计这个控件的位置，控件会放到左上角  </li>
-<li><code>LinearLayout</code> 里面可以放多个控件，但是一行只能放一个控件  </li>
-<li><code>TableLayout</code> 这个要和TableRow配合使用，很像html里面的table  </li>
-<li><code>AbsoluteLayout</code> 里面可以放多个控件，并且可以自己定义控件的x,y的位置  </li>
-<li><code>RelativeLayout</code> 里面可以放多个控件，不过控件的位置都是相对位置  </li>
-<li>(界面的布局好像还可以直接引用一些view，如ScrollView等)<a id="more"></a>
-
-</li>
+<li><code>FrameLayout</code> 里面只可以有一个控件，并且不能设计这个控件的位置，控件会放到左上角<br /></li>
+<li><code>LinearLayout</code> 里面可以放多个控件，但是一行只能放一个控件<br /></li>
+<li><code>TableLayout</code> 这个要和TableRow配合使用，很像html里面的table<br /></li>
+<li><code>AbsoluteLayout</code> 里面可以放多个控件，并且可以自己定义控件的x,y的位置<br /></li>
+<li><code>RelativeLayout</code> 里面可以放多个控件，不过控件的位置都是相对位置<br /></li>
+<li>(界面的布局好像还可以直接引用一些view，如ScrollView等) <a id="more"></a></li>
 </ul>
-<hr>
+<hr />
 <h4 id="布局相关">布局相关</h4>
 <ul>
-<li><code>android:orientation</code> 它确定了LinearLayout的方向，值为:<ul>
+<li><code>android:orientation</code> 它确定了LinearLayout的方向，值为:</li>
 <li><strong>vertical</strong>(垂直布局)</li>
 <li><strong>horizontal</strong>(水平布局)</li>
-</ul>
-</li>
-<li><code>android:layout_width</code> 在父控件中当前控件的宽，值为:<ul>
+<li><code>android:layout_width</code> 在父控件中当前控件的宽，值为:</li>
 <li><strong>确定的值</strong></li>
 <li><strong>fill_parent</strong>(填满父控件的空白)</li>
 <li><strong>wrap_content</strong>(大小刚好足够显示当前控件里的内容)</li>
-</ul>
-</li>
-<li><code>android:layout_height</code> 在父控件中当前控件的高，值为:<ul>
+<li><code>android:layout_height</code> 在父控件中当前控件的高，值为:</li>
 <li><strong>确定的值</strong></li>
 <li><strong>fill_parent</strong></li>
 <li><strong>wrap_content</strong></li>
-</ul>
-</li>
 <li><code>android:width</code> 控件宽度</li>
 <li><code>android:height</code> 控件高度</li>
 </ul>
-<hr>
+<hr />
 <ul>
 <li><code>android:padding</code> 控件内边距,同css</li>
 <li><code>android:layout_marginRight</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
@@ -138,39 +130,35 @@ AbsoluteLayout 里面可以放多个控件，并且可">
 <li><code>android:layout_marginTop</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
 <li><code>android:layout_marginBottom</code> 属性margin,同css。如:<code>android:layout_marginRight=&quot;3dip&quot;</code></li>
 </ul>
-<hr>
+<hr />
 <ul>
 <li><code>android:sigleLine</code> 如果设置为真的话，则将控件的内容在同一行当中进行显示</li>
 </ul>
-<hr>
+<hr />
 <ul>
-<li><code>android:grivity</code> 控件的基本位置，比如说居中，居右等位置。其值需要多个时用’|’分开<ul>
+<li><code>android:grivity</code> 控件的基本位置，比如说居中，居右等位置。其值需要多个时用’|’分开</li>
 <li>如果是没有子控件的view设置此属性，表示内容的对齐方式</li>
 <li>如果是有子控件的view设置此属性，则表示子控件的对齐方式（重力倾向），</li>
-</ul>
-</li>
 <li><code>android:layout_gravity</code> 设置该控件位于父控件的位置。如:<code>android:layout_gravity=&quot;center_vertical&quot;</code></li>
 </ul>
-<hr>
+<hr />
 <h4 id="内容相关">内容相关</h4>
 <ul>
 <li><code>android:id</code> 控件的ID</li>
 <li><code>android:text</code> 控件中显示的文字，需要注意的是，这里尽量使用strings.xml文件当中的字符串</li>
 <li><code>android:textSize</code> 控件中字体的大小</li>
-<li><code>android:background</code> 控件使用的背景色,RGB命名法<ul>
+<li><code>android:background</code> 控件使用的背景色,RGB命名法</li>
 <li>如果设置一个透明的背景图片按钮<code>android:background=&quot;@android:color/transparent&quot;</code></li>
-</ul>
-</li>
 <li><code>android:src</code> 引用资源，如：应用另一个XML，<code>android:src=&quot;@drawable/imageselector&quot;</code></li>
 </ul>
-<hr>
+<hr />
 <h4 id="属性值为true或false">属性值为true或false</h4>
 <ul>
 <li><code>android:layout_centerHorizontal</code> 如果值为真，该控件将被至于水平方向的中央(水平居中)</li>
 <li><code>android:layout_centerVertical</code> 如果值为真，该控件将被至于垂直方向的中央(垂直居中)</li>
 <li><code>android:layout_centerInParent</code> 如果值为真，该控件将被至于父控件水平方向和垂直方向的中央(相对于父元素完全居中 )</li>
 </ul>
-<hr>
+<hr />
 <ul>
 <li><code>android:layout_alignParentBottom</code> 如果该值为true，则将该控件的底部和父控件的底部对齐(贴紧父元素的下边缘)</li>
 <li><code>android:layout_alignParentLeft</code> 如果该值为true，则将该控件的左边与父控件的左边对齐(贴紧父元素的左边缘)</li>
@@ -178,14 +166,14 @@ AbsoluteLayout 里面可以放多个控件，并且可">
 <li><code>android:layout_alignParentTop</code> 如果该值为true，则将空间的顶部与父控件的顶部对齐(贴紧父元素的上边缘)</li>
 <li><code>android:layout_alignWithParentIfMissing</code> 如果对应的兄弟元素找不到的话就以父元素做参照物</li>
 </ul>
-<h4 id="属性值必须为id的引用名“@id/id-name”">属性值必须为id的引用名“@id/id-name”</h4>
+<h4 id="属性值必须为id的引用名idid-name">属性值必须为id的引用名“@id/id-name”</h4>
 <ul>
 <li><code>android:layout_above</code> 将该控件的底部至于给定ID的控件之上(在某元素的的上方)</li>
 <li><code>android:layout_below</code> 将该控件的顶部至于给定ID的控件之下(在某元素的下方 )</li>
 <li><code>android:layout_toLeftOf</code> 将该控件的右边缘和给定ID的控件的左边缘对齐(在某元素的左边 )</li>
 <li><code>android:layout_toRightOf</code> 将该控件的左边缘和给定ID的控件的右边缘对齐(在某元素的左边 )</li>
 </ul>
-<hr>
+<hr />
 <ul>
 <li><code>android:layout_alignTop</code> 将给定控件的顶部边缘与给定ID控件的顶部对齐(本元素的上边缘和某元素的的上边缘对齐)</li>
 <li><code>android:layout_alignBottom</code> 将该控件的底部边缘与给定ID控件的底部边缘(本元素的下边缘和某元素的的下边缘对齐 )<code>android:layout_alignBottom=&quot;@id/TVfilepath&quot;</code></li>
@@ -193,30 +181,28 @@ AbsoluteLayout 里面可以放多个控件，并且可">
 <li><code>android:layout_alignRight</code> 将该控件的右边缘与给定ID控件的右边缘对齐(本元素的右边缘和某元素的的右边缘对齐)</li>
 <li><code>android:layout_alignBaseline</code> 该控件的baseline和给定ID的控件的baseline对齐</li>
 </ul>
-<hr>
+<hr />
 <ul>
-<li>EditText的<code>android:hint</code> 设置EditText为空时输入框内的提示信息。 </li>
+<li>EditText的<code>android:hint</code> 设置EditText为空时输入框内的提示信息。</li>
 </ul>
-<hr>
+<hr />
 <ul>
-<li><code>android:scaleType</code> 控制图片如何匹对ImageView的size,<code>ImageView.ScaleType</code> / <code>android:scaleType</code>值： <ul>
-<li><code>CENTER</code> / <code>center</code> 按图片的原来size居中显示，当图片长/宽超过View的长/宽，则截取图片的居中部分显示 </li>
-<li><code>CENTER_CROP</code> / <code>centerCrop</code> 按比例扩大图片的size居中显示，使得图片长(宽)等于或大于View的长(宽) </li>
-<li><code>CENTER_INSIDE</code> / <code>centerInside</code> 将图片的内容完整居中显示，通过按比例缩小或原来的size使得图片长/宽等于或小于View的长/宽 </li>
-<li><code>FIT_CENTER</code> / <code>fitCenter</code> 把图片按比例扩大/缩小到View的宽度，居中显示 </li>
-<li><code>FIT_END</code> / <code>fitEnd</code> 把图片按比例扩大/缩小到View的宽度，显示在View的下部分位置 </li>
-<li><code>FIT_START</code> / <code>fitStart</code> 把图片按比例扩大/缩小到View的宽度，显示在View的上部分位置 </li>
-<li><code>FIT_XY</code> / <code>fitXY</code> 把图不按比例扩大/缩小到View的大小显示 </li>
-<li><code>MATRIX</code> / <code>matrix</code> 用矩阵来绘制，动态缩小放大图片来显示。 </li>
-</ul>
-</li>
+<li><code>android:scaleType</code> 控制图片如何匹对ImageView的size,<code>ImageView.ScaleType</code> / <code>android:scaleType</code>值：</li>
+<li><code>CENTER</code> / <code>center</code> 按图片的原来size居中显示，当图片长/宽超过View的长/宽，则截取图片的居中部分显示</li>
+<li><code>CENTER_CROP</code> / <code>centerCrop</code> 按比例扩大图片的size居中显示，使得图片长(宽)等于或大于View的长(宽)</li>
+<li><code>CENTER_INSIDE</code> / <code>centerInside</code> 将图片的内容完整居中显示，通过按比例缩小或原来的size使得图片长/宽等于或小于View的长/宽</li>
+<li><code>FIT_CENTER</code> / <code>fitCenter</code> 把图片按比例扩大/缩小到View的宽度，居中显示</li>
+<li><code>FIT_END</code> / <code>fitEnd</code> 把图片按比例扩大/缩小到View的宽度，显示在View的下部分位置</li>
+<li><code>FIT_START</code> / <code>fitStart</code> 把图片按比例扩大/缩小到View的宽度，显示在View的上部分位置</li>
+<li><code>FIT_XY</code> / <code>fitXY</code> 把图不按比例扩大/缩小到View的大小显示</li>
+<li><code>MATRIX</code> / <code>matrix</code> 用矩阵来绘制，动态缩小放大图片来显示。</li>
 </ul>
 <p>要注意一点，<strong>Drawable文件夹里面的图片命名是不能大写的</strong></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-布局属性/" data-id="13oefwq8p9wt8ewo" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-布局属性/" data-id="dgz4w8p79xemooqv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>

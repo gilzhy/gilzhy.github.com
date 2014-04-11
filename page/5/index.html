@@ -91,90 +91,72 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
+        <ol style="list-style-type: decimal">
 <li><p>将服务器上的文件checkout到本地目录</p>
-<p> <code>svn checkout path</code> 简写 <code>svn co path</code></p>
-</li>
+<p><code>svn checkout path</code> 简写 <code>svn co path</code></p></li>
 <li><p>添加文件到版本库</p>
-<p> <code>svn add file</code></p>
-</li>
+<p><code>svn add file</code></p></li>
 <li><p>提交改动到版本库</p>
-<p> <code>svn commit -m &quot;commit&quot;</code> 简写 <code>svn ci -m &quot;commit&quot;</code></p>
-</li>
+<p><code>svn commit -m &quot;commit&quot;</code> 简写 <code>svn ci -m &quot;commit&quot;</code></p></li>
 <li><p>加锁/解锁</p>
-<p> <code>svn lock -m &quot;commit&quot;</code><br> ‘svn unlock path’</p>
-</li>
+<p><code>svn lock -m &quot;commit&quot;</code> ‘svn unlock path’</p></li>
 <li><p>更新代码到某版本</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li><code>svn update</code> 将当前目录以及子目录下的所有文件更新到最新版本</li>
 <li><code>svn update -r 200 test.php</code> 将test.php更新到版本200</li>
 <li><code>svn update test.php</code>更新test.php到最新版本</li>
-</ol>
-</li>
+</ol></li>
 <li><p>查看文件/目录状态</p>
-<ol>
-<li><code>svn status path</code> 目录下的文件和子目录的状态,正常状态不显示  <ul>
+<ol style="list-style-type: decimal">
+<li><code>svn status path</code> 目录下的文件和子目录的状态,正常状态不显示
+<ul>
 <li>?: 不在svn的控制中</li>
 <li>M:内容被修改</li>
 <li>C:发生冲突</li>
 <li>A:预订加入到版本库</li>
 <li>K:被锁定</li>
-</ul>
-</li>
+</ul></li>
 <li><code>svn status -v path</code></li>
-</ol>
-</li>
+</ol></li>
 <li><p>删除文件</p>
-<p> <code>svn delete file</code></p>
-</li>
+<p><code>svn delete file</code></p></li>
 <li><p>查看日志</p>
-<p> <code>svn log path</code></p>
-</li>
+<p><code>svn log path</code></p></li>
 <li><p>查看文件详细信息</p>
-<p> <code>svn info path</code></p>
-</li>
+<p><code>svn info path</code></p></li>
 <li><p>比较差异</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li><code>svn diff path</code> 将修改的文件与基础版本比较</li>
 <li><code>svn diff -r m:n path</code> 版本m和版本n比较</li>
-</ol>
-</li>
+</ol></li>
 <li><p>版本间合并</p>
-<p> <code>svn merge -r m:n test.php</code> 比较版本m和n的test.php</p>
-</li>
+<p><code>svn merge -r m:n test.php</code> 比较版本m和n的test.php</p></li>
 <li><p>帮助</p>
-<p> <code>svn help</code></p>
-</li>
+<p><code>svn help</code></p></li>
 <li><p>版本库下的文件和目录列表</p>
-<p> <code>svn list path</code> 目录path下的属于版本库的文件和目录</p>
-</li>
+<p><code>svn list path</code> 目录path下的属于版本库的文件和目录</p></li>
 <li><p>创建版本库控制下的新目录</p>
-<p> <code>svn mkdir path</code>  </p>
-</li>
+<p><code>svn mkdir path</code></p></li>
 <li><p>恢复本地修改</p>
-<p> <code>svn revert</code> 恢复原始未修改的工作副本文件 </p>
-</li>
+<p><code>svn revert</code> 恢复原始未修改的工作副本文件</p></li>
 <li><p>代码库的URL修改</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li><code>svn switch path</code> 更新工作副本,映射到一个新的URL(会将服务器上的文件与本地文件合并)</li>
 <li><code>switch -relocate FROM TO path</code> 修改工作副本的URL元数据,以反应单纯的URL上的改变.当仓库的根URL变动,但是工作副本仍旧对映到同一仓库的同一目录时使用</li>
-</ol>
-</li>
+</ol></li>
 <li><p>解决冲突</p>
-<p> <code>svn resolved path</code> 移除工作副本的目录或文件的冲突状态(只是移除冲突的相关文件,然后让path可以再次提交)</p>
-</li>
-<li><p>输出指定文件或URL的内容  </p>
+<p><code>svn resolved path</code> 移除工作副本的目录或文件的冲突状态(只是移除冲突的相关文件,然后让path可以再次提交)</p></li>
+<li><p>输出指定文件或URL的内容</p>
 <ul>
 <li><code>svn cat 目标[@版本]</code> 如果指定了版本.将从指定的版本开始查找</li>
 <li><code>svn cat -r PREV filename &gt; filename</code> PREV是上一版本,也可以写具体版本号</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/13/linux-svn/" data-id="ptk4jp08b1k7ziie" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/13/linux-svn/" data-id="wysyqdzumepu36cd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/svn/">svn</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/版本控制/">版本控制</a></li></ul>
@@ -216,16 +198,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li>Sorting   <ul>
-<li>External sort:<br>  there are so many records to be sorted that they must be kept in <strong>external files</strong> on disks, tapes or the like.</li>
-<li>Internal sort<br>  sort the records can all be kept internally in <strong>high-speed memory</strong><ol>
+<li>Sorting
+<ul>
+<li>External sort:<br /> there are so many records to be sorted that they must be kept in <strong>external files</strong> on disks, tapes or the like.</li>
+<li>Internal sort<br /> sort the records can all be kept internally in <strong>high-speed memory</strong>
+<ol style="list-style-type: decimal">
 <li>Insertion sort</li>
 <li>Selection sort</li>
 <li>Shell sort</li>
 <li>Divide-and-conquer sort</li>
 <li>Merge sort for linked lists</li>
 <li>Quick sort for contiguous lists</li>
-<li>Heap sort
+<li>Heap sort 
         
           <p class="article-more-link">
             <a href="/2013/07/10/数据结构复习-排序/#more">Read More</a>
@@ -234,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/10/数据结构复习-排序/" data-id="uum8950o6o65yy8m" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/10/数据结构复习-排序/" data-id="rk516ajly6j7ynu7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
@@ -275,14 +259,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="安装Markdown_Preview">安装Markdown Preview</h4>
-<ol>
+        <h4 id="安装markdown-preview">安装Markdown Preview</h4>
+<ol style="list-style-type: decimal">
 <li>Ctrl + Shift + P</li>
 <li>选择Package Control: Install Package(输入pci)</li>
 <li>输入Markdown Preview</li>
 </ol>
-<h4 id="浏览器预览Markdown文档">浏览器预览Markdown文档</h4>
-<ol>
+<h4 id="浏览器预览markdown文档">浏览器预览Markdown文档</h4>
+<ol style="list-style-type: decimal">
 <li>Ctrl + Shift + P</li>
 <li>选择Markdown Preview: current file in browser(输入mp)</li>
 </ol>
@@ -290,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/06/20/使用sublimetext2编辑markdown/" data-id="78i5ggj5n93zgcqj" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/06/20/使用sublimetext2编辑markdown/" data-id="yzjup4ezzp5z87qv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Sublime/">Sublime</a></li></ul>

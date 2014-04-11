@@ -92,22 +92,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>说明</strong>: 内容取自中山大学软件学院刘宁老师的SE-806课程的课件</p>
-<h4 id="Bundle类型">Bundle类型</h4>
-<p>Bundle是个类型安全的容器,它的实现其实是对HashMap做了一层封装。对于HashMap来讲,任何名值对都可以存进去,值可以是任何的Java对象。<br>但是对于Bundle不是这样。同样存的是名值对,但是这个值只能是基本类型或基本类型数组。如:String、int、byte、boolean、char等。</p>
-<h4 id="Framework构成">Framework构成</h4>
+<h4 id="bundle类型">Bundle类型</h4>
+<p>Bundle是个类型安全的容器,它的实现其实是对HashMap做了一层封装。对于HashMap来讲,任何名值对都可以存进去,值可以是任何的Java对象。 但是对于Bundle不是这样。同样存的是名值对,但是这个值只能是基本类型或基本类型数组。如:String、int、byte、boolean、char等。</p>
+<h4 id="framework构成">Framework构成</h4>
 <p>主要四部分:</p>
 <ul>
-<li><strong>Activities</strong> 管理应用程序展示<ul>
+<li><strong>Activities</strong> 管理应用程序展示</li>
 <li>Activity Life Cycle</li>
-</ul>
-</li>
-<li><strong>Services</strong> 管理后台服务<ul>
+<li><strong>Services</strong> 管理后台服务</li>
 <li>Services Life Cycle</li>
-</ul>
-</li>
 <li><strong>Broadcast receivers</strong> 管理事件的广播与接收</li>
-<li><strong>Content Provider</strong> 管理数据共享<ul>
-<li>Android系统中,数据是私有的,包含文件数据和数据库数据。Content Provider类提供了标准方法接口,让其他的应用程序读取。必须在AndroidManifest.xml中声明
+<li><strong>Content Provider</strong> 管理数据共享</li>
+<li>Android系统中,数据是私有的,包含文件数据和数据库数据。Content Provider类提供了标准方法接口,让其他的应用程序读取。必须在AndroidManifest.xml中声明 
         
           <p class="article-more-link">
             <a href="/2013/07/24/android学习笔记-事件处理/#more">Read More</a>
@@ -116,7 +112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-事件处理/" data-id="r3zk9kugqct99nig" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-事件处理/" data-id="ccs479lsfom5voys" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -158,14 +154,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>说明</strong>: 转自<a href="http://panshengneng.iteye.com/blog/1187928" target="_blank">A_Big_Monkey-android布局属性大全</a></p>
-<h4 id="Layout">Layout</h4>
+<h4 id="layout">Layout</h4>
 <ul>
-<li><code>FrameLayout</code> 里面只可以有一个控件，并且不能设计这个控件的位置，控件会放到左上角  </li>
-<li><code>LinearLayout</code> 里面可以放多个控件，但是一行只能放一个控件  </li>
-<li><code>TableLayout</code> 这个要和TableRow配合使用，很像html里面的table  </li>
-<li><code>AbsoluteLayout</code> 里面可以放多个控件，并且可以自己定义控件的x,y的位置  </li>
-<li><code>RelativeLayout</code> 里面可以放多个控件，不过控件的位置都是相对位置  </li>
-<li>(界面的布局好像还可以直接引用一些view，如ScrollView等)
+<li><code>FrameLayout</code> 里面只可以有一个控件，并且不能设计这个控件的位置，控件会放到左上角<br /></li>
+<li><code>LinearLayout</code> 里面可以放多个控件，但是一行只能放一个控件<br /></li>
+<li><code>TableLayout</code> 这个要和TableRow配合使用，很像html里面的table<br /></li>
+<li><code>AbsoluteLayout</code> 里面可以放多个控件，并且可以自己定义控件的x,y的位置<br /></li>
+<li><code>RelativeLayout</code> 里面可以放多个控件，不过控件的位置都是相对位置<br /></li>
+<li>(界面的布局好像还可以直接引用一些view，如ScrollView等) 
         
           <p class="article-more-link">
             <a href="/2013/07/24/android学习笔记-布局属性/#more">Read More</a>
@@ -174,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-布局属性/" data-id="13oefwq8p9wt8ewo" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-布局属性/" data-id="dgz4w8p79xemooqv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
@@ -216,7 +212,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>说明</strong>: 内容取自中山大学软件学院刘宁老师的SE-806课程的课件</p>
-<h4 id="view,视图组件">view,视图组件</h4>
+<h4 id="view视图组件">view,视图组件</h4>
 <p>view负责:</p>
 <ul>
 <li>说明布局Layout</li>
@@ -228,7 +224,7 @@
 <li>定制组件</li>
 <li>数据与界面绑定</li>
 </ul>
-<p><img src="/img/android-view.jpg" alt="android-view"><br>
+<p><img src="/img/android-view.jpg" alt="android-view" /> 
         
           <p class="article-more-link">
             <a href="/2013/07/22/android学习笔记-界面编程/#more">Read More</a>
@@ -237,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-界面编程/" data-id="y1pvy93p5teievno" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-界面编程/" data-id="s934tyasdilbuadc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>

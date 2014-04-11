@@ -10,14 +10,11 @@
 <meta name="og:url" content="http://www.zhyin5.com/2014/04/06/python-sympy/">
 <meta name="og:image">
 <meta name="og:site_name" content="Jay Young's Blog">
-<meta name="og:description" content="SymPy是Python的数学符号计算库,用它可以进行数学表达式的符号推导和演算isympy是python-sympy对ipython的封装,提供交互式环境
-python-sympy
-简介:
-SymPy是Python的数学符号计算库,用它可以进行数学表达式的符号推导和演算
+<meta name="og:description" content="SymPy是Python的数学符号计算库,用它可以进行数学表达式的符号推导和演算 isympy是python-sympy对ipython的封装,提供交互式环境  ### python-sympy #### 简介: SymPy是Python的数学符号计算库,用它可以进行数学表达式的符号推导和演算
 安装
 sudo apt-get install python-sympy
 交互式环境
-python-sympy 为 ipyth">
+python-sy">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -96,15 +93,12 @@ python-sympy 为 ipyth">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>SymPy是Python的数学符号计算库,用它可以进行数学表达式的符号推导和演算<br>isympy是python-sympy对ipython的封装,提供交互式环境<br><a id="more"></a></p>
-<h3 id="python-sympy">python-sympy</h3>
-<h4 id="简介:">简介:</h4>
-<p>SymPy是Python的数学符号计算库,用它可以进行数学表达式的符号推导和演算</p>
+        <p>SymPy是Python的数学符号计算库,用它可以进行数学表达式的符号推导和演算 isympy是python-sympy对ipython的封装,提供交互式环境 <a id="more"></a> ### python-sympy #### 简介: SymPy是Python的数学符号计算库,用它可以进行数学表达式的符号推导和演算</p>
 <h4 id="安装">安装</h4>
 <p><code>sudo apt-get install python-sympy</code></p>
 <h4 id="交互式环境">交互式环境</h4>
 <p>python-sympy 为 ipython 封装了 isympy(在IPython的基础上添加了数学表达式的直观显示功能)</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -130,10 +124,9 @@ These commands were executed:
 <span class="prompt">&gt;&gt;&gt; </span>f, g, h = symbols(<span class="string">'f g h'</span>, cls=Function)  <span class="comment"># 定义三个函数符号f, g, h</span>
 
 Documentation can be found at http://www.sympy.org
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <h4 id="样例">样例</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -167,13 +160,12 @@ x  + <span class="number">2</span>⋅x + ╲╱ x + <span class="built_in">log</
 Out[<span class="number">8</span>]:
     ____________        ⎛      ____________⎞
 <span class="number">2</span>⋅╲╱ x + <span class="built_in">log</span>(x)  + <span class="number">2</span>⋅<span class="built_in">log</span>⎝x + ╲╱ x + <span class="built_in">log</span>(x) ⎠
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <h4 id="功能">功能</h4>
-<ol>
+<ol style="list-style-type: decimal">
 <li><strong>因式分解</strong>: <code>apart(expr, x)</code></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -203,12 +195,11 @@ Out[<span class="number">8</span>]:
         <span class="number">1</span>       <span class="number">1</span>  
     - ───── + ─────
       x + <span class="number">2</span>   x + <span class="number">1</span>
-</pre></td></tr></table></figure>
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="2" style="list-style-type: decimal">
 <li><strong>因式合并</strong>: <code>together(expr, x)</code></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -234,16 +225,12 @@ Out[<span class="number">8</span>]:
            <span class="number">1</span>       
     ───────────────
     (x + <span class="number">1</span>)⋅(x + <span class="number">2</span>)
-</pre></td></tr></table></figure>
-
-
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="3" style="list-style-type: decimal">
 <li><p><strong>极限(limit)</strong>: <code>limit(function, variable, point)</code></p>
-<p> 当自变量variable趋近于值point时函数function的值</p>
-</li>
+<p>当自变量variable趋近于值point时函数function的值</p></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -253,13 +240,11 @@ Out[<span class="number">8</span>]:
     
     <span class="keyword">In</span> [<span class="number">36</span>]: limit(<span class="number">1</span>/x, x, <span class="number">0</span>)
     <span class="keyword">Out</span>[<span class="number">36</span>]: ∞
-</pre></td></tr></table></figure>
-
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="4" style="list-style-type: decimal">
 <li><strong>微分(differential)</strong>: <code>diff(func, var)</code></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -291,13 +276,11 @@ Out[<span class="number">8</span>]:
         
     <span class="keyword">In</span> [<span class="number">48</span>]: diff((x**<span class="number">2</span>+y**<span class="number">2</span>+<span class="number">1</span>), x)
     Out[<span class="number">48</span>]: <span class="number">2</span>⋅x
-</pre></td></tr></table></figure>
-
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="5" style="list-style-type: decimal">
 <li><strong>高阶微分</strong>: <code>diff(func, var, n)</code></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -331,12 +314,11 @@ Out[<span class="number">8</span>]:
     
     <span class="keyword">In</span> [<span class="number">53</span>]: diff(formula, x, <span class="number">3</span>)
     <span class="keyword">Out</span>[<span class="number">53</span>]: <span class="number">24</span>
-</pre></td></tr></table></figure>
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="8" style="list-style-type: decimal">
 <li><strong>积分(integral)</strong>: <code>integrate(func, var)</code></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -374,24 +356,20 @@ Out[<span class="number">8</span>]:
     <span class="keyword">Out</span>[<span class="number">91</span>]: 
        <span class="number">3</span>      <span class="number">2</span>          
     <span class="number">4</span>⋅x  + <span class="number">3</span>⋅x  + <span class="number">2</span>⋅x + <span class="number">1</span>
-</pre></td></tr></table></figure>
-
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="9" style="list-style-type: decimal">
 <li><strong>定积分</strong>: <code>integrate(func, (var, i, j))</code></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 </pre></td><td class="code"><pre>    <span class="keyword">In</span> [<span class="number">94</span>]: integrate(x**<span class="number">2</span>, (x, <span class="number">0</span>, <span class="number">10</span>))
     <span class="keyword">Out</span>[<span class="number">94</span>]: <span class="number">1000</span>/<span class="number">3</span>
-</pre></td></tr></table></figure>
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="6" style="list-style-type: decimal">
 <li><p><strong>级数展开</strong>: <code>.series(var, point, order)</code></p>
-<p> 公式关于自变量var在point的order阶展开</p>
-</li>
+<p>公式关于自变量var在point的order阶展开</p></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -431,14 +409,11 @@ Out[<span class="number">8</span>]:
         x    <span class="number">2</span>⋅x    <span class="number">17</span>⋅x    <span class="number">62</span>⋅x            
     x + ── + ──── + ───── + ───── + <span class="keyword">O</span>(x**<span class="number">10</span>)
         <span class="number">3</span>     <span class="number">15</span>     <span class="number">315</span>     <span class="number">2835</span>
-</pre></td></tr></table></figure>
-
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="7" style="list-style-type: decimal">
 <li><p><strong>求和</strong>: <code>summation(formula, (x, i, n))</code></p>
-<p> $$\sum\limits_{x=i}^n formula$$</p>
-<p> 都是符号的,打印相应的求和公式</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p>\[\sum\limits_{x=i}^n formula\]</p>
+<p>都是符号的,打印相应的求和公式 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -480,15 +455,10 @@ Out[<span class="number">8</span>]:
       /   log  (n)
      /__,         
     n = <span class="number">2</span>
-</pre></td></tr></table></figure>
-
-
-</li>
+</pre></td></tr></table></figure></p></li>
+<li><p><strong>复数</strong>: I为复述单元</p></li>
 </ol>
-<ol>
-<li><strong>复数</strong>: I为复述单元</li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -526,12 +496,11 @@ Out[<span class="number">8</span>]:
     
     <span class="keyword">In</span> [<span class="number">100</span>]: exp(<span class="keyword">I</span>*x).expand(complex=<span class="keyword">True</span>)
     <span class="keyword">Out</span>[<span class="number">100</span>]: ⅈ⋅sin(x) + cos(x)
-</pre></td></tr></table></figure>
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="11" style="list-style-type: decimal">
 <li><strong>三角函数</strong>:</li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -565,12 +534,11 @@ Out[<span class="number">8</span>]:
     
     <span class="keyword">In</span> [<span class="number">113</span>]: asinh(I*x)
     Out[<span class="number">113</span>]: ⅈ⋅asin(x)
-</pre></td></tr></table></figure>
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="12" style="list-style-type: decimal">
 <li><strong>阶乘</strong>: <code>factorial(x)</code></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -598,12 +566,11 @@ Out[<span class="number">8</span>]:
     
     <span class="tag">In</span> <span class="attr_selector">[122]</span>: <span class="tag">factorial</span>(3)
     <span class="tag">Out</span><span class="attr_selector">[122]</span>: 6
-</pre></td></tr></table></figure>
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="16" style="list-style-type: decimal">
 <li><strong>代数方程</strong>: <code>solve(equation, var)</code></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -613,13 +580,11 @@ Out[<span class="number">8</span>]:
     
     <span class="tag">In</span> <span class="attr_selector">[135]</span>: <span class="tag">solve</span>(<span class="attr_selector">[x + 5*y - 2, -3*x + 6*y - 15]</span>, <span class="attr_selector">[x, y]</span>)
     <span class="tag">Out</span><span class="attr_selector">[135]</span>: <span class="rules">{<span class="rule"><span class="attribute">x</span>:<span class="value"> -<span class="number">3</span>, y: <span class="number">1</span></span></span></span>}
-</pre></td></tr></table></figure>
-
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="15" style="list-style-type: decimal">
 <li><strong>微分方程</strong>: <code>dsolve(equation, var)</code></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -639,15 +604,12 @@ Out[<span class="number">8</span>]:
     <span class="keyword">Out</span>[<span class="number">138</span>]: 
             C₁ - <span class="built_in">x</span>
     f(<span class="built_in">x</span>) = ℯ
-</pre></td></tr></table></figure>
-
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="17" style="list-style-type: decimal">
 <li><p><strong>线性代数·矩阵</strong>: <code>Matrix()</code></p>
-<p>可以与python-numpy结合使用</p>
-</li>
+<p>可以与python-numpy结合使用</p></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -687,14 +649,12 @@ Out[<span class="number">8</span>]:
     ⎢<span class="number">3.0</span>   <span class="number">20.0</span>  <span class="number">5.0</span>   <span class="number">87.0</span>  <span class="number">41.0</span>⎥
     ⎢                            ⎥
     ⎣<span class="number">22.0</span>  <span class="number">42.0</span>  <span class="number">58.0</span>  <span class="number">64.0</span>  <span class="number">19.0</span>⎦
-</pre></td></tr></table></figure>
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol start="20" style="list-style-type: decimal">
 <li><p><strong>打印</strong>:</p>
-<p>isympy自动调用pprint,所以默认情况下看到的是漂亮的打印</p>
-</li>
+<p>isympy自动调用pprint,所以默认情况下看到的是漂亮的打印</p></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -740,13 +700,12 @@ Out[<span class="number">8</span>]:
 </span>    <span class="attribute">ly</span>&gt;</span><span class="tag">&lt;<span class="title">plus</span>/&gt;</span><span class="tag">&lt;<span class="title">ci</span>&gt;</span>x<span class="tag">&lt;/<span class="title">ci</span>&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">ln</span>/&gt;</span><span class="tag">&lt;<span class="title">ci</span>&gt;</span>x<span class="tag">&lt;/<span class="title">ci</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">plus</span>/&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">times</span>/&gt;</span><span class="tag">&lt;<span class="title">cn</span>&gt;</span>3<span class="tag">&lt;/<span class="title">cn</span>&gt;</span><span class="tag">&lt;<span class="title">ci</span>&gt;</span>x<span class="tag">&lt;/<span class="title">ci</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">cn</span>&gt;</span>1<span class="tag">&lt;/<span class="title">cn</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span>
     <span class="tag">&lt;<span class="title">cn</span>&gt;</span>1<span class="tag">&lt;/<span class="title">cn</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">times</span>/&gt;</span><span class="tag">&lt;<span class="title">ci</span>&gt;</span>x<span class="tag">&lt;/<span class="title">ci</span>&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">plus</span>/&gt;</span><span class="tag">&lt;<span class="title">ci</span>&gt;</span>x<span class="tag">&lt;/<span class="title">ci</span>&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">root</span>/&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">plus</span>/&gt;</span><span class="tag">&lt;<span class="title">ci</span>&gt;</span>x<span class="tag">&lt;/<span class="title">ci</span>&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">ln</span>/&gt;</span><span class="tag">&lt;<span class="title">ci</span>&gt;</span>x<span class="tag">&lt;/<span class="title">ci</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;/<span class="title">appl
 </span>    <span class="attribute">y</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">root</span>/&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">plus</span>/&gt;</span><span class="tag">&lt;<span class="title">ci</span>&gt;</span>x<span class="tag">&lt;/<span class="title">ci</span>&gt;</span><span class="tag">&lt;<span class="title">apply</span>&gt;</span><span class="tag">&lt;<span class="title">ln</span>/&gt;</span><span class="tag">&lt;<span class="title">ci</span>&gt;</span>x<span class="tag">&lt;/<span class="title">ci</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span><span class="tag">&lt;/<span class="title">apply</span>&gt;</span>
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/06/python-sympy/" data-id="rh88d8cx4s6k3v15" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/06/python-sympy/" data-id="iu6t9ucvshoi2gci" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>

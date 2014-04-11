@@ -12,8 +12,8 @@
 <meta name="og:site_name" content="Jay Young's Blog">
 <meta name="og:description" content="说明: 内容取自中山大学软件学院刘宁老师的SE-806课程的课件
 Bundle类型
-Bundle是个类型安全的容器,它的实现其实是对HashMap做了一层封装。对于HashMap来讲,任何名值对都可以存进去,值可以是任何的Java对象。但是对于Bundle不是这样。同样存的是名值对,但是这个值只能是基本类型或基本类型数组。如:String、int、byte、boolean、char等。
-Frame">
+Bundle是个类型安全的容器,它的实现其实是对HashMap做了一层封装。对于HashMap来讲,任何名值对都可以存进去,值可以是任何的Java对象。 但是对于Bundle不是这样。同样存的是名值对,但是这个值只能是基本类型或基本类型数组。如:String、int、byte、boolean、char等。
+Fram">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -93,32 +93,26 @@ Frame">
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>说明</strong>: 内容取自中山大学软件学院刘宁老师的SE-806课程的课件</p>
-<h4 id="Bundle类型">Bundle类型</h4>
-<p>Bundle是个类型安全的容器,它的实现其实是对HashMap做了一层封装。对于HashMap来讲,任何名值对都可以存进去,值可以是任何的Java对象。<br>但是对于Bundle不是这样。同样存的是名值对,但是这个值只能是基本类型或基本类型数组。如:String、int、byte、boolean、char等。</p>
-<h4 id="Framework构成">Framework构成</h4>
+<h4 id="bundle类型">Bundle类型</h4>
+<p>Bundle是个类型安全的容器,它的实现其实是对HashMap做了一层封装。对于HashMap来讲,任何名值对都可以存进去,值可以是任何的Java对象。 但是对于Bundle不是这样。同样存的是名值对,但是这个值只能是基本类型或基本类型数组。如:String、int、byte、boolean、char等。</p>
+<h4 id="framework构成">Framework构成</h4>
 <p>主要四部分:</p>
 <ul>
-<li><strong>Activities</strong> 管理应用程序展示<ul>
+<li><strong>Activities</strong> 管理应用程序展示</li>
 <li>Activity Life Cycle</li>
-</ul>
-</li>
-<li><strong>Services</strong> 管理后台服务<ul>
+<li><strong>Services</strong> 管理后台服务</li>
 <li>Services Life Cycle</li>
-</ul>
-</li>
 <li><strong>Broadcast receivers</strong> 管理事件的广播与接收</li>
-<li><strong>Content Provider</strong> 管理数据共享<ul>
-<li>Android系统中,数据是私有的,包含文件数据和数据库数据。Content Provider类提供了标准方法接口,让其他的应用程序读取。必须在AndroidManifest.xml中声明<a id="more"></a>
-
-</li>
+<li><strong>Content Provider</strong> 管理数据共享</li>
+<li>Android系统中,数据是私有的,包含文件数据和数据库数据。Content Provider类提供了标准方法接口,让其他的应用程序读取。必须在AndroidManifest.xml中声明 <a id="more"></a></li>
 </ul>
-</li>
-</ul>
-<h4 id="Intent(一次即将操作的抽象描述,各部分沟通的桥梁)">Intent(一次即将操作的抽象描述,各部分沟通的桥梁)</h4>
+<h4 id="intent一次即将操作的抽象描述各部分沟通的桥梁">Intent(一次即将操作的抽象描述,各部分沟通的桥梁)</h4>
 <p><strong>Intent是一种运行时绑定机制,他能在应用程序运行的过程中连接两个不同的组件,实现组件间的跳转。</strong></p>
 <p>举例:不同Activity之间的通讯,属于不同UI线程之间的通讯,如果要在不同的Activity之间传递消息,则需要用到Intent。在Intent中告诉操作系统要选择哪个目标Activity进行实例化,并传递消息</p>
-<p><img src="/img/android-intent.jpg" alt="android-intent"></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<div class="figure">
+<img src="/img/android-intent.jpg" alt="android-intent" /><p class="caption">android-intent</p>
+</div>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -126,10 +120,9 @@ Frame">
 intent.setClass(SrcActivity.<span class="keyword">this</span>, DstActivity.<span class="keyword">class</span>); <span class="comment">// intent中包括了源Activity,目标Activity</span>
 intent.putExtra(<span class="string">"msg"</span>, <span class="string">"message from SrcActivity"</span>); <span class="comment">// intent中包括了所要传递的消息</span>
 startActivity(intent);
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>Activity、Service和BroadcastReceiver,都是通过Intent机制激活的,而不同类型的组件在传递Intent时有不同的方式。</p>
-<p>Android 使用了Intent 这个特殊类,实现在屏幕与屏幕之间移动<br>Intent 是描述应用想要做什么,其组成是:  </p>
+<p>Android 使用了Intent 这个特殊类,实现在屏幕与屏幕之间移动<br />Intent 是描述应用想要做什么,其组成是:</p>
 <ul>
 <li><strong>动作(Action)</strong>:描述Intent所触发动作名字的字符串.典型的动作类型有:MAIN(活动的门户)、VIEW、PICK、EDIT等。</li>
 <li><strong>动作对应的数据(Data)</strong>:描述Intent要操作的数据<strong>URI</strong>和数据类型</li>
@@ -139,83 +132,64 @@ startActivity(intent);
 <li>Flag: 借助 Intent 中的 flag 和 AndroidMainifest.xml 中activity 元素的属性,就可以控制到 Task 里 Activity 的关联关系和行为。</li>
 </ul>
 <p>例如:要查看某个人的联系方式,你需要创建一个动作类型为VIEW 的Intent,以及一个表示这个人的URI <code>Intent intent = new Intent(Intent.ACTION_VIEW, uri)</code></p>
-<h4 id="Intent激活方式">Intent激活方式</h4>
+<h4 id="intent激活方式">Intent激活方式</h4>
 <ul>
 <li><code>Activity</code>: 通过调用<code>Context.startActivity()</code>或者<code>Activity.startActivityForResult()</code>方法。</li>
 <li><code>Service</code>: 调用<code>Context.startService()</code>或者<code>Context.bindService()</code>方法将调用这方法的上下文与<code>Service</code>绑定。</li>
 <li><code>BroadcastReceiver</code>: 通过<code>Context.sendBroadcast()</code>、<code>Context.sendOrderBroadcast()</code>和<code>Context.sendStick</code></li>
 <li><code>Broadcast()</code>发送<code>BroadcastIntent</code>。 <code>BroadcastIntent</code>发送后,所有已注册的拥有与之匹配的<code>IntentFilter</code>的<code>BroadcastIntent</code>就会被激活。</li>
 </ul>
-<h4 id="IntentFilter">IntentFilter</h4>
+<h4 id="intentfilter">IntentFilter</h4>
 <ul>
-<li>intentfilter 则用于描述一个activity(或者 IntentReceiver)能够操作哪些intent。<ul>
+<li>intentfilter 则用于描述一个activity(或者 IntentReceiver)能够操作哪些intent。</li>
 <li>一个activity 如果要显示一个人的联系方式时,需要声明一个IntentFilter,这个IntentFilter 要知道怎么去处理VIEW 动作和表示一个人的URI。</li>
-</ul>
-</li>
-<li><p>IntentFilter 需要在AndroidManifest.xml中定义</p>
-</li>
-<li><p>通过解析各种intent,从一个屏幕导航到另一个屏幕是很简单的。</p>
-<ul>
+<li><p>IntentFilter 需要在AndroidManifest.xml中定义</p></li>
+<li>通过解析各种intent,从一个屏幕导航到另一个屏幕是很简单的。</li>
 <li>当向前导航时,activity 将会调用startActivity(IntentmyIntent)方法。</li>
 <li>然后,系统会在所有安装的应用程序中定义的IntentFilter中查找,找到最匹配Intent 对应的activity。</li>
 <li>新的activity 接收到通知后,开始运行。</li>
 <li>当startActivity 方法被调用将触发解析Intent 的动作。</li>
-</ul>
-</li>
-<li>这个机制提供了两个关键好处:<ul>
+<li>这个机制提供了两个关键好处:</li>
 <li>Activities 能够重复利用从其它组件中以Intent 的形式产生的一个请求;</li>
-<li>Activities 可以在任何时候被一个具有相同IntentFilter 的新的Activity 取代。</li>
+<li><p>Activities 可以在任何时候被一个具有相同IntentFilter 的新的Activity 取代。</p></li>
 </ul>
-</li>
-</ul>
-<h4 id="IntentReceiver">IntentReceiver</h4>
+<h4 id="intentreceiver">IntentReceiver</h4>
 <ul>
 <li><code>IntentReceiver</code> 在<code>AndroidManifest.xml</code> 中注册,也可在代码中使用<code>Context.registerReceiver()</code>进行注册。</li>
 <li>当一个<code>IntentReceiver</code> 被触发时,应用不必对请求调用<code>IntentReceiver</code>,系统会在需要的时候启动你的应用。</li>
 <li>各种应用还可以通过使用<code>Context.broadcastIntent()</code>将自己的<code>IntentReceiver</code> 广播给其它应用程序。</li>
 <li>当希望应用能够对一个外部的事件(如电话呼入,数据网络可用,或者某个定时)做出响应,可以使用一个<code>IntentReceiver</code>。虽然<code>IntentReceiver</code> 在感兴趣的事件发生时,会使用<code>NotificationManager</code>通知用户,但它并不能生成一个UI。</li>
 </ul>
-<h4 id="Intent的调用方式">Intent的调用方式</h4>
+<h4 id="intent的调用方式">Intent的调用方式</h4>
 <ul>
 <li><strong>显式Intent</strong>: 明确指出了目标组件名称。显式Intent更多用于在<strong>应用程序内部</strong>传递消息。比如在某应用程序内,一个Activity启动一个Service。</li>
 <li><strong>隐式Intent</strong>: 没有明确指出了目标组件名称。 Android系统使用<strong>IntentFilter</strong>来寻找与隐式Intent相关的对象。隐式Intent恰恰相反,它不会用组件名称定义需要激活的目标组件,它更广泛地用于在不同应用程序之间传递消息</li>
 </ul>
 <p>Intent显示调用(Startup跳转到MainList):</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 </pre></td><td class="code"><pre><span class="preprocessor"><span class="keyword">import</span> android.content.Intent;</span>
 Intent intent = <span class="keyword">new</span> Intent(Startup.<span class="keyword">this</span>, MainList.<span class="keyword">class</span>);
 startActivity(intent);
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <h4 id="事件监听">事件监听</h4>
 <ul>
-<li><code>OnClickListener</code> <code>public void onClick(View v)</code> 点击<ul>
+<li><code>OnClickListener</code> <code>public void onClick(View v)</code> 点击</li>
 <li>v: 事件源控件</li>
-</ul>
-</li>
-<li><code>OnLongClickListener</code> <code>public boolean onLongClick(View v)</code> 长按<ul>
+<li><code>OnLongClickListener</code> <code>public boolean onLongClick(View v)</code> 长按</li>
 <li>返回true时: 表示已经完整地处理了这个事件,并不希望其他的回调方法再次进行处理</li>
 <li>返回false时: 表示并没有完成处理该事件,更希望其他方法继续对其进行处理</li>
-</ul>
-</li>
-<li><code>OnFocusChangeListener</code> <code>Public void onFocusChangeListener(View V, Boolean hasFocus)</code> 焦点变化<ul>
+<li><code>OnFocusChangeListener</code> <code>Public void onFocusChangeListener(View V, Boolean hasFocus)</code> 焦点变化</li>
 <li>参数hasFocus 表示v的新状态,即v是否获得焦点</li>
-</ul>
-</li>
-<li><code>OnKeyListener</code> <code>public Boolean onkey(View v,int keyCode, KeyEvent event)</code> 键盘监听<ul>
+<li><code>OnKeyListener</code> <code>public Boolean onkey(View v,int keyCode, KeyEvent event)</code> 键盘监听</li>
 <li>keyCode: 手机键盘的键码</li>
-<li>event: 键盘事件封装类的对象,包含了事件的详细信息 </li>
-</ul>
-</li>
-<li><code>OnTouchListener</code> <code>Public boolean onTouch(View V ,MotionEvent event)</code> 手机屏幕事件(按下,抬起,滑下等)<ul>
+<li>event: 键盘事件封装类的对象,包含了事件的详细信息</li>
+<li><code>OnTouchListener</code> <code>Public boolean onTouch(View V ,MotionEvent event)</code> 手机屏幕事件(按下,抬起,滑下等)</li>
 <li>event: 事件封装类的对象,封装了触发事件的详细信息(事件类型,触发事件等)</li>
 </ul>
-</li>
-</ul>
-<h5 id="OnClickListener">OnClickListener</h5>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<h5 id="onclicklistener">OnClickListener</h5>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -279,10 +253,9 @@ startActivity(intent);
         }
     }
 }
-</pre></td></tr></table></figure>
-
-<h5 id="OnLongClickListener">OnLongClickListener</h5>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<h5 id="onlongclicklistener">OnLongClickListener</h5>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -332,10 +305,9 @@ startActivity(intent);
         <span class="keyword">return</span> <span class="keyword">false</span>;
     }
 }
-</pre></td></tr></table></figure>
-
-<h5 id="OnFocusChangeListener">OnFocusChangeListener</h5>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<h5 id="onfocuschangelistener">OnFocusChangeListener</h5>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -413,10 +385,9 @@ startActivity(intent);
         }
     }
 }
-</pre></td></tr></table></figure>
-
-<h5 id="OnKeyListener">OnKeyListener</h5>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<h5 id="onkeylistener">OnKeyListener</h5>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -542,10 +513,9 @@ startActivity(intent);
         <span class="keyword">return</span> <span class="keyword">false</span>;
     }
 }
-</pre></td></tr></table></figure>
-
-<h5 id="OnTouchListener">OnTouchListener</h5>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<h5 id="ontouchlistener">OnTouchListener</h5>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -667,13 +637,12 @@ startActivity(intent);
         <span class="keyword">return</span> <span class="keyword">true</span>;
     }
 }
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-事件处理/" data-id="r3zk9kugqct99nig" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/24/android学习笔记-事件处理/" data-id="ccs479lsfom5voys" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>

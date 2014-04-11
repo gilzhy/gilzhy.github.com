@@ -10,8 +10,7 @@
 <meta name="og:url" content="http://www.zhyin5.com/2013/03/28/django初探/">
 <meta name="og:image">
 <meta name="og:site_name" content="Jay Young's Blog">
-<meta name="og:description" content="照着django book一步一步实践学习django,经历的一些错误以及解决方法
-1. 创建项目
+<meta name="og:description" content="照着django book一步一步实践学习django,经历的一些错误以及解决方法  #### 1. 创建项目
 `django-admin.py startproject mysite`
 2. 运行本地服务器
 1
@@ -19,7 +18,7 @@
 3
 python manage.py runserver
 python manage.py runserver 8080
-python manage.py runserver 0.0.0.0:8">
+python manage.py runserver 0.0">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -98,20 +97,18 @@ python manage.py runserver 0.0.0.0:8">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>照着django book一步一步实践学习django,经历的一些错误以及解决方法<br><a id="more"></a></p>
-<h4 id="1-_创建项目">1. 创建项目</h4>
-<pre><code><span class="code">`django-admin.py startproject mysite`</span>
-</code></pre><h4 id="2-_运行本地服务器">2. 运行本地服务器</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+        <p>照着django book一步一步实践学习django,经历的一些错误以及解决方法 <a id="more"></a> #### 1. 创建项目</p>
+<pre><code>`django-admin.py startproject mysite`</code></pre>
+<h4 id="运行本地服务器">2. 运行本地服务器</h4>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 </pre></td><td class="code"><pre>python manage<span class="preprocessor">.py</span> runserver
 python manage<span class="preprocessor">.py</span> runserver <span class="number">8080</span>
 python manage<span class="preprocessor">.py</span> runserver <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">8000</span>
-</pre></td></tr></table></figure>
-
-<h4 id="3-_修改settings-py">3. 修改settings.py</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<h4 id="修改settings.py">3. 修改settings.py</h4>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -131,29 +128,23 @@ python manage<span class="preprocessor">.py</span> runserver <span class="number
         <span class="string">'HOST'</span>: <span class="string">''</span>,
     }
 }
-</pre></td></tr></table></figure>
-
-
+</pre></td></tr></table></figure></p>
 <p>‘NAME’一定要填数据库的名字，填注释掉的那行的时候出错：<strong>OperationalError: (1049, “Unknown database ‘/var/lib/mysql/lalala/db.opt’”)</strong></p>
-<h4 id="4-">4.</h4>
+<h4 id="section">4.</h4>
 <p><code>python manage.py syncdb</code></p>
 <p><strong>出错 Error loading MySQLdb module: No module named MySQLdb</strong></p>
-<p><strong>解决：</strong>需要安装mysql-python，下载地址：<a href="http://sourceforge.net/projects/mysql-python/?source=dlp" target="_blank">http://sourceforge.net/projects/mysql-python/?source=dlp</a></p>
+<p><strong>解决：</strong>需要安装mysql-python，下载地址：http://sourceforge.net/projects/mysql-python/?source=dlp</p>
 <p>下载完，压缩，然后进入文件夹</p>
 <p><code>python setup.py build</code></p>
 <p><strong>出错:</strong> mysql_config not found</p>
 <p><strong>原因:</strong> 没有mysql_config这个文件，apt-get安装的MySQL是没有mysql_config这个文件的</p>
-<p>解决：</p>
-<ol>
-<li>ubuntu下<br> 执行<code>sudo apt-get install libmysqld-dev</code></li>
-<li>fedora下<br> 执行 sudo yum install python-devel<br> 若出现：my_config.h:没有那个文件或目录，就执行：sudo yum install mysql-devel<br> 注意：yum也是python写的，默认是调用/usr/bin/python的，这是系统本身自带的python，自己安装的一般在/usr/local/bin/python，所以最好别把系统自带的python给卸载掉了，自己下载的python没有yum模块。<br> 此时执行  find / -name mysql_config 或whereis mysql_config发现系统中<strong>有了mysql_config这个文件</strong><br> 更改site.cfg中的设置，将mysql_config指向正确路径</li>
-</ol>
+<p>解决： 1. ubuntu下 执行<code>sudo apt-get install libmysqld-dev</code> 2. fedora下 执行 sudo yum install python-devel<br /> 若出现：my_config.h:没有那个文件或目录，就执行：sudo yum install mysql-devel<br /> 注意：yum也是python写的，默认是调用/usr/bin/python的，这是系统本身自带的python，自己安装的一般在/usr/local/bin/python，所以最好别把系统自带的python给卸载掉了，自己下载的python没有yum模块。 此时执行 find / -name mysql_config 或whereis mysql_config发现系统中<strong>有了mysql_config这个文件</strong> 更改site.cfg中的设置，将mysql_config指向正确路径</p>
 <p>再次<code>python setup.py build</code></p>
 <p><strong>出错</strong>: Python.h：没有那个文件或目录</p>
 <p><strong>解决</strong>: 安装python-dev，这是Python的头文件和静态库包：<code>sudo apt-get install python-dev</code></p>
-<p>再次<code>python setup.py build</code><br>然后<code>python setup.py install</code></p>
+<p>再次<code>python setup.py build</code> 然后<code>python setup.py install</code></p>
 <p><strong>mysqldb的问题得以解决，证明：import MySQLdb无报错</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -173,11 +164,10 @@ Creating <span class="built_in">table</span> auth_user_user_permissions
 Creating <span class="built_in">table</span> auth_user
 Creating <span class="built_in">table</span> django_content_type
 Creating <span class="built_in">table</span> django_session
-</pre></td></tr></table></figure>
-
-<h4 id="5-<code>python_manage-py_startapp_polls</code>_开始应用">5.<code>python manage.py startapp polls</code> 开始应用</h4>
-<h4 id="6-_修改settings-py:">6. 修改settings.py:</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<h4 id="python-manage.py-startapp-polls-开始应用">5.<code>python manage.py startapp polls</code> 开始应用</h4>
+<h4 id="修改settings.py-1">6. 修改settings.py:</h4>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -197,10 +187,9 @@ Creating <span class="built_in">table</span> django_session
     <span class="string">'polls'</span>,
 )
 TIME_ZONE = <span class="string">'Asia/Shanghai'</span>
-</pre></td></tr></table></figure>
-
-<h4 id="7-_<code>python_manage-py_sql_polls</code>">7. <code>python manage.py sql polls</code></h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<h4 id="python-manage.py-sql-polls">7. <code>python manage.py sql polls</code></h4>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -232,11 +221,10 @@ TIME_ZONE = <span class="string">'Asia/Shanghai'</span>
 ;</span>
 <span class="operator"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">`polls_choice`</span> <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> <span class="string">`poll_id_refs_id_3aa09835`</span> <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span> (<span class="string">`poll_id`</span>) <span class="keyword">REFERENCES</span> <span class="string">`polls_poll`</span> (<span class="string">`id`</span>);</span>
 <span class="operator"><span class="keyword">COMMIT</span>;</span>
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>注：这些SQL命令并没有真的在Mysql中执行，只是打印出来告诉你Django需要些什么。可以拷贝这些命令到Mysql自己执行，当然Django提供了更好的方式。</p>
 <p>一些命令：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -246,10 +234,9 @@ python manage.py sqlcustom polls – Outputs <span class="keyword">any</span> cu
 python manage.py sqlclear polls – Outputs <span class="operator">the</span> necessaryDROP TABLE statements <span class="keyword">for</span> this app, according <span class="built_in">to</span> which tables already exist <span class="operator">in</span> your database (<span class="keyword">if</span> <span class="keyword">any</span>).
 python manage.py sqlindexes polls – Outputs theCREATE INDEX statements <span class="keyword">for</span> this app.
 python manage.py sqlall polls – A combination <span class="operator">of</span> all <span class="operator">the</span> SQL <span class="built_in">from</span> <span class="operator">the</span> sql, sqlcustom, <span class="operator">and</span> sqlindexes commands.
-</pre></td></tr></table></figure>
-
-<h4 id="8-<code>python_manage-py_syncdb</code>_再次。<strong>执行上面列出的那些SQL命令</strong>">8.<code>python manage.py syncdb</code> 再次。<strong>执行上面列出的那些SQL命令</strong></h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<h4 id="python-manage.py-syncdb-再次执行上面列出的那些sql命令">8.<code>python manage.py syncdb</code> 再次。<strong>执行上面列出的那些SQL命令</strong></h4>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -261,12 +248,11 @@ Creating table polls_choice
 Installing custom SQL <span class="keyword">...</span>
 Installing indexes <span class="keyword">...</span>
 Installed <span class="number">0</span> object(s) from <span class="number">0</span> fixture(s)
-</pre></td></tr></table></figure>
-
-<h4 id="9-<strong>探索API</strong>">9.<strong>探索API</strong></h4>
+</pre></td></tr></table></figure></p>
+<h4 id="探索api">9.<strong>探索API</strong></h4>
 <p><code>python manage.py shell</code></p>
 <p>注：We’re using this instead of simply typing “python”, because manage.py sets the DJANGO_SETTINGS_MODULE environment variable, which gives Django the Python import path to your settings.py file.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -278,13 +264,12 @@ p = Poll(question=<span class="string">"What's new?"</span>, pub_date=timezone.n
 p.save()
 Poll.objects.all()
 Django models deal <span class="keyword">with</span> <span class="keyword">Unicode</span> <span class="keyword">by</span> <span class="keyword">default</span>.All data stored <span class="keyword">in</span> your database <span class="keyword">is</span> converted <span class="keyword">to</span> <span class="keyword">Unicode</span> <span class="keyword">when</span> it’s returned.
-</pre></td></tr></table></figure>
-
-<h4 id="10-_<strong>编写views-py,修改urls-py</strong>">10. <strong>编写views.py,修改urls.py</strong></h4>
-<ol>
+</pre></td></tr></table></figure></p>
+<h4 id="编写views.py修改urls.py">10. <strong>编写views.py,修改urls.py</strong></h4>
+<ol style="list-style-type: decimal">
 <li>修改settings.py，增加：</li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -308,13 +293,12 @@ TEMPLATE_DIRS <span class="subst">=</span> (
 html <span class="subst">=</span> t<span class="built_in">.</span>render(Context(<span class="built_in">data</span>))
 <span class="keyword">return</span> HttpResponse(html)或from django<span class="built_in">.</span>shortcuts <span class="keyword">import</span> render_to_responsereturn render_to_response(<span class="string">'current_datetime.html'</span>, <span class="built_in">data</span>)
 python manage<span class="built_in">.</span>py createsuperuser创建另外的admin帐号
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/28/django初探/" data-id="f4ak6eytr6rmxvxh" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/28/django初探/" data-id="txf17cimai6ap9ec" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>

@@ -10,11 +10,10 @@
 <meta name="og:url" content="http://www.zhyin5.com/2013/04/24/面向对象设计的五大原则/">
 <meta name="og:image">
 <meta name="og:site_name" content="Jay Young's Blog">
-<meta name="og:description" content="笔试题：面向对象设计的五大原则？你的设计违背了哪一条, 结合开发经验.
-笔试题：面向对象设计的五大原则？你的设计违背了哪一条, 结合开发经验.
-去凯兰高面试时, 让做的笔试卷里的一道题, 当时觉得完全没听过, 现在记录一下, 保不准什么时候又被问到. 
-在面向对象设计中, 如何通过很小的设计改变就可以应对设计需求的变化, 这是令设计者极为关注的问题. 
-为此不少OO先驱提出了很多有关面向对象的设计">
+<meta name="og:description" content="笔试题：面向对象设计的五大原则？你的设计违背了哪一条, 结合开发经验.  ### 笔试题：面向对象设计的五大原则？你的设计违背了哪一条, 结合开发经验.
+去凯兰高面试时, 让做的笔试卷里的一道题, 当时觉得完全没听过, 现在记录一下, 保不准什么时候又被问到.
+在面向对象设计中, 如何通过很小的设计改变就可以应对设计需求的变化, 这是令设计者极为关注的问题.
+为此不少OO先驱提出了很多有关面向对象">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -93,34 +92,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>笔试题：面向对象设计的五大原则？你的设计违背了哪一条, 结合开发经验.<br><a id="more"></a></p>
-<h3 id="笔试题：面向对象设计的五大原则？你的设计违背了哪一条,_结合开发经验-">笔试题：面向对象设计的五大原则？你的设计违背了哪一条, 结合开发经验.</h3>
-<p>去凯兰高面试时, 让做的笔试卷里的一道题, 当时觉得完全没听过, 现在记录一下, 保不准什么时候又被问到. </p>
-<p>在面向对象设计中, 如何通过很小的设计改变就可以应对设计需求的变化, 这是令设计者极为关注的问题. </p>
-<p>为此不少OO先驱提出了很多有关面向对象的设计原则用于指导OO的设计和开发. </p>
+        <p>笔试题：面向对象设计的五大原则？你的设计违背了哪一条, 结合开发经验. <a id="more"></a> ### 笔试题：面向对象设计的五大原则？你的设计违背了哪一条, 结合开发经验.</p>
+<p>去凯兰高面试时, 让做的笔试卷里的一道题, 当时觉得完全没听过, 现在记录一下, 保不准什么时候又被问到.</p>
+<p>在面向对象设计中, 如何通过很小的设计改变就可以应对设计需求的变化, 这是令设计者极为关注的问题.</p>
+<p>为此不少OO先驱提出了很多有关面向对象的设计原则用于指导OO的设计和开发.</p>
 <p>Bob大叔提出并发扬了S.O.L.I.D五大原则, 用来更好地进行面向对象编程, 五大原则分别是：</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li><p><strong>单一职责原则SRP：Single Responsibility Principle</strong></p>
-<p> “高内聚性原则” 的引申</p>
-</li>
+<p>“高内聚性原则” 的引申</p></li>
 <li><p><strong>开放封闭原则OCP：Open-Close Principle（开闭原则）</strong></p>
-<p> 一个模块在 <strong>扩展性</strong> 方面应该是 <strong>开放</strong> 的而在 <strong>更改性</strong> 方面应该是 <strong>封闭</strong> 的. 因此在进行面向对象设计时要尽量考虑接口封装机制、抽象机制和多态技术. </p>
-</li>
+<p>一个模块在 <strong>扩展性</strong> 方面应该是 <strong>开放</strong> 的而在 <strong>更改性</strong> 方面应该是 <strong>封闭</strong> 的. 因此在进行面向对象设计时要尽量考虑接口封装机制、抽象机制和多态技术.</p></li>
 <li><p><strong>Liskov替换原则LSP：Liskov Substitution Principle（里氏替换原则）</strong></p>
-<p> 子类应当可以替换父类并出现在父类能够出现的任何地方. </p>
-</li>
+<p>子类应当可以替换父类并出现在父类能够出现的任何地方.</p></li>
 <li><p><strong>接口隔离原则ISP：Interface Separate Principle</strong></p>
-<p> 采用多个与特定客户类有关的接口比采用一个通用的涵盖多个业务方法的接口要好. </p>
-</li>
+<p>采用多个与特定客户类有关的接口比采用一个通用的涵盖多个业务方法的接口要好.</p></li>
 <li><p><strong>依赖倒置原则DIP：Dependency Invertion Principle</strong></p>
-<p> 在进行业务设计时, 与特定业务有关的依赖关系应该尽量依赖接口和抽象类, 而不是依赖于具体类. 具体类只负责相关业务的实现, 修改具体类不影响与特定业务有关的依赖关系. </p>
-</li>
+<p>在进行业务设计时, 与特定业务有关的依赖关系应该尽量依赖接口和抽象类, 而不是依赖于具体类. 具体类只负责相关业务的实现, 修改具体类不影响与特定业务有关的依赖关系.</p></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/04/24/面向对象设计的五大原则/" data-id="m0puzq36sgptjvfw" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/04/24/面向对象设计的五大原则/" data-id="2r949wklg39693yt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔试/">笔试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>

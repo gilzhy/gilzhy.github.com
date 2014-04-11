@@ -10,9 +10,10 @@
 <meta name="og:url" content="http://www.zhyin5.com/2013/07/10/数据结构复习-排序/">
 <meta name="og:image">
 <meta name="og:site_name" content="Jay Young's Blog">
-<meta name="og:description" content="Sorting   
-External sort:  there are so many records to be sorted that they must be kept in external files on disks, tapes or the like.
-Internal sort  sort the records can all be kept internally in h">
+<meta name="og:description" content="Sorting
+
+External sort: there are so many records to be sorted that they must be kept in external files on disks, tapes or the like.
+Internal sort sort the records can all be kept internally in high-">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -92,23 +93,25 @@ Internal sort  sort the records can all be kept internally in h">
     <div class="article-entry" itemprop="articleBody">
       
         <ul>
-<li>Sorting   <ul>
-<li>External sort:<br>  there are so many records to be sorted that they must be kept in <strong>external files</strong> on disks, tapes or the like.</li>
-<li>Internal sort<br>  sort the records can all be kept internally in <strong>high-speed memory</strong><ol>
+<li>Sorting
+<ul>
+<li>External sort:<br /> there are so many records to be sorted that they must be kept in <strong>external files</strong> on disks, tapes or the like.</li>
+<li>Internal sort<br /> sort the records can all be kept internally in <strong>high-speed memory</strong>
+<ol style="list-style-type: decimal">
 <li>Insertion sort</li>
 <li>Selection sort</li>
 <li>Shell sort</li>
 <li>Divide-and-conquer sort</li>
 <li>Merge sort for linked lists</li>
 <li>Quick sort for contiguous lists</li>
-<li>Heap sort<a id="more"></a></li>
-</ol>
-</li>
-</ul>
-</li>
-<li>Sorting   <ul>
-<li>External sort:<br>  there are so many records to be sorted that they must be kept in <strong>external files</strong> on disks, tapes or the like.</li>
-<li>Internal sort<br>  sort the records can all be kept internally in <strong>high-speed memory</strong><ol>
+<li>Heap sort <a id="more"></a></li>
+</ol></li>
+</ul></li>
+<li>Sorting
+<ul>
+<li>External sort:<br /> there are so many records to be sorted that they must be kept in <strong>external files</strong> on disks, tapes or the like.</li>
+<li>Internal sort<br /> sort the records can all be kept internally in <strong>high-speed memory</strong>
+<ol style="list-style-type: decimal">
 <li>Insertion sort</li>
 <li>Selection sort</li>
 <li>Shell sort</li>
@@ -116,28 +119,26 @@ Internal sort  sort the records can all be kept internally in h">
 <li>Merge sort for linked lists</li>
 <li>Quick sort for contiguous lists</li>
 <li>Heap sort</li>
-</ol>
-</li>
+</ol></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<hr>
+<hr />
 <ul>
-<li>Analyzing algorithm  <ul>
-<li>Time Complexity  <ol>
+<li>Analyzing algorithm
+<ul>
+<li>Time Complexity
+<ol style="list-style-type: decimal">
 <li>consider both <strong>the number of comparisons of keys</strong> and <strong>the number of times entries must be moved inside a list</strong></li>
 <li>consider both the <strong>worst-case</strong> and the <strong>average</strong> performance</li>
-</ol>
-</li>
+</ol></li>
 <li>Space Complexity</li>
-<li>Stablity  </li>
+<li>Stablity</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<hr>
-<h4 id="1-_Insertion_sort">1. Insertion sort</h4>
-<p>example:<br><code>T = (13, 6, 3, 31, 9, 27, 5, 11)</code>  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<hr />
+<h4 id="insertion-sort">1. Insertion sort</h4>
+<p>example:<br /><code>T = (13, 6, 3, 31, 9, 27, 5, 11)</code></p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -153,13 +154,10 @@ Internal sort  sort the records can all be kept internally in h">
 *</span><span class="strong">*3, 6, 9, 13, 27, 31*</span><span class="strong">*, 5, 11  
 *</span><span class="strong">*3, 5, 6, 9, 13, 27, 31*</span><span class="strong">*, 11  
 *</span><span class="strong">*3, 5, 6, 9, 11, 13, 27, 31*</span><span class="strong">*</span>
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <ul>
-<li><p>Analysis<br>  The number of comparisions and assignments of entries depend on the input.<br>  the best case: n comparisons, 0 assignments<br>  the worst case: (n -1) + (n - 2) + … + 1 comparisions, (n + 1) + (n - 1 + 1) + … + 3 assignments</p>
-</li>
-<li><p>contiguous implementation</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<li><p>Analysis The number of comparisions and assignments of entries depend on the input.<br /> the best case: n comparisons, 0 assignments<br /> the worst case: (n -1) + (n - 2) + … + 1 comparisions, (n + 1) + (n - 1 + 1) + … + 3 assignments</p></li>
+<li><p>contiguous implementation <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -167,12 +165,9 @@ Internal sort  sort the records can all be kept internally in h">
 entry[position] = entry[position - <span class="number">1</span>];
 position<span class="comment">--;</span>
 } <span class="keyword">while</span>(position &gt; <span class="number">0</span> && entry[positon - <span class="number">1</span>])
-</pre></td></tr></table></figure>
-
-<p>  disadvantage: the time of data movement</p>
-</li>
-<li><p>linked implementation  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<p>disadvantage: the time of data movement</p></li>
+<li><p>linked implementation<br /><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -218,16 +213,14 @@ position<span class="comment">--;</span>
         }
     }
 }
-</pre></td></tr></table></figure>
-
-<p>  advantage: with no movement of data</p>
-</li>
+</pre></td></tr></table></figure></p>
+<p>advantage: with no movement of data</p></li>
 </ul>
-<h4 id="2-_Selection_sort">2. Selection sort</h4>
+<h4 id="selection-sort">2. Selection sort</h4>
 <p><strong>问题: 选择排序是否稳定,交换次数</strong></p>
 <p>scanf the unsorted list and find the largest, then exchange this entry with the entry in the last positon.</p>
-<p>examples:<br><code>T = (21, 25, 49, 25&lt;sup&gt;2&lt;/sup&gt;, 16, 08)</code></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p>examples:<br /><code>T = (21, 25, 49, 25&lt;sup&gt;2&lt;/sup&gt;, 16, 08)</code></p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -239,10 +232,9 @@ position<span class="comment">--;</span>
 **08, 16, 21, 25<span class="tag">&lt;<span class="title">sup</span>&gt;</span>2<span class="tag">&lt;/<span class="title">sup</span>&gt;</span>**, 25, 49  
 **08, 16, 21, 25<span class="tag">&lt;<span class="title">sup</span>&gt;</span>2<span class="tag">&lt;/<span class="title">sup</span>&gt;</span>, 25**, 49  
 **08, 16, 21, 25<span class="tag">&lt;<span class="title">sup</span>&gt;</span>2<span class="tag">&lt;/<span class="title">sup</span>&gt;</span>, 25, 49**
-</pre></td></tr></table></figure>
-
-<p>时间复杂度:移动少,比较多<br>空间复杂度:只用1个缓冲单元  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<p>时间复杂度:移动少,比较多<br />空间复杂度:只用1个缓冲单元</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -260,23 +252,143 @@ position<span class="comment">--;</span>
     <span class="keyword">return</span> largest;
 }
 swap(<span class="keyword">int</span> low, <span class="keyword">int</span> high);
-</pre></td></tr></table></figure>
-
-<h4 id="3-_Shell_sort">3. Shell sort</h4>
-<p> Insertion sort is inefficient in moving entries only one position at a time. Shell sort can reduce the number of movements.</p>
+</pre></td></tr></table></figure></p>
+<h4 id="shell-sort">3. Shell sort</h4>
+<p>Insertion sort is inefficient in moving entries only one position at a time. Shell sort can reduce the number of movements.</p>
 <ul>
 <li><strong>基本思想</strong>: 先将整个待排记录序列分割成若干子序列,分别进行直接插入排序，待整个序列中的记录“基本有序”时，再对全体记录进行一次直接插入排序。</li>
 <li><strong>技巧</strong>: 子序列的构成不是简单地“逐段分割”，而是将相隔某个增量dk的记录组成一个子序列,让增量dk逐趟缩短(例如依次取5,3,1)，直到dk＝1为止。</li>
-<li><p><strong>优点</strong>: 让关键字值小的元素能很快前移，且序列若基本有序时，再用直接插入排序处理，时间效率会高很多。</p>
-<p>examples:<br><code>T = (49, 38, 65, 97, 76, 13, 27, 49&#39;, 55, 04)</code><br><code>dk = 5时: 49-13, 38-27, 65-49&#39;, 97-55, 76-04</code><br><code>dk=5: 13, 27, 49&lt;sup&gt;2&lt;/sup&gt;, 55</code></p>
-</li>
+<li><strong>优点</strong>: 让关键字值小的元素能很快前移，且序列若基本有序时，再用直接插入排序处理，时间效率会高很多。</li>
 </ul>
-<table><br><tr><br><th>排序算法</th><br><th>最坏时间复杂度</th><br><th>平均时间复杂度</th><br><th>辅助空间</th><br><th>稳定性</th><br></tr><br><tr><br><th>直接插入排序</th><br><td>O(n<sup>2</sup>)</td><br><td>O(n<sup>2</sup>)</td><br><td>O(1)</td><br><th>稳定</th><br></tr><br><tr><br><th>Shell排序</th><br><td>O(n<sup>1.25</sup>)</td><br><td>O(n<sup>1.25</sup>)</td><br><td>O(1)</td><br><th>不稳定</th><br></tr><br><tr><br><th>直接选择排序</th><br><td>O(n<sup>2</sup>)</td><br><td>O(n<sup>2</sup>)</td><br><td>O(1)</td><br><th>不稳定</th><br></tr><br><tr><br><th>快速排序</th><br><td>O(n<sup>2</sup>)</td><br><td>O(nlogn)</td><br><td>O(logn)</td><br><th>不稳定</th><br></tr><br><tr><br><th>归并排序</th><br><td>O(nlogn)</td><br><td>O(nlogn)</td><br><td>O(logn)</td><br><th>稳定</th><br></tr><br><tr><br><th>堆排序</th><br><td>O(nlogn)</td><br><td>O(nlogn)</td><br><td>O(1)</td><br><th>不稳定</th><br></tr><br></table>
+<p>examples:<br /> <code>T = (49, 38, 65, 97, 76, 13, 27, 49', 55, 04)</code><br /> <code>dk = 5时: 49-13, 38-27, 65-49', 97-55, 76-04</code> <code>dk=5: 13, 27, 49&lt;sup&gt;2&lt;/sup&gt;, 55</code></p>
+<table>
+<tr>
+<th>
+排序算法
+</th>
+<th>
+最坏时间复杂度
+</th>
+<th>
+平均时间复杂度
+</th>
+<th>
+辅助空间
+</th>
+<th>
+稳定性
+</th>
+</tr>
+<tr>
+<th>
+直接插入排序
+</th>
+<td>
+O(n<sup>2</sup>)
+</td>
+<td>
+O(n<sup>2</sup>)
+</td>
+<td>
+O(1)
+</td>
+<th>
+稳定
+</th>
+</tr>
+<tr>
+<th>
+Shell排序
+</th>
+<td>
+O(n<sup>1.25</sup>)
+</td>
+<td>
+O(n<sup>1.25</sup>)
+</td>
+<td>
+O(1)
+</td>
+<th>
+不稳定
+</th>
+</tr>
+<tr>
+<th>
+直接选择排序
+</th>
+<td>
+O(n<sup>2</sup>)
+</td>
+<td>
+O(n<sup>2</sup>)
+</td>
+<td>
+O(1)
+</td>
+<th>
+不稳定
+</th>
+</tr>
+<tr>
+<th>
+快速排序
+</th>
+<td>
+O(n<sup>2</sup>)
+</td>
+<td>
+O(nlogn)
+</td>
+<td>
+O(logn)
+</td>
+<th>
+不稳定
+</th>
+</tr>
+<tr>
+<th>
+归并排序
+</th>
+<td>
+O(nlogn)
+</td>
+<td>
+O(nlogn)
+</td>
+<td>
+O(logn)
+</td>
+<th>
+稳定
+</th>
+</tr>
+<tr>
+<th>
+堆排序
+</th>
+<td>
+O(nlogn)
+</td>
+<td>
+O(nlogn)
+</td>
+<td>
+O(1)
+</td>
+<th>
+不稳定
+</th>
+</tr>
+</table>
+
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/10/数据结构复习-排序/" data-id="uum8950o6o65yy8m" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/10/数据结构复习-排序/" data-id="rk516ajly6j7ynu7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>

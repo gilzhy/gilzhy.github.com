@@ -10,14 +10,13 @@
 <meta name="og:url" content="http://www.zhyin5.com/2013/04/24/cookie和session/">
 <meta name="og:image">
 <meta name="og:site_name" content="Jay Young's Blog">
-<meta name="og:description" content="笔试题：cookie和session的区别？禁止cookie后, session还能用吗？
-笔试题：cookie和session的区别？禁止cookie后, session还能用吗？
+<meta name="og:description" content="笔试题：cookie和session的区别？禁止cookie后, session还能用吗？  ### 笔试题：cookie和session的区别？禁止cookie后, session还能用吗？
 1. 关于cookie:
 wiki
 cookie的分类
 Cookie 保存在 客户端 , 按在客户端中的存储位置, 可分为 内存Cookie 和 硬盘Cookie:
 
-内存Cookie 由浏览器维护, 保存在内存中,">
+内存Cookie 由浏览器维护, 保存">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -96,9 +95,8 @@ Cookie 保存在 客户端 , 按在客户端中的存储位置, 可分为 内存
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>笔试题：cookie和session的区别？禁止cookie后, session还能用吗？<br><a id="more"></a></p>
-<h3 id="笔试题：cookie和session的区别？禁止cookie后,_session还能用吗？">笔试题：cookie和session的区别？禁止cookie后, session还能用吗？</h3>
-<h3 id="1-_关于cookie:">1. 关于cookie:</h3>
+        <p>笔试题：cookie和session的区别？禁止cookie后, session还能用吗？ <a id="more"></a> ### 笔试题：cookie和session的区别？禁止cookie后, session还能用吗？</p>
+<h3 id="关于cookie">1. 关于cookie:</h3>
 <p><a href="https://zh.wikipedia.org/wiki/Cookie" target="_blank">wiki</a></p>
 <h4 id="cookie的分类">cookie的分类</h4>
 <p>Cookie 保存在 <strong>客户端</strong> , 按在客户端中的存储位置, 可分为 <strong>内存Cookie</strong> 和 <strong>硬盘Cookie</strong>:</p>
@@ -107,70 +105,68 @@ Cookie 保存在 客户端 , 按在客户端中的存储位置, 可分为 内存
 <li><strong>硬盘Cookie</strong> 保存在硬盘里, 有一个过期时间, 除非用户手工清理或到了过期时间, 硬盘Cookie不会被删除, 其存在时间是长期的( <strong>持久</strong> Cookie)</li>
 </ul>
 <h4 id="cookie的作用">cookie的作用</h4>
-<p>因为HTTP协议是无状态的, 所以服务器不知道用户上一次做了什么, 这严重阻碍了交互式Web应用程序的实现. </p>
-<ol>
-<li><p>在典型的网上购物场景中, 用户浏览了几个页面, 买了一盒饼干和两瓶饮料.<br>最后结帐时, 由于 <strong>HTTP的无状态性</strong> , 不通过额外的手段, 服务器并不知道用户到底买了什么,会导致糟糕的用户体验.<br>所以Cookie就是用来绕开HTTP的无状态性的 “额外手段” 之一. <strong>服务器可以设置或读取Cookies中包含信息, 借此维护用户跟服务器会话中的状态.</strong></p>
-<p> 在刚才的购物场景中, 当用户选购了第一项商品, 服务器在向用户发送网页的同时, 还发送了一段Cookie, 记录着那项商品的信息. 当用户访问另一个页面, 浏览器会把Cookie发送给服务器, 于是服务器知道他之前选购了什么. 用户继续选购商品, 服务器就在原来那段Cookie里追加新的商品信息. 结帐时, 服务器读取发送来的Cookie就行了. </p>
-</li>
+<p>因为HTTP协议是无状态的, 所以服务器不知道用户上一次做了什么, 这严重阻碍了交互式Web应用程序的实现.</p>
+<ol style="list-style-type: decimal">
+<li><p>在典型的网上购物场景中, 用户浏览了几个页面, 买了一盒饼干和两瓶饮料.<br />最后结帐时, 由于 <strong>HTTP的无状态性</strong> , 不通过额外的手段, 服务器并不知道用户到底买了什么,会导致糟糕的用户体验. 所以Cookie就是用来绕开HTTP的无状态性的 “额外手段” 之一. <strong>服务器可以设置或读取Cookies中包含信息, 借此维护用户跟服务器会话中的状态.</strong></p>
+<p>在刚才的购物场景中, 当用户选购了第一项商品, 服务器在向用户发送网页的同时, 还发送了一段Cookie, 记录着那项商品的信息. 当用户访问另一个页面, 浏览器会把Cookie发送给服务器, 于是服务器知道他之前选购了什么. 用户继续选购商品, 服务器就在原来那段Cookie里追加新的商品信息. 结帐时, 服务器读取发送来的Cookie就行了.</p></li>
 <li><p>Cookie另一个典型的应用是当登录一个网站时, 网站往往会请求用户输入用户名和密码, 并且用户可以勾选 <strong>“下次自动登录”</strong>.</p>
-<p> 如果勾选了, 那么下次访问同一网站时,  用户会发现没输入用户名和密码就已经登录了. 这正是因为前一次登录时, 服务器发送了包含登录凭据 (用户名加密码的某种加密形式) 的Cookie到<strong>用户的硬盘</strong>上.<br> 第二次登录时, (如果该Cookie尚未到期) <strong>浏览器会发送该Cookie</strong>, 服务器验证凭据, 于是不必输入用户名和密码就让用户登录了. </p>
-</li>
+<p>如果勾选了, 那么下次访问同一网站时, 用户会发现没输入用户名和密码就已经登录了. 这正是因为前一次登录时, 服务器发送了包含登录凭据 (用户名加密码的某种加密形式) 的Cookie到<strong>用户的硬盘</strong>上.<br />第二次登录时, (如果该Cookie尚未到期) <strong>浏览器会发送该Cookie</strong>, 服务器验证凭据, 于是不必输入用户名和密码就让用户登录了.</p></li>
 </ol>
 <h4 id="cookie的缺陷">cookie的缺陷</h4>
-<ol>
-<li>cookie会被附加在每个HTTP请求中, 所以无形中 <strong>增加了流量</strong>. </li>
+<ol style="list-style-type: decimal">
+<li>cookie会被附加在每个HTTP请求中, 所以无形中 <strong>增加了流量</strong>.</li>
 <li>由于在HTTP请求中的cookie是<strong>明文传递</strong>的, 所以<strong>安全性</strong>成问题. (除非用HTTPS)</li>
-<li>Cookie的<strong>大小限制</strong>在4KB左右. 对于复杂的存储需求来说是不够用的. </li>
+<li>Cookie的<strong>大小限制</strong>在4KB左右. 对于复杂的存储需求来说是不够用的.</li>
 </ol>
 <p>注：</p>
-<ol>
-<li>用户可以改变浏览器的设置, 以使用或者禁用Cookies. </li>
-<li>cookie中不但可以确认用户, 还能包含计算机和浏览器的信息<ol>
-<li>如果在一台计算机中安装<strong>多个浏览器</strong>, 每个浏览器都会以 <strong>独立的空间存放</strong> cookie. </li>
-<li>识别不准确<ol>
-<li>同一用户不用浏览器-&gt;不同cookie.<br> 一个用户用不同的浏览器登录或者用不同的计算机登录, 都会得到不同的cookie信息</li>
-<li>不同用户同一浏览器-&gt;同一cookie<br> 对于在同一台计算机上使用同一浏览器的多用户群, cookie不会区分他们的身份, 除非他们使用不同的用户名登录</li>
-</ol>
-</li>
-</ol>
-</li>
+<ol style="list-style-type: decimal">
+<li>用户可以改变浏览器的设置, 以使用或者禁用Cookies.</li>
+<li>cookie中不但可以确认用户, 还能包含计算机和浏览器的信息
+<ol style="list-style-type: decimal">
+<li>如果在一台计算机中安装<strong>多个浏览器</strong>, 每个浏览器都会以 <strong>独立的空间存放</strong> cookie.</li>
+<li>识别不准确
+<ol style="list-style-type: decimal">
+<li>同一用户不用浏览器-&gt;不同cookie. 一个用户用不同的浏览器登录或者用不同的计算机登录, 都会得到不同的cookie信息</li>
+<li>不同用户同一浏览器-&gt;同一cookie 对于在同一台计算机上使用同一浏览器的多用户群, cookie不会区分他们的身份, 除非他们使用不同的用户名登录</li>
+</ol></li>
+</ol></li>
 </ol>
 <h4 id="反对cookie的理由">反对cookie的理由</h4>
-<ol>
+<ol style="list-style-type: decimal">
 <li><strong>识别不准确(如上所列)</strong></li>
-<li><strong>用户隐私、安全和广告</strong><br> cookies包含了一些敏感信息: 用户名, 电脑名, 使用的浏览器和曾经访问的网站.<br> 用户不希望这些内容泄漏出去, 尤其是当其中还包含有私人信息的时候. </li>
-<li>偷窃cookie, 脚本攻击<ol>
-<li>Cookie盗贼：搜集用户cookie并发给攻击者的黑客.  攻击者将利用cookie信息通过合法手段进入用户帐户.</li>
-<li>Cookie投毒：<strong>一般认为, Cookie在储存和传回服务器期间没有被修改过</strong>, 而攻击者会在cookie送回服务器之前对其进行修改, 达到自己的目的.<br> 例如, 在一个购物网站的cookie中包含了顾客应付的款项, 攻击者将该值改小, 达到少付款的目的. 这就是cookie投毒. </li>
+<li><strong>用户隐私、安全和广告</strong> cookies包含了一些敏感信息: 用户名, 电脑名, 使用的浏览器和曾经访问的网站. 用户不希望这些内容泄漏出去, 尤其是当其中还包含有私人信息的时候.</li>
+<li>偷窃cookie, 脚本攻击
+<ol style="list-style-type: decimal">
+<li>Cookie盗贼：搜集用户cookie并发给攻击者的黑客. 攻击者将利用cookie信息通过合法手段进入用户帐户.</li>
+<li>Cookie投毒：<strong>一般认为, Cookie在储存和传回服务器期间没有被修改过</strong>, 而攻击者会在cookie送回服务器之前对其进行修改, 达到自己的目的.<br /> 例如, 在一个购物网站的cookie中包含了顾客应付的款项, 攻击者将该值改小, 达到少付款的目的. 这就是cookie投毒.</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<hr>
-<h3 id="2-_关于session">2. 关于session</h3>
+<hr />
+<h3 id="关于session">2. 关于session</h3>
 <p>session是一种<strong>服务器端</strong>的信息管理机制, 服务器使用一种类似于 <strong>散列表</strong> 的结构(也可能就是使用散列表)来保存信息.</p>
-<p>当程序需要为某个客户端的请求创建一个session时,  服务器首先检查这个客户端的请求里是否已包含了一个session标识(称为 <strong>session id</strong> ). 如果已包含则说明以前已经为此客户端创建过session, 服务器就按照session id把这个session检索出来使用(检索不到则新建一个); 如果客户端请求不包含session id, 则为此客户端创建一个session并且生成一个与此session相关联的session id.</p>
+<p>当程序需要为某个客户端的请求创建一个session时, 服务器首先检查这个客户端的请求里是否已包含了一个session标识(称为 <strong>session id</strong> ). 如果已包含则说明以前已经为此客户端创建过session, 服务器就按照session id把这个session检索出来使用(检索不到则新建一个); 如果客户端请求不包含session id, 则为此客户端创建一个session并且生成一个与此session相关联的session id.</p>
 <p>session id的值应该是一个既不会重复, 又不容易被找到规律以仿造的字符串, 这个session id将被在本次响应中返回给客户端保存.</p>
-<p>保存这个session id的方式可以采用 <strong>cookie</strong>, 这样在交互过程中浏览器可以自动的按照规则把这个标识发送给服务器.  一般这个cookie的名字都是类似于session id. 但cookie可以被人为的禁止, 所以必须有 <strong>其他机制</strong> 以便在cookie被禁止时仍然能够把session id传到服务器.</p>
-<p>问: session产生的session_id放在cookie里面, 如果用户把cookie禁止掉, 是不是session也不能用了呢？<br>答: <strong>禁止掉cookie后, session仍然可以用</strong>, 不过需要通过其他的方式来获得这个session id, 比如, 可以跟在url的后面, 或者以表单的形势提交到服务器端. 从而使服务器端了解客户端的状态.</p>
-<hr>
-<h3 id="3-_cookie_和session_的区别">3. cookie 和session 的区别</h3>
-<ol>
-<li>session保存在 <strong>服务器</strong>, 客户端 <strong>不知道</strong> 其中的信息; cookie保存在 <strong>客户端</strong>, 服务器能够 <strong>知道</strong> 其中的信息. </li>
+<p>保存这个session id的方式可以采用 <strong>cookie</strong>, 这样在交互过程中浏览器可以自动的按照规则把这个标识发送给服务器. 一般这个cookie的名字都是类似于session id. 但cookie可以被人为的禁止, 所以必须有 <strong>其他机制</strong> 以便在cookie被禁止时仍然能够把session id传到服务器.</p>
+<p>问: session产生的session_id放在cookie里面, 如果用户把cookie禁止掉, 是不是session也不能用了呢？ 答: <strong>禁止掉cookie后, session仍然可以用</strong>, 不过需要通过其他的方式来获得这个session id, 比如, 可以跟在url的后面, 或者以表单的形势提交到服务器端. 从而使服务器端了解客户端的状态.</p>
+<hr />
+<h3 id="cookie-和session-的区别">3. cookie 和session 的区别</h3>
+<ol style="list-style-type: decimal">
+<li>session保存在 <strong>服务器</strong>, 客户端 <strong>不知道</strong> 其中的信息; cookie保存在 <strong>客户端</strong>, 服务器能够 <strong>知道</strong> 其中的信息.</li>
 <li>session中保存的是 <strong>对象</strong>, cookie中保存的是<strong>字符串</strong>.</li>
-<li>session不能区分路径, 同一个用户在访问一个网站期间, 所有的session在任何一个地方都可以访问到. 而cookie中如果设置了路径参数, 那么同一个网站中不同路径下的cookie互相是访问不到的.    </li>
+<li>session不能区分路径, 同一个用户在访问一个网站期间, 所有的session在任何一个地方都可以访问到. 而cookie中如果设置了路径参数, 那么同一个网站中不同路径下的cookie互相是访问不到的.<br /></li>
 <li>session的session ID是放在cookie里</li>
-<li>cookie不是很安全, 别人可以分析存放在本地的cookie并进行cookie盗窃、投毒. <strong>session更安全</strong> :<ol>
-<li>session的session ID是放在cookie里, 要想功破session的话, 要先功破cookie. </li>
-<li>session ID是需要有人登录或者启动session_start才会有, 攻击者不知道什么时候会有人登录. </li>
-<li>sessionID是 <strong>加密</strong> 的, 第二次session_start的时候, 前一次的sessionID就没有用了, session<strong>过期</strong>时sessionid也会<strong>失效</strong>,<br>想在短时间内功破加了密的 session ID很难. <strong>session是针对某一次通信而言, 会话结束session也就随着消失了</strong>. </li>
-</ol>
-</li>
+<li>cookie不是很安全, 别人可以分析存放在本地的cookie并进行cookie盗窃、投毒. <strong>session更安全</strong> :
+<ol style="list-style-type: decimal">
+<li>session的session ID是放在cookie里, 要想功破session的话, 要先功破cookie.</li>
+<li>session ID是需要有人登录或者启动session_start才会有, 攻击者不知道什么时候会有人登录.</li>
+<li>sessionID是 <strong>加密</strong> 的, 第二次session_start的时候, 前一次的sessionID就没有用了, session<strong>过期</strong>时sessionid也会<strong>失效</strong>, 想在短时间内功破加了密的 session ID很难. <strong>session是针对某一次通信而言, 会话结束session也就随着消失了</strong>.</li>
+</ol></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/04/24/cookie和session/" data-id="v03pfe3881hc2g8a" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/04/24/cookie和session/" data-id="sipi69o64wyqs4ir" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cookie/">cookie</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/session/">session</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔试/">笔试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络通信/">网络通信</a></li></ul>

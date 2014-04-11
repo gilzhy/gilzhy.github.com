@@ -89,12 +89,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>原文作者:<a href="http://my.eoe.cn/iceskysl" target="_blank">iceskysl</a><br>原文地址:<a href="http://my.eoe.cn/iceskysl/archive/4382.html" target="_blank">http://my.eoe.cn/iceskysl/archive/4382.html</a></p>
+        <p>原文作者:<a href="http://my.eoe.cn/iceskysl" target="_blank">iceskysl</a><br />原文地址:<a href="http://my.eoe.cn/iceskysl/archive/4382.html" target="_blank">http://my.eoe.cn/iceskysl/archive/4382.html</a></p>
 <p>好久不写Android代码手都生了，找出自己之前写的程序发现跑不了了，也没啥特别的错误提示，就看到一句有用的错误<code>Caused by: android.os.NetworkOnMainThreadException</code>，查了下原因上在4.0之后在主线程里面执行Http请求都会报这个错，大概是怕Http请求时间太长造成程序假死的情况吧。</p>
 <p>解决办法有两个思路，分别是：</p>
-<h4 id="第一种方法：直接忽视，强制使用（强烈不推荐，但是修改简单）">第一种方法：直接忽视，强制使用（强烈不推荐，但是修改简单）</h4>
+<h4 id="第一种方法直接忽视强制使用强烈不推荐但是修改简单">第一种方法：直接忽视，强制使用（强烈不推荐，但是修改简单）</h4>
 <p>在MainActivity文件的setContentView(R.layout.activity_main)下面加上如下代码</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -102,13 +102,12 @@
     StrictMode<span class="preprocessor">.ThreadPolicy</span> policy = new StrictMode<span class="preprocessor">.ThreadPolicy</span><span class="preprocessor">.Builder</span>()<span class="preprocessor">.permitAll</span>()<span class="preprocessor">.build</span>()<span class="comment">;</span>
     StrictMode<span class="preprocessor">.setThreadPolicy</span>(policy)<span class="comment">;</span>
 }
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <a id="more"></a>
 
-<h4 id="第二种方法：使用Thread、Runnable、Handler_(推荐使用)">第二种方法：使用Thread、Runnable、Handler (推荐使用)</h4>
+<h4 id="第二种方法使用threadrunnablehandler-推荐使用">第二种方法：使用Thread、Runnable、Handler (推荐使用)</h4>
 <p>在Runnable中做HTTP请求，不用阻塞UI线程～</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -166,13 +165,12 @@ Runnable runnable = <span class="keyword">new</span> Runnable(){
         handler.sendMessage(msg);
     }
 }
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/08/02/androidosnetworkonmainthreadexception/" data-id="xn9svid0wmwn25dv" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/08/02/androidosnetworkonmainthreadexception/" data-id="zfujtl8nvw6dk2nn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络访问/">网络访问</a></li></ul>

@@ -89,54 +89,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Linux下常用命令:查找文件,vim查找替换,解压/压缩,历史命令,进程管理等<br><a id="more"></a></p>
-<ul>
-<li><strong>常用查找文件:</strong><ul>
-<li>当前目录下<strong>文件名</strong>包含关键字的文件: <code>ll | grep xx</code> , <code>find . -name &#39;*xx*&#39;</code></li>
-<li>当前目录下<strong>文件内容</strong>包含关键字的文件<ul>
-<li><code>grep &quot;string&quot; [file]</code>: 输出每个文件中包含”str”的行,并高亮”str”</li>
-<li><code>grep -o &quot;str&quot; [file]</code>: 只输出包含”str”的文件</li>
-<li><code>find .|xargs grep -ri &quot;str&quot;</code> 输出每个文件中包含”str”的行,无高亮</li>
-<li><code>find .|xargs grep -ri &quot;str&quot; -l</code>: 只输出包含”str”的文件</li>
-</ul>
-</li>
-<li>列出当前目录里<strong>最大的10个文件</strong>: <code>du -s * | sort -n | tail</code></li>
-</ul>
-</li>
-</ul>
-<hr>
-<ol>
-<li><p><code>find [指定目录] [指定条件] [指定动作]</code></p>
+        <p>Linux下常用命令:查找文件,vim查找替换,解压/压缩,历史命令,进程管理等 <a id="more"></a> - <strong>常用查找文件:</strong> - 当前目录下<strong>文件名</strong>包含关键字的文件: <code>ll | grep xx</code> , <code>find . -name '*xx*'</code> - 当前目录下<strong>文件内容</strong>包含关键字的文件 - <code>grep &quot;string&quot; [file]</code>: 输出每个文件中包含“str”的行,并高亮“str” - <code>grep -o &quot;str&quot; [file]</code>: 只输出包含“str”的文件 - <code>find .|xargs grep -ri &quot;str&quot;</code> 输出每个文件中包含“str”的行,无高亮 - <code>find .|xargs grep -ri &quot;str&quot; -l</code>: 只输出包含“str”的文件 - 列出当前目录里<strong>最大的10个文件</strong>: <code>du -s * | sort -n | tail</code></p>
+<hr />
+<ol style="list-style-type: decimal">
+<li><code>find [指定目录] [指定条件] [指定动作]</code>
 <ul>
 <li>指定目录： 所要搜索的目录及其所有子目录。默认为当前目录。</li>
 <li>指定条件： 所要搜索的文件的特征。默认不过滤任何文件</li>
-<li><p>指定动作： 对搜索结果进行特定的处理.默认无处理,全部显示</p>
-</li>
-<li><p><code>find . -name ‘my*’</code><br>  搜索当前目录所有文件名以my开头的文件,显示文件名</p>
-</li>
-<li><p><code>find . -name ‘my*’ -ls</code><br>  搜索当前目录中所有文件名以my开头的文件，显示详细信息。</p>
-</li>
-<li><p><code>find . -mmin -10</code><br>  搜索当前目录中，所有过去<strong>10分钟</strong>中更新过的<strong>所有文件和目录</strong>。</p>
-</li>
-<li><p><code>find . -type f -mmin -10</code><br>  搜索当前目录中，所有过去<strong>10分钟</strong>中更新过的<strong>普通文件</strong>。</p>
-</li>
-</ul>
-</li>
+<li><p>指定动作： 对搜索结果进行特定的处理.默认无处理,全部显示</p></li>
+<li><p><code>find . -name ‘my*’</code> 搜索当前目录所有文件名以my开头的文件,显示文件名</p></li>
+<li><p><code>find . -name ‘my*’ -ls</code><br /> 搜索当前目录中所有文件名以my开头的文件，显示详细信息。</p></li>
+<li><p><code>find . -mmin -10</code> 搜索当前目录中，所有过去<strong>10分钟</strong>中更新过的<strong>所有文件和目录</strong>。</p></li>
+<li><p><code>find . -type f -mmin -10</code> 搜索当前目录中，所有过去<strong>10分钟</strong>中更新过的<strong>普通文件</strong>。</p></li>
+</ul></li>
 <li><p>locate</p>
-<p> locate命令其实是“find -name”的另一种写法，但是要比后者快得多</p>
-<p> 原因在于它不搜索具体目录，而是搜索一个数据库（/var/lib/locatedb），这个数据库中含有本地所有文件信息。</p>
-<p> Linux系统自动创建这个数据库，并且<strong>每天自动更新一次</strong>，所以使用locate命令查不到最新变动过的文件。</p>
-<p> 为了避免这种情况，可以在使用locate之前，先使用<code>updatedb</code>命令，手动更新数据库。</p>
+<p>locate命令其实是“find -name”的另一种写法，但是要比后者快得多</p>
+<p>原因在于它不搜索具体目录，而是搜索一个数据库（/var/lib/locatedb），这个数据库中含有本地所有文件信息。</p>
+<p>Linux系统自动创建这个数据库，并且<strong>每天自动更新一次</strong>，所以使用locate命令查不到最新变动过的文件。</p>
+<p>为了避免这种情况，可以在使用locate之前，先使用<code>updatedb</code>命令，手动更新数据库。</p>
 <ul>
-<li><code>locate ~/xx</code><br>  搜索用户主目录下，所有以xx<strong>开头</strong>的文件。</li>
-<li><code>locate -i ~/m</code><br>  搜索用户主目录下，所有以xx<strong>开头</strong>的文件，<strong>忽略大小写</strong>。</li>
-</ul>
-</li>
+<li><code>locate ~/xx</code> 搜索用户主目录下，所有以xx<strong>开头</strong>的文件。</li>
+<li><code>locate -i ~/m</code> 搜索用户主目录下，所有以xx<strong>开头</strong>的文件，<strong>忽略大小写</strong>。</li>
+</ul></li>
 <li><p>whereis</p>
-<p> whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</p>
-</li>
+<p>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</p></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -144,15 +122,13 @@
 <span class="label">grep:</span> /bin/grep /usr/share/man/man1/grep<span class="number">.1</span><span class="preprocessor">.gz</span>
 $ whereis isympy
 <span class="label">isympy:</span> /usr/bin/isympy /usr/bin/X11/isympy /usr/share/man/man1/isympy<span class="number">.1</span><span class="preprocessor">.gz</span>
-</pre></td></tr></table></figure>
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol style="list-style-type: decimal">
 <li><p>which</p>
-<p> which在PATH变量指定的路径中，搜索某个<strong>系统命令</strong>的位置，并且<strong>返回第一个</strong>搜索结果</p>
-<p> 使用which命令可以<strong>查看某个系统命令是否存在，以及执行的到底是哪一个位置的命令</strong></p>
-</li>
+<p>which在PATH变量指定的路径中，搜索某个<strong>系统命令</strong>的位置，并且<strong>返回第一个</strong>搜索结果</p>
+<p>使用which命令可以<strong>查看某个系统命令是否存在，以及执行的到底是哪一个位置的命令</strong></p></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -160,15 +136,13 @@ $ whereis isympy
 /bin/grep
 <span class="variable">$ </span>which isympy
 /usr/bin/isympy
-</pre></td></tr></table></figure>
-
-<ol>
+</pre></td></tr></table></figure></p>
+<ol style="list-style-type: decimal">
 <li><p>type</p>
-<p> type区分命令是由shell自带的, 还是由shell外部的独立二进制文件提供的。</p>
-<p> 如果一个命令是外部命令，那么使用-p参数，会显示该命令的路径，相当于which命令。</p>
-</li>
+<p>type区分命令是由shell自带的, 还是由shell外部的独立二进制文件提供的。</p>
+<p>如果一个命令是外部命令，那么使用-p参数，会显示该命令的路径，相当于which命令。</p></li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -176,64 +150,52 @@ $ whereis isympy
 cd 是 shell 内嵌
 $ type grep
 grep 是 <span class="smartquote">`grep --color=auto'</span> 的别名
-</pre></td></tr></table></figure>
-
-
-<hr>
+</pre></td></tr></table></figure></p>
+<hr />
 <ul>
-<li><p><strong>root相关:</strong></p>
+<li><strong>root相关:</strong>
 <ul>
 <li>设置root密码: <code>sudo passwd root</code></li>
 <li>转为root: <code>su</code></li>
-</ul>
-</li>
-<li><p><strong>vim相关</strong></p>
+</ul></li>
+<li><strong>vim相关</strong>
 <ul>
 <li>替换: <code>:%s/lala/haha/gc</code> (将lala替换为haha,c表示询问,g表示批量)</li>
-<li>查找匹配数: <code>%s/xxx//gn</code> </li>
-<li><p>编辑多个文件:</p>
+<li>查找匹配数: <code>%s/xxx//gn</code></li>
+<li>编辑多个文件:
 <ul>
-<li><p><code>vim a.txt b.txt c.txt</code></p>
+<li><code>vim a.txt b.txt c.txt</code>
 <ul>
 <li>:n 跳至下一个文件，:e#回到刚才编辑的文件，:ea.txt 编辑文件a.txt</li>
 <li>:ls 查看当前打开的文件</li>
 <li>:b1 打开n缓存区的文件，n为ls查看中文件的编号</li>
-</ul>
-</li>
-<li><p>使用 <code>sp</code> 或者 <code>vs</code> 命令，对窗口进行分割</p>
+</ul></li>
+<li>使用 <code>sp</code> 或者 <code>vs</code> 命令，对窗口进行分割
 <ul>
-<li>:vs a.txt    横</li>
-<li>:sp a.txt    竖</li>
-<li>ctrl+ww    在窗口间进行切换</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><strong>解压/压缩</strong></p>
+<li>:vs a.txt 横</li>
+<li>:sp a.txt 竖</li>
+<li>ctrl+ww 在窗口间进行切换</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><strong>解压/压缩</strong>
 <ul>
 <li><code>gzip file</code> / <code>gunzip file.gz</code> 压缩文件</li>
-<li><code>tar -zcvf dir.tar.gz dir</code> / <code>tar -zxvf dir.tar.gz</code> 打包目录<ul>
+<li><code>tar -zcvf dir.tar.gz dir</code> / <code>tar -zxvf dir.tar.gz</code> 打包目录
+<ul>
 <li><code>-z</code> 打包同时压缩</li>
 <li><code>-f</code> 指定压缩后的明文名</li>
 <li><code>-v</code> 显示详细信息</li>
 <li><code>-c</code> 打包</li>
 <li><code>-x</code> 解包</li>
-</ul>
-</li>
+</ul></li>
 <li><code>zip file.zip file</code> / <code>unzip file.zip</code></li>
-<li><code>zip -r dir.zip dir</code> / <code>unzip dir.zip</code><ul>
-<li><code>bzip2 -k file</code> / <code>bunzip2 -k file.bz2</code> -k表示保留原文件</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>apt</strong></p>
+<li><code>zip -r dir.zip dir</code> / <code>unzip dir.zip</code></li>
+</ul></li>
+<li><p><code>bzip2 -k file</code> / <code>bunzip2 -k file.bz2</code> -k表示保留原文件</p></li>
+<li><strong>apt</strong>
 <ul>
-<li><p>apt-get(man apt-get)</p>
+<li>apt-get(man apt-get)
 <ul>
 <li><code>apt-get update</code>: 更新源(/etc/apt/sources.list记录)</li>
 <li><code>apt-get upgrade</code>: 更新系统中所有已经安装的软件至其最新版</li>
@@ -242,92 +204,74 @@ grep 是 <span class="smartquote">`grep --color=auto'</span> 的别名
 <li><code>apt-get purged</code>: 清除（在卸载的基础上，删除配置）</li>
 <li><code>apt-get download</code>: 下载安装包至当前目录</li>
 <li><code>apt-get autoremove</code>: 一些软件安装时必须附带着安装一些其他软件，若卸载了软件，这些附带的软件就不再被需要时，autoremove自动卸载这些</li>
-</ul>
-</li>
-<li><p>apt-cache(man apt-cache)</p>
+</ul></li>
+<li>apt-cache(man apt-cache)
 <ul>
 <li><code>apt-cache showpkg  pkg(s)</code>: 显示安装包的信息</li>
 <li><code>apt-cache stats</code>: 显示统计信息（软件包名称总数、全部软件包结构等）</li>
 <li><code>apt-cache showsrc pkg(s)</code>: 显示pkg(s)的源地址</li>
 <li><code>apt-cache search regex [ regex ... ]</code>: 查找相应软件版本</li>
-<li><code>apt-cache show pkg(s)</code>: 显示软件详细的信息，同dpkg —print-avail</li>
+<li><code>apt-cache show pkg(s)</code>: 显示软件详细的信息，同dpkg –print-avail</li>
 <li><code>apt-cache depends pkg(s)</code>: 显示有哪些安装包依赖于pkg(s)</li>
 <li><code>apt-cache rdepends pkg(s)</code>: 与depends相反</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>链接</strong></p>
+</ul></li>
+</ul></li>
+<li><strong>链接</strong>
 <ul>
 <li><strong>软链接</strong>: <code>ln -s [源文件] [目标文件]</code></li>
 <li><strong>硬链接</strong>: <code>ln [源文件] [目标文件]</code></li>
-</ul>
-</li>
-<li><p><strong>开关机</strong></p>
+</ul></li>
+<li><strong>开关机</strong>
 <ul>
 <li>关机: <code>shutdown -h now</code> 或<code>init 0</code></li>
 <li>重启: <code>reboot</code> 或<code>init 6</code></li>
-</ul>
-</li>
-<li><p><strong>命令别名</strong></p>
+</ul></li>
+<li><strong>命令别名</strong>
 <ul>
 <li>设置: <code>alias ll=&quot;ll -;&quot;</code></li>
 <li>查看: <code>alias</code></li>
-</ul>
-</li>
-<li><p><strong>重定向</strong></p>
-<ul>
+</ul></li>
+<li><strong>重定向</strong></li>
 <li><strong>输出重定向：</strong> <code>ls -l ./tmp &gt; ./tmp.msg</code> 或换成&gt;&gt;</li>
-<li><strong>输入重定向:</strong> <code>wall &lt; ./temp</code></li>
-</ul>
-</li>
-<li><p><strong>命令连接符</strong></p>
-<ul>
+<li><p><strong>输入重定向:</strong> <code>wall &lt; ./temp</code></p></li>
+<li><strong>命令连接符</strong></li>
 <li><code>;</code> 各命令顺序执行</li>
 <li><code>&amp;&amp;</code> 只有前面的命令成功执行后,后面的命令才被执行</li>
-<li><code>||</code> 只有前面的命令执行失败后,后面的命令才被执行</li>
-</ul>
-</li>
-<li><p><strong>实用工具</strong></p>
+<li><p><code>||</code> 只有前面的命令执行失败后,后面的命令才被执行</p></li>
+<li><strong>实用工具</strong>
 <ul>
 <li><strong>简单服务器</strong>: <code>python -m SimpleHTTPServer</code></li>
 <li><strong>ascii码表</strong>: <code>man ascii</code></li>
-</ul>
-</li>
-<li><p><strong>历史命令</strong></p>
+</ul></li>
+<li><strong>历史命令</strong>
 <ul>
-<li><strong>以root的身份执行上一条命令</strong>: <code>sudo !!</code><br>  使用<code>!xx</code>来重复最近的一次命令，比如，你以前输入过vi /where/the/file/is, 下次用 !vi 重得上次最近一次的vi命令</li>
+<li><strong>以root的身份执行上一条命令</strong>: <code>sudo !!</code> 使用<code>!xx</code>来重复最近的一次命令，比如，你以前输入过vi /where/the/file/is, 下次用 !vi 重得上次最近一次的vi命令</li>
 <li><strong>上一个命令的最后一个字符串</strong>: <code>!$</code></li>
 <li><strong>查看历史命令</strong>: <code>&lt;ctrl&gt;+&lt;R&gt;</code></li>
 <li><strong>把上次命令行的参数给重复出来</strong>: <code>ALT+.</code> or <code>&lt;ESC&gt; .</code></li>
 <li><strong>替换前一条命令里的部分字符串</strong>: <code>^old^new</code> (也可以使用 !!:gs/old/new）</li>
-</ul>
-</li>
-<li><p><strong> 创建一个空文件: </strong> <code>touch file.txt</code> 或 <code>&gt; file.txt</code></p>
-</li>
-<li><p><strong>进程相关</strong></p>
+</ul></li>
+<li><p>** 创建一个空文件: ** <code>touch file.txt</code> 或 <code>&gt; file.txt</code></p></li>
+<li><strong>进程相关</strong>
 <ul>
 <li><strong>显示进程树</strong>: <code>pstree -p</code></li>
 <li><strong>显示包含关键字的进程:</strong> ‘ps -ef | grep’</li>
 <li><strong>列出头十个最耗内存的进程</strong>: <code>ps aux | sort -nk +4 | tail</code></li>
+</ul></li>
+<li><p>** Ipython中将历史命令输出到文件: **</p></li>
 </ul>
-</li>
-<li><p><strong> Ipython中将历史命令输出到文件: </strong></p>
-</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 </pre></td><td class="code"><pre>    hist  <span class="comment"># 查看历史命令</span>
     hist -n  <span class="comment"># 查看历史命令(加行号)</span>
     edit <span class="operator">a</span>:b  <span class="comment"># 将历史命令中[a,b)行在文件中编辑</span>
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/02/27/linux命令/" data-id="f8x21y9k6dbgllir" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/02/27/linux命令/" data-id="yrq7bt8kqmo712q6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找/">查找</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解压/压缩/">解压/压缩</a></li></ul>

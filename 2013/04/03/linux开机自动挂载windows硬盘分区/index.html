@@ -89,19 +89,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>各大发行版常用的集成桌面环境（Gnome/KDE等）都会在开机启动时自动发现本地磁盘分区, 并在用户试图进入时挂载该分区. 对于一台装有 Linux/Window7 双系统的电脑, Linux启动后会在文件系统（File System）里显示已发现的 Windows 磁盘分区, 我们进入其中的一个分区, 会提示输入 root 口令, 口令正确时, Gnome 会在 /media 下挂载这个分区, 并以该分区的 UUID 号为挂载目录名. </p>
-<p>而当我们基于各种原因不使用庞杂/臃肿的桌面环境时, 转而使用 轻量级窗口管理器（Awesome） + 轻量级文件管理器 （Thunar, ranger）等时, 这种自定义的桌面环境并不支持本地磁盘的开机自动挂载.<br>以上是摘要<br><a id="more"></a></p>
-<h4 id="本文适用于：">本文适用于：</h4>
+        <p>各大发行版常用的集成桌面环境（Gnome/KDE等）都会在开机启动时自动发现本地磁盘分区, 并在用户试图进入时挂载该分区. 对于一台装有 Linux/Window7 双系统的电脑, Linux启动后会在文件系统（File System）里显示已发现的 Windows 磁盘分区, 我们进入其中的一个分区, 会提示输入 root 口令, 口令正确时, Gnome 会在 /media 下挂载这个分区, 并以该分区的 UUID 号为挂载目录名.</p>
+<p>而当我们基于各种原因不使用庞杂/臃肿的桌面环境时, 转而使用 轻量级窗口管理器（Awesome） + 轻量级文件管理器 （Thunar, ranger）等时, 这种自定义的桌面环境并不支持本地磁盘的开机自动挂载. 以上是摘要 <a id="more"></a> #### 本文适用于：</p>
 <ul>
 <li>未安装 Gnome, KDE等完整的桌面环境的 Linux 各发行版系统</li>
 <li>硬盘中装有Linux/Windows 双系统, 或具有 NTFS/FAT 文件系统</li>
 </ul>
-<p>各大发行版常用的集成桌面环境（Gnome/KDE等）都会在开机启动时自动发现本地磁盘分区, 并在用户试图进入时挂载该分区. 对于一台装有 Linux/Window7 双系统的电脑, Linux启动后会在文件系统（File System）里显示已发现的 Windows 磁盘分区, 我们进入其中的一个分区, 会提示输入 root 口令, 口令正确时, Gnome 会在 /media 下挂载这个分区, 并以该分区的 UUID 号为挂载目录名. </p>
-<p>而当我们基于各种原因不使用庞杂/臃肿的桌面环境时, 转而使用 轻量级窗口管理器（Awesome） + 轻量级文件管理器 （Thunar, ranger）等时, 这种自定义的桌面环境并不支持本地磁盘的开机自动挂载. </p>
-<h4 id="用_/etc/fstab_自动挂载本地分区">用 /etc/fstab 自动挂载本地分区</h4>
-<p>/etc/fstab 文件告诉 Linux 如何挂载你的电脑中的磁盘分区和其他存储设备, 并且指明它们应该挂载到什么位置. 这个文件中列出的设备会在开机时自动的挂载到相应的挂载点去. </p>
+<p>各大发行版常用的集成桌面环境（Gnome/KDE等）都会在开机启动时自动发现本地磁盘分区, 并在用户试图进入时挂载该分区. 对于一台装有 Linux/Window7 双系统的电脑, Linux启动后会在文件系统（File System）里显示已发现的 Windows 磁盘分区, 我们进入其中的一个分区, 会提示输入 root 口令, 口令正确时, Gnome 会在 /media 下挂载这个分区, 并以该分区的 UUID 号为挂载目录名.</p>
+<p>而当我们基于各种原因不使用庞杂/臃肿的桌面环境时, 转而使用 轻量级窗口管理器（Awesome） + 轻量级文件管理器 （Thunar, ranger）等时, 这种自定义的桌面环境并不支持本地磁盘的开机自动挂载.</p>
+<h4 id="用-etcfstab-自动挂载本地分区">用 /etc/fstab 自动挂载本地分区</h4>
+<p>/etc/fstab 文件告诉 Linux 如何挂载你的电脑中的磁盘分区和其他存储设备, 并且指明它们应该挂载到什么位置. 这个文件中列出的设备会在开机时自动的挂载到相应的挂载点去.</p>
 <p>典型的 fstab 文件是一个包含了 6 列、若干行的文本文件, 以 root 权限进行编辑, 我电脑中默认的 fstab 文件内容:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -125,30 +124,28 @@ proc            /proc           proc    nodev,noexec,nosuid <span class="number"
 UUID=<span class="number">0</span>b9c3151-<span class="number">2</span>b8d-<span class="number">49e2</span>-a9e6-<span class="number">25</span>d9af619b85 /               ext4    errors=remount-ro <span class="number">0</span>       <span class="number">1</span>
 <span class="preprocessor"># swap was on /dev/sda7 during installation</span>
 UUID=<span class="number">85</span>cd8cc7-<span class="number">2</span>a20-<span class="number">40</span>d5-<span class="number">8</span>aac-cc1e15f79ba1 none            swap    sw              <span class="number">0</span>       <span class="number">0</span>
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>第1列: 设备的UUID, UUID可以换成类似 /dev/sdax 的设备文件名</p>
 <p>第2列: 挂载点, 挂载点目录必须在挂载前建立</p>
-<p>第3列: 文件系统类型, Linux常用的是 ext2/3/4 , Windows 常用的是 ntfs-3g 和 vfat, 或者使用 auto 关键字让系统自动检测类型. </p>
-<p>第4列: 挂载选项, 与mount命令中用到的相同. </p>
-<p>defaults 代表的是 rw, suid, dev, exec, auto, nouser, async. </p>
+<p>第3列: 文件系统类型, Linux常用的是 ext2/3/4 , Windows 常用的是 ntfs-3g 和 vfat, 或者使用 auto 关键字让系统自动检测类型.</p>
+<p>第4列: 挂载选项, 与mount命令中用到的相同.</p>
+<p>defaults 代表的是 rw, suid, dev, exec, auto, nouser, async.</p>
 <p>rw 是可读可写, ro 是只可读；</p>
 <p>exec/noexec 挂载分区中的文件是否是可执行的；</p>
 <p>auto/noauto 表示设备是否在开机时自动挂载；</p>
 <p>nouser/user 当该选项为nouser时, 只有root可以挂载该分区, 当其为user时, 普通用户也可以挂载；</p>
-<p>async/sync 是否打开同步写入/读出分区内容, async表示否. </p>
+<p>async/sync 是否打开同步写入/读出分区内容, async表示否.</p>
 <p>一般的, 挂载 Windows分区, 我们采用下面的选项：</p>
 <p>defaults, user, locale=zh_CN.utf8</p>
-<p>表示采用 defaults 默认的选项, 但改nouser为user, 并指定语言编码以显示中文字符.<br>注:如果不指定uid和gid, 挂载的ntfs分区的所有者和所属组都是root, 且无法使用chown和chmod改变属性. </p>
+<p>表示采用 defaults 默认的选项, 但改nouser为user, 并指定语言编码以显示中文字符. 注:如果不指定uid和gid, 挂载的ntfs分区的所有者和所属组都是root, 且无法使用chown和chmod改变属性.</p>
 <p>通过id命令<strong>查看自己的uid和gid</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 </pre></td><td class="code"><pre>$ id
 uid<span class="subst">=</span><span class="number">1000</span>(jay<span class="attribute">-young</span>) gid<span class="subst">=</span><span class="number">1000</span>(jay<span class="attribute">-young</span>) 组<span class="subst">=</span><span class="number">1000</span>(jay<span class="attribute">-young</span>),<span class="number">4</span>(adm),<span class="number">24</span>(cdrom),<span class="number">27</span>(sudo),<span class="number">30</span>(dip),<span class="number">46</span>(plugdev),<span class="number">109</span>(lpadmin),<span class="number">124</span>(sambashare)
-</pre></td></tr></table></figure>
-
-<p>用 <code>sudo blkid</code> <strong>查看分区的UUID和Type</strong>. </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<p>用 <code>sudo blkid</code> <strong>查看分区的UUID和Type</strong>.</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -164,11 +161,10 @@ uid<span class="subst">=</span><span class="number">1000</span>(jay<span class="
 /dev/sda6: <span class="keyword">LABEL</span>=<span class="string">"M-fM-^VM-^GM-dM-;M-6M-eM-^MM-7"</span> UUID=<span class="string">"62BC1AFABC1AC885"</span> <span class="keyword">TYPE</span>=<span class="string">"ntfs"</span>
 /dev/sda7: UUID=<span class="string">"85cd8cc7-2a20-40d5-8aac-cc1e15f79ba1"</span> <span class="keyword">TYPE</span>=<span class="string">"swap"</span>
 /dev/sda8: UUID=<span class="string">"0b9c3151-2b8d-49e2-a9e6-25d9af619b85"</span> <span class="keyword">TYPE</span>=<span class="string">"ext4"</span>
-</pre></td></tr></table></figure>
-
-<p>在 /media 中建立要挂载的分区目录: /media/C, /media/D, /media/E, /media/F. </p>
+</pre></td></tr></table></figure></p>
+<p>在 /media 中建立要挂载的分区目录: /media/C, /media/D, /media/E, /media/F.</p>
 <p>将下面4行添加到 /etc/fstab 中:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -176,15 +172,14 @@ uid<span class="subst">=</span><span class="number">1000</span>(jay<span class="
 /dev/sda3 /media/D ntfs-<span class="number">3</span>g defaults,user,locale=zh_CH.utf8,uid=<span class="number">1000</span>,gid=<span class="number">1000</span>,<span class="keyword">umask</span>=<span class="number">000</span> <span class="number">0</span> <span class="number">0</span>
 /dev/sda5 /media/E ntfs-<span class="number">3</span>g defaults,user,locale=zh_CH.utf8,uid=<span class="number">1000</span>,gid=<span class="number">1000</span>,<span class="keyword">umask</span>=<span class="number">000</span> <span class="number">0</span> <span class="number">0</span>
 /dev/sda6 /media/F ntfs-<span class="number">3</span>g defaults,user,locale=zh_CH.utf8,uid=<span class="number">1000</span>,gid=<span class="number">1000</span>,<span class="keyword">umask</span>=<span class="number">000</span> <span class="number">0</span> <span class="number">0</span>
-</pre></td></tr></table></figure>
-
-<p>注意, FAT 类型的磁盘分区要用 iocharset=utf8 来指定编码类型, 才能显示中文. </p>
+</pre></td></tr></table></figure></p>
+<p>注意, FAT 类型的磁盘分区要用 iocharset=utf8 来指定编码类型, 才能显示中文.</p>
 <p>最后, 用命令 <code>sudo mount -a</code> 刷新一下就可以在 /media 下看到4个分区中的文件了.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/04/03/linux开机自动挂载windows硬盘分区/" data-id="ut2wbt3kcxdxqpd1" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/04/03/linux开机自动挂载windows硬盘分区/" data-id="yi7zoa8xu9ad6d33" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>

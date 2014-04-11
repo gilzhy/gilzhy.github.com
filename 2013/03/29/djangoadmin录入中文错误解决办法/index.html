@@ -12,9 +12,10 @@
 <meta name="og:site_name" content="Jay Young's Blog">
 <meta name="og:description" content="转自Django Admin 录入中文错误解决办法
 在Django自带后台中经常会出现编码错误：
-Incorrect string value: &#39;\xE7\xAE\x80\xE5\x8D\x95...&#39; for column &#39;message&#39; at row 1  
+Incorrect string value: '\xE7\xAE\x80\xE5\x8D\x95...' for column 'message' at row 1
 需要修改admin表的中的编码，才能保证数据正确显示、插入、修改、删除。
-在自己的数据库中插入下面">
+在自己的数据库中插入下面句子改变表中某一列的数据类型：
+AL">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -95,18 +96,18 @@ Incorrect string value: &#39;\xE7\xAE\x80\xE5\x8D\x95...&#39; for column &#39;me
       
         <p>转自<a href="http://world77.blog.51cto.com/414605/767408" target="_blank">Django Admin 录入中文错误解决办法</a></p>
 <p>在Django自带后台中经常会出现编码错误：</p>
-<p><code>Incorrect string value: &#39;\xE7\xAE\x80\xE5\x8D\x95...&#39; for column &#39;message&#39; at row 1</code>  </p>
+<p><code>Incorrect string value: '\xE7\xAE\x80\xE5\x8D\x95...' for column 'message' at row 1</code></p>
 <p>需要修改admin表的中的编码，才能保证数据正确显示、插入、修改、删除。</p>
 <p>在自己的数据库中插入下面句子改变表中某一列的数据类型：</p>
 <p><code>ALTER TABLE auth_message MODIFY COLUMN message VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;</code></p>
-<p>如果还有错误，可根据提示信息修改相应表中相应列的编码类型（之前应该是修改过了整个DB的数据类型的，但是为什么还是出错呢，不知道原因，老是出现这些问题，用相同的方法都得到了解决，证明这是一个普遍都会存在的问题）。<br>例如，如果报错<code>....for column &#39;object_repr&#39; at row 1</code></p>
+<p>如果还有错误，可根据提示信息修改相应表中相应列的编码类型（之前应该是修改过了整个DB的数据类型的，但是为什么还是出错呢，不知道原因，老是出现这些问题，用相同的方法都得到了解决，证明这是一个普遍都会存在的问题）。 例如，如果报错<code>....for column 'object_repr' at row 1</code></p>
 <p>就找到此列所在表为django_admin_log，然后插入：</p>
 <p><code>ALTER TABLE django_admin_log MODIFY COLUMN object_repr VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/29/djangoadmin录入中文错误解决办法/" data-id="nnrk9cdhd57qutb9" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/29/djangoadmin录入中文错误解决办法/" data-id="xbmzv1zp7qabsa2h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/">django</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>

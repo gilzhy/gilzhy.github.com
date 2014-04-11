@@ -92,26 +92,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>转自：<a href="http://www.cnblogs.com/abeen/archive/2010/08/06/1794197.html" target="_blank">[Linux] VIM 代码折叠</a></p>
-<p>VIM代码折叠方式可以用”foldmethod”选项来设置，如: set foldmethod=indent<br>有6种方式来折叠代码</p>
-<ol>
+<p>VIM代码折叠方式可以用“foldmethod”选项来设置，如: set foldmethod=indent<br />有6种方式来折叠代码</p>
+<ol style="list-style-type: decimal">
 <li>manual //手工定义折叠</li>
 <li>indent //用缩进表示折叠</li>
 <li>expr　 //用表达式来定义折叠</li>
 <li>syntax //用语法高亮来定义折叠</li>
-<li>diff   //对没有更改的文本进行折叠</li>
+<li>diff //对没有更改的文本进行折叠</li>
 <li>marker //用标志折叠</li>
 </ol>
 <p>vim 配置文件分为<strong>全局配置文件</strong>和<strong>用户配置文件</strong></p>
-<ol>
-<li>全局配置文件查找，在.vim 中输入 <code>:echo $VIM</code> ,一般为： <code>/usr/share/vim/vimrc</code> </li>
+<ol style="list-style-type: decimal">
+<li>全局配置文件查找，在.vim 中输入 <code>:echo $VIM</code> ,一般为： <code>/usr/share/vim/vimrc</code></li>
 <li>用户配置文件在用户主目录下，如：/home/abeen/.vimrc</li>
 </ol>
 <p>在vimrc文件中设置折叠方式：如set foldmethod=indent</p>
 <p>选定折叠方式后，就可以使用折叠命令进行折叠操作了．常用的折叠方式为indent和marker</p>
-<h4 id="1-_indent折叠命令">1. indent折叠命令</h4>
-<p>indent方式，vim会自动利用缩进进行折叠，我们可以使用现成的折叠成果．  </p>
+<h4 id="indent折叠命令">1. indent折叠命令</h4>
+<p>indent方式，vim会自动利用缩进进行折叠，我们可以使用现成的折叠成果．</p>
 <p>我们可以在折叠处输入以下命令：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -141,12 +141,10 @@ zO 对所在范围内所有嵌套的折叠点展开
 zj 向下移动。到达下一个折叠的开始处。关闭的折叠也被计入。
 
 zk 向上移动到前一折叠的结束处。关闭的折叠也被计入。
-</pre></td></tr></table></figure>
-
-<h4 id="2-_marker折叠命令">2. marker折叠命令</h4>
+</pre></td></tr></table></figure></p>
+<h4 id="marker折叠命令">2. marker折叠命令</h4>
 <p>marker折叠方式时，我们需要用标计来标识代码的折叠</p>
-<p>折叠命令</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p>折叠命令 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -176,13 +174,12 @@ zd  删除 (delete) 在光标下的折叠。仅当 <span class="string">'foldmet
 zD  循环删除 (<span class="keyword">Delete</span>) 光标下的折叠，即嵌套删除折叠。仅当 <span class="string">'foldmethod'</span> 设为 <span class="string">"manual"</span> 或 <span class="string">"marker"</span> 时有效。
 
 zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折叠。仅当 <span class="string">'foldmethod'</span> 设为 <span class="string">"manual"</span> 或 <span class="string">"marker"</span> 时有效。
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/27/vim代码折叠/" data-id="ef5wzkiemi9ofcbi" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/27/vim代码折叠/" data-id="z5bedf4ss7rvox5k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
@@ -232,7 +229,7 @@ zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/27/vim的高亮颜色/" data-id="rxbx80f7k4gci5gd" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/27/vim的高亮颜色/" data-id="g9gn21exkfkf7tun" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
@@ -273,7 +270,7 @@ zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Python-numpy vs Matlab<br>
+        <p>Python-numpy vs Matlab 
         
           <p class="article-more-link">
             <a href="/2013/03/20/python-numpy/#more">Read More</a>
@@ -282,7 +279,7 @@ zE  除去 (<span class="keyword">Eliminate</span>) 窗口里“所有”的折�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/20/python-numpy/" data-id="d3yomfqtcaxmwyh6" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/20/python-numpy/" data-id="0gqqn9bomqf5u62e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/numpy/">numpy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>

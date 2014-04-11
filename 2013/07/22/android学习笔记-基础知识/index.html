@@ -106,37 +106,31 @@ Dalvik: Android所用的虚拟机,可以支持.dex格式程序的运行
 <li><strong>.dex</strong>: Dalvik EXecutable, 转为Dalvik设计的一种压缩格式,适合内存和处理器速度有线的系统</li>
 <li><strong>dx</strong>: java byte code to Dalvik executable translator,将class文件转为dex文件工具</li>
 <li><strong>.apk</strong>: Android安装包的扩展名,包含应用相关所有文件,本质是一个zip包</li>
-<li>Two Debuggers:<ul>
+<li>Two Debuggers:</li>
 <li><strong>adb</strong>: Android Debug Bridge, Android调试桥</li>
 <li><strong>ddms</strong>: Dalvik Debug Monitor Server, 调试监视服务</li>
-</ul>
-</li>
 <li><strong>aapk</strong>: Android Application PacKage Tool, 资源打包工具</li>
-<li>创建项目时:<ul>
+<li>创建项目时:</li>
 <li><strong>Project Name</strong>: 计算机中存储的项目的目录的名字</li>
 <li><strong>Application Name</strong>: 显示在模拟器上的应用的名字</li>
 <li><strong>Package Name</strong>: 包名,同java</li>
 <li><strong>Activity Name</strong>: UI界面窗口的名字</li>
-<li><strong>Min SDK Version</strong>: 最低api说明<a id="more"></a>
-
-</li>
-</ul>
-</li>
+<li><strong>Min SDK Version</strong>: 最低api说明 <a id="more"></a></li>
 </ul>
 <h4 id="文件类型转换过程">文件类型转换过程</h4>
-<p><strong>.java</strong> —编译—&gt; <strong>.class</strong> —dx工具—&gt; <strong>.dex</strong> —aapk工具—&gt; <strong>.apk</strong></p>
-<p><img src="/img/android-flow.jpg" alt="Android运行流程"></p>
+<p><strong>.java</strong> –编译–&gt; <strong>.class</strong> –dx工具–&gt; <strong>.dex</strong> –aapk工具–&gt; <strong>.apk</strong></p>
+<div class="figure">
+<img src="/img/android-flow.jpg" alt="Android运行流程" /><p class="caption">Android运行流程</p>
+</div>
 <h4 id="应用的文件组成">应用的文件组成</h4>
 <ul>
 <li><strong>R.java</strong>: 建立项目时自动生成,<strong>只读模式</strong>, 对将要用到的资源进行全局索引,Res文件夹中发生任何变化, R.java都会重新编译</li>
 <li><strong>Android Library</strong>: Android库</li>
 <li><strong>asserts目录</strong>: 多媒体等文件</li>
-<li><strong>res目录</strong>: 应用用到的资源文件<ul>
+<li><strong>res目录</strong>: 应用用到的资源文件</li>
 <li><strong>drawable目录</strong>: 图片资源</li>
 <li><strong>layout目录</strong>: 布局文件</li>
 <li><strong>values目录</strong>: string.xml, color.xml, array.xml</li>
-</ul>
-</li>
 <li><strong>AndroidManifest.xml</strong>: 相当于应用的配置文件,声明应用名称,程序入口点, Acticity, Service 和receiver等</li>
 </ul>
 <h4 id="不用eclipse命令行操作">不用eclipse命令行操作</h4>
@@ -156,12 +150,14 @@ Dalvik: Android所用的虚拟机,可以支持.dex格式程序的运行
 <li>WVGA-L:800x480横屏</li>
 </ul>
 <h4 id="系统架构">系统架构</h4>
-<p><img src="/img/android-system-architecture.jpg" alt="android-system-architecture"></p>
+<div class="figure">
+<img src="/img/android-system-architecture.jpg" alt="android-system-architecture" /><p class="caption">android-system-architecture</p>
+</div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-基础知识/" data-id="nrdxl888x5bcyl54" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/22/android学习笔记-基础知识/" data-id="f2lnv3movwdx6zo7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>

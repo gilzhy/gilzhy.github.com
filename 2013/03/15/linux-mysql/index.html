@@ -89,17 +89,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>linux下mysql的配置和使用<br><a id="more"></a></p>
-<h4 id="下载安装">下载安装</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+        <p>linux下mysql的配置和使用 <a id="more"></a> #### 下载安装</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 </pre></td><td class="code"><pre>sudo apt-get install mysql-<span class="keyword">server</span>-<span class="number">5.5</span>
 sudo apt-get install mysql-<span class="keyword">client</span>-<span class="number">5.5</span>(安装<span class="keyword">server</span>附带的把<span class="keyword">client</span>也安装了)
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>安装完要设置密码</p>
 <h4 id="登录">登录</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -107,20 +105,18 @@ sudo apt-get install mysql-<span class="keyword">client</span>-<span class="numb
 <span class="built_in">shell</span>&gt; mysql <span class="comment">--user=user_name --password=your_password db_name</span>
 简写&gt; mysql [-u username] [-h host] [-p[password]] [dbname]（username一般为root）
         &gt; mysql -u root -p [password] [dbname]
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <h4 id="相关命令">相关命令</h4>
 <ul>
 <li>启动：<code>/etc/init.d/mysql start</code></li>
 <li>停止：<code>/usr/bin/mysqladmin -u root -p shutdown</code></li>
-<li>自动启动：<ol>
+<li>自动启动：
+<ol style="list-style-type: decimal">
 <li>察看mysql是否在自动启动列表中 <code>/sbin/chkconfig --list</code></li>
 <li>把MySQL添加到你系统的启动服务组里面去 <code>/sbin/chkconfig - add mysql</code></li>
 <li>把MySQL从启动服务组里面删除。 <code>/sbin/chkconfig - del mysql</code></li>
-</ol>
-</li>
-<li>修改密码： <code>mysql -u root -p
-mysql&gt; SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;newpass&#39;);</code></li>
+</ol></li>
+<li>修改密码： <code>mysql -u root -p mysql&gt; SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpass');</code></li>
 </ul>
 <h4 id="相关目录">相关目录</h4>
 <ul>
@@ -130,46 +126,42 @@ mysql&gt; SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;ne
 <li>启动脚本 <code>/etc/init.d/mysql</code> （启动脚本文件mysql的目录）</li>
 </ul>
 <h4 id="mysql操作">mysql操作</h4>
-<ol>
-<li><p>显示数据库：<code>mysql&gt; show databases;</code>  </p>
-<p> Mysql刚安装完有两个数据库：mysql和test。  </p>
-<p> mysql库非常重要，它里面有MySQL的系统信息，我们改密码和新增用户，实际上就是用这个库中的相关表进行操作。</p>
-</li>
+<ol style="list-style-type: decimal">
+<li><p>显示数据库：<code>mysql&gt; show databases;</code></p>
+<p>Mysql刚安装完有两个数据库：mysql和test。</p>
+mysql库非常重要，它里面有MySQL的系统信息，我们改密码和新增用户，实际上就是用这个库中的相关表进行操作。</li>
 <li>选择数据库：<code>mysql&gt; use mysql;</code></li>
 <li>显示数据库中的表：<code>mysql&gt; show tables;</code></li>
 <li>显示数据表的结构：<code>mysql&gt; describe [表名]</code></li>
 <li>显示表中记录：<code>mysql&gt; select * from [表名]</code></li>
 <li>建库：<code>mysql&gt; create database [库名];</code></li>
-<li><p>建表：<code>mysql&gt;create table [表名] (字段设定列表)；</code>  </p>
-<p> <code>mysql&gt; create table name (id int(3) auto_increment not null primary key, xm char(8),xb char(2),csny date);</code></p>
-<p> 在库中建立表name,表中有id(序号，自动增长)，xm（姓名）,xb（性别）,csny（出身年月）四个字段</p>
-</li>
-<li>插入表中元素：<code>mysql&gt; insert into name values(&#39;&#39;,&#39;张三&#39;,&#39;男&#39;,&#39;1971-10-01&#39;);</code></li>
-<li>修改表中元素：<code>mysql&gt; update name set xm=&#39;zhangsan&#39; where cany=&#39;2013-3-15&#39;;</code></li>
-<li>删除表中元素：<code>mysql&gt; delete from name where xm=&#39;zhangsan&#39;;</code></li>
+<li><p>建表：<code>mysql&gt;create table [表名] (字段设定列表)；</code></p>
+<p><code>mysql&gt; create table name (id int(3) auto_increment not null primary key, xm char(8),xb char(2),csny date);</code></p>
+在库中建立表name,表中有id(序号，自动增长)，xm（姓名）,xb（性别）,csny（出身年月）四个字段</li>
+<li>插入表中元素：<code>mysql&gt; insert into name values('','张三','男','1971-10-01');</code></li>
+<li>修改表中元素：<code>mysql&gt; update name set xm='zhangsan' where cany='2013-3-15';</code></li>
+<li>删除表中元素：<code>mysql&gt; delete from name where xm='zhangsan';</code></li>
 <li>删除库/表：<code>mysql&gt; drop table name;       mysql&gt; drop database lala;</code></li>
-<li>批操作：<code>mysql&gt; drop table name;       mysql&gt; drop database lala;</code> (SQL命令于script.sql中,结果输出到output.tal中)</li>
+<li><p>批操作：<code>mysql&gt; drop table name;       mysql&gt; drop database lala;</code> (SQL命令于script.sql中,结果输出到output.tal中)</p></li>
 </ol>
-<h4 id="增加Mysql用户">增加Mysql用户</h4>
-<p>格式：<code>grant select on 数据库.* to 用户名@登录主机 identified by &quot;密码&quot;</code>  </p>
+<h4 id="增加mysql用户">增加Mysql用户</h4>
+<p>格式：<code>grant select on 数据库.* to 用户名@登录主机 identified by &quot;密码&quot;</code></p>
 <p>例1、增加一个用户user_1密码为123，让他可以在任何主机上登录，并对所有数据库有查询、插入、修改、删除的权限。首先用以root用户连入MySQL，然后键入以下命令：</p>
-<p><code>mysql&gt; grant select,insert,update,delete on *.* to user_1@&quot;%&quot; Identified by &quot;123&quot;;</code>  </p>
+<p><code>mysql&gt; grant select,insert,update,delete on *.* to user_1@&quot;%&quot; Identified by &quot;123&quot;;</code></p>
 <p>例1增加的用户是十分危险的，如果知道了user_1的密码，那么他就可以在网上的任何一台电脑上登录你的MySQL数据库并对你的数据为所欲为了，解决办法见例2。</p>
 <p>例2、增加一个用户user_2密码为123,让此用户只可以在localhost上登录，并可以对数据库aaa进行查询、插入、修改、删除的操作（localhost指本地主机，即MySQL数据库所在的那台主机），这样用户即使用知道user_2的密码，他也无法从网上直接访问数据库，只能通过 MYSQL主机来操作aaa库。</p>
-<p><code>mysql&gt;grant select,insert,update,delete on aaa.* to user_2@localhost identified by &quot;123&quot;;</code>  </p>
-<p>用新增的用户如果登录不了MySQL，在登录时用如下命令：  </p>
+<p><code>mysql&gt;grant select,insert,update,delete on aaa.* to user_2@localhost identified by &quot;123&quot;;</code></p>
+<p>用新增的用户如果登录不了MySQL，在登录时用如下命令：</p>
 <p><code>mysql -u user_1 -p　-h 192.168.113.50</code> （-h后跟的是要登录主机的ip地址）</p>
 <h4 id="备份和恢复">备份和恢复</h4>
-<ol>
-<li><p>备份<br>例如：将上例创建的aaa库备份到文件back_aaa中<br><code>[root@test1 root]# cd /home/data/mysql</code>　(进入到库目录，本例库已由val/lib/mysql转到/home/data/mysql，见上述第七部分内容)<br><code>[root@test1 mysql]# mysqldump -u root -p --opt aaa &gt; back_aaa</code></p>
-</li>
-<li><p>恢复<br><code>[root@test mysql]# mysql -u root -p ccc &lt; back_aaa</code><br>参考<a href="http://blog.csdn.net/tfy1332/article/details/8550901" target="_blank">Linux下mysql安装配置入门知识(csdn)</a> , <a href="http://www.linuxidc.com/Linux/2007-12/9962p3.htm" target="_blank">Linux下mysql安装配置入门知识</a></p>
-</li>
+<ol style="list-style-type: decimal">
+<li><p>备份<br />例如：将上例创建的aaa库备份到文件back_aaa中<br /><code>[root@test1 root]# cd /home/data/mysql</code>　(进入到库目录，本例库已由val/lib/mysql转到/home/data/mysql，见上述第七部分内容) <code>[root@test1 mysql]# mysqldump -u root -p --opt aaa &gt; back_aaa</code></p></li>
+<li><p>恢复 <code>[root@test mysql]# mysql -u root -p ccc &lt; back_aaa</code><br />参考<a href="http://blog.csdn.net/tfy1332/article/details/8550901" target="_blank">Linux下mysql安装配置入门知识(csdn)</a> , <a href="http://www.linuxidc.com/Linux/2007-12/9962p3.htm" target="_blank">Linux下mysql安装配置入门知识</a></p></li>
 </ol>
 <h4 id="修改mysql默认编码">修改mysql默认编码</h4>
 <p><strong>mysql的默认编码为latin1,不支持中文</strong></p>
-<p>查看编码: <code>show variables like &#39;character%&#39;;</code></p>
-<p><pre><code>+--------------------------+----------------------------+
+<p>查看编码: <code>show variables like 'character%';</code></p>
+<pre>`+--------------------------+----------------------------+
 | Variable_name            | Value                      |
 +--------------------------+----------------------------+
 | character_set_client     | utf8                       |
@@ -181,15 +173,13 @@ mysql&gt; SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;ne
 | character_set_system     | utf8                       |
 | character_sets_dir       | /usr/share/mysql/charsets/ |
 +--------------------------+----------------------------+
-8 rows in set (0.01 sec)</code></pre><br><strong>需将character_set_database和character_set_server都改为utf8</strong><br>网上公认的linux下修改变法方式为：<br>在 <code>/etc/mysql/my.cnf</code> 中，<br>在[client]中增加 <code>default-character-set=utf8</code><br>在[mysqld]中增加 <code>default-character-set=utf8和init_connect=&#39;SET NAMES utf8&#39;</code><br>然后关闭mysql,再重启<br><strong>而这样做的结果就是mysql开不了了。</strong><br><strong>解决办法：</strong><br>将mysql卸载了重新装：  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+8 rows in set (0.01 sec)`</pre>
+<p><strong>需将character_set_database和character_set_server都改为utf8</strong> 网上公认的linux下修改变法方式为：<br />在 <code>/etc/mysql/my.cnf</code> 中，<br />在[client]中增加 <code>default-character-set=utf8</code><br />在[mysqld]中增加 <code>default-character-set=utf8和init_connect='SET NAMES utf8'</code><br />然后关闭mysql,再重启<br /><strong>而这样做的结果就是mysql开不了了。</strong> <strong>解决办法：</strong> 将mysql卸载了重新装：<br /><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 </pre></td><td class="code"><pre>sudo apt-<span class="keyword">get</span> remove mysql*
 sudo apt-<span class="keyword">get</span> install mysql-<span class="built_in">server</span>-<span class="number">5.5</span>
-</pre></td></tr></table></figure>
-
-<p><strong>正确做法：</strong><br>在 <code>/etc/mysql/my.cnf</code> 中，<br>在[client]中增加 <code>default-character-set=utf8</code><br>在[mysqld]中增加 <code>character-set-server=utf8和init_connect=&#39;SET NAMES utf8&#39;</code><br>然后关闭mysql,再重启  </p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<p><strong>正确做法：</strong> 在 <code>/etc/mysql/my.cnf</code> 中，<br />在[client]中增加 <code>default-character-set=utf8</code><br />在[mysqld]中增加 <code>character-set-server=utf8和init_connect='SET NAMES utf8'</code><br />然后关闭mysql,再重启<br /><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -215,14 +205,13 @@ sudo apt-<span class="keyword">get</span> install mysql-<span class="built_in">s
 <span class="localvars">| character_sets_dir       |</span> /usr/share/mysql/charsets/ |
 +--------------------------+----------------------------+
 <span class="number">8</span> rows in set (<span class="number">0.01</span> sec)
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>搞定！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/15/linux-mysql/" data-id="8drxbixi3c100n8d" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/15/linux-mysql/" data-id="a3eqh35eiyxpkfna" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>

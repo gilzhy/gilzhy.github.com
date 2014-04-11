@@ -10,14 +10,14 @@
 <meta name="og:url" content="http://www.zhyin5.com/2013/07/16/用python爬虫抓站的一些技巧总结/">
 <meta name="og:image">
 <meta name="og:site_name" content="Jay Young's Blog">
-<meta name="og:description" content="说明:    转自http://gae-django-cms.appspot.com/
+<meta name="og:description" content="说明: 转自http://gae-django-cms.appspot.com/
 
 这些脚本有一个共性，都是和web相关的，总要用到获取链接的一些方法，再加上simplecd这 个半爬虫半网站的项目，累积不少爬虫抓站的经验，在此总结一下，那么以后做东西也就不用重复劳动了。
 1. 最基本的抓站
 1
 2
 import urllib2
-content = urllib2.urlopen('htt">
+content = urllib2.urlopen('http:/">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -97,19 +97,17 @@ content = urllib2.urlopen('htt">
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>说明:<br>    转自<a href="http://gae-django-cms.appspot.com/" target="_blank">http://gae-django-cms.appspot.com/</a></p>
+<p>说明: 转自<a href="http://gae-django-cms.appspot.com/" target="_blank">http://gae-django-cms.appspot.com/</a></p>
 </blockquote>
 <p>这些脚本有一个共性，都是和web相关的，总要用到获取链接的一些方法，再加上simplecd这 个半爬虫半网站的项目，累积不少爬虫抓站的经验，在此总结一下，那么以后做东西也就不用重复劳动了。</p>
-<h4 id="1-_最基本的抓站">1. 最基本的抓站</h4>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<h4 id="最基本的抓站">1. 最基本的抓站</h4>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 </pre></td><td class="code"><pre><span class="keyword">import</span> urllib2
 content = urllib2.urlopen(<span class="string">'http://XXXX'</span>).read()
-</pre></td></tr></table></figure>
-
-<h4 id="2-_使用代理服务器">2. 使用代理服务器</h4>
-<p>这在某些情况下比较有用，比如IP被封了，或者比如IP访问的次数受到限制等等。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<h4 id="使用代理服务器">2. 使用代理服务器</h4>
+<p>这在某些情况下比较有用，比如IP被封了，或者比如IP访问的次数受到限制等等。 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -119,12 +117,11 @@ proxy_support = urllib2.ProxyHandler({<span class="string">'http'</span>:<span c
 opener = urllib2.build_opener(proxy_support, urllib2.HTTPHandler)
 urllib2.install_opener(opener)
 content = urllib2.urlopen(<span class="string">'http://XXXX'</span>).read()
-</pre></td></tr></table></figure>
-
-<h4 id="3-_需要登录的情况">3. 需要登录的情况</h4>
+</pre></td></tr></table></figure></p>
+<h4 id="需要登录的情况">3. 需要登录的情况</h4>
 <p>登录的情况比较麻烦我把问题拆分一下：</p>
 <p><strong>3.1 cookie的处理</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -134,16 +131,14 @@ content = urllib2.urlopen(<span class="string">'http://XXXX'</span>).read()
 <span class="constant">opener</span> = urllib2.build_opener(cookie_support, urllib2.HTTPHandler)
 urllib2.install_opener(opener)
 <span class="constant">content</span> = urllib2.urlopen('http://XXXX').read()
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>是的没错，如果想同时用代理和cookie，那就加入<code>proxy_support</code>然后<code>operner</code>改为</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 </pre></td><td class="code"><pre>opener = urllib2<span class="preprocessor">.build</span>_opener(proxy_support, cookie_support, urllib2<span class="preprocessor">.HTTPHandler</span>)
-</pre></td></tr></table></figure>
-
-<p><strong>3.2 表单的处理</strong><br>登录必要填表，表单怎么填？首先利用工具截取所要填表的内容<br>比如我一般用firefox+httpfox插件来看看自己到底发送了些什么包<br>这个我就举个例子好了，以verycd为例，先找到自己发的POST请求，以及POST表单项：<br>可以看到verycd的话需要填username,password,continueURI,fk,login_submit这几项，其中fk是随机生 成的（其实不太随机，看上去像是把epoch时间经过简单的编码生成的），需要从网页获取，也就是说得先访问一次网页，用正则表达式等工具截取返回数据中 的fk项。continueURI顾名思义可以随便写，login_submit是固定的，这从源码可以看出。还有username，password那 就很显然了。</p>
+</pre></td></tr></table></figure></p>
+<p><strong>3.2 表单的处理</strong> 登录必要填表，表单怎么填？首先利用工具截取所要填表的内容 比如我一般用firefox+httpfox插件来看看自己到底发送了些什么包 这个我就举个例子好了，以verycd为例，先找到自己发的POST请求，以及POST表单项： 可以看到verycd的话需要填username,password,continueURI,fk,login_submit这几项，其中fk是随机生 成的（其实不太随机，看上去像是把epoch时间经过简单的编码生成的），需要从网页获取，也就是说得先访问一次网页，用正则表达式等工具截取返回数据中 的fk项。continueURI顾名思义可以随便写，login_submit是固定的，这从源码可以看出。还有username，password那 就很显然了。</p>
 <p>好的，有了要填写的数据，我们就要生成postdata</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -159,10 +154,9 @@ postdata=urllib.urlencode({
     <span class="string">'fk'</span><span class="symbol">:fk</span>,
     <span class="string">'login_submit'</span><span class="symbol">:<span class="string">'登录'</span></span>
     })
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>然后生成http请求，再发送请求：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -170,10 +164,9 @@ postdata=urllib.urlencode({
     url = <span class="string">'http://secure.verycd.com/signin/*/http://www.verycd.com/'</span>,
     data = postdata)
 <span class="built_in">result</span> = urllib2.urlopen(req).<span class="built_in">read</span>()
-</pre></td></tr></table></figure>
-
-<p><strong>3.3 伪装成浏览器访问</strong><br>某些网站反感爬虫的到访，于是对爬虫一律拒绝请求<br>这时候我们需要伪装成浏览器，这可以通过修改http包中的header来实现</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<p><strong>3.3 伪装成浏览器访问</strong> 某些网站反感爬虫的到访，于是对爬虫一律拒绝请求 这时候我们需要伪装成浏览器，这可以通过修改http包中的header来实现</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -189,22 +182,20 @@ req = <span class="filename">urllib2.Request(
     data = postdata,
     headers = headers
 )</span>
-</pre></td></tr></table></figure>
-
-<p><strong>3.4 反”反盗链”</strong><br>某些站点有所谓的反盗链设置，其实说穿了很简单，就是检查你发送请求的header里面，referer站点是不是他自己，所以我们只需要像3.3一样， 把headers的referer改成该网站即可，以黑幕著称地cnbeta为例：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<p><strong>3.4 反”反盗链”</strong> 某些站点有所谓的反盗链设置，其实说穿了很简单，就是检查你发送请求的header里面，referer站点是不是他自己，所以我们只需要像3.3一样， 把headers的referer改成该网站即可，以黑幕著称地cnbeta为例：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 </pre></td><td class="code"><pre>headers = {
     <span class="string">'Referer'</span>:<span class="string">'http://www.cnbeta.com/articles'</span>
 }
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>headers是一个dict数据结构，你可以放入任何想要的header，来做一些伪装。例如，有些自作聪明的网站总喜欢窥人隐私，别人通过代理 访问，他偏偏要读取header中的X-Forwarded-For来看看人家的真实IP，没话说，那就直接把X-Forwarde-For改了吧，可以 改成随便什么好玩的东东来欺负欺负他，呵呵。</p>
-<p><strong>3.5 终极绝招</strong><br>有时候即使做了3.1-3.4，访问还是会被据，那么没办法，老老实实把httpfox中看到的headers全都写上，那一般也就行了。<br>再不行，那就只能用终极绝招了，selenium直 接控制浏览器来进行访问，只要浏览器可以做到的，那么它也可以做到。类似的还有pamie，watir，等等等等。</p>
-<h4 id="4-_多线程并发抓取">4. 多线程并发抓取</h4>
-<p>单线程太慢的话，就需要多线程了，这里给个简单的线程池模板<br>这个程序只是简单地打印了1-10，但是可以看出是并发地。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><strong>3.5 终极绝招</strong> 有时候即使做了3.1-3.4，访问还是会被据，那么没办法，老老实实把httpfox中看到的headers全都写上，那一般也就行了。 再不行，那就只能用终极绝招了，selenium直 接控制浏览器来进行访问，只要浏览器可以做到的，那么它也可以做到。类似的还有pamie，watir，等等等等。</p>
+<h4 id="多线程并发抓取">4. 多线程并发抓取</h4>
+<p>单线程太慢的话，就需要多线程了，这里给个简单的线程池模板 这个程序只是简单地打印了1-10，但是可以看出是并发地。</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -262,20 +253,19 @@ JOBS = <span class="number">10</span>
     q.put(i)
 <span class="comment">#等待所有JOBS完成</span>
 q.join()
-</pre></td></tr></table></figure>
-
-<h4 id="5-_验证码的处理">5. 验证码的处理</h4>
+</pre></td></tr></table></figure></p>
+<h4 id="验证码的处理">5. 验证码的处理</h4>
 <p>碰到验证码咋办？这里分两种情况处理：</p>
 <p><strong>5.1 google那种验证码，凉拌</strong></p>
 <p><strong>5.2 简单的验证码：</strong>字符个数有限，只使用了简单的平移或旋转加噪音而没有扭曲的，这种还是有可能可以处理的，一般思路是旋转的转回来，噪音去掉，然后划分 单个字符，划分好了以后再通过特征提取的方法(例如PCA) 降维并生成特征库，然后把验证码和特征库进行比较。这个比较复杂，一篇博文是说不完的，这里就不展开了，具体做法请弄本相关教科书好好研究一下。</p>
 <p><strong>5.3 事实上有些验证码还是很弱的</strong>，这里就不点名了，反正我通过2的方法提取过准确度非常高的验证码，所以2事实上是可行的。</p>
-<h4 id="6-_总结">6. 总结</h4>
+<h4 id="总结">6. 总结</h4>
 <p>基本上我遇到过的所有情况，用以上方法都顺利解决了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/16/用python爬虫抓站的一些技巧总结/" data-id="5o3myzw9r3x6x4za" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/16/用python爬虫抓站的一些技巧总结/" data-id="9smszrvsz2qhhs2a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/爬虫/">爬虫</a></li></ul>

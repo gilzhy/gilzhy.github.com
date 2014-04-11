@@ -10,9 +10,7 @@
 <meta name="og:url" content="http://www.zhyin5.com/2013/06/14/linux校园网wifi/">
 <meta name="og:image">
 <meta name="og:site_name" content="Jay Young's Blog">
-<meta name="og:description" content="适用情况:linux系统,校园网,动态IP取自http://blog.csdn.net/q1302182594/article/details/8689603博主的情况和我基本一样，都是校园网玩linux想给安卓发无线，配置信息基本不用改，只是他命令里一些空格不清楚，而且我所需要的只是这篇博文的一部分，另外还是想自己记录一下，所以转过来。
-
-说明：    取自http://blog.csdn.ne">
+<meta name="og:description" content="适用情况:linux系统,校园网,动态IP 取自http://blog.csdn.net/q1302182594/article/details/8689603 博主的情况和我基本一样，都是校园网玩linux想给安卓发无线，配置信息基本不用改，只是他命令里一些空格不清楚，而且我所需要的只是这篇博文的一部分，另外还是想自己记录一下，所以转过来。  &gt; 说明： 取自http://blog.csd">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -91,15 +89,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>适用情况:linux系统,校园网,动态IP<br>取自<a href="http://blog.csdn.net/q1302182594/article/details/8689603" target="_blank">http://blog.csdn.net/q1302182594/article/details/8689603</a><br>博主的情况和我基本一样，都是校园网玩linux想给安卓发无线，配置信息基本不用改，只是他命令里一些空格不清楚，而且我所需要的只是这篇博文的一部分，另外还是想自己记录一下，所以转过来。<br><a id="more"></a></p>
-<blockquote>
-<p>说明：<br>    取自<a href="http://blog.csdn.net/q1302182594/article/details/8689603" target="_blank">http://blog.csdn.net/q1302182594/article/details/8689603</a><br>    博主的情况和我基本一样，都是校园网玩linux想给安卓发无线，配置信息基本不用改，只是他命令里一些空格不清楚，而且我所需要的只是这篇博文的一部分，另外还是想自己记录一下，所以转过来。</p>
-</blockquote>
-<h4 id="1-_安装软件">1. 安装软件</h4>
-<p><code>sudo apt-getinstall hostapd dnsmasq</code></p>
-<h4 id="2-_配置hostapd">2. 配置hostapd</h4>
-<p>配置文件是/etc/hostapd.conf，如果装了以后没有就自己新建一个，写入：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+        <p>适用情况:linux系统,校园网,动态IP 取自http://blog.csdn.net/q1302182594/article/details/8689603 博主的情况和我基本一样，都是校园网玩linux想给安卓发无线，配置信息基本不用改，只是他命令里一些空格不清楚，而且我所需要的只是这篇博文的一部分，另外还是想自己记录一下，所以转过来。 <a id="more"></a> &gt; 说明： 取自http://blog.csdn.net/q1302182594/article/details/8689603 博主的情况和我基本一样，都是校园网玩linux想给安卓发无线，配置信息基本不用改，只是他命令里一些空格不清楚，而且我所需要的只是这篇博文的一部分，另外还是想自己记录一下，所以转过来。</p>
+<h4 id="安装软件">1. 安装软件</h4>
+<p><code>sudo apt-getinstall hostapd dnsmasq</code> #### 2. 配置hostapd 配置文件是/etc/hostapd.conf，如果装了以后没有就自己新建一个，写入：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -131,11 +124,10 @@
 <span class="setting">wpa_key_mgmt=<span class="value">WPA-PSK</span></span>
 <span class="setting">wpa_pairwise=<span class="value">TKIP</span></span>
 <span class="setting">rsn_pairwise=<span class="value">CCMP</span></span>
-</pre></td></tr></table></figure>
-
-<h4 id="3-_配置dnsmasq">3. 配置dnsmasq</h4>
+</pre></td></tr></table></figure></p>
+<h4 id="配置dnsmasq">3. 配置dnsmasq</h4>
 <p>配置文件是/etc/dnsmasq.conf，同样的，没有就自己新建一个，写入：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -147,12 +139,11 @@ except-<span class="keyword">interface</span>=lo
 dhcp-range=<span class="number">192.168</span><span class="number">.1</span><span class="number">.100</span>,<span class="number">192.168</span><span class="number">.1</span><span class="number">.254</span>,<span class="number">12</span>h <span class="preprocessor">#设置dhcp地址范围，即租借时间6小时</span>
 dhcp-<span class="keyword">option</span>=<span class="number">3</span>,<span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span> <span class="preprocessor">#为手机配置网关，要和dhcp-arange对应，这涉及网络的知识，不详细介绍。</span>
 dhcp-<span class="keyword">option</span>=<span class="number">6</span>,<span class="number">202.114</span><span class="number">.128</span><span class="number">.2</span> <span class="preprocessor">#为手机配置dns，你可以根据实际情况去修改</span>
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>写入前配置文件应该是只有注释的，如果是这样就只要写入这几行，如果有非注释的address=/#/10.0.0.1，把它注释掉</p>
-<h4 id="4-_写个脚本添加路由规则">4. 写个脚本添加路由规则</h4>
+<h4 id="写个脚本添加路由规则">4. 写个脚本添加路由规则</h4>
 <p>新建myap，写入：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -168,13 +159,11 @@ iptables -t nat -X
 iptables -t nat -APOSTROUTING <span class="operator">-s</span> <span class="number">192.168</span>.<span class="number">1.0</span>/<span class="number">24</span> -o eth0 -j MASQUERADE
 iptables -A FORWARD <span class="operator">-s</span> <span class="number">192.168</span>.<span class="number">1.0</span>/<span class="number">24</span> -o eth0 -j ACCEPT
 iptables -A FORWARD <span class="operator">-d</span> <span class="number">192.168</span>.<span class="number">1.0</span>/<span class="number">24</span> -m conntrack --ctstate ESTABLISHED,RELATED -i eth0 -j ACCEPT
-</pre></td></tr></table></figure>
-
-
-<h4 id="5-_确保打开转发功能">5. 确保打开转发功能</h4>
+</pre></td></tr></table></figure></p>
+<h4 id="确保打开转发功能">5. 确保打开转发功能</h4>
 <p>/etc/sysctl.conf找到net.ipv4.ip_forward=1，如果被注释了，取消注释</p>
 <p>5.1. 启动ＡＰ：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -190,19 +179,16 @@ hostapd -<span class="constant">B</span> /etc/hostapd.conf
 /etc/init.d/dnsmasq restart
 echo <span class="number">1</span> &gt;<span class="regexp">/proc/sys</span><span class="regexp">/net/ipv</span>4/ip_forward
 ./myap
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>5.2. 以后用时，每次都需要输：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 </pre></td><td class="code"><pre>ifconfig wlan0 <span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>
 hostapd -B /etc/hostapd<span class="preprocessor">.conf</span>
 /etc/init<span class="preprocessor">.d</span>/dnsmasq restart
-</pre></td></tr></table></figure>
-
-<p>比较麻烦，修改myaq:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<p>比较麻烦，修改myaq: <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -224,14 +210,13 @@ iptables -t nat -X
 iptables -t nat -APOSTROUTING <span class="operator">-s</span> <span class="number">192.168</span>.<span class="number">1.0</span>/<span class="number">24</span> -o eth0 -j MASQUERADE
 iptables -A FORWARD <span class="operator">-s</span> <span class="number">192.168</span>.<span class="number">1.0</span>/<span class="number">24</span> -o eth0 -j ACCEPT
 iptables -A FORWARD <span class="operator">-d</span> <span class="number">192.168</span>.<span class="number">1.0</span>/<span class="number">24</span> -m conntrack --ctstate ESTABLISHED,RELATED -i eth0 -j ACCEPT
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>每次使用时，切换到root然后运行myap</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/06/14/linux校园网wifi/" data-id="87bhhahs1qlpooxs" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/06/14/linux校园网wifi/" data-id="axd09afpyspw1t26" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dnsmasq/">dnsmasq</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hostapd/">hostapd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wifi/">wifi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软AP/">软AP</a></li></ul>

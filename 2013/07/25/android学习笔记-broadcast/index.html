@@ -15,7 +15,7 @@
 而Broadcast Receiver组件把Intent作为一个消息广播出去,由所有对其感兴趣的程序对其作出反应.
 Android广播机制包含三个基本要素:
 
-Broadcast广播 —发送广播,广泛运用在应用程序之间传输信息
+Broadcast广播 –发送广播,广泛运用在应用程序之间传输信息
 BroadcastR">
 <meta name="twitter:card" content="summary">
   
@@ -98,20 +98,18 @@ BroadcastR">
         <p><strong>说明</strong>: 内容取自中山大学软件学院刘宁老师的SE-806课程的课件</p>
 <p>之前说过Intent是一个对动作和行为的抽象描述,负责组件之间与程序之间进行消息传递</p>
 <p>而Broadcast Receiver组件把Intent作为一个消息广播出去,由所有对其感兴趣的程序对其作出反应.</p>
-<h4 id="Android广播机制包含三个基本要素:">Android广播机制包含三个基本要素:</h4>
+<h4 id="android广播机制包含三个基本要素">Android广播机制包含三个基本要素:</h4>
 <ul>
-<li>Broadcast广播 —发送广播,广泛运用在应用程序之间传输信息</li>
-<li>BroadcastReceiver广播接收器 —接受广播,对发送出来的Broadcast进行过滤接受并响应</li>
-<li>Intent意图 —保存广播相关信息<a id="more"></a>
-
-</li>
+<li>Broadcast广播 –发送广播,广泛运用在应用程序之间传输信息</li>
+<li>BroadcastReceiver广播接收器 –接受广播,对发送出来的Broadcast进行过滤接受并响应</li>
+<li>Intent意图 –保存广播相关信息 <a id="more"></a></li>
 </ul>
 <h4 id="广播过程描述">广播过程描述</h4>
-<ol>
+<ol style="list-style-type: decimal">
 <li>首先在需要发送信息的地方,把要发送的信息和用于过滤的信息(如Action、Category)装入一个Intent对象,然后通过调用<code>Context.sendBroadcast()</code> 方法,把Intent对象以广播方式发送出去。</li>
-<li>当Intent发送以后,所有已经注册的BroadcastReceiver会检查注册时的IntentFilter是<br>否与发送的Intent相匹配,若匹配则就会调用BroadcastReceiver的<code>void onReceive(ContextcurContext, Intent broadcastMsg)</code>方法。</li>
+<li>当Intent发送以后,所有已经注册的BroadcastReceiver会检查注册时的IntentFilter是 否与发送的Intent相匹配,若匹配则就会调用BroadcastReceiver的<code>void onReceive(ContextcurContext, Intent broadcastMsg)</code>方法。</li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -159,165 +157,166 @@ mBtnTest.setOnClickListener(<span class="keyword">new</span> OnClickListener() {
         Log.v(<span class="string">"BroadCast1"</span>, <span class="string">"Receiver"</span>);
     }
 }
-</pre></td></tr></table></figure>
-
-<p><img src="/img/android-broadcast.jpg" alt="android-broadcast"></p>
-<h4 id="Broadcast机制">Broadcast机制</h4>
+</pre></td></tr></table></figure></p>
+<div class="figure">
+<img src="/img/android-broadcast.jpg" alt="android-broadcast" /><p class="caption">android-broadcast</p>
+</div>
+<h4 id="broadcast机制">Broadcast机制</h4>
 <p>之前说过通过intent实现Activity间跳转的两个机制:</p>
 <ul>
 <li>显示Intent,构造Intent对象时就指定接收者</li>
 <li>隐式Intent,发送者构造Intent对象时并不知道也不关心接收者是谁,只通过filter来选择接收者(有利于降低发送者和接收者之间的耦合)</li>
 </ul>
 <p>Broadcast的实现机制与隐式Intent类似</p>
-<h4 id="Broadcast生命周期">Broadcast生命周期</h4>
+<h4 id="broadcast生命周期">Broadcast生命周期</h4>
 <ul>
 <li>当系统通过filter字符串找到匹配的Receiver, onReceive方法就会被执行。但是onReceive方法必须在<strong>5秒</strong>内执行完毕退出,否则会导致FC(Force Close强制关闭)</li>
 <li>通常来说,BroadcastReceiver用来更新content、启动service、更新UI或者通过notification manager在状态栏中提示。5秒的限制保证了主要处理任务不会、也不应该在BroadcastReceiver中完成。</li>
 <li>如果需要执行大量任务,可以在BroadcastReceiver中启用Service。</li>
 </ul>
-<h4 id="Broadcast手机自动服务">Broadcast手机自动服务</h4>
-<p>前面我们介绍了如何实现一个自定义的Broadcast,但是Broadcast的应用绝对不仅这些。<br>在Android操作系统中,有许多与手机相关的事件会对系统发送广播信息。当系统发出广播后,就会搜索是否注册了负责处理该广播的BroadcastReceiver。<br>因此,只要我们了解系统的广播类型,我们就可以实现很多手机自动服务功能,例如,收到新短信进行提示、手机来电时自动拒接等等。</p>
-<h5 id="Android中Broadcast的Intent">Android中Broadcast的Intent</h5>
-<h6 id="Api_Level_3:(SDK_1-5)">Api Level 3:(SDK 1.5)</h6>
+<h4 id="broadcast手机自动服务">Broadcast手机自动服务</h4>
+<p>前面我们介绍了如何实现一个自定义的Broadcast,但是Broadcast的应用绝对不仅这些。<br />在Android操作系统中,有许多与手机相关的事件会对系统发送广播信息。当系统发出广播后,就会搜索是否注册了负责处理该广播的BroadcastReceiver。<br />因此,只要我们了解系统的广播类型,我们就可以实现很多手机自动服务功能,例如,收到新短信进行提示、手机来电时自动拒接等等。</p>
+<h5 id="android中broadcast的intent">Android中Broadcast的Intent</h5>
+<h6 id="api-level-3sdk-1.5">Api Level 3:(SDK 1.5)</h6>
 <ul>
-<li>android.bluetooth.a2dp.intent.action.SINK_STATE_CHANGED  </li>
-<li>android.bluetooth.intent.action.BLUETOOTH_STATE_CHANGED  </li>
-<li>android.bluetooth.intent.action.BOND_STATE_CHANGED_ACTION  </li>
-<li>android.bluetooth.intent.action.DISCOVERY_COMPLETED  </li>
-<li>android.bluetooth.intent.action.DISCOVERY_STARTED  </li>
-<li>android.bluetooth.intent.action.HEADSET_ADUIO_STATE_CHANGED  </li>
-<li>android.bluetooth.intent.action.HEADSET_STATE_CHANGED  </li>
-<li>android.bluetooth.intent.action.NAME_CHANGED  </li>
-<li>android.bluetooth.intent.action.PAIRING_CANCEL  </li>
-<li>android.bluetooth.intent.action.PAIRING_REQUEST  </li>
-<li>android.bluetooth.intent.action.REMOTE_DEVICE_CONNECTED  </li>
-<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISAPPEARED  </li>
-<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISAPPEARED  </li>
-<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISCONNECTED  </li>
-<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISCONNECT_REQUESTED  </li>
-<li>android.bluetooth.intent.action.REMOTE_DEVICE_FOUND  </li>
-<li>android.bluetooth.intent.action.REMOTE_NAME_FAILED  </li>
-<li>android.bluetooth.intent.action.REMOTE_NAME_UPDATED  </li>
-<li>android.bluetooth.intent.action.SCAN_MODE_CHANGED  </li>
-<li>android.intent.action.AIRPLANE_MODE  </li>
-<li>android.intent.action.BATTERY_CHANGED  </li>
-<li>android.intent.action.BATTERY_LOW  </li>
-<li>android.intent.action.BOOT_COMPLETED  </li>
-<li>android.intent.action.CAMERA_BUTTON  </li>
-<li>android.intent.action.CONFIGURATION_CHANGED  </li>
-<li>android.intent.action.DATA_SMS_RECEIVED  </li>
-<li>android.intent.action.DATE_CHANGED  </li>
-<li>android.intent.action.DEVICE_STORAGE_LOW  </li>
-<li>android.intent.action.DEVICE_STORAGE_OK  </li>
-<li>android.intent.action.GTALK_CONNECTED  </li>
-<li>android.intent.action.GTALK_DISCONNECTED  </li>
-<li>android.intent.action.HEADSET_PLUG  </li>
-<li>android.intent.action.INPUT_METHOD_CHANGED  </li>
-<li>android.intent.action.MANAGE_PACKAGE_STORAGE  </li>
-<li>android.intent.action.MEDIA_BAD_REMOVAL  </li>
-<li>android.intent.action.MEDIA_BUTTON  </li>
-<li>android.intent.action.MEDIA_CHECKING  </li>
-<li>android.intent.action.MEDIA_EJECT  </li>
-<li>android.intent.action.MEDIA_MOUNTED  </li>
-<li>android.intent.action.MEDIA_NOFS  </li>
-<li>android.intent.action.MEDIA_REMOVED  </li>
-<li>android.intent.action.MEDIA_SCANNER_FINISHED  </li>
-<li>android.intent.action.MEDIA_SCANNER_SCAN_FILE  </li>
-<li>android.intent.action.MEDIA_SCANNER_STARTED  </li>
-<li>android.intent.action.MEDIA_SHARED  </li>
-<li>android.intent.action.MEDIA_UNMOUNTABLE  </li>
-<li>android.intent.action.MEDIA_UNMOUNTED  </li>
-<li>android.intent.action.NEW_OUTGOING_CALL  </li>
-<li>android.intent.action.PACKAGE_ADDED  </li>
-<li>android.intent.action.PACKAGE_CHANGED  </li>
-<li>android.intent.action.PACKAGE_DATA_CLEARED  </li>
-<li>android.intent.action.PACKAGE_INSTALL  </li>
-<li>android.intent.action.PACKAGE_REMOVED  </li>
-<li>android.intent.action.PACKAGE_REPLACED  </li>
-<li>android.intent.action.PACKAGE_RESTARTED  </li>
-<li>android.intent.action.PHONE_STATE  </li>
-<li>android.intent.action.PROVIDER_CHANGED  </li>
-<li>android.intent.action.REBOOT  </li>
-<li>android.intent.action.SCREEN_OFF  </li>
-<li>android.intent.action.SCREEN_ON  </li>
-<li>android.intent.action.TIMEZONE_CHANGED  </li>
-<li>android.intent.action.TIME_SET  </li>
-<li>android.intent.action.TIME_TICK  </li>
-<li>android.intent.action.UID_REMOVED  </li>
-<li>android.intent.action.UMS_CONNECTED  </li>
-<li>android.intent.action.UMS_DISCONNECTED  </li>
-<li>android.intent.action.USER_PRESENT  </li>
-<li>android.intent.action.WALLPAPER_CHANGED  </li>
-<li>android.media.AUDIO_BECOMING_NOISY  </li>
-<li>android.media.RINGER_MODE_CHANGED  </li>
-<li>android.media.VIBRATE_SETTING_CHANGED  </li>
-<li>android.net.conn.BACKGROUND_DATA_SETTING_CHANGED  </li>
-<li>android.net.wifi.NETWORK_IDS_CHANGED  </li>
-<li>android.net.wifi.RSSI_CHANGED  </li>
-<li>android.net.wifi.SCAN_RESULTS  </li>
-<li>android.net.wifi.STATE_CHANGE  </li>
-<li>android.net.wifi.WIFI_STATE_CHANGED  </li>
-<li>android.net.wifi.supplicant.CONNECTION_CHANGE  </li>
-<li>android.net.wifi.supplicant.STATE_CHANGE  </li>
-<li>android.provider.Telephony.SIM_FULL  </li>
-<li>android.provider.Telephony.SMS_RECEIVED  </li>
-<li>android.provider.Telephony.WAP_PUSH_RECEIVED  </li>
-<li>com.google.gservices.intent.action.GSERVICES_CHANGED  </li>
+<li>android.bluetooth.a2dp.intent.action.SINK_STATE_CHANGED<br /></li>
+<li>android.bluetooth.intent.action.BLUETOOTH_STATE_CHANGED<br /></li>
+<li>android.bluetooth.intent.action.BOND_STATE_CHANGED_ACTION<br /></li>
+<li>android.bluetooth.intent.action.DISCOVERY_COMPLETED<br /></li>
+<li>android.bluetooth.intent.action.DISCOVERY_STARTED<br /></li>
+<li>android.bluetooth.intent.action.HEADSET_ADUIO_STATE_CHANGED<br /></li>
+<li>android.bluetooth.intent.action.HEADSET_STATE_CHANGED<br /></li>
+<li>android.bluetooth.intent.action.NAME_CHANGED<br /></li>
+<li>android.bluetooth.intent.action.PAIRING_CANCEL<br /></li>
+<li>android.bluetooth.intent.action.PAIRING_REQUEST<br /></li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_CONNECTED<br /></li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISAPPEARED<br /></li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISAPPEARED<br /></li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISCONNECTED<br /></li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_DISCONNECT_REQUESTED<br /></li>
+<li>android.bluetooth.intent.action.REMOTE_DEVICE_FOUND<br /></li>
+<li>android.bluetooth.intent.action.REMOTE_NAME_FAILED<br /></li>
+<li>android.bluetooth.intent.action.REMOTE_NAME_UPDATED<br /></li>
+<li>android.bluetooth.intent.action.SCAN_MODE_CHANGED<br /></li>
+<li>android.intent.action.AIRPLANE_MODE<br /></li>
+<li>android.intent.action.BATTERY_CHANGED<br /></li>
+<li>android.intent.action.BATTERY_LOW<br /></li>
+<li>android.intent.action.BOOT_COMPLETED<br /></li>
+<li>android.intent.action.CAMERA_BUTTON<br /></li>
+<li>android.intent.action.CONFIGURATION_CHANGED<br /></li>
+<li>android.intent.action.DATA_SMS_RECEIVED<br /></li>
+<li>android.intent.action.DATE_CHANGED<br /></li>
+<li>android.intent.action.DEVICE_STORAGE_LOW<br /></li>
+<li>android.intent.action.DEVICE_STORAGE_OK<br /></li>
+<li>android.intent.action.GTALK_CONNECTED<br /></li>
+<li>android.intent.action.GTALK_DISCONNECTED<br /></li>
+<li>android.intent.action.HEADSET_PLUG<br /></li>
+<li>android.intent.action.INPUT_METHOD_CHANGED<br /></li>
+<li>android.intent.action.MANAGE_PACKAGE_STORAGE<br /></li>
+<li>android.intent.action.MEDIA_BAD_REMOVAL<br /></li>
+<li>android.intent.action.MEDIA_BUTTON<br /></li>
+<li>android.intent.action.MEDIA_CHECKING<br /></li>
+<li>android.intent.action.MEDIA_EJECT<br /></li>
+<li>android.intent.action.MEDIA_MOUNTED<br /></li>
+<li>android.intent.action.MEDIA_NOFS<br /></li>
+<li>android.intent.action.MEDIA_REMOVED<br /></li>
+<li>android.intent.action.MEDIA_SCANNER_FINISHED<br /></li>
+<li>android.intent.action.MEDIA_SCANNER_SCAN_FILE<br /></li>
+<li>android.intent.action.MEDIA_SCANNER_STARTED<br /></li>
+<li>android.intent.action.MEDIA_SHARED<br /></li>
+<li>android.intent.action.MEDIA_UNMOUNTABLE<br /></li>
+<li>android.intent.action.MEDIA_UNMOUNTED<br /></li>
+<li>android.intent.action.NEW_OUTGOING_CALL<br /></li>
+<li>android.intent.action.PACKAGE_ADDED<br /></li>
+<li>android.intent.action.PACKAGE_CHANGED<br /></li>
+<li>android.intent.action.PACKAGE_DATA_CLEARED<br /></li>
+<li>android.intent.action.PACKAGE_INSTALL<br /></li>
+<li>android.intent.action.PACKAGE_REMOVED<br /></li>
+<li>android.intent.action.PACKAGE_REPLACED<br /></li>
+<li>android.intent.action.PACKAGE_RESTARTED<br /></li>
+<li>android.intent.action.PHONE_STATE<br /></li>
+<li>android.intent.action.PROVIDER_CHANGED<br /></li>
+<li>android.intent.action.REBOOT<br /></li>
+<li>android.intent.action.SCREEN_OFF<br /></li>
+<li>android.intent.action.SCREEN_ON<br /></li>
+<li>android.intent.action.TIMEZONE_CHANGED<br /></li>
+<li>android.intent.action.TIME_SET<br /></li>
+<li>android.intent.action.TIME_TICK<br /></li>
+<li>android.intent.action.UID_REMOVED<br /></li>
+<li>android.intent.action.UMS_CONNECTED<br /></li>
+<li>android.intent.action.UMS_DISCONNECTED<br /></li>
+<li>android.intent.action.USER_PRESENT<br /></li>
+<li>android.intent.action.WALLPAPER_CHANGED<br /></li>
+<li>android.media.AUDIO_BECOMING_NOISY<br /></li>
+<li>android.media.RINGER_MODE_CHANGED<br /></li>
+<li>android.media.VIBRATE_SETTING_CHANGED<br /></li>
+<li>android.net.conn.BACKGROUND_DATA_SETTING_CHANGED<br /></li>
+<li>android.net.wifi.NETWORK_IDS_CHANGED<br /></li>
+<li>android.net.wifi.RSSI_CHANGED<br /></li>
+<li>android.net.wifi.SCAN_RESULTS<br /></li>
+<li>android.net.wifi.STATE_CHANGE<br /></li>
+<li>android.net.wifi.WIFI_STATE_CHANGED<br /></li>
+<li>android.net.wifi.supplicant.CONNECTION_CHANGE<br /></li>
+<li>android.net.wifi.supplicant.STATE_CHANGE<br /></li>
+<li>android.provider.Telephony.SIM_FULL<br /></li>
+<li>android.provider.Telephony.SMS_RECEIVED<br /></li>
+<li>android.provider.Telephony.WAP_PUSH_RECEIVED<br /></li>
+<li>com.google.gservices.intent.action.GSERVICES_CHANGED</li>
 </ul>
-<h6 id="Api_Level_4增加的:(SDK_1-6)">Api Level 4增加的:(SDK 1.6)</h6>
+<h6 id="api-level-4增加的sdk-1.6">Api Level 4增加的:(SDK 1.6)</h6>
 <ul>
-<li>android.intent.action.ACTION_POWER_CONNECTED  </li>
-<li>android.intent.action.ACTION_POWER_DISCONNECTED  </li>
-<li>android.intent.action.ACTION_SHUTDOWN  </li>
-<li>android.intent.action.BATTERY_OKAY  </li>
-<li>android.speech.tts.TTS_QUEUE_PROCESSING_COMPLETED  </li>
-<li>android.speech.tts.engine.TTS_DATA_INSTALLED  </li>
-<li>com.google.gservices.intent.action.GSERVICES_OVERRIDE  </li>
+<li>android.intent.action.ACTION_POWER_CONNECTED<br /></li>
+<li>android.intent.action.ACTION_POWER_DISCONNECTED<br /></li>
+<li>android.intent.action.ACTION_SHUTDOWN<br /></li>
+<li>android.intent.action.BATTERY_OKAY<br /></li>
+<li>android.speech.tts.TTS_QUEUE_PROCESSING_COMPLETED<br /></li>
+<li>android.speech.tts.engine.TTS_DATA_INSTALLED<br /></li>
+<li>com.google.gservices.intent.action.GSERVICES_OVERRIDE</li>
 </ul>
-<h6 id="Api_Level_5(SDK_2-0)蓝牙部分全部修改，修改后的">Api Level 5(SDK 2.0)蓝牙部分全部修改，修改后的</h6>
+<h6 id="api-level-5sdk-2.0蓝牙部分全部修改修改后的">Api Level 5(SDK 2.0)蓝牙部分全部修改，修改后的</h6>
 <ul>
-<li>android.bluetooth.a2dp.action.SINK_STATE_CHANGED  </li>
-<li>android.bluetooth.adapter.action.DISCOVERY_FINISHED  </li>
-<li>android.bluetooth.adapter.action.DISCOVERY_STARTED  </li>
-<li>android.bluetooth.adapter.action.LOCAL_NAME_CHANGED  </li>
-<li>android.bluetooth.adapter.action.SCAN_MODE_CHANGED  </li>
-<li>android.bluetooth.adapter.action.STATE_CHANGED  </li>
-<li>android.bluetooth.device.action.ACL_CONNECTED  </li>
-<li>android.bluetooth.device.action.ACL_DISCONNECTED  </li>
-<li>android.bluetooth.device.action.ACL_DISCONNECT_REQUESTED  </li>
-<li>android.bluetooth.device.action.BOND_STATE_CHANGED  </li>
-<li>android.bluetooth.device.action.CLASS_CHANGED  </li>
-<li>android.bluetooth.device.action.FOUND  </li>
-<li>android.bluetooth.device.action.NAME_CHANGED  </li>
-<li>android.bluetooth.devicepicker.action.DEVICE_SELECTED  </li>
-<li>android.bluetooth.devicepicker.action.LAUNCH  </li>
-<li>android.bluetooth.headset.action.AUDIO_STATE_CHANGED  </li>
-<li>android.bluetooth.headset.action.STATE_CHANGED  </li>
-<li>android.intent.action.DOCK_EVENT  </li>
-<li>android.provider.Telephony.SMS_REJECTED  </li>
+<li>android.bluetooth.a2dp.action.SINK_STATE_CHANGED<br /></li>
+<li>android.bluetooth.adapter.action.DISCOVERY_FINISHED<br /></li>
+<li>android.bluetooth.adapter.action.DISCOVERY_STARTED<br /></li>
+<li>android.bluetooth.adapter.action.LOCAL_NAME_CHANGED<br /></li>
+<li>android.bluetooth.adapter.action.SCAN_MODE_CHANGED<br /></li>
+<li>android.bluetooth.adapter.action.STATE_CHANGED<br /></li>
+<li>android.bluetooth.device.action.ACL_CONNECTED<br /></li>
+<li>android.bluetooth.device.action.ACL_DISCONNECTED<br /></li>
+<li>android.bluetooth.device.action.ACL_DISCONNECT_REQUESTED<br /></li>
+<li>android.bluetooth.device.action.BOND_STATE_CHANGED<br /></li>
+<li>android.bluetooth.device.action.CLASS_CHANGED<br /></li>
+<li>android.bluetooth.device.action.FOUND<br /></li>
+<li>android.bluetooth.device.action.NAME_CHANGED<br /></li>
+<li>android.bluetooth.devicepicker.action.DEVICE_SELECTED<br /></li>
+<li>android.bluetooth.devicepicker.action.LAUNCH<br /></li>
+<li>android.bluetooth.headset.action.AUDIO_STATE_CHANGED<br /></li>
+<li>android.bluetooth.headset.action.STATE_CHANGED<br /></li>
+<li>android.intent.action.DOCK_EVENT<br /></li>
+<li>android.provider.Telephony.SMS_REJECTED</li>
 </ul>
-<h6 id="Api_Level_6(SDK_2-0-1)没有改变。">Api Level 6(SDK 2.0.1)没有改变。</h6>
-<h6 id="Api_Level_7(SDK_2-1)增加的：">Api Level 7(SDK 2.1)增加的：</h6>
+<h6 id="api-level-6sdk-2.0.1没有改变">Api Level 6(SDK 2.0.1)没有改变。</h6>
+<h6 id="api-level-7sdk-2.1增加的">Api Level 7(SDK 2.1)增加的：</h6>
 <ul>
-<li>android.intent.action.LOCALE_CHANGED  </li>
+<li>android.intent.action.LOCALE_CHANGED</li>
 </ul>
-<h6 id="Api_Level_8(SDK_2-2)增加的：">Api Level 8(SDK 2.2)增加的：</h6>
+<h6 id="api-level-8sdk-2.2增加的">Api Level 8(SDK 2.2)增加的：</h6>
 <ul>
-<li>android.app.action.ACTION_PASSWORD_CHANGED  </li>
-<li>android.app.action.ACTION_PASSWORD_FAILED  </li>
-<li>android.app.action.ACTION_PASSWORD_SUCCEEDED  </li>
-<li>android.app.action.DEVICE_ADMIN_DISABLED  </li>
-<li>android.app.action.DEVICE_ADMIN_DISABLE_REQUESTED  </li>
-<li>android.app.action.DEVICE_ADMIN_ENABLED  </li>
-<li>android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE  </li>
-<li>android.intent.action.EXTERNAL_APPLICATIONS_UNAVAILABLE  </li>
-<li>android.media.SCO_AUDIO_STATE_CHANGED </li>
+<li>android.app.action.ACTION_PASSWORD_CHANGED<br /></li>
+<li>android.app.action.ACTION_PASSWORD_FAILED<br /></li>
+<li>android.app.action.ACTION_PASSWORD_SUCCEEDED<br /></li>
+<li>android.app.action.DEVICE_ADMIN_DISABLED<br /></li>
+<li>android.app.action.DEVICE_ADMIN_DISABLE_REQUESTED<br /></li>
+<li>android.app.action.DEVICE_ADMIN_ENABLED<br /></li>
+<li>android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE<br /></li>
+<li>android.intent.action.EXTERNAL_APPLICATIONS_UNAVAILABLE<br /></li>
+<li>android.media.SCO_AUDIO_STATE_CHANGED</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/07/25/android学习笔记-broadcast/" data-id="ywalcdrkel356y46" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/07/25/android学习笔记-broadcast/" data-id="tepvaatm0yrt4q52" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>

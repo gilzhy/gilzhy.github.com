@@ -89,28 +89,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a id="more"></a><br>转自<a href="http://blog.quanhz.com/archives/192" target="_blank">Vim的高亮颜色设置</a></p>
+        <p><a id="more"></a> 转自<a href="http://blog.quanhz.com/archives/192" target="_blank">Vim的高亮颜色设置</a></p>
 <p>一直对Vim中有些地方的颜色略感不爽，于是花时间研究了一下，总体来说还是比较简单的，一个highlight命令便可搞定一切的颜色设置。</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li>使用highlight命令</li>
-<li><p> Vim中对颜色（包括字体等其他样式）的设置是用hightlight命令，可简写为hi。例如对函数名的设置：</p>
-<p> <code>highlight Function cterm=bold,underline ctermbg=red ctermfg=green</code></p>
-<p> 这条命令可使函数名的字体改为粗体／有下划线／绿色／红色背景。除了Function关键字，还有String／Number／Float／Label，还有针对某门编程语言的关键字如：phpFunctions／phpType／phpFloat等。</p>
-</li>
-<li><p>查看所有的已有设置<br> 直接执行highlight命令即可，不带任何参数。<br> 效果如下：<br> <img src="http://blog.quanhz.com/wp-content/uploads/2011/07/Screenshot-Vim.png" alt="highlight效果"><br> 左边那一列就是可针对其进行设置的关键词，中间是样式的效果，右边是设置的具体参数。其中gui／guibg等是对gvim的设置，如果不用gvim可忽略。</p>
-</li>
-<li><p>举例：我的两处设置</p>
-<ol>
-<li>对tab标签样式的设置<br> 每种主题都会有美中不足，比如我一直喜欢用的torte，它的默认样式下tab标签是黑底白字有下划线，选中状态为无下划线，看起来非常费眼睛。我进行了如下设置：<br><strong>ctermbg为背景色，ctermfg为字体色，TabLine为标签，TabLineSel为选中的标签</strong><br> <code>highlight TabLine term=underline cterm=bold ctermfg=9 ctermbg=4</code><br> <code>highlight TabLineSel term=bold cterm=bold ctermbg=Red ctermfg=yellow</code><br> 这里涉及到两个标签：TabLine(普通标签样式)／TabLineSel(选中状态标签的样式)。<br> 效果：<br> <img src="http://blog.quanhz.com/wp-content/uploads/2011/07/vim-tab-highlight.png" alt="TabLine效果"></li>
-<li>对自动补全提示样式的设置<br> 我使用的提示插件是<a href="http://www.vim.org/scripts/script.php?script_id=1879" target="_blank">AutoComplPop</a><br> <code>highlight Pmenu ctermbg=darkred</code><br> <code>highlight PmenuSel ctermbg=red ctermfg=yellow</code><br> 效果：<br> <img src="http://blog.quanhz.com/wp-content/uploads/2011/07/vim-acp-highlight.png" alt="自动补全效果"></li>
 </ol>
-</li>
+<p>2. Vim中对颜色（包括字体等其他样式）的设置是用hightlight命令，可简写为hi。例如对函数名的设置：</p>
+<pre><code>`highlight Function cterm=bold,underline ctermbg=red ctermfg=green`
+
+这条命令可使函数名的字体改为粗体／有下划线／绿色／红色背景。除了Function关键字，还有String／Number／Float／Label，还有针对某门编程语言的关键字如：phpFunctions／phpType／phpFloat等。</code></pre>
+<ol style="list-style-type: decimal">
+<li><p>查看所有的已有设置 直接执行highlight命令即可，不带任何参数。<br /> 效果如下：<br /> <img src="http://blog.quanhz.com/wp-content/uploads/2011/07/Screenshot-Vim.png" alt="highlight效果" /> 左边那一列就是可针对其进行设置的关键词，中间是样式的效果，右边是设置的具体参数。其中gui／guibg等是对gvim的设置，如果不用gvim可忽略。</p></li>
+<li>举例：我的两处设置
+<ol style="list-style-type: decimal">
+<li>对tab标签样式的设置 每种主题都会有美中不足，比如我一直喜欢用的torte，它的默认样式下tab标签是黑底白字有下划线，选中状态为无下划线，看起来非常费眼睛。我进行了如下设置：<br /> <strong>ctermbg为背景色，ctermfg为字体色，TabLine为标签，TabLineSel为选中的标签</strong> <code>highlight TabLine term=underline cterm=bold ctermfg=9 ctermbg=4</code><br /> <code>highlight TabLineSel term=bold cterm=bold ctermbg=Red ctermfg=yellow</code><br /> 这里涉及到两个标签：TabLine(普通标签样式)／TabLineSel(选中状态标签的样式)。<br /> 效果：<br /> <img src="http://blog.quanhz.com/wp-content/uploads/2011/07/vim-tab-highlight.png" alt="TabLine效果" /></li>
+<li>对自动补全提示样式的设置 我使用的提示插件是<a href="http://www.vim.org/scripts/script.php?script_id=1879" target="_blank">AutoComplPop</a><br /> <code>highlight Pmenu ctermbg=darkred</code><br /> <code>highlight PmenuSel ctermbg=red ctermfg=yellow</code><br /> 效果：<br /> <img src="http://blog.quanhz.com/wp-content/uploads/2011/07/vim-acp-highlight.png" alt="自动补全效果" /></li>
+</ol></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/27/vim的高亮颜色/" data-id="rxbx80f7k4gci5gd" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/27/vim的高亮颜色/" data-id="g9gn21exkfkf7tun" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>

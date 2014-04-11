@@ -91,17 +91,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/Neural-Network.png" alt="Neural Network"></p>
+        <div class="figure">
+<img src="/img/Neural-Network.png" alt="Neural Network" /><p class="caption">Neural Network</p>
+</div>
 <h3 id="多分类输出">多分类输出</h3>
 <p>以四分类为例:</p>
-<p>$$\begin{bmatrix}1\\0\\0\\0\end{bmatrix},\begin{bmatrix}0\\1\\0\\0\end{bmatrix},\begin{bmatrix}0\\0\\1\\0\end{bmatrix},\begin{bmatrix}0\\0\\0\\1\end{bmatrix}$$</p>
+<p>\[\begin{bmatrix}1\\0\\0\\0\end{bmatrix},\begin{bmatrix}0\\1\\0\\0\end{bmatrix},\begin{bmatrix}0\\0\\1\\0\end{bmatrix},\begin{bmatrix}0\\0\\0\\1\end{bmatrix}\]</p>
 <p>分别表示样本预测结果为第1,2,3,4种分类</p>
 <h3 id="损失函数">损失函数</h3>
-<h4 id="Logistic_regression的损失函数:">Logistic regression的损失函数:</h4>
-<p>$$J(\theta) = - \frac {1}{m} [\sum\limits_{i=1}^{m}y^{(i)}\log h_{\theta}(x^{(i)})+(1-y^{(i)})\log (1-h_{\theta}(x^{(i)}))] + \frac {\lambda}{2m} \sum\limits_{j=1}^{n}\theta_{j}^{2}$$</p>
-<h4 id="Neural_Network的损失函数:">Neural Network的损失函数:</h4>
-<p>$$J(\theta) = - \frac {1}{m} [\sum\limits_{i=1}^{m}\sum\limits_{k=1}^{K}y_k^{(i)}\log (h_{\theta}(x^{(i)})_k)+(1-y_k^{(i)})\log (1-h_{\theta}(x^{(i)})_k)] + \frac {\lambda}{2m} \sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l+1}}(\theta_{ji}^{(l)})^2$$</p>
-<p>Neural Network的损失函数与Logistic regression的只基本一直, 只因为Neural Network的输出是一个K维向量(K为分类的类别数), 所以要把K维的每一维都计算一遍.<br>
+<h4 id="logistic-regression的损失函数">Logistic regression的损失函数:</h4>
+<p>\[J(\theta) = - \frac {1}{m} [\sum\limits_{i=1}^{m}y^{(i)}\log h_{\theta}(x^{(i)})+(1-y^{(i)})\log (1-h_{\theta}(x^{(i)}))] + \frac {\lambda}{2m} \sum\limits_{j=1}^{n}\theta_{j}^{2}\]</p>
+<h4 id="neural-network的损失函数">Neural Network的损失函数:</h4>
+<p>\[J(\theta) = - \frac {1}{m} [\sum\limits_{i=1}^{m}\sum\limits_{k=1}^{K}y_k^{(i)}\log (h_{\theta}(x^{(i)})_k)+(1-y_k^{(i)})\log (1-h_{\theta}(x^{(i)})_k)] + \frac {\lambda}{2m} \sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l+1}}(\theta_{ji}^{(l)})^2\]</p>
+<p>Neural Network的损失函数与Logistic regression的只基本一直, 只因为Neural Network的输出是一个K维向量(K为分类的类别数), 所以要把K维的每一维都计算一遍. 
         
           <p class="article-more-link">
             <a href="/2014/04/11/neural-network/#more">Read More</a>
@@ -110,7 +112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/11/neural-network/" data-id="gm9xlp8nj7t2tlsh" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/11/neural-network/" data-id="2afqid4x7bh2l6ol" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
@@ -151,9 +153,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>之前台大林軒田老师在coursera上的<a href="https://www.coursera.org/course/ntumlone" target="_blank">機器學習基石 (Machine Learning Foundations)</a>开课时我曾经上过第一周的课, 后来因为其他课程没有继续跟下去, 现在想来十分后悔惭愧. 但是仅仅只看了第一周的课程影片就学到一个很有用的知识点: 为什么机器学习算法中总为特征向量x增加一维x0=1呢? 而这个问题Andrew Ng并没有解释,而是直接说要这么做. 学校里的专必课潘老师也没有将清楚. </p>
-<p>之前上Andrew Ng的课时都只是看Video, 没有写Quizzes和Programming Exercises. 前几周看到Andrew Ng的<a href="https://class.coursera.org/ml-005" target="_blank">Machine Learning</a>又开课了, 准备这次要认真的把每一周的Quizzes和Programming Exercises完成. 因为有以前的基础, 不用看Video就可以直接写, 到现在为止都还坚持的很好, 也深深的感受到Quizzes和Programming Exercises带来的收获, 深深忏悔… </p>
-<p>这几天经常想到上面提到的这个问题, 所以决定写这篇博文记录下来以免忘记.<br>
+        <p>之前台大林軒田老师在coursera上的<a href="https://www.coursera.org/course/ntumlone" target="_blank">機器學習基石 (Machine Learning Foundations)</a>开课时我曾经上过第一周的课, 后来因为其他课程没有继续跟下去, 现在想来十分后悔惭愧. 但是仅仅只看了第一周的课程影片就学到一个很有用的知识点: 为什么机器学习算法中总为特征向量x增加一维x0=1呢? 而这个问题Andrew Ng并没有解释,而是直接说要这么做. 学校里的专必课潘老师也没有将清楚.</p>
+<p>之前上Andrew Ng的课时都只是看Video, 没有写Quizzes和Programming Exercises. 前几周看到Andrew Ng的<a href="https://class.coursera.org/ml-005" target="_blank">Machine Learning</a>又开课了, 准备这次要认真的把每一周的Quizzes和Programming Exercises完成. 因为有以前的基础, 不用看Video就可以直接写, 到现在为止都还坚持的很好, 也深深的感受到Quizzes和Programming Exercises带来的收获, 深深忏悔…</p>
+<p>这几天经常想到上面提到的这个问题, 所以决定写这篇博文记录下来以免忘记. 
         
           <p class="article-more-link">
             <a href="/2014/04/09/机器学习算法中为什么要增加一维x0=1/#more">Read More</a>
@@ -162,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="9lex87i5b6wqk6sb" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/09/机器学习算法中为什么要增加一维x0=1/" data-id="20nv65yb9ij5e0lc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DM/">DM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ML/">ML</a></li></ul>
@@ -203,7 +205,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>SymPy是Python的数学符号计算库,用它可以进行数学表达式的符号推导和演算<br>isympy是python-sympy对ipython的封装,提供交互式环境<br>
+        <p>SymPy是Python的数学符号计算库,用它可以进行数学表达式的符号推导和演算 isympy是python-sympy对ipython的封装,提供交互式环境 
         
           <p class="article-more-link">
             <a href="/2014/04/06/python-sympy/#more">Read More</a>
@@ -212,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/06/python-sympy/" data-id="rh88d8cx4s6k3v15" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/06/python-sympy/" data-id="iu6t9ucvshoi2gci" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>

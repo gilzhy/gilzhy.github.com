@@ -89,20 +89,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>linux awesome插件：电池电量、音量、网速、内存、CPU、文件系统<br><a id="more"></a><br>awesome配置文件: <code>~/.config/awesome/rc.lua</code>  </p>
+        <p>linux awesome插件：电池电量、音量、网速、内存、CPU、文件系统<br /><a id="more"></a> awesome配置文件: <code>~/.config/awesome/rc.lua</code></p>
 <p>awesome插件: <a href="http://awesome.naquadah.org/wiki/User_Contributed_Widgets" target="_blank">官网</a></p>
-<p>插件：电池电量、音量、网速、内存、CPU、文件系统  </p>
+<p>插件：电池电量、音量、网速、内存、CPU、文件系统</p>
 <p>下载库:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 </pre></td><td class="code"><pre>git clone git://git<span class="preprocessor">.glacicle</span><span class="preprocessor">.com</span>/awesome/wicked<span class="preprocessor">.git</span>
 sudo <span class="keyword">cp</span> wicked/wicked<span class="preprocessor">.lua</span> /usr/share/awesome/lib/
 sudo <span class="keyword">cp</span> wicked/wicked<span class="number">.7</span><span class="preprocessor">.gz</span> /usr/share/man/man7/
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>插件代码：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -216,10 +215,8 @@ fswidget = widget({
 })
 wicked.register(fswidget, wicked.widgets.fs,
     `<span class="string">' &lt;span color="#7bbfea"&gt;File:&lt;/span&gt; ${/ used}/${/ size} (${/ usep}%)'</span>, <span class="number">120</span>)`
-</pre></td></tr></table></figure>
-
-<p>增加相应的插件到mywibos</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td></tr></table></figure></p>
+<p>增加相应的插件到mywibos <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -253,15 +250,14 @@ wicked.register(fswidget, wicked.widgets.fs,
     mytasklist[s],
     layout = awful<span class="preprocessor">.widget</span><span class="preprocessor">.layout</span><span class="preprocessor">.horizontal</span><span class="preprocessor">.rightleft</span>
 }
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 <p>注：</p>
 <ul>
 <li>电池电量的需要安装acpitool:sudo apt-get install acpitool</li>
-<li>闲装音量控制插件调试麻烦的话,<strong>用alsamixter</strong>(自带)<br>  alsamixter -&gt; F6 -&gt; PCH<br>  操作:左右选择,上下调节;按数字键快速调节到相应百分比的音量;按m键静音/取消静音(MM的表示静音);</li>
+<li>闲装音量控制插件调试麻烦的话,<strong>用alsamixter</strong>(自带) alsamixter -&gt; F6 -&gt; PCH 操作:左右选择,上下调节;按数字键快速调节到相应百分比的音量;按m键静音/取消静音(MM的表示静音);</li>
 <li>音量控制还需绑定到几个多媒体键(利用alsamixter)</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre>1
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
 4
@@ -319,13 +315,12 @@ awful.key({}, <span class="string">"XF86AudioMute"</span>, <span class="function
 awful.key({}, <span class="string">"XF86AudioLowerVolume"</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span></span> awful.util.spawn(<span class="string">"amixer -q sset PCM 10%- unmute"</span>) <span class="keyword">end</span>),
 awful.key({}, <span class="string">"XF86AudioRaiseVolume"</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span></span> awful.util.spawn(<span class="string">"amixer -q sset PCM 10%+ unmute"</span>) <span class="keyword">end</span>)
 <span class="comment">-- 看键盘按键代码：xev | grep -A2 --line-buffered '^KeyRelease' | sed -n '/keycode /s/^.*keycode \([0-9]*\).* (.*, \(.*\)).*$/\1 \2/p'</span>
-</pre></td></tr></table></figure>
-
+</pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/04/03/linux-awesome插件/" data-id="fcd0xkffq9tmpifh" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/04/03/linux-awesome插件/" data-id="dq1a5ar2n2o006fi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/awesome/">awesome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
