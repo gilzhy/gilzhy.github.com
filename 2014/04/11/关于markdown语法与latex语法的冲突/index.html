@@ -3,14 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>MVC | Jay Young&#39;s Blog</title>
+  <title>关于Markdown语法与Latex语法的冲突 | Jay Young&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="og:type" content="blog">
-<meta name="og:title" content="MVC">
-<meta name="og:url" content="http://www.zhyin5.com/2013/02/27/mvc/">
+<meta name="og:title" content="关于Markdown语法与Latex语法的冲突">
+<meta name="og:url" content="http://www.zhyin5.com/2014/04/11/关于markdown语法与latex语法的冲突/">
 <meta name="og:image">
 <meta name="og:site_name" content="Jay Young's Blog">
-<meta name="og:description" content="MVC = Model（模型）+ View（视图）+ Controller（控制）">
+<meta name="og:description" content="今天写笔记时发现了之前没注意但是很蛋疼的问题:
+$a_i &lt; b_i$ 类似这样的latex公式在用markdown编写, 用mathjax解析的博客上, 会解析失败.
+原因是markdown两个下划线包起来表示期间的内容为斜体,如 _啦啦啦_ 显示为 啦啦啦. 所以 $a_i &lt; b_i$ 被转为 $a&lt;em&gt;i &lt; b&lt;/em&gt;i$ , 然后mathj">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -63,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-mvc" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-关于markdown语法与latex语法的冲突" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2013/02/27/mvc/" class="article-date">
-  <time datetime="2013-02-27T07:08:37.000Z" itemprop="datePublished">2月 27 2013</time>
+    <a href="/2014/04/11/关于markdown语法与latex语法的冲突/" class="article-date">
+  <time datetime="2014-04-11T12:53:30.000Z" itemprop="datePublished">4月 11 2014</time>
 </a>
     
   <div class="article-category">
@@ -81,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MVC
+      关于Markdown语法与Latex语法的冲突
     </h1>
   
 
@@ -89,21 +91,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>MVC = Model（模型）+ View（视图）+ Controller（控制） <a id="more"></a> <strong>MVC = Model（模型）+ View（视图）+ Controller（控制）</strong></p>
-<ol style="list-style-type: decimal">
-<li>最上面的一层，是直接面向最终用户的“视图层”（View）。它是提供给用户的操作界面，是程序的外壳。</li>
-<li>最底下的一层，是核心的“数据层”（Model），也就是程序需要操作的数据或信息。</li>
-<li>中间的一层，就是“控制层”（Controller），它负责根据用户从“视图层”输入的指令，选取“数据层”中的数据，然后对其进行相应的操作，产生最终结果。</li>
-</ol>
-<p>这三层是紧密联系在一起的，但又是互相独立的，每一层内部的变化不影响其他层。每一层都对外提供接口（Interface），供上面一层调用。这样一来，软件就可以实现模块化，修改外观或者变更数据都不用修改其他层，大大方便了维护和升级。</p>
+        <p>今天写笔记时发现了之前没注意但是很蛋疼的问题:</p>
+<p><code>$a_i &lt; b_i$</code> 类似这样的latex公式在用markdown编写, 用mathjax解析的博客上, 会解析失败.</p>
+<p>原因是markdown两个下划线包起来表示期间的内容为斜体,如 <code>_啦啦啦_</code> 显示为 <em>啦啦啦</em>. 所以 <code>$a_i &lt; b_i$</code> 被转为 <code>$a&lt;em&gt;i &lt; b&lt;/em&gt;i$</code> , 然后mathjax就无法识别了.</p>
+<p>除此之外, 还有</p>
+<p><code>\begin{bmatrix} 1\\  2\\  3\\  4 \end{bmatrix}</code> 被转为 <code>\begin{bmatrix} 1\  2\  3\  4 \end{bmatrix}</code> 然后mathjax显示错误.</p>
+<p>网上能找到一些这样问题的讨论, 如<a href="https://github.com/egonSchiele/mdpress/issues/18" target="_blank">Parsing of subscript formulas in latex conflicts with parsing of markdown italic #18</a></p>
+<p>基本上建议是将公式中的 <code>_</code> 替换为 <code>\_</code>. 这样做的坏处是很多支持latex的markdown的解析器都无法识别公式了. 比如我喜欢用<a href="https://stackedit.io" target="_blank">stackedit.io</a>来写笔记, 替换以后 stackedit.io 就无法正确显示公式了. 另外替换也麻烦.</p>
+<p>因为我的blog是用hexo生成的, 所以最后我选择的解决方法是采用讨论 <a href="https://github.com/egonSchiele/mdpress/issues/18" target="_blank">Bug:marked 和 Mathjax冲突 #524</a> 中wzpan 提到的换一个语法上更强的markdown解析器. 而且大神已经为hexo写好了pandoc-markdown(<a href="https://github.com/wzpan/hexo-renderer-pandoc" target="_blank">wzpan/hexo-renderer-pandoc</a>).</p>
+<p>于是开开心心的 <code>$ npm install hexo-renderer-pandoc --save</code> 安装了这个hexo的插件.</p>
+<p>用这个插件的前提是安装了神器<a href="http://johnmacfarlane.net/pandoc/" target="_blank">pandoc</a>, 关于它网上已经有很多介绍了, linux下安装也很方便, 如ubuntu下apt-get就好了.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/02/27/mvc/" data-id="z0rprr28a1fcgprb" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/11/关于markdown语法与latex语法的冲突/" data-id="todxjypna1uh9z6l" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/">MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/latex/">latex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 
     </footer>
   </div>
@@ -111,19 +116,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2013/03/15/linux-mysql/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          linux-mysql
-        
-      </div>
-    </a>
   
-  
-    <a href="/2013/02/27/linux命令/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/04/11/neural-network/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Linux命令</div>
+      <div class="article-nav-title">Neural Network</div>
     </a>
   
 </nav>
