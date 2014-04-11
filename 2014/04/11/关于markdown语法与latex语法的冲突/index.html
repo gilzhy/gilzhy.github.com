@@ -98,14 +98,14 @@ $a_i &lt; b_i$ 类似这样的latex公式在用markdown编写, 用mathjax解析�
 <p><code>\begin{bmatrix} 1\\  2\\  3\\  4 \end{bmatrix}</code> 被转为 <code>\begin{bmatrix} 1\  2\  3\  4 \end{bmatrix}</code> 然后mathjax显示错误.</p>
 <p>网上能找到一些这样问题的讨论, 如<a href="https://github.com/egonSchiele/mdpress/issues/18" target="_blank">Parsing of subscript formulas in latex conflicts with parsing of markdown italic #18</a></p>
 <p>基本上建议是将公式中的 <code>_</code> 替换为 <code>\_</code>. 这样做的坏处是很多支持latex的markdown的解析器都无法识别公式了. 比如我喜欢用<a href="https://stackedit.io" target="_blank">stackedit.io</a>来写笔记, 替换以后 stackedit.io 就无法正确显示公式了. 另外替换也麻烦.</p>
-<p>因为我的blog是用hexo生成的, 所以最后我选择的解决方法是采用讨论 <a href="https://github.com/egonSchiele/mdpress/issues/18" target="_blank">Bug:marked 和 Mathjax冲突 #524</a> 中wzpan 提到的换一个语法上更强的markdown解析器. 而且大神已经为hexo写好了pandoc-markdown(<a href="https://github.com/wzpan/hexo-renderer-pandoc" target="_blank">wzpan/hexo-renderer-pandoc</a>).</p>
+<p>因为我的blog是用hexo生成的, 所以最后我选择的解决方法是采用讨论 <a href="https://github.com/tommy351/hexo/issues/524" target="_blank">Bug:marked 和 Mathjax冲突 #524</a> 中wzpan 提到的换一个语法上更强的markdown解析器. 而且大神已经为hexo写好了pandoc-markdown(<a href="https://github.com/wzpan/hexo-renderer-pandoc" target="_blank">wzpan/hexo-renderer-pandoc</a>).</p>
 <p>于是开开心心的 <code>$ npm install hexo-renderer-pandoc --save</code> 安装了这个hexo的插件.</p>
 <p>用这个插件的前提是安装了神器<a href="http://johnmacfarlane.net/pandoc/" target="_blank">pandoc</a>, 关于它网上已经有很多介绍了, linux下安装也很方便, 如ubuntu下apt-get就好了.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/11/关于markdown语法与latex语法的冲突/" data-id="todxjypna1uh9z6l" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/11/关于markdown语法与latex语法的冲突/" data-id="kdawmuqeqfrbyqq8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/latex/">latex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
