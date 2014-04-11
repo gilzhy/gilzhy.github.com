@@ -12,16 +12,10 @@
 <meta name="og:site_name" content="Jay Young's Blog">
 <meta name="og:description" content="多分类输出
 以四分类为例:
-
+$$\begin{bmatrix}1\0\0\0\end{bmatrix},\begin{bmatrix}0\1\0\0\end{bmatrix},\begin{bmatrix}0\0\1\0\end{bmatrix},\begin{bmatrix}0\0\0\1\end{bmatrix}$$
 分别表示样本预测结果为第1,2,3,4种分类
 损失函数
-Logistic regression的损失函数:
-
-Neural Network的损失函数:
-
-Neural Network的损失函数与Logistic regression的只基本一直, 只因为Neural Network的输出是一个K维向量(K为分类的类别数), 所以要把K维的每一维都计算一遍.
-数据
-m">
+Logistic">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
@@ -103,38 +97,38 @@ m">
         <p><img src="/img/Neural-Network.png" alt="Neural Network"></p>
 <h3 id="多分类输出">多分类输出</h3>
 <p>以四分类为例:</p>
-<p><a href="http://www.codecogs.com/eqnedit.php?latex=\begin{bmatrix}1\\&space;0\\&space;0\\&space;0\end{bmatrix},&space;\begin{bmatrix}0\\&space;1\\&space;0\\&space;0\end{bmatrix},&space;\begin{bmatrix}0\\&space;0\\&space;1\\&space;0\end{bmatrix},&space;\begin{bmatrix}0\\&space;0\\&space;0\\&space;1\end{bmatrix}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?\begin{bmatrix}1\\&space;0\\&space;0\\&space;0\end{bmatrix},&space;\begin{bmatrix}0\\&space;1\\&space;0\\&space;0\end{bmatrix},&space;\begin{bmatrix}0\\&space;0\\&space;1\\&space;0\end{bmatrix},&space;\begin{bmatrix}0\\&space;0\\&space;0\\&space;1\end{bmatrix}" title="\begin{bmatrix}1\\ 0\\ 0\\ 0\end{bmatrix}, \begin{bmatrix}0\\ 1\\ 0\\ 0\end{bmatrix}, \begin{bmatrix}0\\ 0\\ 1\\ 0\end{bmatrix}, \begin{bmatrix}0\\ 0\\ 0\\ 1\end{bmatrix}" /></a></p>
+<p>$$\begin{bmatrix}1\0\0\0\end{bmatrix},\begin{bmatrix}0\1\0\0\end{bmatrix},\begin{bmatrix}0\0\1\0\end{bmatrix},\begin{bmatrix}0\0\0\1\end{bmatrix}$$</p>
 <p>分别表示样本预测结果为第1,2,3,4种分类</p>
 <h3 id="损失函数">损失函数</h3>
 <h4 id="Logistic_regression的损失函数:">Logistic regression的损失函数:</h4>
-<p><a href="http://www.codecogs.com/eqnedit.php?latex=J(\theta)&space;=&space;-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}y^{(i)}\log&space;h_{\theta}(x^{(i)})&plus;(1-y^{(i)})\log&space;(1-h_{\theta}(x^{(i)}))]&space;&plus;&space;\frac&space;{\lambda}{2m}&space;\sum\limits_{j=1}^{n}\theta_{j}^{2}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?J(\theta)&space;=&space;-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}y^{(i)}\log&space;h_{\theta}(x^{(i)})&plus;(1-y^{(i)})\log&space;(1-h_{\theta}(x^{(i)}))]&space;&plus;&space;\frac&space;{\lambda}{2m}&space;\sum\limits_{j=1}^{n}\theta_{j}^{2}" title="J(\theta) = - \frac {1}{m} [\sum\limits_{i=1}^{m}y^{(i)}\log h_{\theta}(x^{(i)})+(1-y^{(i)})\log (1-h_{\theta}(x^{(i)}))] + \frac {\lambda}{2m} \sum\limits_{j=1}^{n}\theta_{j}^{2}" /></a></p>
+<p>$$J(\theta) = - \frac {1}{m} [\sum\limits\<em>{i=1}^{m}y^{(i)}\log h\</em>{\theta}(x^{(i)})+(1-y^{(i)})\log (1-h\<em>{\theta}(x^{(i)}))] + \frac {\lambda}{2m} \sum\limits\</em>{j=1}^{n}\theta\_{j}^{2}$$</p>
 <h4 id="Neural_Network的损失函数:">Neural Network的损失函数:</h4>
-<p><a href="http://www.codecogs.com/eqnedit.php?latex=J(\theta)&space;=&space;-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}\sum\limits_{k=1}^{K}y_k^{(i)}\log&space;(h_{\theta}(x^{(i)})_k)&plus;(1-y_k^{(i)})\log&space;(1-h_{\theta}(x^{(i)})_k)]&space;&plus;&space;\frac&space;{\lambda}{2m}&space;\sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l&plus;1}}(\theta_{ji}^{(l)})^2" target="_blank"><img src="http://latex.codecogs.com/gif.latex?J(\theta)&space;=&space;-&space;\frac&space;{1}{m}&space;[\sum\limits_{i=1}^{m}\sum\limits_{k=1}^{K}y_k^{(i)}\log&space;(h_{\theta}(x^{(i)})_k)&plus;(1-y_k^{(i)})\log&space;(1-h_{\theta}(x^{(i)})_k)]&space;&plus;&space;\frac&space;{\lambda}{2m}&space;\sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l&plus;1}}(\theta_{ji}^{(l)})^2" title="J(\theta) = - \frac {1}{m} [\sum\limits_{i=1}^{m}\sum\limits_{k=1}^{K}y_k^{(i)}\log (h_{\theta}(x^{(i)})_k)+(1-y_k^{(i)})\log (1-h_{\theta}(x^{(i)})_k)] + \frac {\lambda}{2m} \sum\limits_{l=1}^{L-1}\sum\limits_{i=1}^{s_l}\sum\limits_{j=1}^{s_{l+1}}(\theta_{ji}^{(l)})^2" /></a></p>
+<p>$$J(\theta) = - \frac {1}{m} [\sum\limits\<em>{i=1}^{m}\sum\limits\</em>{k=1}^{K}y\<em>k^{(i)}\log (h\</em>{\theta}(x^{(i)})\<em>k)+(1-y\_k^{(i)})\log (1-h\</em>{\theta}(x^{(i)})\<em>k)] + \frac {\lambda}{2m} \sum\limits\</em>{l=1}^{L-1}\sum\limits\<em>{i=1}^{s\_l}\sum\limits\</em>{j=1}^{s\<em>{l+1}}(\theta\</em>{ji}^{(l)})^2$$</p>
 <p>Neural Network的损失函数与Logistic regression的只基本一直, 只因为Neural Network的输出是一个K维向量(K为分类的类别数), 所以要把K维的每一维都计算一遍.<br><a id="more"></a></p>
 <h3 id="数据">数据</h3>
 <p>m个样本, 每个样本n维</p>
 <h4 id="1-_关于_$\mathbf{z},_\mathbf{a}$">1. 关于 $\mathbf{z}, \mathbf{a}$</h4>
-<p>L层神经网络(Layer <strong>1</strong>, Layer 2, …, Layer L), 每层有 $s_l$ 维(不包括增加的1)</p>
+<p>L层神经网络(Layer <strong>1</strong>, Layer 2, …, Layer L), 每层有 $s\_l$ 维(不包括增加的1)</p>
 <ul>
 <li>第一层为输入层 $\mathbf{a}^{(1)}=\mathbf{x}$ , x为其中一个样本(列向量)</li>
-<li>最后一层为输出层, 若分类问题一共有K中分类,则最后一层有K维, $s_L=K$</li>
+<li>最后一层为输出层, 若分类问题一共有K中分类,则最后一层有K维, $s\_L=K$</li>
 </ul>
 <p>对于第i层:</p>
 <ul>
 <li>$\mathbf{z}^{(i)}=\mathbf{\theta}^{(i-1)}\mathbf{a}^{(i-1)}$</li>
 <li>$\mathbf{a}^{(i)}=g(\mathbf{z}^{(i)})$, $g(\mathbf{z})=\frac {1}{1+e^{-\mathbf{z}}}$</li>
-<li>第i层共有 $s<em>i$ 个值, 其中第j个值为:  $\mathbf{z}^{(i)}_j=\mathbf{\theta}^{(i-1)}\</em>{j}\mathbf{a}^{(i-1)}$</li>
+<li>第i层共有 $s\<em>i$ 个值, 其中第j个值为:  $\mathbf{z}^{(i)}\_j=\mathbf{\theta}^{(i-1)}\</em>{j}\mathbf{a}^{(i-1)}$</li>
 </ul>
 <p>$\mathbf{z}$ 和 $\mathbf{a}$ 的值通过<strong>正向传播</strong>得到.</p>
 <h4 id="2-_关于$\theta$">2. 关于$\theta$</h4>
 <p>$\theta$ 记录神经网络中每一层每个结点的权重值.</p>
-<p>$\theta^{(l)}$ 表示第l层 $s<em>l$ 个结点产生第 l+1 层 $s</em>{l+1}$ 个结点的 $s<em>l \times s</em>{l+1}$ 个权重.</p>
-<p>因为 $\mathbf{z}^{(i)}<em>j = \mathbf{\theta}^{(i-1)}</em>{j}\mathbf{a}^{(i-1)}$ , 所以有:</p>
+<p>$\theta^{(l)}$ 表示第l层 $s_l$ 个结点产生第 l+1 层 $s_{l+1}$ 个结点的 $s_l \times s_{l+1}$ 个权重.</p>
+<p>因为 $\mathbf{z}^{(i)}_j = \mathbf{\theta}^{(i-1)}_{j}\mathbf{a}^{(i-1)}$ , 所以有:</p>
 <ul>
 <li>$\mathbf{z}^{(i)}$ 中的j有几种取值 $\theta^{(i-1)}$ 的j就有几种取值, 故 $\mathbf{\theta}^{(i-1)}$ 中 $s_i$ 个<strong>列向量</strong></li>
-<li>$\mathbf{\theta}^{(i-1)}<em>{j}$ 和 $\mathbf{a}^{(i-1)}</em>{j}$ 维度相同(a要先增加一维1), 而 $\mathbf{a}^{(i-1)}<em>{j}$ 增加一维后的维度为  $s</em>{i-1}+1$ , 故 $\mathbf{\theta}^{(i-1)}$ 中每个向量的维度为 $s_{i-1}+1$</li>
+<li>$\mathbf{\theta}^{(i-1)}_{j}$ 和 $\mathbf{a}^{(i-1)}_{j}$ 维度相同(a要先增加一维1), 而 $\mathbf{a}^{(i-1)}_{j}$ 增加一维后的维度为  $s_{i-1}+1$ , 故 $\mathbf{\theta}^{(i-1)}$ 中每个向量的维度为 $s_{i-1}+1$</li>
 </ul>
-<p>所以 $\theta^{i-1}: (s<em>{i-1} + 1) \times s</em>{i}, \theta^{(i-1)}=\begin{bmatrix}\theta^{(i-1)}<em>1  &amp; \theta^{(i-1)}_2 &amp; … &amp; \theta^{(i-1)}</em>{s_{i}}\end{bmatrix}$</p>
+<p>所以 $\theta^{i-1}: (s_{i-1} + 1) \times s_{i}, \theta^{(i-1)}=\begin{bmatrix}\theta^{(i-1)}_1  &amp; \theta^{(i-1)}_2 &amp; … &amp; \theta^{(i-1)}_{s_{i}}\end{bmatrix}$</p>
 <p>$\theta$ 的值是算法训练的目标.</p>
 <h4 id="3-_关于$\delta$">3. 关于$\delta$</h4>
 <p>$\delta$ 记录神经网络中每个结点的误差值(<strong>它为最后的预测值负多大责任</strong>).  $\delta^{(l)}_{j}$ 表示第l层第j个结点的误差值.</p>
@@ -145,7 +139,7 @@ m">
 <p>而其他的hidden层需要通过<strong>反向传播(Back propagation)</strong>得到.</p>
 <p><strong>反向传播算法:</strong></p>
 <ul>
-<li>set $\Delta^{(l)}<em>{ij}=0$ (for all l, i, j, 作为累加器来计算 $\frac {\partial}{\partial\theta^{(l)}</em>{ij}}J(\theta)$ )</li>
+<li>set $\Delta^{(l)}_{ij}=0$ (for all l, i, j, 作为累加器来计算 $\frac {\partial}{\partial\theta^{(l)}_{ij}}J(\theta)$ )</li>
 <li>set $\theta^{(l)}_{ij}=randrange(-\epsilon,+\epsilon)$ (for all l, i, j)</li>
 <li><p>for i = 1 to m:</p>
 <ul>
@@ -153,40 +147,40 @@ m">
 <li>perform forward propagation to compute $a^{(l)}$ for l = 2, 3, …, L</li>
 <li>使用 $y^{(i)}$ 计算 $\delta^{(L)}=a^{(L)}-y^{(i)}$</li>
 <li>使用 $\delta^{(i)}=(\theta^{(i)})^T\delta^{(i+1)}.*g’(z^{(i)})$<br>计算 $\delta^{(L-1)}, \delta^{(L-2)}, …, \delta^{(2)}$ (没有 $\delta^{(1)}$ )</li>
-<li>$\Delta^{(l)}<em>{ij} := \Delta^{(l)}</em>{ij} + a^{(l)}<em>{j}\delta^{(l+1)}</em>{i}$ 或向量的方式计算: $\Delta^{(l)}:=\Delta^{(l)}+\delta^{(l+1)}(a^{(l)})^T$</li>
+<li>$\Delta^{(l)}_{ij} := \Delta^{(l)}_{ij} + a^{(l)}_{j}\delta^{(l+1)}_{i}$ 或向量的方式计算: $\Delta^{(l)}:=\Delta^{(l)}+\delta^{(l+1)}(a^{(l)})^T$</li>
 </ul>
 </li>
-<li><p>$D^{(l)}<em>{ij}:=\frac {1}{m}\Delta^{(l)}</em>{ij}+\lambda\theta^{(l)}_{ij}\ if\  j \neq 0$</p>
+<li><p>$D^{(l)}_{ij}:=\frac {1}{m}\Delta^{(l)}_{ij}+\lambda\theta^{(l)}_{ij}\ if\  j \neq 0$</p>
 </li>
-<li>$D^{(l)}<em>{ij}:=\frac {1}{m}\Delta^{(l)}</em>{ij}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\  j = 0$</li>
-<li>$\frac {\partial}{\partial\theta^{(l)}<em>{ij}}J(\theta)=D^{(l)}</em>{ij}$</li>
+<li>$D^{(l)}_{ij}:=\frac {1}{m}\Delta^{(l)}_{ij}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if\  j = 0$</li>
+<li>$\frac {\partial}{\partial\theta^{(l)}_{ij}}J(\theta)=D^{(l)}_{ij}$</li>
 </ul>
 <p><strong>公式 $\delta^{(i)}=(\theta^{(i)})^T\delta^{(i+1)}.*g’(z^{(i)})$ 的解释:</strong></p>
 <p>举例说明: 2维样本, 2分类问题, 神经网络有输入层, 输出层, 以及两个2维的hidden层. $s_1=2,s_2=2,s_3=2,s_4=2$</p>
 <p>首先通过正向传播得到 $\mathbf{z}$ 和 $\mathbf{a}$ :</p>
 <p><strong>Layer 1:</strong></p>
-<p>$$\begin{matrix}\mathbf{a}^{(1)}<em>{1} = \mathbf{x}^{(i)}</em>{1}\ \mathbf{a}^{(1)}<em>{2} = \mathbf{x}^{(i)}</em>{2}\end{matrix}$$</p>
+<p>$$\begin{matrix}\mathbf{a}^{(1)}_{1} = \mathbf{x}^{(i)}_{1}\ \mathbf{a}^{(1)}_{2} = \mathbf{x}^{(i)}_{2}\end{matrix}$$</p>
 <p><strong>Layer 2:</strong></p>
-<p>$$\begin{matrix}\mathbf{z}^{(2)}<em>{1}=\theta^{(1)}</em>{1}\mathbf{a}^{(1)} &amp;\mathbf{a}^{(2)}<em>{1}=sigmoid(\mathbf{z}^{(2)}</em>{1})\ \mathbf{z}^{(2)}<em>{2}=\theta^{(1)}</em>{2}\mathbf{a}^{(1)}&amp;\mathbf{a}^{(2)}<em>{2}=sigmoid(\mathbf{z}^{(2)}</em>{2})\end{matrix}$$</p>
+<p>$$\begin{matrix}\mathbf{z}^{(2)}_{1}=\theta^{(1)}_{1}\mathbf{a}^{(1)} &amp;\mathbf{a}^{(2)}_{1}=sigmoid(\mathbf{z}^{(2)}_{1})\ \mathbf{z}^{(2)}_{2}=\theta^{(1)}_{2}\mathbf{a}^{(1)}&amp;\mathbf{a}^{(2)}_{2}=sigmoid(\mathbf{z}^{(2)}_{2})\end{matrix}$$</p>
 <p><strong>Layer 3:</strong></p>
-<p>$$\begin{matrix}\mathbf{z}^{(3)}<em>{1}=\theta^{(2)}</em>{1}\mathbf{a}^{(2)} &amp;\mathbf{a}^{(3)}<em>{1}=sigmoid(\mathbf{z}^{(2)}</em>{1})\ \mathbf{z}^{(3)}<em>{2}=\theta^{(2)}</em>{2}\mathbf{a}^{(2)}&amp;\mathbf{a}^{(3)}<em>{2}=sigmoid(\mathbf{z}^{(2)}</em>{2})\end{matrix}$$</p>
+<p>$$\begin{matrix}\mathbf{z}^{(3)}_{1}=\theta^{(2)}_{1}\mathbf{a}^{(2)} &amp;\mathbf{a}^{(3)}_{1}=sigmoid(\mathbf{z}^{(2)}_{1})\ \mathbf{z}^{(3)}_{2}=\theta^{(2)}_{2}\mathbf{a}^{(2)}&amp;\mathbf{a}^{(3)}_{2}=sigmoid(\mathbf{z}^{(2)}_{2})\end{matrix}$$</p>
 <p><strong>Layer 4:</strong></p>
-<p>$$\begin{matrix}\mathbf{z}^{(4)}<em>{1}=\theta^{(3)}</em>{1}\mathbf{a}^{(3)} &amp;\mathbf{a}^{(4)}<em>{1}=sigmoid(\mathbf{z}^{(3)}</em>{1})\end{matrix}$$</p>
+<p>$$\begin{matrix}\mathbf{z}^{(4)}_{1}=\theta^{(3)}_{1}\mathbf{a}^{(3)} &amp;\mathbf{a}^{(4)}_{1}=sigmoid(\mathbf{z}^{(3)}_{1})\end{matrix}$$</p>
 <p>然后反向传播计算 $\delta$</p>
 <p><strong>Layer 4:</strong></p>
 <p>$$\delta^{(4)}_1=y^{(i)}-a^{(4)}_1$$</p>
 <p><strong>Layer 3:</strong></p>
-<p>第1个结点的误差: $\delta^{(3)}<em>{1}$ , 其误差大小影响到Layer 4的第1个结点的误差 $\delta^{(4)}</em>{1}$ , 影响权重为 $\theta^{(3)}_1$ , 故</p>
-<p>$$\delta^{(3)}<em>{1} = \theta^{(3)}_1 \times \delta^{(4)}</em>{1}$$</p>
-<p>第2个结点的误差: $\delta^{(3)}<em>{2}$ , 其误差大小影响到Layer 4的第1个结点的误差 $\delta^{(4)}</em>{1}$ , 影响权重为 $\theta^{(3)}_2$ , 故</p>
-<p>$$\delta^{(3)}<em>{2} = \theta^{(3)}_2 \times \delta^{(4)}</em>{1}$$</p>
+<p>第1个结点的误差: $\delta^{(3)}_{1}$ , 其误差大小影响到Layer 4的第1个结点的误差 $\delta^{(4)}_{1}$ , 影响权重为 $\theta^{(3)}_1$ , 故</p>
+<p>$$\delta^{(3)}_{1} = \theta^{(3)}_1 \times \delta^{(4)}_{1}$$</p>
+<p>第2个结点的误差: $\delta^{(3)}_{2}$ , 其误差大小影响到Layer 4的第1个结点的误差 $\delta^{(4)}_{1}$ , 影响权重为 $\theta^{(3)}_2$ , 故</p>
+<p>$$\delta^{(3)}_{2} = \theta^{(3)}_2 \times \delta^{(4)}_{1}$$</p>
 <p><strong>Layer 2:</strong></p>
-<p>第1个结点的误差: $\delta^{(2)}<em>{1}$ , 其误差大小影响到第3层第1第2个结点的误差 $\delta^{(3)}</em>{1}$和$\delta^{(3)}<em>{2}$ , 影响权重分别为 $\theta^{(2)}</em>{11}$ 和 $\theta^{(2)}_{21}$ , 故</p>
-<p>$$\delta^{(2)}<em>{1}=\theta^{(2)}</em>{11} \times \delta^{(3)}<em>{1} + \theta^{(2)}</em>{21} \times \delta^{(3)}_{2}$$</p>
-<p>第2个结点的误差: $\delta^{(2)}<em>{2}$ , 其误差大小影响到第3层第1第2个结点的误差 $\delta^{(3)}</em>{1}$ 和 $\delta^{(3)}<em>{2}$ , 影响权重分别为 $\theta^{(2)}</em>{12}$ 和 $\theta^{(2)}_{22}$ , 故</p>
-<p>$$\delta^{(2)}<em>{2}=\theta^{(2)}</em>{12} \times \delta^{(3)}<em>{1} + \theta^{(2)}</em>{22}\times \delta^{(3)}_{2}$$</p>
+<p>第1个结点的误差: $\delta^{(2)}_{1}$ , 其误差大小影响到第3层第1第2个结点的误差 $\delta^{(3)}_{1}$和$\delta^{(3)}_{2}$ , 影响权重分别为 $\theta^{(2)}_{11}$ 和 $\theta^{(2)}_{21}$ , 故</p>
+<p>$$\delta^{(2)}_{1}=\theta^{(2)}_{11} \times \delta^{(3)}_{1} + \theta^{(2)}_{21} \times \delta^{(3)}_{2}$$</p>
+<p>第2个结点的误差: $\delta^{(2)}_{2}$ , 其误差大小影响到第3层第1第2个结点的误差 $\delta^{(3)}_{1}$ 和 $\delta^{(3)}_{2}$ , 影响权重分别为 $\theta^{(2)}_{12}$ 和 $\theta^{(2)}_{22}$ , 故</p>
+<p>$$\delta^{(2)}_{2}=\theta^{(2)}_{12} \times \delta^{(3)}_{1} + \theta^{(2)}_{22}\times \delta^{(3)}_{2}$$</p>
 <p><strong>直观规律总结: 对第i层第j个结点来说, 其误差 $\delta^{(i)}_j$ 等于其误差大小影响到的第i+1层的结点的误差的权重和.</strong></p>
-<p><strong>公式</strong>:  <code>\(\delta^{(i)}=(\theta^{(i)})^T\delta^{(i+1)}.*g&#39;(z^{(i)})\)</code> 其中 <code>\(g&#39;(z^{(i)})=a^{(i)}.*(1-a^{(i)})\)</code> :</p>
+<p><strong>公式</strong>:  $\delta^{(i)}=(\theta^{(i)})^T\delta^{(i+1)}.<em>g’(z^{(i)})$ 其中 $g’(z^{(i)})=a^{(i)}.</em>(1-a^{(i)})$ :</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -227,7 +221,7 @@ m">
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/11/neural-network/" data-id="wrbd25w8x5je4tgr" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/11/neural-network/" data-id="9hgr5ps5oxg7x0q6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
