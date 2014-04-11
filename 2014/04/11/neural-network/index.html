@@ -158,11 +158,11 @@ $$\begin{bmatrix}1\\0\\0\\0\end{bmatrix},\begin{bmatrix}0\\1\\0\\0\end{bmatrix},
 <p>举例说明: 2维样本, 2分类问题, 神经网络有输入层, 输出层, 以及两个2维的hidden层. $s_1=2,s_2=2,s_3=2,s_4=2$</p>
 <p>首先通过正向传播得到 $\mathbf{z}$ 和 $\mathbf{a}$ :</p>
 <p><strong>Layer 1:</strong></p>
-<p>$$\begin{matrix}\mathbf{a}^{(1)}_{1} = \mathbf{x}^{(i)}_{1}\ \mathbf{a}^{(1)}_{2} = \mathbf{x}^{(i)}_{2}\end{matrix}$$</p>
+<p>$$\begin{matrix}\mathbf{a}^{(1)}_{1} = \mathbf{x}^{(i)}_{1}\\ \mathbf{a}^{(1)}_{2} = \mathbf{x}^{(i)}_{2}\end{matrix}$$</p>
 <p><strong>Layer 2:</strong></p>
-<p>$$\begin{matrix}\mathbf{z}^{(2)}_{1}=\theta^{(1)}_{1}\mathbf{a}^{(1)} &amp;\mathbf{a}^{(2)}_{1}=sigmoid(\mathbf{z}^{(2)}_{1})\ \mathbf{z}^{(2)}_{2}=\theta^{(1)}_{2}\mathbf{a}^{(1)}&amp;\mathbf{a}^{(2)}_{2}=sigmoid(\mathbf{z}^{(2)}_{2})\end{matrix}$$</p>
+<p>$$\begin{matrix}\mathbf{z}^{(2)}_{1}=\theta^{(1)}_{1}\mathbf{a}^{(1)} &amp;\mathbf{a}^{(2)}_{1}=sigmoid(\mathbf{z}^{(2)}_{1})\\ \mathbf{z}^{(2)}_{2}=\theta^{(1)}_{2}\mathbf{a}^{(1)}&amp;\mathbf{a}^{(2)}_{2}=sigmoid(\mathbf{z}^{(2)}_{2})\end{matrix}$$</p>
 <p><strong>Layer 3:</strong></p>
-<p>$$\begin{matrix}\mathbf{z}^{(3)}_{1}=\theta^{(2)}_{1}\mathbf{a}^{(2)} &amp;\mathbf{a}^{(3)}_{1}=sigmoid(\mathbf{z}^{(2)}_{1})\ \mathbf{z}^{(3)}_{2}=\theta^{(2)}_{2}\mathbf{a}^{(2)}&amp;\mathbf{a}^{(3)}_{2}=sigmoid(\mathbf{z}^{(2)}_{2})\end{matrix}$$</p>
+<p>$$\begin{matrix}\mathbf{z}^{(3)}_{1}=\theta^{(2)}_{1}\mathbf{a}^{(2)} &amp;\mathbf{a}^{(3)}_{1}=sigmoid(\mathbf{z}^{(2)}_{1})\\ \mathbf{z}^{(3)}_{2}=\theta^{(2)}_{2}\mathbf{a}^{(2)}&amp;\mathbf{a}^{(3)}_{2}=sigmoid(\mathbf{z}^{(2)}_{2})\end{matrix}$$</p>
 <p><strong>Layer 4:</strong></p>
 <p>$$\begin{matrix}\mathbf{z}^{(4)}_{1}=\theta^{(3)}_{1}\mathbf{a}^{(3)} &amp;\mathbf{a}^{(4)}_{1}=sigmoid(\mathbf{z}^{(3)}_{1})\end{matrix}$$</p>
 <p>然后反向传播计算 $\delta$</p>
@@ -220,7 +220,7 @@ $$\begin{bmatrix}1\\0\\0\\0\end{bmatrix},\begin{bmatrix}0\\1\\0\\0\end{bmatrix},
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2014/04/11/neural-network/" data-id="2q1xtdpyzdm6e4mf" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2014/04/11/neural-network/" data-id="gm9xlp8nj7t2tlsh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
