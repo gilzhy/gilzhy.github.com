@@ -91,7 +91,232 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Python-numpy vs Matlab 
+        <p>安装：<code>sudo apt-get install python-numpy</code> 使用：<code>import numpy as np</code> 或 <code>from numpy import *</code></p>
+<h4 id="建立矩阵">1. 建立矩阵</h4>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="code"><pre>In [<span class="number">1</span>]: array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])
+Out[<span class="number">1</span>]: array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+
+In [<span class="number">2</span>]: array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>],dtype=float)  # 也可以指定dtype, 不指定时默认为int
+Out[<span class="number">2</span>]: array([ <span class="number">1.</span>,  <span class="number">2.</span>,  <span class="number">3.</span>,  <span class="number">4.</span>])
+
+# <span class="comment">----------</span>
+
+In [<span class="number">3</span>]: array(<span class="string">[[1,2,3],[4,5,6]]</span>)  # 二维数组
+Out[<span class="number">3</span>]:
+array(<span class="string">[[1, 2, 3],
+       [4, 5, 6]]</span>)
+
+In [<span class="number">4</span>]: mat(<span class="string">[[1,2,3],[4,5,6]]</span>)  # 二维矩阵
+Out[<span class="number">4</span>]:
+matrix(<span class="string">[[1, 2, 3],
+        [4, 5, 6]]</span>)
+
+# <span class="comment">----------</span>
+
+In [<span class="number">5</span>]: list1 = [range(i,i+<span class="number">5</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>)]
+
+In [<span class="number">6</span>]: mat(list1)  # list to mat
+Out[<span class="number">6</span>]:
+matrix(<span class="string">[[0, 1, 2, 3, 4],
+        [1, 2, 3, 4, 5],
+        [2, 3, 4, 5, 6]]</span>)
+
+In [<span class="number">7</span>]: array(list1)  # list to array
+Out[<span class="number">7</span>]:
+array(<span class="string">[[0, 1, 2, 3, 4],
+       [1, 2, 3, 4, 5],
+       [2, 3, 4, 5, 6]]</span>)
+</pre></td></tr></table></figure></p>
+<p>同样, numpy中也有很多<strong>内置的特殊矩阵</strong>：</p>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+</pre></td><td class="code"><pre># ones(shape,dtype=), 指定shape的全<span class="number">1</span>矩阵
+In [<span class="number">1</span>]: ones(<span class="number">5</span>)
+Out[<span class="number">1</span>]: array([ <span class="number">1.</span>,  <span class="number">1.</span>,  <span class="number">1.</span>,  <span class="number">1.</span>,  <span class="number">1.</span>])
+
+In [<span class="number">2</span>]: ones((<span class="number">5</span>,<span class="number">3</span>))
+Out[<span class="number">2</span>]:
+array(<span class="string">[[ 1.,  1.,  1.],
+       [ 1.,  1.,  1.],
+       [ 1.,  1.,  1.],
+       [ 1.,  1.,  1.],
+       [ 1.,  1.,  1.]]</span>)
+
+# <span class="comment">----------</span>
+
+# zeros(shape,dtype=), 指定shape的全<span class="number">0</span>矩阵
+In [<span class="number">3</span>]: zeros(<span class="number">5</span>)
+Out[<span class="number">3</span>]: array([ <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>,  <span class="number">0.</span>])
+
+In [<span class="number">4</span>]: zeros((<span class="number">3</span>,<span class="number">5</span>))
+Out[<span class="number">4</span>]:
+array(<span class="string">[[ 0.,  0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.,  0.],
+       [ 0.,  0.,  0.,  0.,  0.]]</span>)
+
+# <span class="comment">----------</span>
+
+# empty(shape,dtype=), 空矩阵, 使用内存中的随机值来填充这个矩阵
+In [<span class="number">5</span>]: empty(<span class="number">5</span>)
+Out[<span class="number">5</span>]:
+array([  <span class="number">0.00000000e+000</span>,   <span class="number">8.75542427e-317</span>,   <span class="number">0.00000000e+000</span>,
+         <span class="number">4.94065646e-324</span>,   <span class="number">2.37151510e-322</span>])
+
+In [<span class="number">6</span>]: empty((<span class="number">5</span>,<span class="number">3</span>))
+Out[<span class="number">6</span>]:
+array(<span class="string">[[  6.90835095e-310,   1.66276331e-316,   1.65567564e-316],
+       [  1.66170324e-316,   1.65916967e-316,   1.37263136e-316],
+       [  8.23900250e+015,   0.00000000e+000,   6.90835195e-310],
+       [  6.37344683e-322,   6.90835095e-310,   6.90835095e-310],
+       [  1.51358234e-013,   7.47290878e+020,   1.71130456e+059]]</span>)
+
+# <span class="comment">----------</span>
+
+# identity(N), N x N的单位矩阵, 只能方阵
+In [<span class="number">7</span>]: identity(<span class="number">5</span>)
+Out[<span class="number">7</span>]:
+array(<span class="string">[[ 1.,  0.,  0.,  0.,  0.],
+       [ 0.,  1.,  0.,  0.,  0.],
+       [ 0.,  0.,  1.,  0.,  0.],
+       [ 0.,  0.,  0.,  1.,  0.],
+       [ 0.,  0.,  0.,  0.,  1.]]</span>)
+
+# <span class="comment">----------</span>
+
+# eye(N,M=None,k=<span class="number">0</span>), 对角线为<span class="number">1</span>其余为<span class="number">0</span>的矩阵
+# M=None时, N x N, M!=None时, N x M
+# 用k指定对角线的位置
+In [<span class="number">8</span>]: eye(<span class="number">5</span>)
+Out[<span class="number">8</span>]:
+array(<span class="string">[[ 1.,  0.,  0.,  0.,  0.],
+       [ 0.,  1.,  0.,  0.,  0.],
+       [ 0.,  0.,  1.,  0.,  0.],
+       [ 0.,  0.,  0.,  1.,  0.],
+       [ 0.,  0.,  0.,  0.,  1.]]</span>)
+
+In [<span class="number">9</span>]: eye(<span class="number">5</span>,<span class="number">3</span>)
+Out[<span class="number">9</span>]:
+array(<span class="string">[[ 1.,  0.,  0.],
+       [ 0.,  1.,  0.],
+       [ 0.,  0.,  1.],
+       [ 0.,  0.,  0.],
+       [ 0.,  0.,  0.]]</span>)
+
+In [<span class="number">10</span>]: eye(<span class="number">3</span>,<span class="number">5</span>)
+Out[<span class="number">10</span>]:
+array(<span class="string">[[ 1.,  0.,  0.,  0.,  0.],
+       [ 0.,  1.,  0.,  0.,  0.],
+       [ 0.,  0.,  1.,  0.,  0.]]</span>)
+</pre></td></tr></table></figure></p>
+
         
           <p class="article-more-link">
             <a href="/2013/03/20/python-numpy/#more">Read More</a>
@@ -100,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/20/python-numpy/" data-id="s224v2iknrqawrsa" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/20/python-numpy/" data-id="ornfjy1utu70plhm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/numpy/">numpy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -150,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/03/15/linux-mysql/" data-id="8yj12w8c9w72tnf1" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/03/15/linux-mysql/" data-id="gj0n82ze9ycfq8vd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
@@ -200,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.zhyin5.com/2013/02/27/mvc/" data-id="yum0qcn7g39wd6mq" class="article-share-link">Share</a>
+      <a data-url="http://www.zhyin5.com/2013/02/27/mvc/" data-id="1ds1dfnj9lcg6rqm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/">MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
