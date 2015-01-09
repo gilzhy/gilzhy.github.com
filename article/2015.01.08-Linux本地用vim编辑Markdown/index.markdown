@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="../css/bootstrap.css">
-<link rel="stylesheet" href="../css/bootstrap-theme.css">
-<link rel="stylesheet" href="../css/monokai.css">
+<link rel="stylesheet" href="../../css/bootstrap.css">
+<link rel="stylesheet" href="../../css/bootstrap-theme.css">
+<link rel="stylesheet" href="../../css/monokai.css">
 <!-- <link rel="stylesheet" href="../css/default.css"> -->
 
 <script type="text/javascript" async="" src="../js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
