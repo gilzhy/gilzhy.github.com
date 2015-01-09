@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux命令 | Jay Young&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="og:type" content="blog">
+<meta name="og:title" content="Linux命令">
+<meta name="og:url" content="http://www.zhyin5.com/2013/02/27/linux命令/">
+<meta name="og:image">
+<meta name="og:site_name" content="Jay Young's Blog">
+<meta name="og:description" content="Linux下常用命令:查找文件,vim查找替换,解压/压缩,历史命令,进程管理等">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Jay Young&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jay Young&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">博学,审问,慎思,明辨,笃行</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://www.zhyin5.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-linux命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2013/02/27/linux命令/" class="article-date">
+  <time datetime="2013-02-27T05:31:52.000Z" itemprop="datePublished">2月 27 2013</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tech/">tech</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux命令
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Linux下常用命令:查找文件,vim查找替换,解压/压缩,历史命令,进程管理等 <a id="more"></a> - <strong>常用查找文件:</strong> - 当前目录下<strong>文件名</strong>包含关键字的文件: <code>ll | grep xx</code> , <code>find . -name '*xx*'</code> - 当前目录下<strong>文件内容</strong>包含关键字的文件 - <code>grep &quot;string&quot; [file]</code>: 输出每个文件中包含“str”的行,并高亮“str” - <code>grep -o &quot;str&quot; [file]</code>: 只输出包含“str”的文件 - <code>find .|xargs grep -ri &quot;str&quot;</code> 输出每个文件中包含“str”的行,无高亮 - <code>find .|xargs grep -ri &quot;str&quot; -l</code>: 只输出包含“str”的文件 - 列出当前目录里<strong>最大的10个文件</strong>: <code>du -s * | sort -n | tail</code></p>
+<hr />
+<ol style="list-style-type: decimal">
+<li><code>find [指定目录] [指定条件] [指定动作]</code>
+<ul>
+<li>指定目录： 所要搜索的目录及其所有子目录。默认为当前目录。</li>
+<li>指定条件： 所要搜索的文件的特征。默认不过滤任何文件</li>
+<li><p>指定动作： 对搜索结果进行特定的处理.默认无处理,全部显示</p></li>
+<li><p><code>find . -name ‘my*’</code> 搜索当前目录所有文件名以my开头的文件,显示文件名</p></li>
+<li><p><code>find . -name ‘my*’ -ls</code><br /> 搜索当前目录中所有文件名以my开头的文件，显示详细信息。</p></li>
+<li><p><code>find . -mmin -10</code> 搜索当前目录中，所有过去<strong>10分钟</strong>中更新过的<strong>所有文件和目录</strong>。</p></li>
+<li><p><code>find . -type f -mmin -10</code> 搜索当前目录中，所有过去<strong>10分钟</strong>中更新过的<strong>普通文件</strong>。</p></li>
+</ul></li>
+<li><p>locate</p>
+<p>locate命令其实是“find -name”的另一种写法，但是要比后者快得多</p>
+<p>原因在于它不搜索具体目录，而是搜索一个数据库（/var/lib/locatedb），这个数据库中含有本地所有文件信息。</p>
+<p>Linux系统自动创建这个数据库，并且<strong>每天自动更新一次</strong>，所以使用locate命令查不到最新变动过的文件。</p>
+<p>为了避免这种情况，可以在使用locate之前，先使用<code>updatedb</code>命令，手动更新数据库。</p>
+<ul>
+<li><code>locate ~/xx</code> 搜索用户主目录下，所有以xx<strong>开头</strong>的文件。</li>
+<li><code>locate -i ~/m</code> 搜索用户主目录下，所有以xx<strong>开头</strong>的文件，<strong>忽略大小写</strong>。</li>
+</ul></li>
+<li><p>whereis</p>
+<p>whereis命令只能用于程序名的搜索，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息。</p></li>
+</ol>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>$ whereis grep
+<span class="label">grep:</span> /bin/grep /usr/share/man/man1/grep<span class="number">.1</span><span class="preprocessor">.gz</span>
+$ whereis isympy
+<span class="label">isympy:</span> /usr/bin/isympy /usr/bin/X11/isympy /usr/share/man/man1/isympy<span class="number">.1</span><span class="preprocessor">.gz</span>
+</pre></td></tr></table></figure></p>
+<ol style="list-style-type: decimal">
+<li><p>which</p>
+<p>which在PATH变量指定的路径中，搜索某个<strong>系统命令</strong>的位置，并且<strong>返回第一个</strong>搜索结果</p>
+<p>使用which命令可以<strong>查看某个系统命令是否存在，以及执行的到底是哪一个位置的命令</strong></p></li>
+</ol>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="variable">$ </span>which grep
+/bin/grep
+<span class="variable">$ </span>which isympy
+/usr/bin/isympy
+</pre></td></tr></table></figure></p>
+<ol style="list-style-type: decimal">
+<li><p>type</p>
+<p>type区分命令是由shell自带的, 还是由shell外部的独立二进制文件提供的。</p>
+<p>如果一个命令是外部命令，那么使用-p参数，会显示该命令的路径，相当于which命令。</p></li>
+</ol>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>$ type cd
+cd 是 shell 内嵌
+$ type grep
+grep 是 <span class="smartquote">`grep --color=auto'</span> 的别名
+</pre></td></tr></table></figure></p>
+<hr />
+<ul>
+<li><strong>root相关:</strong>
+<ul>
+<li>设置root密码: <code>sudo passwd root</code></li>
+<li>转为root: <code>su</code></li>
+</ul></li>
+<li><strong>vim相关</strong>
+<ul>
+<li>替换: <code>:%s/lala/haha/gc</code> (将lala替换为haha,c表示询问,g表示批量)</li>
+<li>查找匹配数: <code>%s/xxx//gn</code></li>
+<li>编辑多个文件:
+<ul>
+<li><code>vim a.txt b.txt c.txt</code>
+<ul>
+<li>:n 跳至下一个文件，:e#回到刚才编辑的文件，:ea.txt 编辑文件a.txt</li>
+<li>:ls 查看当前打开的文件</li>
+<li>:b1 打开n缓存区的文件，n为ls查看中文件的编号</li>
+</ul></li>
+<li>使用 <code>sp</code> 或者 <code>vs</code> 命令，对窗口进行分割
+<ul>
+<li>:vs a.txt 横</li>
+<li>:sp a.txt 竖</li>
+<li>ctrl+ww 在窗口间进行切换</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li><strong>解压/压缩</strong>
+<ul>
+<li><code>gzip file</code> / <code>gunzip file.gz</code> 压缩文件</li>
+<li><code>tar -zcvf dir.tar.gz dir</code> / <code>tar -zxvf dir.tar.gz</code> 打包目录
+<ul>
+<li><code>-z</code> 打包同时压缩</li>
+<li><code>-f</code> 指定压缩后的明文名</li>
+<li><code>-v</code> 显示详细信息</li>
+<li><code>-c</code> 打包</li>
+<li><code>-x</code> 解包</li>
+</ul></li>
+<li><code>zip file.zip file</code> / <code>unzip file.zip</code></li>
+<li><code>zip -r dir.zip dir</code> / <code>unzip dir.zip</code></li>
+</ul></li>
+<li><p><code>bzip2 -k file</code> / <code>bunzip2 -k file.bz2</code> -k表示保留原文件</p></li>
+<li><strong>apt</strong>
+<ul>
+<li>apt-get(man apt-get)
+<ul>
+<li><code>apt-get update</code>: 更新源(/etc/apt/sources.list记录)</li>
+<li><code>apt-get upgrade</code>: 更新系统中所有已经安装的软件至其最新版</li>
+<li><code>apt-get install</code>: 安装/更新</li>
+<li><code>apt-get remove</code>: 卸载</li>
+<li><code>apt-get purged</code>: 清除（在卸载的基础上，删除配置）</li>
+<li><code>apt-get download</code>: 下载安装包至当前目录</li>
+<li><code>apt-get autoremove</code>: 一些软件安装时必须附带着安装一些其他软件，若卸载了软件，这些附带的软件就不再被需要时，autoremove自动卸载这些</li>
+</ul></li>
+<li>apt-cache(man apt-cache)
+<ul>
+<li><code>apt-cache showpkg  pkg(s)</code>: 显示安装包的信息</li>
+<li><code>apt-cache stats</code>: 显示统计信息（软件包名称总数、全部软件包结构等）</li>
+<li><code>apt-cache showsrc pkg(s)</code>: 显示pkg(s)的源地址</li>
+<li><code>apt-cache search regex [ regex ... ]</code>: 查找相应软件版本</li>
+<li><code>apt-cache show pkg(s)</code>: 显示软件详细的信息，同dpkg –print-avail</li>
+<li><code>apt-cache depends pkg(s)</code>: 显示有哪些安装包依赖于pkg(s)</li>
+<li><code>apt-cache rdepends pkg(s)</code>: 与depends相反</li>
+</ul></li>
+</ul></li>
+<li><strong>链接</strong>
+<ul>
+<li><strong>软链接</strong>: <code>ln -s [源文件] [目标文件]</code></li>
+<li><strong>硬链接</strong>: <code>ln [源文件] [目标文件]</code></li>
+</ul></li>
+<li><strong>开关机</strong>
+<ul>
+<li>关机: <code>shutdown -h now</code> 或<code>init 0</code></li>
+<li>重启: <code>reboot</code> 或<code>init 6</code></li>
+</ul></li>
+<li><strong>命令别名</strong>
+<ul>
+<li>设置: <code>alias ll=&quot;ll -;&quot;</code></li>
+<li>查看: <code>alias</code></li>
+</ul></li>
+<li><strong>重定向</strong></li>
+<li><strong>输出重定向：</strong> <code>ls -l ./tmp &gt; ./tmp.msg</code> 或换成&gt;&gt;</li>
+<li><p><strong>输入重定向:</strong> <code>wall &lt; ./temp</code></p></li>
+<li><strong>命令连接符</strong></li>
+<li><code>;</code> 各命令顺序执行</li>
+<li><code>&amp;&amp;</code> 只有前面的命令成功执行后,后面的命令才被执行</li>
+<li><p><code>||</code> 只有前面的命令执行失败后,后面的命令才被执行</p></li>
+<li><strong>实用工具</strong>
+<ul>
+<li><strong>简单服务器</strong>: <code>python -m SimpleHTTPServer</code></li>
+<li><strong>ascii码表</strong>: <code>man ascii</code></li>
+</ul></li>
+<li><strong>历史命令</strong>
+<ul>
+<li><strong>以root的身份执行上一条命令</strong>: <code>sudo !!</code> 使用<code>!xx</code>来重复最近的一次命令，比如，你以前输入过vi /where/the/file/is, 下次用 !vi 重得上次最近一次的vi命令</li>
+<li><strong>上一个命令的最后一个字符串</strong>: <code>!$</code></li>
+<li><strong>查看历史命令</strong>: <code>&lt;ctrl&gt;+&lt;R&gt;</code></li>
+<li><strong>把上次命令行的参数给重复出来</strong>: <code>ALT+.</code> or <code>&lt;ESC&gt; .</code></li>
+<li><strong>替换前一条命令里的部分字符串</strong>: <code>^old^new</code> (也可以使用 !!:gs/old/new）</li>
+</ul></li>
+<li><p>** 创建一个空文件: ** <code>touch file.txt</code> 或 <code>&gt; file.txt</code></p></li>
+<li><strong>进程相关</strong>
+<ul>
+<li><strong>显示进程树</strong>: <code>pstree -p</code></li>
+<li><strong>显示包含关键字的进程:</strong> ‘ps -ef | grep’</li>
+<li><strong>列出头十个最耗内存的进程</strong>: <code>ps aux | sort -nk +4 | tail</code></li>
+</ul></li>
+<li><p>** Ipython中将历史命令输出到文件: **</p></li>
+</ul>
+<p><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>    hist  <span class="comment"># 查看历史命令</span>
+    hist -n  <span class="comment"># 查看历史命令(加行号)</span>
+    edit <span class="operator">a</span>:b  <span class="comment"># 将历史命令中[a,b)行在文件中编辑</span>
+</pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhyin5.com/2013/02/27/linux命令/" data-id="8y1g0r0saldlrjz9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/查找/">查找</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解压/压缩/">解压/压缩</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/02/27/mvc/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          MVC
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+
+
+<section id="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"zhyin5"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ML/DM/">ML/DM</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/tech/">tech</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/笔试/面试/">笔试/面试</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DM/">DM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ML/">ML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVC/">MVC</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sublime/">Sublime</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/awesome/">awesome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blog/">blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cookie/">cookie</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/django/">django</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dnsmasq/">dnsmasq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hostapd/">hostapd</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/latex/">latex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysqldump/">mysqldump</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/numpy/">numpy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/session/">session</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/svn/">svn</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wifi/">wifi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/快捷键/">快捷键</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/排序/">排序</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/查找/">查找</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/版本控制/">版本控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/窗口管理/">窗口管理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔试/">笔试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络访问/">网络访问</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络通信/">网络通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/解压/压缩/">解压/压缩</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软AP/">软AP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 18.00px;">Android</a><a href="/tags/DM/" style="font-size: 10.00px;">DM</a><a href="/tags/ML/" style="font-size: 10.00px;">ML</a><a href="/tags/MVC/" style="font-size: 10.00px;">MVC</a><a href="/tags/Sublime/" style="font-size: 12.00px;">Sublime</a><a href="/tags/awesome/" style="font-size: 12.00px;">awesome</a><a href="/tags/blog/" style="font-size: 10.00px;">blog</a><a href="/tags/cookie/" style="font-size: 10.00px;">cookie</a><a href="/tags/django/" style="font-size: 14.00px;">django</a><a href="/tags/dnsmasq/" style="font-size: 10.00px;">dnsmasq</a><a href="/tags/hostapd/" style="font-size: 10.00px;">hostapd</a><a href="/tags/latex/" style="font-size: 10.00px;">latex</a><a href="/tags/linux/" style="font-size: 20.00px;">linux</a><a href="/tags/markdown/" style="font-size: 10.00px;">markdown</a><a href="/tags/mysql/" style="font-size: 12.00px;">mysql</a><a href="/tags/mysqldump/" style="font-size: 10.00px;">mysqldump</a><a href="/tags/numpy/" style="font-size: 10.00px;">numpy</a><a href="/tags/python/" style="font-size: 16.00px;">python</a><a href="/tags/session/" style="font-size: 10.00px;">session</a><a href="/tags/svn/" style="font-size: 10.00px;">svn</a><a href="/tags/vim/" style="font-size: 12.00px;">vim</a><a href="/tags/wifi/" style="font-size: 10.00px;">wifi</a><a href="/tags/快捷键/" style="font-size: 10.00px;">快捷键</a><a href="/tags/排序/" style="font-size: 10.00px;">排序</a><a href="/tags/数据结构/" style="font-size: 10.00px;">数据结构</a><a href="/tags/查找/" style="font-size: 10.00px;">查找</a><a href="/tags/爬虫/" style="font-size: 10.00px;">爬虫</a><a href="/tags/版本控制/" style="font-size: 10.00px;">版本控制</a><a href="/tags/神经网络/" style="font-size: 10.00px;">神经网络</a><a href="/tags/窗口管理/" style="font-size: 10.00px;">窗口管理</a><a href="/tags/笔试/" style="font-size: 12.00px;">笔试</a><a href="/tags/网络访问/" style="font-size: 10.00px;">网络访问</a><a href="/tags/网络通信/" style="font-size: 10.00px;">网络通信</a><a href="/tags/解压/压缩/" style="font-size: 10.00px;">解压/压缩</a><a href="/tags/设计模式/" style="font-size: 10.00px;">设计模式</a><a href="/tags/软AP/" style="font-size: 10.00px;">软AP</a><a href="/tags/面向对象/" style="font-size: 10.00px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04">四月 2014</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08">八月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07">七月 2013</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06">六月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04">四月 2013</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03">三月 2013</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/02">二月 2013</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/04/11/关于markdown语法与latex语法的冲突/">关于Markdown语法与Latex语法的冲突</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/11/neural-network/">Neural Network</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/09/机器学习算法中为什么要增加一维x0=1/">机器学习算法中为什么要增加一维x0=1</a>
+          </li>
+        
+          <li>
+            <a href="/2014/04/06/python-sympy/">python-sympy</a>
+          </li>
+        
+          <li>
+            <a href="/2013/08/02/androidosnetworkonmainthreadexception/">android.os.NetworkOnMainThreadException</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    <iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=0&noborder=1&isWeibo=1&isFans=1&uid=1840199725&verifier=c3e417d3&dpc=1"></iframe>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="elapseClock"></div>
+  </div>
+</footer>
+
+<style>
+    #elapseClock { text-align:center; font-size:18px; margin-top:10px; margin-bottom:10px }
+    #elapseClock .digit{ font-family:"digit"; font-size:36px }
+</style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+
+<script>
+function timeElapse(date){
+	var current = Date();
+	var seconds = (Date.parse(current) - Date.parse(date)) / 1000;
+	var days = Math.floor(seconds / (3600 * 24));
+	seconds = seconds % (3600 * 24);
+	var hours = Math.floor(seconds / 3600);
+	if (hours < 10) {
+		hours = "0" + hours;
+	}
+	seconds = seconds % 3600;
+	var minutes = Math.floor(seconds / 60);
+	if (minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	seconds = seconds % 60;
+	if (seconds < 10) {
+		seconds = "0" + seconds;
+	}
+	var result = "From 2010.12.04 10:30 to Now: <span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	$("#elapseClock").html(result);
+}
+
+var together = new Date();
+together.setFullYear(2010, 11, 04);
+together.setHours(10);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+timeElapse(together);
+setInterval(function () {
+    timeElapse(together);
+}, 500);
+
+</script>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script type="text/javascript" src="/js/script.js"></script>
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
