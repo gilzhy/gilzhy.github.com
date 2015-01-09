@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="../../css/monokai.css">
 <!-- <link rel="stylesheet" href="../../css/default.css"> -->
 
+<script type="text/javascript" async="" src="../../blog/js/jquery.min.js"></script>
 <script type="text/javascript" async="" src="../../js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script type="text/javascript">
     MathJax.Hub.Config({
@@ -91,3 +92,7 @@ $$ Latexx = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
 
 </div>
 </body>
+
+<script type="text/javascript">
+$("table").addClass("table table-bordered");
+</script>
